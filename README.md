@@ -9,14 +9,23 @@ there is no subscription.
 Double-click **Meeting Notetaker** on your desktop.
 
 The window fills in the meeting from your calendar, shows you the sentence to
-say out loud, and waits for you to tick that you have said it. Then one
-button starts, and the same button stops. It transcribes on its own and tells
-you when it is done.
+say out loud, and stays greyed out until you flip the switch that says you
+have said it. Then one button starts, and the same button stops. It
+transcribes on its own, the button turns green when it is done, and **Write
+up notes in Claude** opens Claude Code with the command already typed.
 
-Then open Claude Code in this folder and run `/notes`. It reads the
-transcript, writes `notes.md`, and updates the contacts involved.
+You can close the window at any point. The recording is its own process and
+keeps going; reopen the app and it picks the recording straight back up.
+Two minutes before a calendar meeting, the app opens itself with everything
+filled in — it only offers, it never starts recording on its own.
 
 That is the whole loop. Everything below is for when you want more control.
+
+The window is HTML running in Edge's app mode, talking to a small local
+server. Nothing is exposed beyond your own machine, every request carries a
+per-launch token, and the server exits when the window closes. If you have no
+Chromium-based browser at all, `mtg app --classic` opens a plainer built-in
+window that does the same job.
 
 ### From a terminal, if you prefer
 

@@ -86,12 +86,20 @@ start button stays greyed out until you tick that you have said it.
 
 Press **Start recording**, take your call, press **Stop**. It transcribes on
 its own — a one-hour meeting takes about six minutes on your laptop — and the
-status line turns green when it is finished.
+button turns green when it is finished.
 
-Then open Claude Code in this folder and run `/notes`.
+Press **Write up notes in Claude**. It opens Claude Code in this folder with
+`/notes` already entered; that runs on your existing subscription.
 
-You can close the window while it records; the recording is a separate
-process and keeps going.
+You can close the window while it records. The recording is a separate
+process and keeps going; opening the app again shows it still in progress.
+
+### If something looks wrong
+
+**Check setup** in the top-right corner runs every prerequisite check and
+shows the result in the window, with the fix for anything that failed. The
+same output is in the log it names, which is the thing to send if you want
+help.
 
 ## Troubleshooting
 

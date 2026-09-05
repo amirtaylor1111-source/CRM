@@ -332,10 +332,19 @@ def cmd_watch(args) -> int:
 
 
 def cmd_app(args) -> int:
-    """Open the desktop window."""
-    from . import app
+    """Open the desktop window.
 
-    return app.main()
+    The HTML window in Edge's app mode is the default: it needs no extra
+    packages and Edge ships with Windows. --classic opens the Tkinter window
+    for a machine with no Chromium-based browser at all.
+    """
+    if args.classic:
+        from . import app
+
+        return app.main()
+    from . import server
+
+    return server.serve()
 
 
 def cmd_next(args) -> int:
@@ -485,6 +494,8 @@ def build_parser() -> argparse.ArgumentParser:
     wa.set_defaults(func=cmd_watch)
 
     ap = sub.add_parser("app", help="open the desktop window")
+    ap.add_argument("--classic", action="store_true",
+                    help="use the basic built-in window instead of the browser one")
     ap.set_defaults(func=cmd_app)
 
     nx = sub.add_parser("next", help="upcoming meetings from your calendar")

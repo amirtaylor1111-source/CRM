@@ -78,7 +78,7 @@ def _launch_app() -> None:
     interpreter = str(pythonw) if pythonw.exists() else sys.executable
     flags = getattr(subprocess, "CREATE_NO_WINDOW", 0) if sys.platform == "win32" else 0
     try:
-        subprocess.Popen([interpreter, "-m", "notetaker.app", "--prompted"],
+        subprocess.Popen([interpreter, "-m", "notetaker.server"],
                          cwd=str(store.repo_root()), creationflags=flags,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except OSError:

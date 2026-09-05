@@ -90,6 +90,12 @@ Say ""
 
 & $venvPy -m pip install --upgrade pip --quiet
 & $venvPy -m pip install --quiet soundcard numpy "onnx-asr[cpu,hub]"
+if ($LASTEXITCODE -eq 0) {
+    # Install the tool itself, so `notetaker` imports from anywhere and the
+    # `mtg` command exists inside the venv, rather than relying on the
+    # current directory happening to be this folder.
+    & $venvPy -m pip install --quiet -e .
+}
 if ($LASTEXITCODE -ne 0) {
     Bad "Dependency install failed."
     Say "Try running it directly to see the error:"
@@ -122,7 +128,7 @@ try {
     $shell    = New-Object -ComObject WScript.Shell
     $shortcut = $shell.CreateShortcut($lnk)
     $shortcut.TargetPath       = $pythonw
-    $shortcut.Arguments        = "-m notetaker.app"
+    $shortcut.Arguments        = "-m notetaker.server"
     $shortcut.WorkingDirectory = $root
     $shortcut.Description      = "Record a meeting and hand it to Claude"
     $shortcut.IconLocation     = "$env:SystemRoot\System32\SndVol.exe,0"
