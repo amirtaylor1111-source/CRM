@@ -1,5 +1,9 @@
 # CRM and meeting notetaker
 
+> **Running on Amir's Windows laptop for the first time?** Read
+> [HANDOFF.md](HANDOFF.md) first — it is a short, finite job, and it is
+> not "continue building".
+
 A local, consent-first meeting recorder whose output you write up. Capture
 and transcription run on the user's Windows laptop; everything intelligent
 happens here, in a normal Claude Code session.
