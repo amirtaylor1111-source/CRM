@@ -415,6 +415,7 @@ def import_meeting(
     date: str,
     participants: Iterable[str | dict[str, Any]] = (),
     transcript_md: str = "",
+    summary_md: str = "",
     source: str = "import",
     source_id: str = "",
     source_url: str = "",
@@ -496,6 +497,20 @@ def import_meeting(
             "\n".join(header) + transcript_md.strip() + "\n", encoding="utf-8"
         )
 
+    if summary_md:
+        # A summary written by the source service. It fills the notes slot
+        # until Claude writes a better one from a transcript, and says so in
+        # its header rather than passing itself off as Claude-authored.
+        (directory / "notes.md").write_text(
+            f"# {meeting.title}\n\n"
+            f"> Imported from {source} on {utcnow()[:10]}. This is "
+            f"{source}'s own summary, not a Claude write-up.\n"
+            f"> Run `/notes {directory.name}` after pulling the transcript "
+            f"to regenerate it.\n\n"
+            + summary_md.strip() + "\n",
+            encoding="utf-8",
+        )
+
     for person in meeting.participants:
         if person.name:
             link_contact(directory, person.name, root=root,
@@ -513,6 +528,7 @@ def import_batch(meetings: list[dict[str, Any]], root: Path | None = None) -> di
             date=entry.get("date", "1970-01-01"),
             participants=entry.get("participants", []),
             transcript_md=entry.get("transcript_md", ""),
+            summary_md=entry.get("summary_md", ""),
             source=entry.get("source", "import"),
             source_id=entry.get("source_id", ""),
             source_url=entry.get("source_url", ""),
