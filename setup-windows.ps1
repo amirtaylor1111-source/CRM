@@ -111,6 +111,27 @@ except Exception as exc:
     print(f'  NOTE  Model will download on first use ({exc})')
 "@
 
+# --- desktop shortcut -----------------------------------------------------
+Say ""
+Say "Creating a desktop shortcut ..."
+try {
+    $desktop  = [Environment]::GetFolderPath("Desktop")
+    $lnk      = Join-Path $desktop "Meeting Notetaker.lnk"
+    $pythonw  = Join-Path $root ".venv\Scripts\pythonw.exe"
+
+    $shell    = New-Object -ComObject WScript.Shell
+    $shortcut = $shell.CreateShortcut($lnk)
+    $shortcut.TargetPath       = $pythonw
+    $shortcut.Arguments        = "-m notetaker.app"
+    $shortcut.WorkingDirectory = $root
+    $shortcut.Description      = "Record a meeting and hand it to Claude"
+    $shortcut.IconLocation     = "$env:SystemRoot\System32\SndVol.exe,0"
+    $shortcut.Save()
+    Ok "Shortcut on your desktop: Meeting Notetaker"
+} catch {
+    Say "  (could not create the shortcut - use Notetaker.cmd in this folder)"
+}
+
 # --- verify ---------------------------------------------------------------
 Write-Host ""
 & $venvPy -m notetaker.cli doctor
@@ -118,6 +139,6 @@ Write-Host ""
 Write-Host ""
 Write-Host "  Setup done." -ForegroundColor Cyan
 Write-Host ""
-Say "Start a meeting with:   .\mtg.cmd start"
+Say "Double-click 'Meeting Notetaker' on your desktop to record."
 Say "Wear headphones, or both voices land on both tracks."
 Write-Host ""

@@ -4,16 +4,30 @@ Records your meetings locally, transcribes them on your own machine, and
 hands the transcript to Claude Code to write up. Nothing joins your call and
 there is no subscription.
 
-## The daily loop
+## Using it
 
-```
-mtg start --with "Jane Doe"     # say the disclosure line, confirm, record
-   ... have the meeting ...
-mtg stop                        # stops, then transcribes
-```
+Double-click **Meeting Notetaker** on your desktop.
+
+The window fills in the meeting from your calendar, shows you the sentence to
+say out loud, and waits for you to tick that you have said it. Then one
+button starts, and the same button stops. It transcribes on its own and tells
+you when it is done.
 
 Then open Claude Code in this folder and run `/notes`. It reads the
 transcript, writes `notes.md`, and updates the contacts involved.
+
+That is the whole loop. Everything below is for when you want more control.
+
+### From a terminal, if you prefer
+
+```
+mtg start --next     # title and attendees from your calendar
+   ... have the meeting ...
+mtg stop             # stops, then transcribes
+```
+
+The app and the commands drive exactly the same code; neither is a wrapper
+around the other.
 
 ## Why it costs nothing
 

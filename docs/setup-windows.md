@@ -78,20 +78,20 @@ tracks, and that advantage is gone.
 
 ## Your first recording
 
-```powershell
-.\mtg.cmd start --with "Jane Doe" --title "Acme renewal"
-```
+Setup puts **Meeting Notetaker** on your desktop. Double-click it.
 
-It shows you a sentence to say out loud and asks you to confirm you have said
-it. Then it records in the background, so you can close that window.
+The window shows what is next in your calendar and pre-fills the meeting
+name and who is on it. It displays the sentence to say out loud, and the
+start button stays greyed out until you tick that you have said it.
 
-When the call ends:
+Press **Start recording**, take your call, press **Stop**. It transcribes on
+its own — a one-hour meeting takes about six minutes on your laptop — and the
+status line turns green when it is finished.
 
-```powershell
-.\mtg.cmd stop
-```
+Then open Claude Code in this folder and run `/notes`.
 
-It stops, transcribes, and tells you to run `/notes` in Claude Code.
+You can close the window while it records; the recording is a separate
+process and keeps going.
 
 ## Troubleshooting
 

@@ -320,6 +320,13 @@ def cmd_doctor(args) -> int:
     return OK
 
 
+def cmd_app(args) -> int:
+    """Open the desktop window."""
+    from . import app
+
+    return app.main()
+
+
 def cmd_next(args) -> int:
     """What is coming up, and what is recordable right now."""
     events = store.upcoming(limit=args.limit)
@@ -462,6 +469,9 @@ def build_parser() -> argparse.ArgumentParser:
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
     pr.add_argument("--dry-run", action="store_true")
     pr.set_defaults(func=cmd_prune)
+
+    ap = sub.add_parser("app", help="open the desktop window")
+    ap.set_defaults(func=cmd_app)
 
     nx = sub.add_parser("next", help="upcoming meetings from your calendar")
     nx.add_argument("--limit", "-n", type=int, default=5)
