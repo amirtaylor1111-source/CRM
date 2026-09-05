@@ -1,0 +1,24 @@
+{
+  "id": "2026-08-25-branded-call-catch-up-session",
+  "title": "Branded Call Catch up Session",
+  "started_at": "2026-08-25T00:00:00Z",
+  "ended_at": "2026-08-25T00:00:00Z",
+  "participants": [
+    {
+      "name": "Kagiso Mzizi",
+      "email": "",
+      "company": "",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "recorded via fathom; consent handled there",
+  "tracks": [],
+  "tags": [],
+  "transcribed": false,
+  "transcript_engine": "fathom",
+  "source": "fathom",
+  "source_id": "176407403",
+  "source_url": "https://fathom.video/calls/795601138",
+  "imported": true
+}

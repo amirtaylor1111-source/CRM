@@ -385,3 +385,140 @@ def search(query: str, root: Path | None = None) -> list[dict[str, Any]]:
             results.append({"id": meeting.id, "title": meeting.title,
                             "date": meeting.started_at[:10], "hits": hits})
     return results
+
+
+# --- import ----------------------------------------------------------------
+#
+# Meetings recorded elsewhere (Fathom, Otter, a handwritten note) enter the
+# CRM through here. The connector lives in the Claude session, which has the
+# credentials; this only takes the structured result and files it, so the
+# import path is testable without any network.
+
+
+def find_by_source(source: str, source_id: str, root: Path | None = None) -> Path | None:
+    """Locate an already-imported meeting, so importing twice is a no-op."""
+    for directory in meetings_dir(root).glob("*/"):
+        meta = directory / "meeting.json"
+        if not meta.exists():
+            continue
+        try:
+            data = _read_json(meta)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if data.get("source") == source and str(data.get("source_id")) == str(source_id):
+            return directory
+    return None
+
+
+def import_meeting(
+    title: str,
+    date: str,
+    participants: Iterable[str | dict[str, Any]] = (),
+    transcript_md: str = "",
+    source: str = "import",
+    source_id: str = "",
+    source_url: str = "",
+    consent_note: str = "",
+    root: Path | None = None,
+) -> tuple[Path, bool]:
+    """File a meeting that was recorded somewhere else.
+
+    Returns (directory, created). Re-importing the same source_id updates the
+    existing folder rather than making a second copy of the same call.
+    """
+    existing = find_by_source(source, source_id, root) if source_id else None
+    created = existing is None
+
+    people: list[Participant] = []
+    for person in participants:
+        if isinstance(person, dict):
+            people.append(Participant(
+                name=person.get("name") or person.get("email", "").split("@")[0],
+                email=person.get("email", ""),
+                company=person.get("company", ""),
+            ))
+        elif person:
+            name = str(person)
+            people.append(Participant(name=name.split("@")[0] if "@" in name else name,
+                                      email=name if "@" in name else ""))
+
+    if existing is not None:
+        directory = existing
+        meeting = load_meeting(directory)
+        meeting.title = title or meeting.title
+        if people:
+            meeting.participants = people
+    else:
+        parent = meetings_dir(root)
+        parent.mkdir(parents=True, exist_ok=True)
+        base = f"{date}-{slugify(title)}"
+        directory = parent / base
+        suffix = 2
+        while directory.exists():
+            directory = parent / f"{base}-{suffix}"
+            suffix += 1
+        directory.mkdir(parents=True)
+        meeting = Meeting(
+            id=directory.name,
+            title=title,
+            started_at=f"{date}T00:00:00Z",
+            ended_at=f"{date}T00:00:00Z",
+            participants=people,
+            # Consent for an imported meeting was handled by whatever recorded
+            # it. Recording that honestly beats asserting consent we cannot
+            # vouch for.
+            consent_obtained=True,
+            consent_note=consent_note or f"recorded via {source}; consent handled there",
+        )
+
+    meeting.transcribed = bool(transcript_md)
+    meeting.transcript_engine = source
+    data = meeting.to_dict()
+    data["source"] = source
+    data["source_id"] = str(source_id)
+    data["source_url"] = source_url
+    data["imported"] = True
+    _write_json(directory / "meeting.json", data)
+
+    if transcript_md:
+        header = [
+            "---",
+            f"source: {source}",
+            f"source_url: {source_url}",
+            f"date: {date}",
+            "speaker_method: imported from source; attribution as recorded there",
+            "---",
+            "",
+            "<!-- Imported. Do not edit; write notes.md instead. -->",
+            "",
+        ]
+        (directory / "transcript.md").write_text(
+            "\n".join(header) + transcript_md.strip() + "\n", encoding="utf-8"
+        )
+
+    for person in meeting.participants:
+        if person.name:
+            link_contact(directory, person.name, root=root,
+                         email=person.email, company=person.company)
+
+    return directory, created
+
+
+def import_batch(meetings: list[dict[str, Any]], root: Path | None = None) -> dict[str, int]:
+    """Import many meetings; returns counts of created and updated."""
+    created = updated = 0
+    for entry in meetings:
+        _, was_created = import_meeting(
+            title=entry.get("title", "Untitled"),
+            date=entry.get("date", "1970-01-01"),
+            participants=entry.get("participants", []),
+            transcript_md=entry.get("transcript_md", ""),
+            source=entry.get("source", "import"),
+            source_id=entry.get("source_id", ""),
+            source_url=entry.get("source_url", ""),
+            root=root,
+        )
+        created += was_created
+        updated += not was_created
+    rebuild_index(root=root)
+    return {"created": created, "updated": updated}

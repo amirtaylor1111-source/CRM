@@ -1,0 +1,24 @@
+{
+  "id": "2026-08-12-shan-amir-chat",
+  "title": "Shan/Amir Chat",
+  "started_at": "2026-08-12T00:00:00Z",
+  "ended_at": "2026-08-12T00:00:00Z",
+  "participants": [
+    {
+      "name": "Shan S",
+      "email": "",
+      "company": "",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "recorded via fathom; consent handled there",
+  "tracks": [],
+  "tags": [],
+  "transcribed": false,
+  "transcript_engine": "fathom",
+  "source": "fathom",
+  "source_id": "172505260",
+  "source_url": "https://fathom.video/calls/779913633",
+  "imported": true
+}

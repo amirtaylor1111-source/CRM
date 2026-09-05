@@ -307,6 +307,34 @@ def cmd_doctor(args) -> int:
     return OK
 
 
+def cmd_import(args) -> int:
+    """Import meetings recorded elsewhere, from a JSON file.
+
+    The connector lives in the Claude session, which holds the credentials;
+    this end only files what it is given, so the import path stays testable
+    with no network involved.
+    """
+    path = Path(args.file)
+    if not path.exists():
+        print(f"  No such file: {path}", file=sys.stderr)
+        return USER_ERROR
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"  {path} is not valid JSON: {exc}", file=sys.stderr)
+        return USER_ERROR
+
+    meetings = payload if isinstance(payload, list) else payload.get("meetings", [])
+    if not meetings:
+        print("  Nothing to import.")
+        return OK
+
+    counts = store.import_batch(meetings)
+    print(f"  Imported {counts['created']} new, updated {counts['updated']}.")
+    print(f"  Contacts now known: {len(store.list_contacts())}")
+    return OK
+
+
 def cmd_prune(args) -> int:
     """Delete raw audio from meetings that are already transcribed."""
     freed = 0
@@ -378,6 +406,10 @@ def build_parser() -> argparse.ArgumentParser:
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
     pr.add_argument("--dry-run", action="store_true")
     pr.set_defaults(func=cmd_prune)
+
+    im = sub.add_parser("import", help="import meetings from a JSON file")
+    im.add_argument("file")
+    im.set_defaults(func=cmd_import)
 
     rec = sub.add_parser("_record", help=argparse.SUPPRESS)
     rec.add_argument("meeting_dir")

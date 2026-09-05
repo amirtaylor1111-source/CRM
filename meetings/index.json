@@ -1,0 +1,235 @@
+{
+  "generated_at": "2026-09-05T13:11:07Z",
+  "count": 19,
+  "meetings": [
+    {
+      "id": "2026-09-04-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-09-04T00:00:00Z",
+      "ended_at": "2026-09-04T00:00:00Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-09-04-impromptu-microsoft-teams-meeting"
+    },
+    {
+      "id": "2026-09-04-chat-cont",
+      "title": "Chat (Cont)",
+      "started_at": "2026-09-04T00:00:00Z",
+      "ended_at": "2026-09-04T00:00:00Z",
+      "participants": [
+        "John Smith",
+        "mfavero"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-09-04-chat-cont"
+    },
+    {
+      "id": "2026-08-25-branded-call-catch-up-session",
+      "title": "Branded Call Catch up Session",
+      "started_at": "2026-08-25T00:00:00Z",
+      "ended_at": "2026-08-25T00:00:00Z",
+      "participants": [
+        "Kagiso Mzizi"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-08-25-branded-call-catch-up-session"
+    },
+    {
+      "id": "2026-08-12-shan-amir-chat",
+      "title": "Shan/Amir Chat",
+      "started_at": "2026-08-12T00:00:00Z",
+      "ended_at": "2026-08-12T00:00:00Z",
+      "participants": [
+        "Shan S"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-08-12-shan-amir-chat"
+    },
+    {
+      "id": "2026-08-10-chat-with-eitan-dubb",
+      "title": "Chat with Eitan Dubb",
+      "started_at": "2026-08-10T00:00:00Z",
+      "ended_at": "2026-08-10T00:00:00Z",
+      "participants": [
+        "Eitan Dubb"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-08-10-chat-with-eitan-dubb"
+    },
+    {
+      "id": "2026-08-04-discussion-cont",
+      "title": "Discussion (Cont)",
+      "started_at": "2026-08-04T00:00:00Z",
+      "ended_at": "2026-08-04T00:00:00Z",
+      "participants": [
+        "John Smith",
+        "mfavero"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-08-04-discussion-cont"
+    },
+    {
+      "id": "2026-07-31-scg-corporate-branded-calling-discussion-cont",
+      "title": "SCG Corporate - Branded Calling Discussion (Cont)",
+      "started_at": "2026-07-31T00:00:00Z",
+      "ended_at": "2026-07-31T00:00:00Z",
+      "participants": [
+        "Ian Boyce",
+        "Sean Shuker",
+        "John Smith"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-31-scg-corporate-branded-calling-discussion-cont"
+    },
+    {
+      "id": "2026-07-30-chat-with-paul-cross",
+      "title": "Chat with Paul Cross",
+      "started_at": "2026-07-30T00:00:00Z",
+      "ended_at": "2026-07-30T00:00:00Z",
+      "participants": [
+        "Paul Cross"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-30-chat-with-paul-cross"
+    },
+    {
+      "id": "2026-07-30-ronan-aged-ventures-open-discovery-call",
+      "title": "Ronan - Aged Ventures - Open Discovery Call",
+      "started_at": "2026-07-30T00:00:00Z",
+      "ended_at": "2026-07-30T00:00:00Z",
+      "participants": [
+        "Ronan O'Higgins"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-30-ronan-aged-ventures-open-discovery-call"
+    },
+    {
+      "id": "2026-07-29-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-07-29T00:00:00Z",
+      "ended_at": "2026-07-29T00:00:00Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-29-impromptu-microsoft-teams-meeting"
+    },
+    {
+      "id": "2026-07-28-re-branded-calling",
+      "title": "RE: branded calling",
+      "started_at": "2026-07-28T00:00:00Z",
+      "ended_at": "2026-07-28T00:00:00Z",
+      "participants": [
+        "Frans Schneider",
+        "Aswill Horn",
+        "Heinz Vollmer"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-28-re-branded-calling"
+    },
+    {
+      "id": "2026-07-28-re-technology-introduction-for-simca-smd",
+      "title": "RE: Technology Introduction for Simca/SMD",
+      "started_at": "2026-07-28T00:00:00Z",
+      "ended_at": "2026-07-28T00:00:00Z",
+      "participants": [
+        "Paul Cross",
+        "Eric Cotton"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-28-re-technology-introduction-for-simca-smd"
+    },
+    {
+      "id": "2026-07-27-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-07-27T00:00:00Z",
+      "ended_at": "2026-07-27T00:00:00Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-27-impromptu-microsoft-teams-meeting"
+    },
+    {
+      "id": "2026-07-27-chat-with-eitan-dubb",
+      "title": "Chat with Eitan Dubb",
+      "started_at": "2026-07-27T00:00:00Z",
+      "ended_at": "2026-07-27T00:00:00Z",
+      "participants": [
+        "Eitan Dubb"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-27-chat-with-eitan-dubb"
+    },
+    {
+      "id": "2026-07-27-chat-with-john-smith",
+      "title": "Chat with John Smith",
+      "started_at": "2026-07-27T00:00:00Z",
+      "ended_at": "2026-07-27T00:00:00Z",
+      "participants": [
+        "John Smith",
+        "mfavero"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-27-chat-with-john-smith"
+    },
+    {
+      "id": "2026-07-24-re-intellibpo-client-acquisition-feedback",
+      "title": "RE: IntelliBPO - Client Acquisition Feedback",
+      "started_at": "2026-07-24T00:00:00Z",
+      "ended_at": "2026-07-24T00:00:00Z",
+      "participants": [
+        "Rael Landau",
+        "Dror Taylor"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-24-re-intellibpo-client-acquisition-feedback"
+    },
+    {
+      "id": "2026-07-24-chat-with-eitan-dubb",
+      "title": "Chat with Eitan Dubb",
+      "started_at": "2026-07-24T00:00:00Z",
+      "ended_at": "2026-07-24T00:00:00Z",
+      "participants": [
+        "Eitan Dubb"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-24-chat-with-eitan-dubb"
+    },
+    {
+      "id": "2026-07-23-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-07-23T00:00:00Z",
+      "ended_at": "2026-07-23T00:00:00Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-23-impromptu-microsoft-teams-meeting"
+    },
+    {
+      "id": "2026-07-23-chat-with-eitan-dubb",
+      "title": "Chat with Eitan Dubb",
+      "started_at": "2026-07-23T00:00:00Z",
+      "ended_at": "2026-07-23T00:00:00Z",
+      "participants": [
+        "Eitan Dubb"
+      ],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-23-chat-with-eitan-dubb"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-07-30-chat-with-paul-cross",
+  "title": "Chat with Paul Cross",
+  "started_at": "2026-07-30T00:00:00Z",
+  "ended_at": "2026-07-30T00:00:00Z",
+  "participants": [
+    {
+      "name": "Paul Cross",
+      "email": "",
+      "company": "",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "recorded via fathom; consent handled there",
+  "tracks": [],
+  "tags": [],
+  "transcribed": false,
+  "transcript_engine": "fathom",
+  "source": "fathom",
+  "source_id": "168643114",
+  "source_url": "https://fathom.video/calls/765434000",
+  "imported": true
+}
