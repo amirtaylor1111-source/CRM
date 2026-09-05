@@ -8,6 +8,8 @@
 # Runtime state
 recording.json
 stop.flag
+app.lock
+.watcher-seen.json
 
 # Python
 .venv/

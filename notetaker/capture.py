@@ -59,6 +59,14 @@ def _require_soundcard():
             "  Fix:  pip install soundcard\n"
             "  Or rerun setup-windows.ps1, which installs everything."
         ) from exc
+    except Exception as exc:
+        # Installed, but its native backend refused to load — no audio
+        # subsystem, a broken driver, a missing runtime.
+        raise CaptureError(
+            f"The audio library is installed but could not start: {exc}\n"
+            "  Check Windows Settings > System > Sound has an active output "
+            "device,\n  then run  mtg doctor"
+        ) from exc
     return soundcard
 
 

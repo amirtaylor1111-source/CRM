@@ -255,6 +255,28 @@ def cmd_open(args) -> int:
     return OK
 
 
+def _check_import(label: str, module: str, fix: str) -> tuple[str, bool, str]:
+    """Import an optional dependency and report, whatever goes wrong.
+
+    ImportError is the common case, but a native audio backend can raise
+    OSError when the platform's audio subsystem is absent, and onnxruntime
+    raises an ImportError subclass on a missing DLL. The doctor exists to
+    explain those; it must never die of them.
+    """
+    import importlib
+
+    try:
+        importlib.import_module(module)
+        return (label, True, "")
+    except ImportError as exc:
+        detail = str(exc)
+        if "DLL" in detail or "dll" in detail:
+            fix = f"{fix}  (DLL load failed: install the Visual C++ Redistributable)"
+        return (label, False, fix)
+    except Exception as exc:
+        return (label, False, f"{fix}  ({type(exc).__name__}: {str(exc)[:60]})")
+
+
 def cmd_doctor(args) -> int:
     hw = hardware.detect()
     choice = hardware.recommend(hw)
@@ -267,19 +289,8 @@ def cmd_doctor(args) -> int:
 
     checks: list[tuple[str, bool, str]] = []
 
-    try:
-        import soundcard  # noqa: F401
-
-        checks.append(("audio library", True, ""))
-    except ImportError:
-        checks.append(("audio library", False, "pip install soundcard"))
-
-    try:
-        import numpy  # noqa: F401
-
-        checks.append(("numpy", True, ""))
-    except ImportError:
-        checks.append(("numpy", False, "pip install numpy"))
+    checks.append(_check_import("audio library", "soundcard", "pip install soundcard"))
+    checks.append(_check_import("numpy", "numpy", "pip install numpy"))
 
     try:
         devices = capture.list_devices()
@@ -289,14 +300,24 @@ def cmd_doctor(args) -> int:
         checks.append((f"system audio ({len(devices['loopbacks'])} found)",
                        bool(devices["loopbacks"]),
                        "no loopback device; check your output device is active"))
-    except capture.CaptureError:
-        checks.append(("audio devices", False, "install the audio library first"))
+    except capture.CaptureError as exc:
+        checks.append(("audio devices", False, str(exc).splitlines()[0]))
+    except Exception as exc:                     # a broken driver must not
+        checks.append(("audio devices", False,   # end the diagnosis
+                       f"{type(exc).__name__}: {str(exc)[:70]}"))
 
     from . import transcribe as tr
 
-    backends = tr.available_backends()
+    try:
+        backends = tr.available_backends()
+    except Exception as exc:
+        backends = []
+        checks.append(("transcription engine import", False,
+                       f"{type(exc).__name__}: {str(exc)[:70]}"))
     checks.append((f"transcription engine ({', '.join(backends) or 'none'})",
-                   bool(backends), "pip install onnx-asr[cpu,hub]"))
+                   bool(backends),
+                   "pip install onnx-asr[cpu,hub]  (on Windows, a DLL error here "
+                   "means the Visual C++ Redistributable is missing)"))
 
     checks.append((f"disk space ({hw.free_disk_gb:.0f} GB free)",
                    hw.free_disk_gb > 10,
@@ -518,7 +539,22 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _utf8_console() -> None:
+    """Stop a cp1252 console from crashing on ✓, ⚠ or an em dash.
+
+    Classic cmd.exe still defaults to the OEM code page. Replacing rather
+    than raising means the worst case is a '?' on screen, never a traceback
+    in place of the user's meeting list.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _utf8_console()
     args = build_parser().parse_args(argv)
     logger = log.setup(verbose=os.environ.get("MTG_DEBUG") == "1")
     logger.info("command: %s", args.command)

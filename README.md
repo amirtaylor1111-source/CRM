@@ -6,6 +6,12 @@ there is no subscription.
 
 ## Using it
 
+<p align="center">
+  <img src="docs/img/recording.png" width="300" alt="Recording, with a live timer">
+  &nbsp;&nbsp;
+  <img src="docs/img/done.png" width="300" alt="Done, with the hand-off to Claude">
+</p>
+
 Double-click **Meeting Notetaker** on your desktop.
 
 The window fills in the meeting from your calendar, shows you the sentence to

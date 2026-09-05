@@ -28,7 +28,8 @@ LEAD_MINUTES = 2          # offer this long before the start time
 
 
 def _seen_path() -> Path:
-    return store.repo_root() / STATE_FILE
+    """Per-user state, next to the log — never inside the repo."""
+    return log.log_dir() / STATE_FILE
 
 
 def _load_seen() -> set[str]:
@@ -44,6 +45,7 @@ def _load_seen() -> set[str]:
 def _save_seen(seen: set[str]) -> None:
     # Keep the file small; a key is only useful while its meeting is recent.
     try:
+        _seen_path().parent.mkdir(parents=True, exist_ok=True)
         _seen_path().write_text(json.dumps(sorted(seen)[-50:]), encoding="utf-8")
     except OSError:
         pass

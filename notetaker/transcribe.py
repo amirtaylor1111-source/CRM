@@ -115,19 +115,14 @@ def hhmmss(seconds: float) -> str:
 
 
 def available_backends() -> list[str]:
+    """Engines that import cleanly. Anything else counts as absent."""
     found = []
-    try:
-        import onnx_asr  # noqa: F401
-
-        found.append("parakeet")
-    except ImportError:
-        pass
-    try:
-        import faster_whisper  # noqa: F401
-
-        found.append("faster-whisper")
-    except ImportError:
-        pass
+    for module, name in (("onnx_asr", "parakeet"), ("faster_whisper", "faster-whisper")):
+        try:
+            __import__(module)
+            found.append(name)
+        except Exception as exc:           # ImportError, DLL failures, anything
+            _log.debug("backend %s unavailable: %s", module, exc)
     return found
 
 
