@@ -18,64 +18,107 @@ Write-Host "  Meeting notetaker setup" -ForegroundColor Cyan
 Write-Host ""
 
 # --- Python ---------------------------------------------------------------
-# Windows ships a placeholder python.exe in WindowsApps that opens the
-# Microsoft Store instead of running anything. It is on PATH and it answers
-# to `python`, so it fools naive detection. Reject it by path before we ever
-# invoke it.
+# Windows ships a placeholder python.exe under WindowsApps that opens the
+# Microsoft Store instead of running anything. It answers to `python`, so it
+# fools version probing. Reject it by path, and if no real Python is found,
+# install one rather than sending the user away to do it by hand.
 
-function Test-StoreStub($path) {
-    return ($path -and $path -like "*\WindowsApps\*")
-}
+function Test-StoreStub($path) { return ($path -and $path -like "*\WindowsApps\*") }
 
-$python = $null
-foreach ($candidate in @("py -3.13", "py -3.12", "py -3.11", "python3", "python")) {
-    $parts = $candidate.Split(" ")
-    $exe   = $parts[0]
+function Find-Python {
+    # Ordered: the launcher first (it never resolves to the Store stub),
+    # then PATH, then the standard install locations winget and python.org
+    # use, which is where a just-installed Python lives before PATH updates.
+    $candidates = @()
+    foreach ($v in "3.13", "3.12", "3.11") { $candidates += ,@("py", "-$v") }
+    $candidates += ,@("python3", $null)
+    $candidates += ,@("python", $null)
 
-    $resolved = Get-Command $exe -ErrorAction SilentlyContinue
-    if (-not $resolved) { continue }
-    if (Test-StoreStub $resolved.Source) {
-        Say "Skipping the Microsoft Store placeholder at $($resolved.Source)"
-        continue
+    foreach ($c in $candidates) {
+        $resolved = Get-Command $c[0] -ErrorAction SilentlyContinue
+        if (-not $resolved) { continue }
+        if (Test-StoreStub $resolved.Source) { continue }
+        try {
+            $version = if ($c[1]) { & $c[0] $c[1] --version 2>&1 } else { & $c[0] --version 2>&1 }
+            if ($version -match "Python 3\.(1[1-9]|[2-9][0-9])") {
+                return @{ Exe = $resolved.Source; Args = $c[1]; Version = "$version" }
+            }
+        } catch { }
     }
 
-    try {
-        if ($parts.Length -gt 1) {
-            $version = & $exe $parts[1] --version 2>&1
-        } else {
-            $version = & $exe --version 2>&1
+    # Direct paths, for a Python that exists but is not yet on PATH.
+    $roots = @(
+        "$env:LOCALAPPDATA\Programs\Python",
+        "$env:ProgramFiles\Python313", "$env:ProgramFiles\Python312", "$env:ProgramFiles\Python311"
+    )
+    foreach ($root in $roots) {
+        if (-not (Test-Path $root)) { continue }
+        $exes = Get-ChildItem -Path $root -Filter python.exe -Recurse -Depth 2 -ErrorAction SilentlyContinue |
+                Sort-Object FullName -Descending
+        foreach ($exe in $exes) {
+            if (Test-StoreStub $exe.FullName) { continue }
+            try {
+                $version = & $exe.FullName --version 2>&1
+                if ($version -match "Python 3\.(1[1-9]|[2-9][0-9])") {
+                    return @{ Exe = $exe.FullName; Args = $null; Version = "$version" }
+                }
+            } catch { }
         }
-        if ($version -match "Python 3\.(1[1-9]|[2-9][0-9])") {
-            $python = $candidate
-            break
-        }
-    } catch { }
+    }
+    return $null
 }
 
-if (-not $python) {
-    Bad "No usable Python 3.11 or newer was found."
+$py = Find-Python
+
+if (-not $py) {
     Say ""
-    Say "If typing 'python' opens the Microsoft Store, that is a placeholder,"
-    Say "not a real install. The cleanest fix on Windows 11:"
+    Say "No real Python found — only the Microsoft Store placeholder."
+    Say "Installing Python 3.12. This takes a couple of minutes."
     Say ""
-    Say "    winget install Python.Python.3.12"
-    Say ""
-    Say "Then CLOSE this window, open a new PowerShell, and run this script"
-    Say "again. PATH changes do not reach a window that is already open."
-    Say ""
-    Say "If winget is unavailable, download it from python.org/downloads and"
-    Say "tick 'Add python.exe to PATH' on the installer's first screen."
-    exit 2
+
+    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+        Bad "winget is not available on this machine."
+        Say ""
+        Say "Install Python by hand from https://www.python.org/downloads/"
+        Say "and tick 'Add python.exe to PATH' on the first screen, then run"
+        Say "this script again."
+        exit 2
+    }
+
+    # --scope user avoids the admin prompt; the rest keeps it non-interactive.
+    winget install --id Python.Python.3.12 --scope user --silent `
+        --accept-package-agreements --accept-source-agreements
+    $wingetCode = $LASTEXITCODE
+
+    # PATH in this process is stale, so re-read it from the registry before
+    # searching again. Without this, a successful install still looks absent.
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
+                [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+    $py = Find-Python
+    if (-not $py) {
+        Bad "Python was installed but cannot be found (winget exit $wingetCode)."
+        Say ""
+        Say "Close this window, open a NEW PowerShell, and run this script again."
+        Say "PATH changes never reach a window that was already open."
+        exit 2
+    }
+    Ok "Installed $($py.Version)"
+} else {
+    Ok "Found $($py.Version)"
 }
-Ok "Found $python"
+
+# One canonical way to invoke it from here on.
+$pyExe  = $py.Exe
+$pyArgs = @()
+if ($py.Args) { $pyArgs = @($py.Args) }
 
 # --- virtual environment --------------------------------------------------
 if (Test-Path ".venv") {
     Ok "Virtual environment already exists"
 } else {
     Say "Creating a virtual environment ..."
-    $parts = $python.Split(" ")
-    & $parts[0] $parts[1..($parts.Length-1)] -m venv .venv
+    & $pyExe @pyArgs -m venv .venv
     if ($LASTEXITCODE -ne 0) { Bad "Could not create the virtual environment."; exit 2 }
     Ok "Virtual environment created"
 }
