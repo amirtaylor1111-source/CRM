@@ -1,0 +1,20 @@
+[project]
+name = "meeting-notetaker"
+version = "0.1.0"
+description = "Local, consent-first meeting recorder and transcriber that feeds Claude Code"
+requires-python = ">=3.11"
+dependencies = [
+    "soundcard>=0.4.3",   # WASAPI loopback; no driver install on Windows
+    "numpy>=1.24",
+    "onnx-asr>=0.6",      # Parakeet via ONNX Runtime; no PyTorch, no CUDA
+]
+
+[project.optional-dependencies]
+whisper = ["faster-whisper>=1.0"]   # fallback engine
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+mtg = "notetaker.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

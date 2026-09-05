@@ -1,0 +1,23 @@
+# Recordings: large, private, and reproducible into transcripts.
+*.wav
+*.mp4
+*.mkv
+*.m4a
+*.flac
+
+# Runtime state
+recording.json
+stop.flag
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Models
+*.onnx
+models/
+
+# Transcripts and notes are deliberately NOT ignored — they are the point.

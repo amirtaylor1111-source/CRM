@@ -1,0 +1,89 @@
+# Meeting notetaker
+
+Records your meetings locally, transcribes them on your own machine, and
+hands the transcript to Claude Code to write up. Nothing joins your call and
+there is no subscription.
+
+## The daily loop
+
+```
+mtg start --with "Jane Doe"     # say the disclosure line, confirm, record
+   ... have the meeting ...
+mtg stop                        # stops, then transcribes
+```
+
+Then open Claude Code in this folder and run `/notes`. It reads the
+transcript, writes `notes.md`, and updates the contacts involved.
+
+## Why it costs nothing
+
+| Stage | Runs on | Cost |
+|---|---|---|
+| Capture | your machine | free |
+| Transcription | your machine, offline | free |
+| Notes, briefings, follow-ups | Claude Code, your existing plan | included |
+
+There is no API key anywhere in this repo, and no code here calls a paid
+service. The intelligence happens when Claude reads a file during a normal
+session, which your subscription already covers.
+
+## What it produces
+
+```
+meetings/2026-09-05-acme-renewal/
+    meeting.json      who, when, and the consent record
+    mic.wav           you
+    system.wav        everyone else
+    transcript.md     machine-authored, timestamped, never hand-edited
+    transcript.json   segments with timings and confidence
+    notes.md          Claude-authored write-up
+contacts/jane-doe.md  managed meeting list + your own free-form notes
+```
+
+Transcripts and notes are committed to git. Audio is not, because it is large
+and reproducible into the transcript that matters.
+
+## Commands
+
+| | |
+|---|---|
+| `mtg start` | begin recording, after confirming disclosure |
+| `mtg stop` | stop and transcribe |
+| `mtg status` | is anything recording, and for how long |
+| `mtg list` | recent meetings |
+| `mtg search <term>` | across every transcript and note |
+| `mtg doctor` | check setup, show which model your machine will use |
+| `mtg prune` | delete audio from meetings already transcribed |
+
+In Claude Code: `/notes` to write up, `/prep <person>` for a pre-call
+briefing, `/followup` to draft the email.
+
+## Two tracks, not one
+
+Your microphone and the incoming call audio are recorded to separate files.
+This matters more than the choice of model. Speaker attribution becomes a
+property of which file the audio was in, rather than a guess, and each track
+transcribes more accurately without the other side talking over it.
+
+**This only works if you wear headphones.** On speakers the remote voices
+leak into your microphone, both tracks contain both parties, and the
+advantage disappears.
+
+## What it does not do
+
+- **Nothing joins your call.** There is no bot in the participant list, which
+  also means no auto-join. You start the recording yourself.
+- **Transcription happens after the meeting**, not live. On a mid-range
+  laptop a one-hour call takes five to ten minutes.
+- **It is not 100% accurate**, and neither is anything else. See
+  [docs/accuracy.md](docs/accuracy.md) for real numbers.
+
+## Setup
+
+Windows: [docs/setup-windows.md](docs/setup-windows.md). It is one script.
+
+## Consent
+
+The tool asks you to confirm you have told the other participants before it
+records, and stores that confirmation in `meeting.json`. There is a suggested
+form of words in [docs/consent.md](docs/consent.md).
