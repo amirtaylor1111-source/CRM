@@ -122,6 +122,13 @@ class App:
         self.recent.pack(fill="both", expand=True, pady=(4, 10), **pad)
         self.recent.bind("<Double-Button-1>", lambda e: self._open_selected())
 
+        self.notes_button = tk.Button(self.root, text="Write up notes",
+                                      command=self._write_up, bg=CARD, fg=FG,
+                                      relief="flat", font=("Segoe UI", 10),
+                                      bd=0, cursor="hand2", state="disabled",
+                                      activebackground=CARD, activeforeground=FG)
+        self.notes_button.pack(fill="x", ipady=8, pady=(0, 10), **pad)
+
         footer = tk.Frame(self.root, bg=BG)
         footer.pack(fill="x", pady=(0, 14), **pad)
         for text, command in (("Open folder", self._open_folder),
@@ -183,6 +190,8 @@ class App:
                 self.state = uistate.DONE
                 self.detail = ""
                 self._load_recent()
+                self.notes_button.config(state="normal", bg=ACCENT, fg="white")
+                self._alert()
             elif kind == "error":
                 self.state = uistate.ERROR
                 self.detail = payload
@@ -269,6 +278,48 @@ class App:
         except Exception as exc:
             self.events.put(("error", str(exc)[:80]))
 
+    def _write_up(self):
+        """Hand off to Claude Code, which does the thinking on the user's plan.
+
+        Deliberately opens a visible terminal rather than running Claude
+        headlessly: the write-up is a conversation, and the user should see
+        it happen and be able to steer it.
+        """
+        import shutil
+        import tkinter.messagebox as mb
+
+        target = self.meeting_dir.name if self.meeting_dir else ""
+        if not shutil.which("claude"):
+            mb.showinfo(
+                "Claude Code not found",
+                "Open Claude Code in this folder and run:\n\n"
+                f"    /notes {target}\n\n"
+                "That writes up the meeting on your existing subscription.",
+            )
+            return
+        try:
+            if sys.platform == "win32":
+                subprocess.Popen(
+                    ["cmd", "/c", "start", "", "cmd", "/k",
+                     "claude", f"/notes {target}".strip()],
+                    cwd=str(store.repo_root()))
+            else:
+                subprocess.Popen(["claude", f"/notes {target}".strip()],
+                                 cwd=str(store.repo_root()))
+        except OSError as exc:
+            mb.showerror("Could not open Claude Code", str(exc))
+
+    def _alert(self):
+        """Say so when transcription finishes, since the window may be behind."""
+        try:
+            self.root.bell()
+            self.root.attributes("-topmost", True)
+            self.root.after(1200, lambda: self.root.attributes("-topmost", False))
+            if sys.platform == "win32":
+                self.root.deiconify()
+        except Exception:
+            pass
+
     def _open_folder(self):
         target = self.meeting_dir or store.repo_root()
         _reveal(target)
@@ -351,7 +402,16 @@ def main() -> int:
         return 2
 
     root = tk.Tk()
-    App(root)
+    app = App(root)
+    if "--prompted" in sys.argv:
+        # Opened by the watcher because a meeting is starting: surface it.
+        app.next_label.config(fg=OK)
+        try:
+            root.attributes("-topmost", True)
+            root.after(1500, lambda: root.attributes("-topmost", False))
+            root.bell()
+        except Exception:
+            pass
     root.mainloop()
     return 0
 

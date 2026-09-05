@@ -132,6 +132,27 @@ try {
     Say "  (could not create the shortcut - use Notetaker.cmd in this folder)"
 }
 
+# --- run the watcher at login ---------------------------------------------
+Say ""
+Say "Setting the calendar watcher to run at login ..."
+try {
+    $startup = [Environment]::GetFolderPath("Startup")
+    $lnk     = Join-Path $startup "Meeting Notetaker Watcher.lnk"
+    $pythonw = Join-Path $root ".venv\Scripts\pythonw.exe"
+
+    $shell    = New-Object -ComObject WScript.Shell
+    $shortcut = $shell.CreateShortcut($lnk)
+    $shortcut.TargetPath       = $pythonw
+    $shortcut.Arguments        = "-m notetaker.watcher"
+    $shortcut.WorkingDirectory = $root
+    $shortcut.Description      = "Offers to record when a meeting starts"
+    $shortcut.Save()
+    Ok "Watcher will start with Windows"
+    Say "  (delete '$lnk' to turn it off)"
+} catch {
+    Say "  (could not set autostart - run 'mtg watch' by hand if you want it)"
+}
+
 # --- verify ---------------------------------------------------------------
 Write-Host ""
 & $venvPy -m notetaker.cli doctor

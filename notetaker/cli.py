@@ -320,6 +320,15 @@ def cmd_doctor(args) -> int:
     return OK
 
 
+def cmd_watch(args) -> int:
+    """Run the calendar watcher in the foreground (setup runs it at login)."""
+    from . import watcher
+
+    print("  Watching your calendar. It will offer to record when a meeting starts.")
+    print("  Ctrl-C to stop.")
+    return watcher.main()
+
+
 def cmd_app(args) -> int:
     """Open the desktop window."""
     from . import app
@@ -469,6 +478,9 @@ def build_parser() -> argparse.ArgumentParser:
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
     pr.add_argument("--dry-run", action="store_true")
     pr.set_defaults(func=cmd_prune)
+
+    wa = sub.add_parser("watch", help="offer to record when a meeting starts")
+    wa.set_defaults(func=cmd_watch)
 
     ap = sub.add_parser("app", help="open the desktop window")
     ap.set_defaults(func=cmd_app)
