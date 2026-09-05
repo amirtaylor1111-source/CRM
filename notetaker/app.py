@@ -17,7 +17,9 @@ import threading
 import time
 from pathlib import Path
 
-from . import capture, hardware, store, uistate
+from . import capture, hardware, log, store, uistate
+
+_log = log.get("app")
 
 BG = "#1c1c1e"
 CARD = "#2c2c2e"
@@ -276,6 +278,7 @@ class App:
             store.rebuild_index()
             self.events.put(("done", ""))
         except Exception as exc:
+            _log.exception("finish failed")
             self.events.put(("error", str(exc)[:80]))
 
     def _write_up(self):
@@ -401,6 +404,7 @@ def main() -> int:
               "'tcl/tk and IDLE' option ticked, or use `mtg start` instead.")
         return 2
 
+    log.setup()
     root = tk.Tk()
     app = App(root)
     if "--prompted" in sys.argv:

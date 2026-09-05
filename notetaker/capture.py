@@ -29,6 +29,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from . import log
+
+_log = log.get("capture")
+
 SAMPLE_RATE = 16_000   # everything downstream wants 16 kHz mono; capturing
 CHANNELS = 1           # at source avoids a resample and saves ~6x the disk
 BLOCK = 2_048
@@ -134,6 +138,7 @@ def _record_track(device, path: Path, stop: threading.Event, track: Track) -> No
                     track.frames += len(chunk)
     except Exception as exc:                     # one dead track must not
         track.error = str(exc)                   # end the whole recording
+        _log.exception("track %s failed", track.name)
 
 
 def repair_wav(path: Path) -> bool:
@@ -175,6 +180,8 @@ def start_recording(meeting_dir: Path, video: bool = False) -> dict[str, Any]:
     flag.unlink(missing_ok=True)
 
     mic, loopback = _default_devices()
+    _log.info("devices: mic=%r loopback=%r", getattr(mic, "name", None),
+              getattr(loopback, "name", None))
     if mic is None and loopback is None:
         raise CaptureError(
             "No microphone and no system-audio device were found.\n"
@@ -228,6 +235,8 @@ def start_recording(meeting_dir: Path, video: bool = False) -> dict[str, Any]:
 
     state["ended_at"] = time.time()
     state["duration_seconds"] = round(state["ended_at"] - state["started_at"], 1)
+    _log.info("stopped after %ss; frames=%s", state["duration_seconds"],
+              {t.name: t.frames for t in tracks})
     state["results"] = [
         {"name": t.name, "path": str(t.path), "frames": t.frames, "error": t.error}
         for t in tracks

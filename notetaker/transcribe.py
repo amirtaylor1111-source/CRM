@@ -25,7 +25,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
 
-from . import hardware
+from . import hardware, log
+
+_log = log.get("transcribe")
 from .schema import utcnow
 
 # Words common enough that a near-match to a contact name is more likely a
@@ -129,27 +131,57 @@ def available_backends() -> list[str]:
     return found
 
 
-def _transcribe_parakeet(path: Path, model_name: str) -> list[Segment]:
-    """Parakeet via ONNX Runtime: better meeting accuracy than Whisper, and
-    structurally unable to hallucinate speech into silence."""
+def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[Segment]:
+    """Parakeet via ONNX Runtime.
+
+    Better meeting accuracy than Whisper, and as a transducer it cannot
+    hallucinate speech into silence. Chained with Silero VAD so the audio is
+    cut on speech boundaries rather than fixed windows, and with timestamps so
+    each segment carries per-token log-probabilities we can turn into a
+    confidence score.
+
+    API verified against onnx-asr 0.12: load_model().with_vad().with_timestamps()
+    .recognize() returns a list of TimestampedSegmentResult(start, end, text,
+    timestamps, tokens, logprobs).
+    """
+    import math
+
     import onnx_asr
 
-    model = onnx_asr.load_model(model_name)
-    result = model.recognize(str(path), timestamps=True)
+    sess_options = None
+    if threads:
+        import onnxruntime as ort
+
+        sess_options = ort.SessionOptions()
+        sess_options.intra_op_num_threads = threads
+
+    model = onnx_asr.load_model(model_name, quantization="int8",
+                                sess_options=sess_options)
+    vad = onnx_asr.load_vad("silero")
+    pipeline = model.with_vad(vad).with_timestamps()
+
+    results = pipeline.recognize(str(path))
+    if not isinstance(results, list):
+        results = [results]
 
     segments: list[Segment] = []
-    raw = getattr(result, "segments", None) or getattr(result, "timestamps", None)
-    if raw:
-        for item in raw:
-            start = float(getattr(item, "start", 0.0) or 0.0)
-            end = float(getattr(item, "end", start) or start)
-            text = (getattr(item, "text", "") or "").strip()
-            if text:
-                segments.append(Segment(start=start, end=end, text=text))
-    else:
-        text = (getattr(result, "text", None) or str(result)).strip()
-        if text:
-            segments.append(Segment(start=0.0, end=_duration(path), text=text))
+    for item in results:
+        text = (getattr(item, "text", "") or "").strip()
+        if not text:
+            continue
+        logprobs = getattr(item, "logprobs", None) or []
+        # Mean token log-prob, on the same scale Whisper reports avg_logprob,
+        # so one threshold flags uncertain segments from either engine.
+        confidence = (sum(logprobs) / len(logprobs)) if logprobs else 0.0
+        if not math.isfinite(confidence):
+            confidence = 0.0
+        segments.append(Segment(
+            start=float(getattr(item, "start", 0.0) or 0.0),
+            end=float(getattr(item, "end", 0.0) or 0.0),
+            text=text,
+            confidence=confidence,
+            low_confidence=bool(logprobs) and confidence < LOW_CONFIDENCE,
+        ))
     return segments
 
 
@@ -321,7 +353,7 @@ def transcribe_meeting(
     if not backends:
         raise TranscribeError(
             "No transcription engine is installed.\n"
-            "  Fix:  pip install onnx-asr\n"
+            "  Fix:  pip install onnx-asr[cpu,hub]\n"
             "  Or rerun setup-windows.ps1."
         )
 
@@ -335,6 +367,8 @@ def transcribe_meeting(
         choice["cpu_threads"] = hardware._threads_for(hw)
 
     total_audio = sum(_duration(p) for p in tracks.values())
+    _log.info("engine=%s model=%s tracks=%s audio=%s", choice["engine"], choice["model"],
+              sorted(tracks), hhmmss(total_audio))
     progress(f"Transcribing {len(tracks)} track(s), {hhmmss(total_audio)} of audio")
     progress(f"Engine: {choice['model']} ({choice['engine']}) — "
              f"{hardware.format_estimate(total_audio, choice, hw)}")
@@ -344,7 +378,8 @@ def transcribe_meeting(
     for name, path in tracks.items():
         progress(f"  {name}.wav ...")
         if choice["engine"] == "onnx-asr":
-            per_track[name] = _transcribe_parakeet(path, choice["model"])
+            per_track[name] = _transcribe_parakeet(path, choice["model"],
+                                                     choice.get("cpu_threads", 0))
         else:
             per_track[name] = _transcribe_whisper(
                 path, choice["model"], choice["cpu_threads"], hotwords

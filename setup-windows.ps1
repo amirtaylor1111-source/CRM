@@ -89,11 +89,11 @@ Say "Installing dependencies. This takes a few minutes the first time."
 Say ""
 
 & $venvPy -m pip install --upgrade pip --quiet
-& $venvPy -m pip install --quiet soundcard numpy onnx-asr
+& $venvPy -m pip install --quiet soundcard numpy "onnx-asr[cpu,hub]"
 if ($LASTEXITCODE -ne 0) {
     Bad "Dependency install failed."
     Say "Try running it directly to see the error:"
-    Say "  .venv\Scripts\python.exe -m pip install soundcard numpy onnx-asr"
+    Say "  .venv\Scripts\python.exe -m pip install soundcard numpy onnx-asr[cpu,hub]"
     exit 2
 }
 Ok "Dependencies installed"
@@ -105,7 +105,7 @@ Say "Downloading the speech model (about 670 MB, once) ..."
 import sys
 try:
     import onnx_asr
-    onnx_asr.load_model('nemo-parakeet-tdt-0.6b-v3')
+    onnx_asr.load_model('nemo-parakeet-tdt-0.6b-v3', quantization='int8')
     print('  OK    Speech model ready')
 except Exception as exc:
     print(f'  NOTE  Model will download on first use ({exc})')

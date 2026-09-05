@@ -6,7 +6,8 @@ requires-python = ">=3.11"
 dependencies = [
     "soundcard>=0.4.3",   # WASAPI loopback; no driver install on Windows
     "numpy>=1.24",
-    "onnx-asr>=0.6",      # Parakeet via ONNX Runtime; no PyTorch, no CUDA
+    "onnx-asr[cpu,hub]>=0.12",  # Parakeet via ONNX Runtime; cpu= the runtime,
+                                # hub= model download. Neither is implied.
 ]
 
 [project.optional-dependencies]

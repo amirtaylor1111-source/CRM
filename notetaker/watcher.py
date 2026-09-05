@@ -18,7 +18,9 @@ import sys
 import time
 from pathlib import Path
 
-from . import store
+from . import log, store
+
+_log = log.get("watcher")
 
 POLL_SECONDS = 60
 STATE_FILE = ".watcher-seen.json"
@@ -95,12 +97,16 @@ def run_once(seen: set[str]) -> dict | None:
 
 
 def main() -> int:
+    log.setup()
+    _log.info("watcher started")
     seen = _load_seen()
     while True:
         try:
-            run_once(seen)
+            offered = run_once(seen)
+            if offered:
+                _log.info("offered: %s", offered.get("subject"))
         except Exception:
-            pass                       # a watcher that dies is worse than one
+            _log.exception("poll failed")                       # a watcher that dies is worse than one
         time.sleep(POLL_SECONDS)       # that quietly skips a poll
 
 

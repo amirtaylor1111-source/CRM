@@ -15,7 +15,7 @@ import sys
 import time
 from pathlib import Path
 
-from . import capture, hardware, store
+from . import capture, hardware, log, store
 from .schema import utcnow
 
 DISCLOSURE = (
@@ -296,7 +296,7 @@ def cmd_doctor(args) -> int:
 
     backends = tr.available_backends()
     checks.append((f"transcription engine ({', '.join(backends) or 'none'})",
-                   bool(backends), "pip install onnx-asr"))
+                   bool(backends), "pip install onnx-asr[cpu,hub]"))
 
     checks.append((f"disk space ({hw.free_disk_gb:.0f} GB free)",
                    hw.free_disk_gb > 10,
@@ -312,6 +312,8 @@ def cmd_doctor(args) -> int:
         else:
             print()
 
+    print()
+    print(f"  Log       {log.log_path()}")
     print()
     if failed:
         print(f"  {failed} check(s) failed.")
@@ -507,16 +509,25 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    logger = log.setup(verbose=os.environ.get("MTG_DEBUG") == "1")
+    logger.info("command: %s", args.command)
     try:
         return args.func(args)
     except KeyboardInterrupt:
         print("\n  Interrupted.")
         return USER_ERROR
     except capture.CaptureError as exc:
+        logger.error("capture: %s", exc)
         print(f"\n  {exc}", file=sys.stderr)
         return ENV_ERROR
     except OSError as exc:
+        logger.exception("filesystem error")
         print(f"\n  Filesystem error: {exc}", file=sys.stderr)
+        return ENV_ERROR
+    except Exception:
+        logger.exception("unhandled")
+        print(f"\n  Something went wrong. Details are in:\n  {log.log_path()}",
+              file=sys.stderr)
         return ENV_ERROR
 
 
