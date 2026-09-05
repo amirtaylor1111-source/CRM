@@ -4,19 +4,34 @@ About ten minutes, most of it downloads. You do not need admin rights.
 
 ## 1. Install Python
 
-If you do not already have it, get Python from
-[python.org/downloads](https://www.python.org/downloads/).
-
-**On the first screen of the installer, tick "Add python.exe to PATH".**
-This is the step people miss, and everything else fails without it.
-
-To check it worked, open PowerShell and run:
+Open PowerShell and check what you have:
 
 ```powershell
 python --version
 ```
 
-You want 3.11 or newer.
+**If that opens the Microsoft Store, you do not have Python.** Windows ships
+a placeholder of that name which does nothing except advertise the Store. The
+setup script detects and skips it, but you still need a real install:
+
+```powershell
+winget install Python.Python.3.12
+```
+
+Then **close that PowerShell window and open a new one**. PATH changes never
+reach a window that was already open, which is the single most common reason
+the next step appears to fail.
+
+If `winget` is not available, download from
+[python.org/downloads](https://www.python.org/downloads/) and tick
+**"Add python.exe to PATH"** on the installer's first screen.
+
+Confirm before continuing — you want 3.11 or newer, and a version number
+rather than a Store window:
+
+```powershell
+python --version
+```
 
 ## 2. Run the setup script
 

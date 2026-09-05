@@ -18,22 +18,53 @@ Write-Host "  Meeting notetaker setup" -ForegroundColor Cyan
 Write-Host ""
 
 # --- Python ---------------------------------------------------------------
+# Windows ships a placeholder python.exe in WindowsApps that opens the
+# Microsoft Store instead of running anything. It is on PATH and it answers
+# to `python`, so it fools naive detection. Reject it by path before we ever
+# invoke it.
+
+function Test-StoreStub($path) {
+    return ($path -and $path -like "*\WindowsApps\*")
+}
+
 $python = $null
-foreach ($candidate in @("py -3.12", "py -3.11", "python", "python3")) {
+foreach ($candidate in @("py -3.13", "py -3.12", "py -3.11", "python3", "python")) {
     $parts = $candidate.Split(" ")
-    $exe = $parts[0]
+    $exe   = $parts[0]
+
+    $resolved = Get-Command $exe -ErrorAction SilentlyContinue
+    if (-not $resolved) { continue }
+    if (Test-StoreStub $resolved.Source) {
+        Say "Skipping the Microsoft Store placeholder at $($resolved.Source)"
+        continue
+    }
+
     try {
-        $version = & $exe $parts[1..($parts.Length-1)] --version 2>&1
-        if ($version -match "Python 3\.(1[1-9]|[2-9][0-9])") { $python = $candidate; break }
+        if ($parts.Length -gt 1) {
+            $version = & $exe $parts[1] --version 2>&1
+        } else {
+            $version = & $exe --version 2>&1
+        }
+        if ($version -match "Python 3\.(1[1-9]|[2-9][0-9])") {
+            $python = $candidate
+            break
+        }
     } catch { }
 }
 
 if (-not $python) {
-    Bad "Python 3.11 or newer was not found."
+    Bad "No usable Python 3.11 or newer was found."
     Say ""
-    Say "Install it from https://www.python.org/downloads/"
-    Say "On the first screen, tick 'Add python.exe to PATH'."
-    Say "Then run this script again."
+    Say "If typing 'python' opens the Microsoft Store, that is a placeholder,"
+    Say "not a real install. The cleanest fix on Windows 11:"
+    Say ""
+    Say "    winget install Python.Python.3.12"
+    Say ""
+    Say "Then CLOSE this window, open a new PowerShell, and run this script"
+    Say "again. PATH changes do not reach a window that is already open."
+    Say ""
+    Say "If winget is unavailable, download it from python.org/downloads and"
+    Say "tick 'Add python.exe to PATH' on the installer's first screen."
     exit 2
 }
 Ok "Found $python"
