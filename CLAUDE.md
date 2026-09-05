@@ -65,6 +65,29 @@ The user runs `mtg start` / `mtg stop` in a terminal. In here:
 - `/notes [meeting]` — write up a meeting (the `meeting-notes` skill)
 - `/prep <person>` — pre-call briefing from history
 - `/followup [meeting]` — draft the follow-up email
+- `/calendar` — sync upcoming meetings from Outlook
+- `/import-fathom` — pull history out of Fathom
+- `/dealroom <company>` — client-facing page assembled from the CRM
+
+## Connectors belong in the session, not in the code
+
+Fathom, Outlook and anything else with credentials are reached by you, here,
+using MCP tools. The Python side only ever reads a JSON file you have
+written. That keeps the no-API rule intact, keeps every import path testable
+with no network, and means the tool still works on a machine with no
+connectors configured.
+
+When you sync or import, write the JSON to a temp file and call the CLI. Do
+not reach into `meetings/` and write files yourself — `store.py` handles slug
+collisions, idempotency and the managed contact block, and hand-written files
+will get those wrong.
+
+## Names are the thing worth getting right
+
+`store.vocabulary()` feeds the transcript name corrector, so every contact
+you add improves every future transcript. When a calendar address resolves to
+someone the CRM does not know, say so. When two sources disagree about a
+name, the calendar wins — the person typed their own address into it.
 
 ## Working on the tool itself
 

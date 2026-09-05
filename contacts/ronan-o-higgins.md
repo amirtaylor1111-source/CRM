@@ -1,6 +1,7 @@
 ---
 name: Ronan O'Higgins
-company: Aged Ventures
+company: Open
+email: ronan@open.cx
 ---
 
 ## Meetings

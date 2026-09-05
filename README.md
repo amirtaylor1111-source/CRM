@@ -52,11 +52,32 @@ and reproducible into the transcript that matters.
 | `mtg status` | is anything recording, and for how long |
 | `mtg list` | recent meetings |
 | `mtg search <term>` | across every transcript and note |
+| `mtg next` | upcoming meetings, and which one is recordable now |
+| `mtg start --next` | start recording, title and attendees from the calendar |
 | `mtg doctor` | check setup, show which model your machine will use |
 | `mtg prune` | delete audio from meetings already transcribed |
 
 In Claude Code: `/notes` to write up, `/prep <person>` for a pre-call
-briefing, `/followup` to draft the email.
+briefing, `/followup` to draft the email, `/calendar` to sync Outlook,
+`/import-fathom` to pull history out of Fathom, `/dealroom <company>` to
+build a client-facing page from the history.
+
+Set `MTG_ME` to your own email address so you are not listed as an attendee
+of your own meetings.
+
+## The calendar loop
+
+Nothing joins your calls, so the tool cannot know a meeting has started. A
+synced calendar closes most of that gap:
+
+```
+/calendar              # in Claude Code, once a week
+mtg next               # what is coming up
+mtg start --next       # title and attendees filled in for you
+```
+
+`--next` picks the meeting already running, or one starting within fifteen
+minutes, so you rarely have to name it.
 
 ## Two tracks, not one
 

@@ -68,7 +68,20 @@ def cmd_start(args) -> int:
         note = f"participants informed verbally at {utcnow()}"
 
     people = [p.strip() for p in (args.with_ or "").split(",") if p.strip()]
-    title = args.title or (f"Call with {people[0]}" if people else "Meeting")
+    title = args.title
+
+    if args.next:
+        event = store.current_or_next()
+        if event is None:
+            print("  No meeting starting soon. Sync with /calendar, or pass --title.",
+                  file=sys.stderr)
+            return USER_ERROR
+        title = title or event["subject"]
+        if not people:
+            people = store.attendee_names(event, me=_me())
+        print(f"  From your calendar: {event['subject']}")
+
+    title = title or (f"Call with {people[0]}" if people else "Meeting")
 
     meeting_dir = store.create_meeting(title, people, consent, note)
     print(f"\n  Recording: {meeting_dir.name}")
@@ -307,6 +320,47 @@ def cmd_doctor(args) -> int:
     return OK
 
 
+def cmd_next(args) -> int:
+    """What is coming up, and what is recordable right now."""
+    events = store.upcoming(limit=args.limit)
+    if not events:
+        print("  No upcoming meetings. Sync with /calendar in Claude Code.")
+        return OK
+
+    due = store.current_or_next()
+    for event in events:
+        marker = ">" if event is due else " "
+        names = ", ".join(store.attendee_names(event, me=_me())) or "no attendees listed"
+        when = event.get("start", "")[:16].replace("T", " ")
+        print(f"  {marker} {when}  {event['subject'][:38]:40} {names}")
+
+    if due:
+        print(f"\n  Ready to record: {due['subject']}")
+        print("  Start it with:  mtg start --next")
+    return OK
+
+
+def _me() -> str:
+    """The user's own address, so they are not listed as their own attendee."""
+    return os.environ.get("MTG_ME", "")
+
+
+def cmd_calendar(args) -> int:
+    path = Path(args.file)
+    if not path.exists():
+        print(f"  No such file: {path}", file=sys.stderr)
+        return USER_ERROR
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"  {path} is not valid JSON: {exc}", file=sys.stderr)
+        return USER_ERROR
+    events = payload if isinstance(payload, list) else payload.get("events", [])
+    store.save_calendar(events)
+    print(f"  Synced {len(events)} event(s).")
+    return cmd_next(argparse.Namespace(limit=5))
+
+
 def cmd_import(args) -> int:
     """Import meetings recorded elsewhere, from a JSON file.
 
@@ -374,6 +428,8 @@ def build_parser() -> argparse.ArgumentParser:
     start.add_argument("--video", action="store_true", help="also capture the screen")
     start.add_argument("--solo", action="store_true",
                        help="no other participants; skip the consent prompt")
+    start.add_argument("--next", action="store_true",
+                       help="take the title and attendees from your calendar")
     start.set_defaults(func=cmd_start)
 
     stop = sub.add_parser("stop", help="stop recording and transcribe")
@@ -406,6 +462,14 @@ def build_parser() -> argparse.ArgumentParser:
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
     pr.add_argument("--dry-run", action="store_true")
     pr.set_defaults(func=cmd_prune)
+
+    nx = sub.add_parser("next", help="upcoming meetings from your calendar")
+    nx.add_argument("--limit", "-n", type=int, default=5)
+    nx.set_defaults(func=cmd_next)
+
+    cal = sub.add_parser("calendar", help="load synced calendar events from JSON")
+    cal.add_argument("file")
+    cal.set_defaults(func=cmd_calendar)
 
     im = sub.add_parser("import", help="import meetings from a JSON file")
     im.add_argument("file")

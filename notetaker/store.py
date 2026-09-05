@@ -522,3 +522,135 @@ def import_batch(meetings: list[dict[str, Any]], root: Path | None = None) -> di
         updated += not was_created
     rebuild_index(root=root)
     return {"created": created, "updated": updated}
+
+
+# --- calendar --------------------------------------------------------------
+#
+# The recorder has no way to know a meeting is starting; nothing joins the
+# call. A synced calendar closes that gap: it supplies the title and the
+# attendee list so `mtg start` does not have to be typed out, and those
+# attendee names feed the transcript name corrector.
+#
+# As with the importer, the connector lives in the Claude session. This side
+# only reads a JSON file, so it works offline and is testable.
+
+CALENDAR_FILE = "calendar.json"
+
+
+def calendar_path(root: Path | None = None) -> Path:
+    return (root or repo_root()) / CALENDAR_FILE
+
+
+def save_calendar(events: list[dict[str, Any]], root: Path | None = None) -> Path:
+    """Store upcoming events, newest sync wins."""
+    path = calendar_path(root)
+    cleaned = []
+    for event in events:
+        cleaned.append({
+            "subject": event.get("subject", "").strip() or "Meeting",
+            "start": event.get("start", ""),
+            "end": event.get("end", ""),
+            "attendees": [a for a in event.get("attendees", []) if a],
+            "organizer": event.get("organizer", ""),
+            "location": event.get("location", ""),
+        })
+    cleaned.sort(key=lambda e: e["start"])
+    _write_json(path, {"synced_at": utcnow(), "events": cleaned})
+    return path
+
+
+def load_calendar(root: Path | None = None) -> list[dict[str, Any]]:
+    path = calendar_path(root)
+    if not path.exists():
+        return []
+    try:
+        return _read_json(path).get("events", [])
+    except (OSError, json.JSONDecodeError):
+        return []
+
+
+def _parse_iso(value: str):
+    from datetime import datetime, timezone as tz
+
+    if not value:
+        return None
+    text = value.replace("Z", "+00:00")
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    return parsed.replace(tzinfo=tz.utc) if parsed.tzinfo is None else parsed
+
+
+def upcoming(limit: int = 5, root: Path | None = None) -> list[dict[str, Any]]:
+    """Events that have not finished yet."""
+    from datetime import datetime, timezone as tz
+
+    now = datetime.now(tz.utc)
+    out = []
+    for event in load_calendar(root):
+        end = _parse_iso(event.get("end", "")) or _parse_iso(event.get("start", ""))
+        if end and end >= now:
+            out.append(event)
+    return out[:limit]
+
+
+def current_or_next(window_minutes: int = 15, root: Path | None = None):
+    """The meeting to record right now.
+
+    Matches one already running, or one starting within the window, so
+    `mtg start --next` picks the obvious meeting without being told which.
+    """
+    from datetime import datetime, timedelta, timezone as tz
+
+    now = datetime.now(tz.utc)
+    soon = now + timedelta(minutes=window_minutes)
+    for event in upcoming(limit=20, root=root):
+        start = _parse_iso(event.get("start", ""))
+        end = _parse_iso(event.get("end", ""))
+        if not start:
+            continue
+        if start <= now and (end is None or end >= now):
+            return event                      # in progress
+        if now <= start <= soon:
+            return event                      # about to begin
+    return None
+
+
+def contact_by_email(email: str, root: Path | None = None) -> str:
+    """The known name for an address, or "" if the CRM has never seen it."""
+    if not email:
+        return ""
+    directory = contacts_dir(root)
+    if not directory.exists():
+        return ""
+    wanted = email.strip().lower()
+    for path in directory.glob("*.md"):
+        meta, _ = parse_frontmatter(path.read_text(encoding="utf-8"))
+        if str(meta.get("email", "")).strip().lower() == wanted:
+            return str(meta.get("name", "")) or path.stem
+    return ""
+
+
+def attendee_names(event: dict[str, Any], me: str = "",
+                   root: Path | None = None) -> list[str]:
+    """Attendees as display names, excluding the user.
+
+    Resolves against the CRM first, so a known address becomes the real
+    name. Falls back to the address's local part, which is honest about what
+    the calendar actually told us rather than inventing a name.
+    """
+    names = []
+    for entry in event.get("attendees", []):
+        if me and entry.lower() == me.lower():
+            continue
+        if "@" not in entry:
+            names.append(entry)
+            continue
+        known = contact_by_email(entry, root)
+        if known:
+            names.append(known)
+        else:
+            local = entry.split("@")[0]
+            names.append(re.sub(r"[._-]+", " ", local).title())
+    return names

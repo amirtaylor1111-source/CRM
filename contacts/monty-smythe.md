@@ -1,5 +1,7 @@
 ---
-name: John Smith
+name: Monty Smythe
+email: montysmythe@outlook.com
+note: Fathom transcribed this name as "John Smith"; corrected against the Outlook calendar.
 ---
 
 ## Meetings
