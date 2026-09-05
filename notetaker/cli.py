@@ -409,6 +409,28 @@ def cmd_calendar(args) -> int:
     return cmd_next(argparse.Namespace(limit=5))
 
 
+def cmd_phone(args) -> int:
+    """Import call recordings the phone made itself."""
+    from . import phone
+
+    folder = Path(args.folder).expanduser()
+    print(f"  Scanning {folder}")
+    try:
+        result = phone.import_folder(folder, transcribe=not args.no_transcribe,
+                                     limit=args.limit, progress=lambda m: print(f"    {m}"))
+    except phone.PhoneImportError as exc:
+        print(f"\n  {exc}", file=sys.stderr)
+        return ENV_ERROR
+
+    print(f"\n  Found {result['found']}, imported {result['imported']}, "
+          f"already had {result['skipped']}, failed {result['failed']}.")
+    for meeting in result["meetings"]:
+        print(f"    {meeting['name']}  ({meeting['status']})")
+    if result["imported"]:
+        print("\n  Write them up with  /notes  in Claude Code.")
+    return OK
+
+
 def cmd_import(args) -> int:
     """Import meetings recorded elsewhere, from a JSON file.
 
@@ -526,6 +548,12 @@ def build_parser() -> argparse.ArgumentParser:
     cal = sub.add_parser("calendar", help="load synced calendar events from JSON")
     cal.add_argument("file")
     cal.set_defaults(func=cmd_calendar)
+
+    ph = sub.add_parser("phone", help="import call recordings from your phone")
+    ph.add_argument("folder", help="folder your phone's Call recordings sync into")
+    ph.add_argument("--no-transcribe", action="store_true")
+    ph.add_argument("--limit", type=int, default=0, help="only the newest N")
+    ph.set_defaults(func=cmd_phone)
 
     im = sub.add_parser("import", help="import meetings from a JSON file")
     im.add_argument("file")

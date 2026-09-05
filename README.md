@@ -83,6 +83,7 @@ and reproducible into the transcript that matters.
 | `mtg search <term>` | across every transcript and note |
 | `mtg next` | upcoming meetings, and which one is recordable now |
 | `mtg start --next` | start recording, title and attendees from the calendar |
+| `mtg phone <folder>` | import call recordings from your phone |
 | `mtg doctor` | check setup, show which model your machine will use |
 | `mtg prune` | delete audio from meetings already transcribed |
 
@@ -118,6 +119,17 @@ transcribes more accurately without the other side talking over it.
 **This only works if you wear headphones.** On speakers the remote voices
 leak into your microphone, both tracks contain both parties, and the
 advantage disappears.
+
+## Phone calls
+
+Your phone can record its own cellular calls, and `mtg phone` brings them in
+and transcribes them like any other meeting. See
+[docs/phone-calls.md](docs/phone-calls.md).
+
+WhatsApp calls cannot be recorded by any app on any phone — Android excludes
+voice-call audio from the capture API deliberately, and iOS has no such API
+at all. Take those on WhatsApp Desktop instead, where the laptop recorder
+handles them exactly like Teams.
 
 ## What it does not do
 

@@ -69,6 +69,11 @@ The user runs `mtg start` / `mtg stop` in a terminal. In here:
 - `/import-fathom` — pull history out of Fathom
 - `/dealroom <company>` — client-facing page assembled from the CRM
 
+Phone calls arrive via `mtg phone <folder>`, which imports Samsung's own call
+recordings. Those are single-track, so everything is labelled as the caller;
+do not attribute lines between speakers in a phone-call transcript the way
+you would for a two-track laptop meeting.
+
 ## Connectors belong in the session, not in the code
 
 Fathom, Outlook and anything else with credentials are reached by you, here,
