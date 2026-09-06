@@ -1,4 +1,17 @@
-from notetaker.transcribe import Segment, correct_names, hhmmss, merge_tracks, render_markdown
+import sys
+import types
+from collections import namedtuple
+
+import pytest
+
+from notetaker.transcribe import (
+    Segment,
+    _transcribe_parakeet,
+    correct_names,
+    hhmmss,
+    merge_tracks,
+    render_markdown,
+)
 
 
 class TestNameCorrection:
@@ -30,6 +43,35 @@ class TestNameCorrection:
     def test_short_words_are_never_touched(self):
         segment = Segment(0, 1, "an ok day")
         assert correct_names([segment], self.VOCAB) == 0
+
+    def test_an_ordinary_lowercase_word_is_left_alone(self):
+        """The corrector's worst failure, from seven real meetings.
+
+        Every one of these was a substitution it actually made, in a client
+        transcript, against that meeting's own contact list.
+        """
+        vocab = ["Alex Cross", "Sean Horn", "Vollmer", "Landau", "Dror",
+                 "Paul", "Monty Smythe", "Rael", "First National", "Frans"]
+        text = ("we were able to see the costs, and I have seen the hourly rate "
+                "land in the volume report, so drop the monthly pull rate and "
+                "firstly rely on what was sent")
+        segment = Segment(0, 1, text)
+        assert correct_names([segment], vocab) == 0
+        assert segment.text == text
+        assert segment.corrections == []
+
+    def test_a_lowercase_word_is_still_fixed_when_it_is_plainly_the_name(self):
+        # "kubernets" is a spelling of Kubernetes, not a word that resembles it.
+        segment = Segment(0, 1, "we run kubernets in production")
+        assert correct_names([segment], self.VOCAB) == 1
+        assert "Kubernetes" in segment.text
+
+    def test_a_capitalised_word_is_still_repaired(self):
+        # The model capitalises what it heard as a name, so that is where a
+        # near miss is worth repairing.
+        segment = Segment(0, 1, "Jain from Akme called")
+        assert correct_names([segment], self.VOCAB) == 2
+        assert segment.text == "Jane from Acme called"
 
     def test_empty_vocabulary_is_a_no_op(self):
         segment = Segment(0, 1, "Jain at Akme")
@@ -65,3 +107,76 @@ def test_hhmmss():
     assert hhmmss(0) == "00:00:00"
     assert hhmmss(3661) == "01:01:01"
     assert hhmmss(-5) == "00:00:00"
+
+
+class TestParakeetAdapter:
+    """onnx-asr's VAD adapter yields segments from a generator, not a list.
+
+    The chain was first written from the library's source and wrapped that
+    generator in a list, which read as a single item with no text: the first
+    real recording on Windows came back as a transcript with zero segments.
+    These drive _transcribe_parakeet through a fake of exactly the shapes
+    onnx-asr 0.12 returns, with no model or audio involved.
+    """
+
+    Result = namedtuple("TimestampedSegmentResult",
+                        "start end text timestamps tokens logprobs")
+
+    def _fake_onnx_asr(self, monkeypatch, results_factory):
+        R = self.Result
+
+        class Pipeline:
+            def recognize(self, waveform, **kwargs):
+                return results_factory(R)
+
+        class Model:
+            def with_vad(self, vad, **kwargs):
+                return self
+
+            def with_timestamps(self):
+                return Pipeline()
+
+        fake = types.ModuleType("onnx_asr")
+        fake.load_model = lambda name, quantization=None, sess_options=None: Model()
+        fake.load_vad = lambda name: object()
+        monkeypatch.setitem(sys.modules, "onnx_asr", fake)
+
+    def test_generator_of_segments_is_consumed(self, monkeypatch, tmp_path):
+        def generator(R):
+            yield R(1.8, 4.6, "This is the install test.", None, None, [-0.1, -0.2])
+            yield R(5.4, 8.3, "The quick brown fox.", None, None, [-0.9, -1.1])
+
+        self._fake_onnx_asr(monkeypatch, generator)
+        segments = _transcribe_parakeet(tmp_path / "system.wav", "nemo-parakeet-tdt-0.6b-v3")
+        assert [s.text for s in segments] == ["This is the install test.",
+                                               "The quick brown fox."]
+        assert (segments[0].start, segments[1].end) == (1.8, 8.3)
+        assert not segments[0].low_confidence
+        assert segments[1].low_confidence            # mean log-prob -1.0
+
+    def test_list_of_segments_still_works(self, monkeypatch, tmp_path):
+        self._fake_onnx_asr(monkeypatch, lambda R: [R(0, 1, "hello", None, None, [-0.1])])
+        segments = _transcribe_parakeet(tmp_path / "mic.wav", "m")
+        assert [s.text for s in segments] == ["hello"]
+
+    def test_single_unsegmented_result_still_works(self, monkeypatch, tmp_path):
+        self._fake_onnx_asr(monkeypatch, lambda R: R(0, 2, "one result", None, None, []))
+        segments = _transcribe_parakeet(tmp_path / "mic.wav", "m")
+        assert [s.text for s in segments] == ["one result"]
+        assert not segments[0].low_confidence        # no log-probs: never flagged
+
+    def test_empty_generator_gives_no_segments(self, monkeypatch, tmp_path):
+        self._fake_onnx_asr(monkeypatch, lambda R: iter(()))
+        assert _transcribe_parakeet(tmp_path / "mic.wav", "m") == []
+
+    def test_fake_matches_the_real_result_shape(self):
+        """Skips on a machine without onnx-asr; fails loudly if it changes shape."""
+        import dataclasses
+
+        adapters = pytest.importorskip("onnx_asr.adapters")
+        real = adapters.TimestampedSegmentResult
+        if dataclasses.is_dataclass(real):
+            names = [f.name for f in dataclasses.fields(real)]
+        else:
+            names = list(getattr(real, "_fields", ()))
+        assert names[: len(self.Result._fields)] == list(self.Result._fields)

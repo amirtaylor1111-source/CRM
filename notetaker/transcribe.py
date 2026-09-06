@@ -73,10 +73,23 @@ _COMMON = {
     "what", "when", "where", "whether", "which", "while", "who", "why",
     "will", "with", "within", "without", "work", "working", "would", "write",
     "year", "yes", "yeah", "yet", "you", "your",
+    # Words this corrector was caught rewriting into contact names.
+    "able", "cellar", "cost", "costs", "door", "drop", "firms", "firstly",
+    "francs", "frank", "hour", "land", "monthly", "mount", "pull", "race",
+    "rape", "rate", "rely", "seen", "sent", "volume",
 }
 
 MIN_SIMILARITY = 0.74      # calibrated: real errors land at 0.75+,
                            # coincidental matches below 0.70
+LOWERCASE_SIMILARITY = 0.92
+# The model capitalises what it heard as a name, so a lowercase word is one
+# it heard as an ordinary word, and rewriting those is where this went wrong:
+# across seven real meetings it made 106 substitutions, and 97 of them were
+# lowercase words at exactly this kind of distance. "able" became a contact
+# called Alex thirteen times, "costs" became Cross ten times, "seen" became
+# Sean, "hour" became Horn, "rate" became Rael. A lowercase word therefore
+# has to be near enough to be a spelling of the name ("kubernets") rather
+# than merely similar to it.
 LOW_CONFIDENCE = -0.6      # avg_logprob threshold for the review flag
 
 
@@ -135,12 +148,13 @@ def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[
     each segment carries per-token log-probabilities we can turn into a
     confidence score.
 
-    API verified against onnx-asr 0.12: load_model().with_vad().with_timestamps()
-    .recognize() returns a list of TimestampedSegmentResult(start, end, text,
-    timestamps, tokens, logprobs).
+    API verified by running onnx-asr 0.12 on Windows: for a single file,
+    load_model().with_vad().with_timestamps().recognize() returns a
+    *generator* of TimestampedSegmentResult(start, end, text, timestamps,
+    tokens, logprobs), not a list. Wrapping that generator in a list, as an
+    earlier version did, produced a transcript with zero segments from a
+    perfectly good recording.
     """
-    import math
-
     import onnx_asr
 
     sess_options = None
@@ -156,28 +170,42 @@ def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[
     pipeline = model.with_vad(vad).with_timestamps()
 
     results = pipeline.recognize(str(path))
-    if not isinstance(results, list):
-        results = [results]
+    if hasattr(results, "text"):
+        results = [results]          # an un-segmented adapter: one result
+    else:
+        results = list(results)      # the VAD adapter's generator, or a list
 
     segments: list[Segment] = []
     for item in results:
-        text = (getattr(item, "text", "") or "").strip()
-        if not text:
-            continue
-        logprobs = getattr(item, "logprobs", None) or []
-        # Mean token log-prob, on the same scale Whisper reports avg_logprob,
-        # so one threshold flags uncertain segments from either engine.
-        confidence = (sum(logprobs) / len(logprobs)) if logprobs else 0.0
-        if not math.isfinite(confidence):
-            confidence = 0.0
-        segments.append(Segment(
-            start=float(getattr(item, "start", 0.0) or 0.0),
-            end=float(getattr(item, "end", 0.0) or 0.0),
-            text=text,
-            confidence=confidence,
-            low_confidence=bool(logprobs) and confidence < LOW_CONFIDENCE,
-        ))
+        seg = segment_from_result(item)
+        if seg is not None:
+            segments.append(seg)
     return segments
+
+
+def segment_from_result(item) -> Segment | None:
+    """A Segment from one onnx-asr result, or None when it carries no text.
+
+    Shared with the live transcriber so both paths score confidence the same
+    way: the mean token log-probability, on the scale Whisper reports
+    avg_logprob, so one threshold flags uncertain segments from any engine.
+    """
+    import math
+
+    text = (getattr(item, "text", "") or "").strip()
+    if not text:
+        return None
+    logprobs = getattr(item, "logprobs", None) or []
+    confidence = (sum(logprobs) / len(logprobs)) if logprobs else 0.0
+    if not math.isfinite(confidence):
+        confidence = 0.0
+    return Segment(
+        start=float(getattr(item, "start", 0.0) or 0.0),
+        end=float(getattr(item, "end", 0.0) or 0.0),
+        text=text,
+        confidence=confidence,
+        low_confidence=bool(logprobs) and confidence < LOW_CONFIDENCE,
+    )
 
 
 def _transcribe_whisper(path: Path, model_name: str, threads: int,
@@ -275,8 +303,9 @@ def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:
                 return word
             if lowered in targets:
                 return word if word == targets[lowered] else targets[lowered]
+            cutoff = MIN_SIMILARITY if word[:1].isupper() else LOWERCASE_SIMILARITY
             close = difflib.get_close_matches(lowered, targets.keys(), n=1,
-                                              cutoff=MIN_SIMILARITY)
+                                              cutoff=cutoff)
             if not close:
                 return word
             candidate = targets[close[0]]
@@ -400,14 +429,26 @@ def transcribe_meeting(
         "segments": len(segments),
         "low_confidence_segments": flagged,
         "names_corrected": fixed,
+        "live": False,
     }
 
-    md_path = meeting_dir / "transcript.md"
-    md_path.write_text(render_markdown(segments, meta), encoding="utf-8")
-    (meeting_dir / "transcript.json").write_text(
-        json.dumps({"meta": meta, "segments": [s.to_dict() for s in segments]},
-                   indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
+    md_path = write_transcript(meeting_dir, segments, meta)
     progress(f"Wrote {md_path} ({len(segments)} segments, {flagged} flagged)")
+    return md_path
+
+
+def write_transcript(meeting_dir: Path, segments: list[Segment], meta: dict[str, Any]) -> Path:
+    """Write transcript.md and transcript.json; returns the markdown path.
+
+    Atomic, because the live transcriber rewrites these every half minute
+    while a headless Claude may be reading them for a brief.
+    """
+    from .store import _write_atomic
+
+    meeting_dir = Path(meeting_dir)
+    md_path = meeting_dir / "transcript.md"
+    _write_atomic(md_path, render_markdown(segments, meta))
+    _write_atomic(meeting_dir / "transcript.json",
+                  json.dumps({"meta": meta, "segments": [s.to_dict() for s in segments]},
+                             indent=2, ensure_ascii=False))
     return md_path
