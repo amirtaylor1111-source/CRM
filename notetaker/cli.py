@@ -114,8 +114,9 @@ def cmd_start(args) -> int:
         print(f"  Could not start the recorder: {exc}", file=sys.stderr)
         return ENV_ERROR
 
-    # Confirm it actually came up, rather than reporting success blindly.
-    for _ in range(20):
+    # Confirm it actually came up, rather than reporting success blindly. On
+    # a loaded machine its imports alone can take several seconds.
+    for _ in range(60):
         time.sleep(0.25)
         if capture.is_recording(meeting_dir):
             return OK
@@ -278,6 +279,29 @@ def _check_import(label: str, module: str, fix: str) -> tuple[str, bool, str]:
         return (label, False, f"{fix}  ({type(exc).__name__}: {str(exc)[:60]})")
 
 
+def _webview2_present() -> bool:
+    """Windows 11 ships the WebView2 runtime; older machines may not have it."""
+    if sys.platform != "win32":
+        return True
+    try:
+        import winreg
+
+        for root, path in (
+            (winreg.HKEY_LOCAL_MACHINE,
+             r"SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"),
+            (winreg.HKEY_CURRENT_USER,
+             r"Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"),
+        ):
+            try:
+                with winreg.OpenKey(root, path):
+                    return True
+            except OSError:
+                continue
+    except Exception:
+        pass
+    return False
+
+
 def cmd_doctor(args) -> int:
     hw = hardware.detect()
     choice = hardware.recommend(hw)
@@ -324,6 +348,17 @@ def cmd_doctor(args) -> int:
                    hw.free_disk_gb > 10,
                    "under 10 GB free; run `mtg prune` or clear space"))
 
+    # The widget and its brain. None of these stop a recording; they say
+    # which parts of the widget will be there.
+    checks.append(_check_import("widget window (pywebview)", "webview",
+                                "pip install pywebview  (or use `mtg app --browser`)"))
+    checks.append(("WebView2 runtime", _webview2_present(),
+                   "install the WebView2 Runtime from Microsoft, or use `mtg app --browser`"))
+    from . import assistant
+
+    checks.append(("Claude Code on PATH", bool(assistant.available()),
+                   "install Claude Code, then run  claude  once and  /login"))
+
     width = max(len(name) for name, _, _ in checks)
     failed = 0
     for name, ok, fix in checks:
@@ -354,19 +389,23 @@ def cmd_watch(args) -> int:
 
 
 def cmd_app(args) -> int:
-    """Open the desktop window.
+    """Open the widget.
 
-    The HTML window in Edge's app mode is the default: it needs no extra
-    packages and Edge ships with Windows. --classic opens the Tkinter window
-    for a machine with no Chromium-based browser at all.
+    The always-on-top widget is the default. --browser opens the same page
+    in Edge's app mode, which needs no extra packages; --classic opens the
+    Tkinter window for a machine with no Chromium-based browser at all.
     """
     if args.classic:
         from . import app
 
         return app.main()
-    from . import server
+    if args.browser:
+        from . import server
 
-    return server.serve()
+        return server.serve()
+    from . import widget
+
+    return widget.main()
 
 
 def cmd_next(args) -> int:
@@ -564,9 +603,11 @@ def build_parser() -> argparse.ArgumentParser:
     wa = sub.add_parser("watch", help="offer to record when a meeting starts")
     wa.set_defaults(func=cmd_watch)
 
-    ap = sub.add_parser("app", help="open the desktop window")
+    ap = sub.add_parser("app", help="open the widget")
+    ap.add_argument("--browser", action="store_true",
+                    help="open the page in an Edge window instead of the widget")
     ap.add_argument("--classic", action="store_true",
-                    help="use the basic built-in window instead of the browser one")
+                    help="use the plain built-in window instead of the widget")
     ap.set_defaults(func=cmd_app)
 
     nx = sub.add_parser("next", help="upcoming meetings from your calendar")

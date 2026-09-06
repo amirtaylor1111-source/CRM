@@ -8,6 +8,9 @@ escape the meetings directory.
 
 import http.client
 import json
+import os
+import subprocess
+import sys
 import threading
 import time
 from http.server import ThreadingHTTPServer
@@ -15,6 +18,63 @@ from http.server import ThreadingHTTPServer
 import pytest
 
 from notetaker import capture, server, store, uistate
+
+
+_REAL_POPEN = subprocess.Popen         # the fixtures replace subprocess.Popen itself
+
+
+def _dead_pid() -> int:
+    """A process id that certainly is not running any more."""
+    proc = _REAL_POPEN([sys.executable, "-c", "pass"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    proc.wait(timeout=30)
+    pid = proc.pid
+    del proc                      # release the handle Windows keeps open
+    return pid
+
+
+class InertLive:
+    """No worker process, no model: the Session's live transcriber, asleep."""
+
+    def __init__(self, meeting_dir, vocabulary=(), threads=None):
+        self.error = ""
+
+    def open(self, resume=False):
+        return True
+
+    def close(self, kill=False):
+        pass
+
+    def tick(self, final=False):
+        return 0
+
+    def count(self):
+        return 0
+
+    def seconds(self):
+        return 0.0
+
+    def new_speech_seconds(self):
+        return 0.0
+
+    def backlog(self):
+        return 0.0
+
+    def reset_speech(self):
+        pass
+
+    def finish(self):
+        return 0
+
+    def transcribe_files(self):
+        pass
+
+
+@pytest.fixture(autouse=True)
+def no_worker(monkeypatch):
+    """These tests are about the API; never spawn a transcription worker."""
+    monkeypatch.setattr(server.live, "LiveProcess", InertLive)
+    monkeypatch.setattr(server.assistant, "available", lambda: "")
 
 
 @pytest.fixture
@@ -74,6 +134,40 @@ class TestAuth:
         status, _ = call(live, "POST", "/api/start", {"title": "x"}, token="nope")
         assert status == 403
 
+    def test_the_page_is_refused_to_a_foreign_host_name(self, live):
+        """A page on the web can point a name of its own at 127.0.0.1.
+
+        Binding to loopback does not stop that, and "/" carries the token, so
+        the Host header has to be checked before anything is served.
+        """
+        conn = http.client.HTTPConnection("127.0.0.1", live["port"], timeout=5)
+        conn.request("GET", "/", headers={"Host": "notetaker.example.com"})
+        resp = conn.getresponse()
+        body = resp.read().decode()
+        conn.close()
+        assert resp.status == 403
+        assert live["token"] not in body
+
+    def test_localhost_by_name_is_accepted(self, live):
+        conn = http.client.HTTPConnection("127.0.0.1", live["port"], timeout=5)
+        conn.request("GET", "/", headers={"Host": f"localhost:{live['port']}"})
+        resp = conn.getresponse()
+        resp.read()
+        conn.close()
+        assert resp.status == 200
+
+    def test_a_post_from_a_foreign_host_is_refused_with_its_body_drained(self, live):
+        conn = http.client.HTTPConnection("127.0.0.1", live["port"], timeout=5)
+        body = json.dumps({"title": "x", "consent": True, "solo": True})
+        conn.request("POST", "/api/start", body=body,
+                     headers={"Host": "notetaker.example.com", "X-Token": live["token"],
+                              "Content-Type": "application/json"})
+        resp = conn.getresponse()
+        resp.read()
+        conn.close()
+        assert resp.status == 403
+        assert server.Handler.session.state == uistate.IDLE
+
 
 class TestStateMachine:
     def test_initial_state_is_idle_with_disclosure(self, live):
@@ -125,6 +219,13 @@ class TestStateMachine:
         assert store.load_meeting(live["session"].meeting_dir).title == "Call with Monty Smythe"
 
 
+class TestMeetingIds:
+    def test_only_the_tools_own_shape_passes(self):
+        assert server._safe_id("2026-09-05-acme-renewal-2") == "2026-09-05-acme-renewal-2"
+        for bad in ('x" & calc & "', "C:evil", "..", "a/b", "a\\b", "", " ", "a b", "-lead", "é"):
+            assert server._safe_id(bad) == "", bad
+
+
 class TestSafety:
     @pytest.mark.parametrize("bad", ["../../etc", "..\\..\\x", "a/b", ""])
     def test_meeting_id_cannot_traverse(self, bad):
@@ -155,7 +256,7 @@ class TestResilience:
         monkeypatch.setattr(store, "repo_root", lambda: crm)
         d = store.create_meeting("Live call", root=crm)
         (d / capture.STATE_FILE).write_text(json.dumps(
-            {"pid": 1, "started_at": time.time() - 300, "tracks": []}))
+            {"pid": os.getpid(), "started_at": time.time() - 300, "tracks": []}))
         s = server.Session()
         assert s.state == uistate.RECORDING
         assert s.meeting_dir == d
@@ -165,8 +266,27 @@ class TestResilience:
         monkeypatch.setattr(store, "repo_root", lambda: crm)
         d = store.create_meeting("Old call", root=crm)
         (d / capture.STATE_FILE).write_text(json.dumps(
-            {"pid": 1, "started_at": time.time() - 900, "ended_at": time.time() - 300}))
+            {"pid": os.getpid(), "started_at": time.time() - 900, "ended_at": time.time() - 300}))
         assert server.Session().state == uistate.IDLE
+
+    def test_a_recording_whose_process_has_gone_is_not_adopted(self, crm, monkeypatch):
+        """A reboot mid-call leaves the state file behind.
+
+        Adopting it would show a recording that stopped hours ago, and refuse
+        to start a new one until the file was deleted by hand.
+        """
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        d = store.create_meeting("Interrupted call", root=crm)
+        (d / capture.STATE_FILE).write_text(json.dumps(
+            {"pid": _dead_pid(), "started_at": time.time() - 300, "tracks": []}))
+        assert server.Session().state == uistate.IDLE
+
+    def test_a_state_file_from_an_older_version_is_still_adopted(self, crm, monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        d = store.create_meeting("Live call", root=crm)
+        (d / capture.STATE_FILE).write_text(json.dumps(
+            {"started_at": time.time() - 60, "tracks": []}))          # no pid
+        assert server.Session().state == uistate.RECORDING
 
     def test_no_meetings_at_all_is_idle(self, crm, monkeypatch):
         monkeypatch.setattr(store, "repo_root", lambda: crm)
@@ -204,10 +324,28 @@ class TestResilience:
 
     def test_second_launch_finds_the_first(self, live, monkeypatch, tmp_path):
         monkeypatch.setattr(server.log, "log_dir", lambda: tmp_path)
-        (tmp_path / "app.lock").write_text(json.dumps({"port": live["port"], "pid": 1}))
+        (tmp_path / "app.lock").write_text(
+            json.dumps({"port": live["port"], "pid": os.getpid()}))
         assert server._running_instance() == f"http://127.0.0.1:{live['port']}/"
 
     def test_stale_lock_is_ignored(self, monkeypatch, tmp_path):
         monkeypatch.setattr(server.log, "log_dir", lambda: tmp_path)
-        (tmp_path / "app.lock").write_text(json.dumps({"port": 1, "pid": 1}))   # nothing listens
+        (tmp_path / "app.lock").write_text(
+            json.dumps({"port": 1, "pid": os.getpid()}))              # nothing listens
         assert server._running_instance() == ""
+
+    def test_a_lock_whose_process_has_gone_is_ignored(self, live, monkeypatch, tmp_path):
+        """The port is ephemeral, so something else can inherit it.
+
+        Trusting the lock then makes the shortcut do nothing at all: no
+        window, no console, no message.
+        """
+        monkeypatch.setattr(server.log, "log_dir", lambda: tmp_path)
+        (tmp_path / "app.lock").write_text(
+            json.dumps({"port": live["port"], "pid": _dead_pid()}))
+        assert server._running_instance() == ""
+
+    def test_a_lock_from_an_older_version_is_still_trusted(self, live, monkeypatch, tmp_path):
+        monkeypatch.setattr(server.log, "log_dir", lambda: tmp_path)
+        (tmp_path / "app.lock").write_text(json.dumps({"port": live["port"]}))    # no pid
+        assert server._running_instance() == f"http://127.0.0.1:{live['port']}/"

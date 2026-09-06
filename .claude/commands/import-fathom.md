@@ -25,7 +25,7 @@ so a large history does not have to be held in one go.
 ```
 
 3. Write it to `/tmp/fathom-import.json` and run
-   `python3 -m notetaker.cli import /tmp/fathom-import.json`.
+   `.venv\Scripts\python.exe -m notetaker.cli import /tmp/fathom-import.json`.
 
 This alone is worth doing immediately: it creates a contact file per person,
 which populates the vocabulary that corrects names in every future

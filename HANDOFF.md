@@ -24,7 +24,9 @@ with an API call, don't — that is the one thing the design rules out.
 
 Dell Latitude 3440, Windows 11 Pro. Intel i5-1345U — 10 cores but 8 are
 efficiency cores, so treat it as 4–6 useful ones. 16 GB RAM, Intel UHD
-graphics, **no CUDA**. 237 GB disk with ~43 GB free, which is why audio is
+graphics, **no CUDA**. 237 GB disk with ~43 GB free when this was written
+and 30 GB after the 6 September 2026 install (the venv and model account
+for about 2.5 GB of that; the rest is unexplained), which is why audio is
 captured at 16 kHz mono and `mtg prune` exists.
 
 Python was the Microsoft Store placeholder. The setup script now installs
@@ -98,18 +100,50 @@ preserves hand-written notes, idempotent linking, atomic writes, slug
 collisions, the Fathom and phone importers, the calendar layer, the name
 corrector's false-positive boundary, the whole transcription pipeline on
 real espeak-generated speech, the local HTTP API over real sockets, and the
-recording lifecycle driven by a fake audio device. 133 tests.
+recording lifecycle driven by a fake audio device. 251 tests.
 
-**Verified by reading the libraries' source, not by running them:** the
-`soundcard` WASAPI calls and the onnx-asr chain. Installing those libraries
+**Found by installing the libraries in the container, before any hardware
+run** (the hardware run itself is described below): the `soundcard` WASAPI
+calls and the onnx-asr chain. Installing those libraries
 here caught two real bugs — `pip install onnx-asr` does not pull in
 onnxruntime (it needs `[cpu,hub]`), and `recognize()` takes no `timestamps`
 argument; the real chain is
 `load_model(quantization="int8").with_vad(load_vad("silero")).with_timestamps()`.
 
-**Not verified at all, by anything:** actual audio capture on real Windows
-hardware. No container has a microphone. **This is the only meaningful
-unknown left in the project.**
+**Verified on the laptop itself, 5 September 2026:** setup runs end to end
+(it had to install Python via winget), `mtg doctor` passes every check, both
+tracks record through WASAPI, the loopback track transcribes correctly with
+the CRM's names intact, the app opens in Edge and the consent gate holds in
+the window and on the server. Four things had to be fixed on the way: the
+setup script contained an em dash, which Windows PowerShell 5.1 reads as a
+smart quote in a BOM-less file and refuses to parse; onnx-asr 0.12 hands the
+VAD pipeline's results back as a generator, which `transcribe.py` was
+wrapping in a list and reading as nothing; the microphone array opens its
+stream one to two seconds after the loopback does, so `capture.py` now pads
+each track with silence back to a shared start instant; and the microphone
+stream pauses for a moment every ten seconds or so at idle and constantly
+under CPU load, which soundcard's Windows backend fills with invented
+silence before the real frames arrive too, so the mic file ran 1% long at
+idle and 26% long under six CPU burners (a minute or more of drift across
+an hour). On Windows, `capture.py` therefore no longer uses soundcard's
+record() loop at all: it reads the WASAPI packets directly and places each
+one in the file at the QueryPerformanceCounter time WASAPI stamps it with,
+so the only synthetic content is silence standing in for time in which the
+device produced nothing, nothing is ever deleted, and no sample value is
+ever changed. `recording.json` records the lead, the filled silence, the
+discontinuity count and any overlap per track. The block loop remains as
+the fallback for the fake device in the tests and for other platforms.
+
+The microphone track was verified by Amir himself: he pressed Start in the
+window, spoke for fifteen seconds, and the transcript came back labelled
+"Me" with what he said. One observation for anyone testing without him: on
+this particular laptop, speech played through its own speakers reached the
+mic track only as a faint residue (the Intel array attenuates its own
+playback; peak 0.19 against 0.93 on the loopback) and nothing of it
+transcribed, so text-to-speech through the speakers is no test of the mic.
+Do not generalise from that. The headphones rule above still stands: louder
+playback, a longer call, or any other machine, and the far end lands on the
+mic track labelled "Me".
 
 ## The one test that matters
 
@@ -124,17 +158,72 @@ and be non-empty, and `transcript.md` should roughly contain what was said.
 Everything else has tests. This path has none.
 
 Then open the app — Desktop shortcut, or `.\Notetaker.cmd` — and confirm the
-dark window opens in Edge and the Start button stays grey until the consent
-switch is flipped.
+widget appears as a pill at the bottom right, expands when you click the
+chevron, and keeps the Start button grey until the consent switch is flipped.
+
+## The widget (added 6 September 2026)
+
+Amir scrapped the no-features rule that evening and asked for a
+Grammarly-style widget: always on top, live during the call, floating after
+it. The design conversation and its decisions are in
+`docs/superpowers/specs/2026-09-06-live-widget-design.md`. The short form:
+
+- `notetaker/widget.py` owns a frameless always-on-top window (pywebview on
+  WebView2) that shows the same local page as before, collapses to a pill at
+  the bottom right, runs from login, and is excluded from screen capture
+  with `SetWindowDisplayAffinity`, so "questions to ask them" never appear
+  in a share. Two things watching the calendar would offer twice, so the
+  Startup shortcut now launches the widget and setup removes the old
+  watcher shortcut; `mtg watch` still exists.
+- `notetaker/live.py` transcribes the growing WAVs every 30 s through the
+  same Parakeet chain, splitting any segment VAD joins across its committed
+  line with the model's token timestamps, and keeps `transcript.md` and
+  `.json` current with `live: True` in the frontmatter. Measured on the
+  laptop: 3–4 s of CPU per 10 s of speech at four threads, so a call costs
+  roughly a third of a core while someone is talking, nothing in silence.
+- `notetaker/assistant.py` runs Claude Code headlessly, `claude -p` in the
+  repo with the prompt on stdin, `--restricted`, read-only tools plus
+  `Skill`, and for `/notes` the right to write `notes.md` and the participant
+  list, not contact files: those hold Amir's own notes, and a transcript can
+  carry anything a caller said, so contact updates stay with an interactive
+  `/notes`. The environment it gets has every `ANTHROPIC*` variable removed
+  and every `CLAUDE*` one except the two that carry a headless login. It is
+  the subscription, not an API; nothing here holds a key. What it cannot see
+  is an API key configured inside Claude Code's own settings; if one is
+  there, the CLI would bill it, and only the user can check that.
+- The Session in `server.py` starts `/prep` on the first known participant
+  at Start, a `/live-brief` after every two minutes of new speech (never
+  more often than 30 s, backing off after failures), keeps one `/ask`
+  conversation per meeting, and runs `/notes` the moment Stop's transcript
+  is done. The consent gate is unchanged, in the page and on the server.
+
+After pulling or upgrading, re-run `setup-windows.ps1`. It is the script that
+writes the Desktop and Startup shortcuts, and an older install leaves them
+pointing at the entry points that came before the widget.
+
+**Verified on the laptop:** the window, the capture exclusion, the pill,
+live transcription during a solo call with speech through the speakers,
+Stop finishing the live transcript in seconds, and every headless
+path against a stand-in `claude` (251 tests). Two more things surfaced on
+the laptop and were fixed: loading the model holds the interpreter lock for
+about twelve seconds, so live transcription runs in a worker process per
+call and the widget process never loads a model; and the wave module's
+header patch on every write failed once with EINVAL under load and killed
+a track, so the recorder now appends raw frames, flushes twice a second,
+patches the header at close, and skips a packet rather than dying. **Not yet verified:** a real
+headless Claude Code call. The `claude` CLI on this machine had never been
+logged in, and that is Amir's to do: open a terminal, run `claude`, then
+`/login`. Until then the widget records and transcribes, and every panel
+that needs Claude shows that one instruction instead.
 
 ## How the pieces fit
 
 ```
-mtg start / the app  →  two WAVs  →  transcribe  →  transcript.md
-                                                        ↓
-                                    /notes in Claude Code (his subscription)
-                                                        ↓
-                                    notes.md + contacts/*.md updated
+the widget / mtg start  →  two WAVs  →  live.py every 30 s  →  transcript.md (live)
+                                              ↓ during the call            ↓ at Stop
+                              /prep, /live-brief, /ask headlessly    /notes headlessly
+                                              ↓                            ↓
+                                    the widget's panels          notes.md + contacts/*.md
 ```
 
 `store.py` owns all file layout — slug collisions, idempotency, the managed
@@ -171,7 +260,7 @@ treats it like any other app.
 ## Working on it
 
 ```powershell
-python -m pytest tests/ -q     # 133 tests, all must stay green
+.venv\Scripts\python.exe -m pytest tests/ -q     # 251 tests, all must stay green
 ```
 
 Modules must import on a machine with no audio libraries, no ffmpeg and no

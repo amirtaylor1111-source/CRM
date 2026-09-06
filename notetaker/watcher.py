@@ -3,7 +3,7 @@
 The one real weakness of recording locally instead of sending a bot is that
 nothing knows a call has begun, so the tool depends on the user remembering.
 This removes that. It sits quietly in the background, and when a meeting is
-due it puts the window in front of them with everything already filled in.
+due it puts the widget in front of them with everything already filled in.
 
 It only ever *offers*. Starting a recording without someone pressing the
 button would record people who were never told, which is the one thing this
@@ -80,7 +80,7 @@ def _launch_app() -> None:
     interpreter = str(pythonw) if pythonw.exists() else sys.executable
     flags = getattr(subprocess, "CREATE_NO_WINDOW", 0) if sys.platform == "win32" else 0
     try:
-        subprocess.Popen([interpreter, "-m", "notetaker.server"],
+        subprocess.Popen([interpreter, "-m", "notetaker.widget"],
                          cwd=str(store.repo_root()), creationflags=flags,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except OSError:

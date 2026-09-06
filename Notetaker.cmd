@@ -4,8 +4,8 @@ REM console window; the launcher itself closes immediately.
 setlocal
 set "HERE=%~dp0"
 if exist "%HERE%.venv\Scripts\pythonw.exe" (
-    start "" "%HERE%.venv\Scripts\pythonw.exe" -m notetaker.server
+    start "" "%HERE%.venv\Scripts\pythonw.exe" -m notetaker.widget
 ) else (
-    start "" pythonw -m notetaker.server
+    start "" pythonw -m notetaker.widget
 )
 endlocal

@@ -25,7 +25,7 @@ the call. This closes that gap.
 ```
 
 3. Write it to `/tmp/calendar.json` and run
-   `python3 -m notetaker.cli calendar /tmp/calendar.json`.
+   `.venv\Scripts\python.exe -m notetaker.cli calendar /tmp/calendar.json`.
 
 Skip cancelled events and all-day entries — neither is a call to record.
 

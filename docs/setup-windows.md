@@ -46,8 +46,13 @@ The `-ExecutionPolicy Bypass` part is needed because Windows blocks unsigned
 scripts by default. It applies to this one command only and changes nothing
 permanently.
 
-The script creates a `.venv` folder here, installs three packages into it,
-downloads the speech model (about 670 MB, once), and then runs a check.
+The script creates a `.venv` folder here, installs four packages into it,
+downloads the speech model (about 670 MB, once), puts the widget on your
+desktop and in your Startup folder, and then runs a check.
+
+Run the same command again after you pull or upgrade. It rewrites the Desktop
+and Startup shortcuts, and an older install leaves them pointing at the entry
+points that came before the widget.
 
 ## 3. Read the check
 
@@ -64,10 +69,26 @@ The last thing the script prints is the output of `mtg doctor`:
   PASS  system audio (1 found)
   PASS  transcription engine (parakeet)
   PASS  disk space (43 GB free)
+  PASS  widget window (pywebview)
+  PASS  WebView2 runtime
+  PASS  Claude Code on PATH
 ```
 
 Every line should say PASS. If one does not, it prints the command that fixes
 it.
+
+## 3a. Log Claude Code in once
+
+The widget runs Claude Code headlessly for its live panels and the write-up,
+on your subscription. The `claude` command keeps its own login, separate from
+the desktop app, so do this once:
+
+```powershell
+claude
+```
+
+then type `/login` and follow it. Until then the widget records and
+transcribes, and every panel that needs Claude shows that one instruction.
 
 ## 4. Wear headphones
 
@@ -78,21 +99,23 @@ tracks, and that advantage is gone.
 
 ## Your first recording
 
-Setup puts **Meeting Notetaker** on your desktop. Double-click it.
+The widget sits at the bottom right of your screen; setup also starts it at
+login. Double-click **Meeting Notetaker** on the desktop if it is not there.
 
-The window shows what is next in your calendar and pre-fills the meeting
-name and who is on it. It displays the sentence to say out loud, and the
-start button stays greyed out until you tick that you have said it.
+The strip shows what is next in your calendar. Expand it (the chevron, or
+double-click the strip) and it pre-fills the meeting name and who is on it,
+shows the sentence to say out loud, and keeps Start greyed out until you tick
+that you have said it.
 
-Press **Start recording**, take your call, press **Stop**. It transcribes on
-its own — a one-hour meeting takes about six minutes on your laptop — and the
-button turns green when it is finished.
+Press **Start recording**, take your call, press **Stop**. While the call
+runs, the widget transcribes along and every couple of minutes shows what
+has been agreed and what is worth asking; a panel shows what earlier calls
+say about the person, and the ask box answers questions. None of it appears
+in a screen share. At Stop the transcript finishes in seconds, the write-up
+runs on its own, and the widget floats with the notes.
 
-Press **Write up notes in Claude**. It opens Claude Code in this folder with
-`/notes` already entered; that runs on your existing subscription.
-
-You can close the window while it records. The recording is a separate
-process and keeps going; opening the app again shows it still in progress.
+You can collapse or close the widget while it records. The recording is a
+separate process and keeps going; the widget picks it back up.
 
 ### If something looks wrong
 

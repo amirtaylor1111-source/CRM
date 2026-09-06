@@ -6,32 +6,48 @@ there is no subscription.
 
 ## Using it
 
-<p align="center">
-  <img src="docs/img/recording.png" width="300" alt="Recording, with a live timer">
-  &nbsp;&nbsp;
-  <img src="docs/img/done.png" width="300" alt="Done, with the hand-off to Claude">
-</p>
+The widget is a pill at the bottom right of the screen. Expanded, it holds
+the consent line to read out, the next steps agreed so far, the questions
+worth asking before the call ends, what the CRM already has on the person you
+are talking to, and a box for asking your own questions. It is hidden from
+screen sharing, so none of it shows in a shared window.
 
-Double-click **Meeting Notetaker** on your desktop.
+<!-- The screenshots in docs/img/ show the old browser window and need re-taking. -->
 
-The window fills in the meeting from your calendar, shows you the sentence to
-say out loud, and stays greyed out until you flip the switch that says you
-have said it. Then one button starts, and the same button stops. It
-transcribes on its own, the button turns green when it is done, and **Write
-up notes in Claude** opens Claude Code with the command already typed.
+The widget sits at the bottom right of your screen from login, as a small
+strip showing your next meeting. Two minutes before a calendar meeting it
+expands with everything filled in; it only offers, it never starts recording
+on its own. It shows you the sentence to say out loud and stays greyed out
+until you flip the switch that says you have said it. Then one button
+starts, and the same button stops.
 
-You can close the window at any point. The recording is its own process and
-keeps going; reopen the app and it picks the recording straight back up.
-Two minutes before a calendar meeting, the app opens itself with everything
-filled in — it only offers, it never starts recording on its own.
+While the call runs, the widget listens along. It transcribes as you go, and
+every couple of minutes of talk it asks Claude Code, on your subscription,
+for what has been agreed so far and what is worth asking before the call
+ends. A panel shows what you already know about the person from earlier
+calls, and an ask box answers questions about the meeting, remembering the
+conversation. The widget is hidden from screen sharing, so none of that
+appears if you share your screen.
+
+When you press Stop the transcript is done within seconds and the write-up
+runs at once; the widget floats with the notes, the next steps and the
+follow-up questions. That automatic write-up produces `notes.md`; updating
+contact files is left to `/notes` in a session where you can see the change.
+Close the widget and the recording keeps going; it is its own process, and
+the widget picks it straight back up.
 
 That is the whole loop. Everything below is for when you want more control.
 
-The window is HTML running in Edge's app mode, talking to a small local
-server. Nothing is exposed beyond your own machine, every request carries a
-per-launch token, and the server exits when the window closes. If you have no
-Chromium-based browser at all, `mtg app --classic` opens a plainer built-in
-window that does the same job.
+The widget is a small local page in a window Python owns (WebView2, which
+Windows ships), talking to a small local server; nothing is exposed beyond
+your own machine and every request carries a per-launch token. `mtg app
+--browser` opens the same page in an Edge window instead, without the
+always-on-top and screen-share protection, and `mtg app --classic` opens a
+plainer built-in window if there is no Chromium-based browser at all.
+
+Claude Code needs to have been logged in from a terminal once for the live
+panels and the automatic write-up: run `claude`, then `/login`. Until then
+the widget records and transcribes, and says so.
 
 ### From a terminal, if you prefer
 
@@ -51,10 +67,14 @@ around the other.
 | Capture | your machine | free |
 | Transcription | your machine, offline | free |
 | Notes, briefings, follow-ups | Claude Code, your existing plan | included |
+| The widget's live panels and ask box | Claude Code, run headlessly | included |
 
 There is no API key anywhere in this repo, and no code here calls a paid
-service. The intelligence happens when Claude reads a file during a normal
-session, which your subscription already covers.
+service. The intelligence happens when Claude Code reads a file, in a normal
+session or run headlessly by the widget, which your subscription already
+covers. Each brief, answer and write-up is a turn on that plan; the widget
+briefs after every two minutes of new speech, so an hour's call is about
+thirty turns.
 
 ## What it produces
 
@@ -90,7 +110,8 @@ and reproducible into the transcript that matters.
 In Claude Code: `/notes` to write up, `/prep <person>` for a pre-call
 briefing, `/followup` to draft the email, `/calendar` to sync Outlook,
 `/import-fathom` to pull history out of Fathom, `/dealroom <company>` to
-build a client-facing page from the history.
+build a client-facing page from the history. `/live-brief <meeting>` and
+`/ask <meeting> <question>` are what the widget runs for you during a call.
 
 Set `MTG_ME` to your own email address so you are not listed as an attendee
 of your own meetings.
@@ -135,8 +156,9 @@ handles them exactly like Teams.
 
 - **Nothing joins your call.** There is no bot in the participant list, which
   also means no auto-join. You start the recording yourself.
-- **Transcription happens after the meeting**, not live. On a mid-range
-  laptop a one-hour call takes five to ten minutes.
+- **Transcription runs alongside the call**, about thirty seconds behind,
+  and is finished within seconds of Stop. Speech costs roughly a third of a
+  core while someone is talking; silence costs nothing.
 - **It is not 100% accurate**, and neither is anything else. See
   [docs/accuracy.md](docs/accuracy.md) for real numbers.
 
