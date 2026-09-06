@@ -353,13 +353,7 @@ def transcribe_meeting(
         )
 
     hw = hardware.detect()
-    choice = hardware.recommend(hw)
-    if choice["engine"] == "onnx-asr" and "parakeet" not in backends:
-        choice = dict(hardware.ENGINES["turbo"])   # fall back to what is here
-        choice["cpu_threads"] = hardware._threads_for(hw)
-    if choice["engine"] == "faster-whisper" and "faster-whisper" not in backends:
-        choice = dict(hardware.ENGINES["parakeet"])
-        choice["cpu_threads"] = hardware._threads_for(hw)
+    choice = hardware.pick_installed(backends, hw)
 
     total_audio = sum(_duration(p) for p in tracks.values())
     _log.info("engine=%s model=%s tracks=%s audio=%s", choice["engine"], choice["model"],

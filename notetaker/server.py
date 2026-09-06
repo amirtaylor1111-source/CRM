@@ -28,6 +28,10 @@ from . import capture, hardware, log, store, uistate
 _log = log.get("server")
 UI_DIR = Path(__file__).resolve().parent / "ui"
 
+# How long the calendar and meeting list may be stale. The window polls
+# far faster than either actually changes.
+CACHE_SECONDS = 4.0
+
 
 class Session:
     """Everything the UI needs to know, owned by the server process."""
@@ -40,6 +44,12 @@ class Session:
         self.detail = ""
         self.lock = threading.Lock()
         self.last_seen = 0.0            # last time the window polled us
+        # The window polls twice a second, but the meeting list and calendar
+        # change on the order of minutes. Rescanning every file each poll
+        # costs ~90 file opens here and grows with the history, so the slow
+        # parts are cached and only the live state is recomputed.
+        self._cache: dict[str, Any] = {}
+        self._cache_at = 0.0
         self._adopt()
 
     def _adopt(self) -> None:
@@ -64,7 +74,12 @@ class Session:
 
     # --- reads -------------------------------------------------------------
 
-    def snapshot(self) -> dict[str, Any]:
+    def _slow_parts(self) -> dict[str, Any]:
+        """Calendar and meeting history: rescanned at most every few seconds."""
+        now = time.time()
+        if self._cache and now - self._cache_at < CACHE_SECONDS:
+            return self._cache
+
         me = os.environ.get("MTG_ME", "")
         try:
             suggestion = uistate.suggest(store, me=me)
@@ -89,6 +104,23 @@ class Session:
         except Exception:
             recent = []
 
+        self._cache = {
+            "suggestion": {"title": suggestion.title, "participants": suggestion.participants,
+                           "headline": suggestion.headline, "source": suggestion.source},
+            "upcoming": upcoming,
+            "recent": recent,
+        }
+        self._cache_at = now
+        return self._cache
+
+    def _invalidate(self) -> None:
+        """Force a rescan after we ourselves changed something on disk."""
+        self._cache_at = 0.0
+
+    def snapshot(self) -> dict[str, Any]:
+        self.last_seen = time.time()
+        slow = self._slow_parts()
+
         with self.lock:
             return {
                 "state": self.state,
@@ -96,14 +128,9 @@ class Session:
                 if self.state == uistate.RECORDING else "",
                 "detail": self.detail,
                 "meeting_id": self.meeting_dir.name if self.meeting_dir else "",
-                "suggestion": {
-                    "title": suggestion.title,
-                    "participants": suggestion.participants,
-                    "headline": suggestion.headline,
-                    "source": suggestion.source,
-                },
-                "upcoming": upcoming,
-                "recent": recent,
+                "suggestion": slow["suggestion"],
+                "upcoming": slow["upcoming"],
+                "recent": slow["recent"],
                 "disclosure": _disclosure(),
                 "claude_available": bool(_which("claude")),
             }
@@ -135,6 +162,7 @@ class Session:
             self.started_at = time.time()
             self.state = uistate.RECORDING
             self.detail = ""
+            self._invalidate()
             _log.info("start: %s", self.meeting_dir.name)
 
         # Confirm the recorder actually came up before reporting success.
@@ -190,6 +218,7 @@ class Session:
             for person in meeting.participants:
                 store.link_contact(self.meeting_dir, person.name)
             store.rebuild_index()
+            self._invalidate()
             self._set(uistate.DONE, "")
             _log.info("done: %s", self.meeting_dir.name)
         except Exception as exc:

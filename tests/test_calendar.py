@@ -108,3 +108,45 @@ class TestImport:
                              "source_id": "7"}], root=crm)
         meeting = store.load_meeting(list((crm / "meetings").glob("*/"))[0])
         assert "fathom" in meeting.consent_note
+
+
+class TestEngineFallback:
+    """Falling back must never step up to a model the machine cannot hold."""
+
+    def test_uses_the_recommended_engine_when_installed(self):
+        from notetaker import hardware
+        hw = hardware.Hardware("Windows 11", 10, 12, 16.0, False, 43.0)
+        assert hardware.pick_installed(["parakeet"], hw)["engine"] == "onnx-asr"
+
+    def test_falls_back_within_what_is_installed(self):
+        from notetaker import hardware
+        hw = hardware.Hardware("Windows 11", 10, 12, 16.0, False, 43.0)
+        picked = hardware.pick_installed(["faster-whisper"], hw)
+        assert picked["engine"] == "faster-whisper"
+        assert "not installed" in picked["why"]
+
+    def test_never_exceeds_a_small_machines_budget(self):
+        # 4 GB RAM -> budget 1.5 GB, recommend() picks `small`. Parakeet
+        # needs 2 GB, so even as the only installed engine it must not be
+        # loaded blind on a machine that cannot hold it.
+        from notetaker import hardware
+        hw = hardware.Hardware("Windows 11", 2, 4, 4.0, False, 20.0)
+        assert hardware.ram_budget(hw) == 1.5
+        assert hardware.recommend(hw)["key"] == "small"
+        picked = hardware.pick_installed(["parakeet"], hw)
+        assert picked["why"], "a forced choice must explain itself"
+
+    def test_budget_is_the_machines_not_the_preferred_models(self):
+        # 16 GB: parakeet is preferred for accuracy, not because 2 GB is a
+        # ceiling. distil at 2.5 GB must stay eligible.
+        from notetaker import hardware
+        hw = hardware.Hardware("Windows 11", 10, 12, 16.0, False, 43.0)
+        assert hardware.ram_budget(hw) > hardware.recommend(hw)["ram_gb"]
+
+    def test_picks_lowest_error_among_those_that_fit(self):
+        from notetaker import hardware
+        hw = hardware.Hardware("Windows 11", 10, 12, 16.0, False, 43.0)
+        picked = hardware.pick_installed(["faster-whisper"], hw)
+        # distil (7.5%) beats turbo (7.8%) and small (13.8%) within budget.
+        assert picked["key"] in ("distil", "turbo")
+        assert picked["cpu_threads"] >= 1
