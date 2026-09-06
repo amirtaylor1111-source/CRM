@@ -1,12 +1,14 @@
 """Importing recordings the phone made itself."""
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
 
-from notetaker import phone, store
+from notetaker import cli, phone, store
+
+SAST = timezone(timedelta(hours=2))
 
 
 class TestFilenameParsing:
@@ -58,6 +60,20 @@ class TestDiscovery:
     def test_missing_folder_explains_where_to_look(self, tmp_path):
         with pytest.raises(phone.PhoneImportError, match="Internal storage"):
             phone.find_recordings(tmp_path / "nope")
+
+    def test_one_audio_file_is_a_target_in_its_own_right(self, tmp_path):
+        # Recordings that are not Samsung's own arrive one at a time, and
+        # naming the file is the only way to say which one you mean.
+        one = tmp_path / "Discovery-1.m4a"
+        one.write_bytes(b"x")
+        (tmp_path / "Sameer.m4a").write_bytes(b"y")
+        assert phone.find_recordings(one) == [one]
+
+    def test_a_file_that_is_not_audio_is_refused(self, tmp_path):
+        junk = tmp_path / "notes.txt"
+        junk.write_text("not audio")
+        with pytest.raises(phone.PhoneImportError, match="not an audio recording"):
+            phone.find_recordings(junk)
 
 
 @pytest.fixture
@@ -140,6 +156,129 @@ class TestImport:
                          "meetings": first["meetings"]}
         second = phone.import_folder(folder, root=crm, transcribe=False)
         assert second["imported"] == 0 and second["skipped"] == 2
+
+
+class TestOverrides:
+    """Recordings that are not Samsung's own carry their date in the file.
+
+    `parse_filename` matches nothing in "Discovery-1.m4a", and renaming the
+    file into a Samsung shape would smuggle in a `who` that becomes a title,
+    a participant and a contact. So the caller supplies the title and the
+    time it already knows, and the importer invents neither.
+    """
+
+    def test_the_given_title_and_time_beat_the_filename(self, crm, fake_ffmpeg, monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Discovery-1.m4a"
+        src.write_bytes(b"audio bytes")
+
+        meeting_dir, status = phone.import_recording(
+            src, root=crm, transcribe=False,
+            title="Discovery 1",
+            when=datetime(2026, 8, 27, 10, 37, 16, tzinfo=SAST),
+        )
+        meeting = store.load_meeting(meeting_dir)
+        assert status == "imported"
+        assert meeting.title == "Discovery 1"
+        assert meeting.started_at == "2026-08-27T08:37:16Z"
+
+    def test_a_given_title_names_nobody(self, crm, fake_ffmpeg, monkeypatch):
+        # Who was in the room is only knowable from the transcript, and a
+        # wrong name here would poison store.vocabulary() for every meeting.
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Call recording Monty Smythe_260904_143012.m4a"
+        src.write_bytes(b"audio bytes")
+
+        meeting_dir, _ = phone.import_recording(
+            src, root=crm, transcribe=False, title="Cell C meeting")
+        meeting = store.load_meeting(meeting_dir)
+        assert meeting.title == "Cell C meeting"
+        assert meeting.participants == []
+        assert store.list_contacts(root=crm) == []
+
+    def test_the_directory_takes_the_recording_date_not_today(self, crm, fake_ffmpeg,
+                                                              monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Eitan new bus.m4a"
+        src.write_bytes(b"audio bytes")
+
+        meeting_dir, _ = phone.import_recording(
+            src, root=crm, transcribe=False,
+            title="Eitan new business",
+            when=datetime(2026, 7, 7, 9, 39, 44, tzinfo=SAST),
+        )
+        assert meeting_dir.name == "2026-07-07-eitan-new-business"
+
+    def test_with_no_overrides_the_filename_still_decides(self, crm, fake_ffmpeg,
+                                                          monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Call recording Monty Smythe_260904_143012.m4a"
+        src.write_bytes(b"audio bytes")
+
+        meeting_dir, _ = phone.import_recording(src, root=crm, transcribe=False)
+        meeting = store.load_meeting(meeting_dir)
+        assert meeting.title == "Call with Monty Smythe"
+        assert meeting.started_at.startswith("2026-09-04T14:30:12")
+        assert meeting_dir.name == "2026-09-04-call-with-monty-smythe"
+        assert "monty-smythe" in store.list_contacts(root=crm)
+
+    def test_folder_import_passes_the_overrides_through(self, crm, fake_ffmpeg,
+                                                        monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Sameer.m4a"
+        src.write_bytes(b"audio bytes")
+
+        result = phone.import_folder(
+            src, root=crm, transcribe=False, title="Sameer",
+            when=datetime(2026, 7, 30, 10, 9, 42, tzinfo=SAST))
+        assert result["imported"] == 1
+        assert result["meetings"][0]["name"] == "2026-07-30-sameer"
+
+    def test_overrides_are_refused_for_more_than_one_recording(self, crm, fake_ffmpeg,
+                                                               monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        folder = crm / "Call"
+        folder.mkdir()
+        (folder / "a.m4a").write_bytes(b"a")
+        (folder / "b.m4a").write_bytes(b"b")
+        with pytest.raises(phone.PhoneImportError, match="one recording"):
+            phone.import_folder(folder, root=crm, transcribe=False, title="Both of them")
+
+
+class TestPhoneCommand:
+    def test_a_single_file_with_a_title_and_a_time(self, crm, fake_ffmpeg, monkeypatch):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Discovery-1.m4a"
+        src.write_bytes(b"audio bytes")
+
+        code = cli.main(["phone", str(src), "--no-transcribe",
+                         "--title", "Discovery 1",
+                         "--when", "2026-08-27T10:37:16+02:00"])
+        assert code == cli.OK
+        assert (crm / "meetings" / "2026-08-27-discovery-1" / "meeting.json").exists()
+
+    def test_a_title_for_a_whole_folder_is_a_user_error(self, crm, fake_ffmpeg,
+                                                        monkeypatch, capsys):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        folder = crm / "Call"
+        folder.mkdir()
+        (folder / "a.m4a").write_bytes(b"a")
+        (folder / "b.m4a").write_bytes(b"b")
+
+        code = cli.main(["phone", str(folder), "--no-transcribe", "--title", "One title"])
+        assert code == cli.USER_ERROR
+        assert "one recording" in capsys.readouterr().err
+        assert list((crm / "meetings").glob("*/")) == []
+
+    def test_a_when_that_is_not_a_timestamp_is_a_user_error(self, crm, fake_ffmpeg,
+                                                            monkeypatch, capsys):
+        monkeypatch.setattr(store, "repo_root", lambda: crm)
+        src = crm / "Discovery-1.m4a"
+        src.write_bytes(b"audio bytes")
+
+        code = cli.main(["phone", str(src), "--no-transcribe", "--when", "last Tuesday"])
+        assert code == cli.USER_ERROR
+        assert "last Tuesday" in capsys.readouterr().err
 
 
 class TestFfmpegMissing:

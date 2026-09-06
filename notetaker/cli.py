@@ -13,6 +13,7 @@ import os
 import subprocess
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
 
 from . import capture, hardware, log, store
@@ -414,10 +415,37 @@ def cmd_phone(args) -> int:
     from . import phone
 
     folder = Path(args.folder).expanduser()
+
+    when = None
+    if args.when:
+        try:
+            when = datetime.fromisoformat(args.when)
+        except ValueError:
+            print(f"\n  --when is not an ISO 8601 timestamp: {args.when}\n"
+                  "  Try something like  2026-08-27T10:37:16+02:00", file=sys.stderr)
+            return USER_ERROR
+
     print(f"  Scanning {folder}")
     try:
+        recordings = phone.find_recordings(folder)
+    except phone.PhoneImportError as exc:
+        print(f"\n  {exc}", file=sys.stderr)
+        return ENV_ERROR
+    if args.limit:
+        recordings = recordings[-args.limit:]
+
+    # A title and a time belong to one call. Spread across a folder they
+    # would stamp the same name and date on every recording in it.
+    if (args.title or when) and len(recordings) != 1:
+        print(f"\n  --title and --when describe one recording, but {len(recordings)} "
+              f"were found under {folder}.\n"
+              "  Name the audio file itself, or drop those flags.", file=sys.stderr)
+        return USER_ERROR
+
+    try:
         result = phone.import_folder(folder, transcribe=not args.no_transcribe,
-                                     limit=args.limit, progress=lambda m: print(f"    {m}"))
+                                     limit=args.limit, progress=lambda m: print(f"    {m}"),
+                                     title=args.title, when=when)
     except phone.PhoneImportError as exc:
         print(f"\n  {exc}", file=sys.stderr)
         return ENV_ERROR
@@ -550,9 +578,13 @@ def build_parser() -> argparse.ArgumentParser:
     cal.set_defaults(func=cmd_calendar)
 
     ph = sub.add_parser("phone", help="import call recordings from your phone")
-    ph.add_argument("folder", help="folder your phone's Call recordings sync into")
+    ph.add_argument("folder", help="folder or single audio file")
     ph.add_argument("--no-transcribe", action="store_true")
     ph.add_argument("--limit", type=int, default=0, help="only the newest N")
+    ph.add_argument("--title", help="title for a single recording, "
+                                    "when the filename does not carry one")
+    ph.add_argument("--when", help="when a single recording was made, ISO 8601, "
+                                   "e.g. 2026-08-27T10:37:16+02:00")
     ph.set_defaults(func=cmd_phone)
 
     im = sub.add_parser("import", help="import meetings from a JSON file")

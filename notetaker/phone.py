@@ -132,6 +132,18 @@ def to_wav(source: Path, destination: Path) -> None:
 
 
 def find_recordings(folder: Path) -> list[Path]:
+    """Every recording under a folder, or the one file that was named.
+
+    Naming a single file is the only way to say which recording a title and
+    a time belong to, so it is a target in its own right.
+    """
+    folder = Path(folder)
+    if folder.is_file():
+        if folder.suffix.lower() in AUDIO_SUFFIXES:
+            return [folder]
+        raise PhoneImportError(
+            f"That is not an audio recording: {folder.name}\n"
+            f"  Audio it can read: {', '.join(sorted(AUDIO_SUFFIXES))}")
     if not folder.exists():
         raise PhoneImportError(
             f"No such folder: {folder}\n"
@@ -141,21 +153,43 @@ def find_recordings(folder: Path) -> list[Path]:
                   if p.is_file() and p.suffix.lower() in AUDIO_SUFFIXES)
 
 
+def _as_utc(moment: datetime) -> str:
+    """An ISO-8601 UTC stamp, the shape everything else in the CRM stores."""
+    if moment.tzinfo is None:
+        moment = moment.replace(tzinfo=timezone.utc)
+    return moment.astimezone(timezone.utc).replace(microsecond=0) \
+                 .isoformat().replace("+00:00", "Z")
+
+
 def import_recording(
     path: Path,
     root: Path | None = None,
     transcribe: bool = True,
     progress=lambda _m: None,
+    title: str | None = None,
+    when: datetime | None = None,
 ) -> tuple[Path | None, str]:
-    """Bring one recording in. Returns (meeting_dir, status)."""
+    """Bring one recording in. Returns (meeting_dir, status).
+
+    `title` and `when` are for recordings the filename says nothing about:
+    anything not named the way Samsung's dialer names its own files. Both
+    beat the filename. A given title also means the caller is not claiming
+    to know who was on the call, so no participant and no contact are
+    written — the transcript has to be read before anyone is named, and a
+    wrong name here would feed `store.vocabulary()` and misspell its way
+    into every future transcript.
+    """
     ledger = _load_ledger(root)
     key = file_id(path)
     if key in ledger:
         return None, "already imported"
 
-    who, when = parse_filename(path.name)
-    when = when or datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
-    title = f"Call with {who}" if who else "Phone call"
+    parsed_who, parsed_when = parse_filename(path.name)
+    who = "" if title else parsed_who
+    moment = when or parsed_when or datetime.fromtimestamp(path.stat().st_mtime,
+                                                           tz=timezone.utc)
+    started_at = _as_utc(moment)
+    title = title or (f"Call with {who}" if who else "Phone call")
 
     meeting_dir = store.create_meeting(
         title,
@@ -165,10 +199,10 @@ def import_recording(
         consent_obtained=True,
         consent_note="recorded by the phone's own dialer",
         root=root,
+        # Dated when it was recorded, not when it was imported: these arrive
+        # weeks late, and the copy date is not the meeting date.
+        started_at=started_at,
     )
-    meeting = store.load_meeting(meeting_dir)
-    meeting.started_at = when.replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    store.save_meeting(meeting_dir, meeting)
 
     # The far end is on the only track there is, so label it as such rather
     # than pretending this is a two-track recording.
@@ -212,15 +246,23 @@ def import_folder(
     transcribe: bool = True,
     limit: int = 0,
     progress=lambda _m: None,
+    title: str | None = None,
+    when: datetime | None = None,
 ) -> dict[str, Any]:
     recordings = find_recordings(Path(folder))
     if limit:
         recordings = recordings[-limit:]
+    if (title or when) and len(recordings) != 1:
+        raise PhoneImportError(
+            f"A title and a time describe one recording, but {len(recordings)} "
+            f"were found under {folder}.\n"
+            "  Name the audio file itself, or drop the overrides.")
     results = {"found": len(recordings), "imported": 0, "skipped": 0, "failed": 0,
                "meetings": []}
     for recording in recordings:
         try:
-            meeting_dir, status = import_recording(recording, root, transcribe, progress)
+            meeting_dir, status = import_recording(recording, root, transcribe, progress,
+                                                   title, when)
         except PhoneImportError as exc:
             results["failed"] += 1
             progress(f"{recording.name}: {exc}")

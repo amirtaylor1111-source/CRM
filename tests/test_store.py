@@ -1,6 +1,7 @@
 import json
 
 from notetaker import store
+from notetaker.schema import utcnow
 
 
 class TestMeetings:
@@ -41,6 +42,33 @@ class TestMeetings:
         store.create_meeting("Acme Renewal", root=crm)
         found = store.resolve_meeting("renewal", root=crm)
         assert found is not None and "renewal" in found.name
+
+
+class TestBackdatedMeetings:
+    """A recording made weeks ago must file under the day it happened.
+
+    The importer is handed the time out of the recording's own container, so
+    the directory has to take its date from that rather than from the clock,
+    or a July call lands in a folder named for today.
+    """
+
+    def test_started_at_dates_the_directory(self, crm):
+        d = store.create_meeting("Discovery 1", root=crm,
+                                 started_at="2026-08-27T08:37:16Z")
+        assert d.name == "2026-08-27-discovery-1"
+        assert store.load_meeting(d).started_at == "2026-08-27T08:37:16Z"
+
+    def test_without_started_at_the_clock_still_wins(self, crm):
+        today = utcnow()[:10]
+        d = store.create_meeting("Standup", root=crm)
+        assert d.name == f"{today}-standup"
+        assert store.load_meeting(d).started_at.startswith(today)
+
+    def test_two_backdated_meetings_the_same_day_do_not_collide(self, crm):
+        a = store.create_meeting("Call", root=crm, started_at="2026-08-27T08:00:00Z")
+        b = store.create_meeting("Call", root=crm, started_at="2026-08-27T09:00:00Z")
+        assert a.name == "2026-08-27-call"
+        assert b.name == "2026-08-27-call-2"
 
 
 class TestContacts:

@@ -92,13 +92,20 @@ def create_meeting(
     consent_obtained: bool = False,
     consent_note: str = "",
     root: Path | None = None,
+    started_at: str | None = None,
 ) -> Path:
     """Create a meeting directory and its meeting.json.
 
     The directory name is <date>-<slug>; a second meeting with the same title
     on the same day gets -2, -3 and so on rather than colliding.
+
+    `started_at` is for a recording that happened before now: an ISO-8601 UTC
+    timestamp used for both the date in the directory name and the meeting's
+    own start time. Without it the clock decides, as it does for a live
+    recording. Correcting the start time after creation is not enough — by
+    then the directory is already named for today.
     """
-    started = utcnow()
+    started = started_at or utcnow()
     date = started[:10]
     base = f"{date}-{slugify(title)}"
     parent = meetings_dir(root)
