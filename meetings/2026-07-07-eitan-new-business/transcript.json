@@ -1,0 +1,6921 @@
+{
+  "meta": {
+    "generated_at": "2026-09-06T13:51:06Z",
+    "engine": "onnx-asr",
+    "model": "nemo-parakeet-tdt-0.6b-v3",
+    "expected_accuracy": "6.3%",
+    "duration": "00:39:23",
+    "tracks": "system",
+    "speaker_method": "separate audio tracks (attribution is exact)",
+    "segments": 765,
+    "low_confidence_segments": 60,
+    "names_corrected": 10,
+    "live": false
+  },
+  "segments": [
+    {
+      "start": 3.07,
+      "end": 7.07,
+      "text": "Now it's gonna take long, it's a channel opportunity for. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.379,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 8.87,
+      "end": 9.63,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 10.4,
+      "end": 13.95,
+      "text": "When you say not going at the pace these things go at you're saying it should be going",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 14.27,
+      "end": 15.49,
+      "text": "A lamp.",
+      "speaker": "Caller",
+      "confidence": -0.782,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 15.65,
+      "end": 20.03,
+      "text": "Look, I've been involved with starting, you know, thirty different businesses.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 20.45,
+      "end": 21.05,
+      "text": "And uh",
+      "speaker": "Caller",
+      "confidence": -0.94,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 21.67,
+      "end": 22.14,
+      "text": "You just",
+      "speaker": "Caller",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 22.43,
+      "end": 25.73,
+      "text": "You you fail quicker, you this you that you",
+      "speaker": "Caller",
+      "confidence": -0.183,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 26.21,
+      "end": 28.19,
+      "text": "And for whatever reason",
+      "speaker": "Caller",
+      "confidence": -0.037,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 28.55,
+      "end": 29.25,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.226,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 29.7,
+      "end": 31.77,
+      "text": "We're not failing quick, we're not winning quick.",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 32.32,
+      "end": 32.86,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -1.172,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 33.41,
+      "end": 33.98,
+      "text": "You know.",
+      "speaker": "Caller",
+      "confidence": -0.36,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 34.18,
+      "end": 36.16,
+      "text": "For whatever reason.",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 36.87,
+      "end": 37.82,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 40.77,
+      "end": 43.49,
+      "text": "Mm. And I and I don't see anything changing.",
+      "speaker": "Caller",
+      "confidence": -0.173,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 43.94,
+      "end": 49.21,
+      "text": "Yeah. You know I see the same trend as as branded calling, but first a few work because",
+      "speaker": "Caller",
+      "confidence": -0.275,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 50.31,
+      "end": 55.55,
+      "text": "I don't think they have a mode like I said, I think I've said and I think that",
+      "speaker": "Caller",
+      "confidence": -0.246,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 58.15,
+      "end": 62.01,
+      "text": "Yeah, from what what I've Sean. No. We're not gonna win that Landau, guys.",
+      "speaker": "Caller",
+      "confidence": -0.236,
+      "low_confidence": false,
+      "corrections": [
+        "seen -> Sean",
+        "land -> Landau"
+      ]
+    },
+    {
+      "start": 62.98,
+      "end": 63.61,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.836,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 65.67,
+      "end": 69.09,
+      "text": "Can I ask why you think we're not gonna win or wouldn't win that Landau right?",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": [
+        "land -> Landau"
+      ]
+    },
+    {
+      "start": 69.63,
+      "end": 70.56,
+      "text": "Because we've",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 70.72,
+      "end": 73.57,
+      "text": "been in it for this long and they haven't even got a parlour.",
+      "speaker": "Caller",
+      "confidence": -0.115,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 74.27,
+      "end": 77.41,
+      "text": "No, we but just the the the the pace of um",
+      "speaker": "Caller",
+      "confidence": -0.526,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 79.04,
+      "end": 81.6,
+      "text": "Of of how long it takes to get a client.",
+      "speaker": "Caller",
+      "confidence": -0.127,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 82.37,
+      "end": 84.51,
+      "text": "Um and the fact that there's",
+      "speaker": "Caller",
+      "confidence": -0.156,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 84.93,
+      "end": 86.11,
+      "text": "Probably night.",
+      "speaker": "Caller",
+      "confidence": -0.483,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 86.24,
+      "end": 88.99,
+      "text": "exponential other clients entering the market.",
+      "speaker": "Caller",
+      "confidence": -0.146,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 89.57,
+      "end": 90.11,
+      "text": "Uh.",
+      "speaker": "Caller",
+      "confidence": -0.756,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 90.56,
+      "end": 94.59,
+      "text": "Not of what's happening is the software service thing, so I'm getting set up.",
+      "speaker": "Caller",
+      "confidence": -0.275,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 95.17,
+      "end": 98.14,
+      "text": "I asked I'm gonna play a sales force and all these things.",
+      "speaker": "Caller",
+      "confidence": -0.349,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 98.34,
+      "end": 102.17,
+      "text": "But actually happening is that these existing technologies are just",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 102.34,
+      "end": 103.39,
+      "text": "Adding modules.",
+      "speaker": "Caller",
+      "confidence": -0.056,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 103.94,
+      "end": 104.41,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.338,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 104.96,
+      "end": 108.25,
+      "text": "And you know, with I are to solve different problems and",
+      "speaker": "Caller",
+      "confidence": -0.24,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 108.87,
+      "end": 112.57,
+      "text": "And I think you know, data systems and stuff will inevitably add them.",
+      "speaker": "Caller",
+      "confidence": -0.115,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 113.38,
+      "end": 118.56,
+      "text": "And and it it just becomes easy for them to switch on and they don't need a contract with the new provider.",
+      "speaker": "Caller",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 119.17,
+      "end": 119.74,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.749,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 120.0,
+      "end": 122.37,
+      "text": "And I don't know what's out there, but uh",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 122.75,
+      "end": 124.77,
+      "text": "But that's essentially that we haven't got one.",
+      "speaker": "Caller",
+      "confidence": -0.236,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 125.28,
+      "end": 128.19,
+      "text": "So I just don't see us being able to",
+      "speaker": "Caller",
+      "confidence": -0.012,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 128.58,
+      "end": 131.61,
+      "text": "Just like okay, cool, this is working, let's be aggressive.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 132.16,
+      "end": 133.73,
+      "text": "And that we meet.",
+      "speaker": "Caller",
+      "confidence": -0.49,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 133.83,
+      "end": 137.41,
+      "text": "There there's nothing to show me that we we meet revenue targets.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 137.76,
+      "end": 139.36,
+      "text": "That in a year's time.",
+      "speaker": "Caller",
+      "confidence": -0.205,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 140.71,
+      "end": 144.13,
+      "text": "Like you're you're passionate and you're happy and uh",
+      "speaker": "Caller",
+      "confidence": -0.147,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 144.39,
+      "end": 145.89,
+      "text": "Making time.",
+      "speaker": "Caller",
+      "confidence": -0.292,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 146.11,
+      "end": 147.23,
+      "text": "Mm and",
+      "speaker": "Caller",
+      "confidence": -0.455,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 147.81,
+      "end": 150.37,
+      "text": "And I think the main point is is that",
+      "speaker": "Caller",
+      "confidence": -0.089,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 151.07,
+      "end": 152.51,
+      "text": "Is the opportunity cost.",
+      "speaker": "Caller",
+      "confidence": -0.161,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 153.79,
+      "end": 154.43,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.448,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 155.11,
+      "end": 160.09,
+      "text": "Um I don't think what you're doing is bad. I think it's good for your age and",
+      "speaker": "Caller",
+      "confidence": -0.125,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 160.39,
+      "end": 161.34,
+      "text": "Et cetera.",
+      "speaker": "Caller",
+      "confidence": -0.598,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 162.15,
+      "end": 162.78,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.946,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 165.06,
+      "end": 166.69,
+      "text": "I got it back in the",
+      "speaker": "Caller",
+      "confidence": -0.956,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 167.62,
+      "end": 168.67,
+      "text": "Jolettää.",
+      "speaker": "Caller",
+      "confidence": -0.869,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 172.32,
+      "end": 174.65,
+      "text": "But not wanting to file etc.",
+      "speaker": "Caller",
+      "confidence": -0.422,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 174.98,
+      "end": 178.69,
+      "text": "is actually like making you hold on to things too long. Mm-hmm.",
+      "speaker": "Caller",
+      "confidence": -0.119,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 179.23,
+      "end": 180.61,
+      "text": "And maybe it does a",
+      "speaker": "Caller",
+      "confidence": -0.427,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 181.57,
+      "end": 182.49,
+      "text": "A fixed.",
+      "speaker": "Caller",
+      "confidence": -0.719,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 182.95,
+      "end": 184.96,
+      "text": "What you think is reasonable.",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 185.51,
+      "end": 186.75,
+      "text": "How not for things.",
+      "speaker": "Caller",
+      "confidence": -0.792,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 187.62,
+      "end": 188.38,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 190.05,
+      "end": 191.13,
+      "text": "In your own world.",
+      "speaker": "Caller",
+      "confidence": -0.088,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 191.27,
+      "end": 192.77,
+      "text": "Uh yeah, that's it.",
+      "speaker": "Caller",
+      "confidence": -0.37,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 193.28,
+      "end": 193.92,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.067,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 194.53,
+      "end": 195.29,
+      "text": "And",
+      "speaker": "Caller",
+      "confidence": -0.61,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 195.84,
+      "end": 200.35,
+      "text": "And uh yeah, sorry, and then the but the most important thing I think is your opportunity cost back.",
+      "speaker": "Caller",
+      "confidence": -0.201,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 201.95,
+      "end": 204.8,
+      "text": "You could go into a business and",
+      "speaker": "Caller",
+      "confidence": -0.022,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 206.75,
+      "end": 209.95,
+      "text": "Have security, have this, have that, and have",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 213.06,
+      "end": 214.11,
+      "text": "Be involved but",
+      "speaker": "Caller",
+      "confidence": -0.356,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 214.21,
+      "end": 215.49,
+      "text": "With equity stacks.",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 216.71,
+      "end": 220.8,
+      "text": "With with the the with potential upside but high certainty.",
+      "speaker": "Caller",
+      "confidence": -0.313,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 221.35,
+      "end": 221.82,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.383,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 223.39,
+      "end": 225.76,
+      "text": "Like there's tons of other opportunities.",
+      "speaker": "Caller",
+      "confidence": -0.089,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 226.82,
+      "end": 227.58,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.686,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 228.45,
+      "end": 232.06,
+      "text": "And and something that I I I've I learned is that uh",
+      "speaker": "Caller",
+      "confidence": -0.208,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 232.74,
+      "end": 236.96,
+      "text": "Yeah, these tech businesses and stuff. We just don't have a competitive advantage in it.",
+      "speaker": "Caller",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 237.63,
+      "end": 239.29,
+      "text": "I've stayed away from that.",
+      "speaker": "Caller",
+      "confidence": -0.207,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 239.97,
+      "end": 240.64,
+      "text": "Alright.",
+      "speaker": "Caller",
+      "confidence": -0.522,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 240.8,
+      "end": 244.19,
+      "text": "So when I look at the other things that I can go do not find anyway.",
+      "speaker": "Caller",
+      "confidence": -0.477,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 244.87,
+      "end": 247.42,
+      "text": "And there's just so much value to be added.",
+      "speaker": "Caller",
+      "confidence": -0.116,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 247.94,
+      "end": 248.77,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.385,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 249.73,
+      "end": 250.85,
+      "text": "Relatively quick.",
+      "speaker": "Caller",
+      "confidence": -0.128,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 252.42,
+      "end": 253.25,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.82,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 257.22,
+      "end": 260.93,
+      "text": "And so that I I I I think you underweight the opportunity cost.",
+      "speaker": "Caller",
+      "confidence": -0.214,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 261.6,
+      "end": 264.35,
+      "text": "About what you could be doing with your Tom.",
+      "speaker": "Caller",
+      "confidence": -0.175,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 265.92,
+      "end": 269.15,
+      "text": "But there are people and aren't infrastructure and stuff.",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 270.31,
+      "end": 272.61,
+      "text": "While still achieving all your goals.",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 274.11,
+      "end": 274.53,
+      "text": "If",
+      "speaker": "Caller",
+      "confidence": -0.188,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 275.43,
+      "end": 277.98,
+      "text": "I don't know what the result are, maybe you should practice",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 278.15,
+      "end": 279.65,
+      "text": "Spend some.",
+      "speaker": "Caller",
+      "confidence": -0.475,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 279.81,
+      "end": 282.24,
+      "text": "You very confident in them that can share with me now.",
+      "speaker": "Caller",
+      "confidence": -0.288,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 282.95,
+      "end": 283.45,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.611,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 283.68,
+      "end": 286.65,
+      "text": "Uh what do you what's what is the deal load the puck?",
+      "speaker": "Caller",
+      "confidence": -0.32,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 287.84,
+      "end": 289.21,
+      "text": "You know what what it looks like.",
+      "speaker": "Caller",
+      "confidence": -0.24,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 290.02,
+      "end": 294.3,
+      "text": "So when you say idea we're speaking like in the context of business opportunity cost?",
+      "speaker": "Caller",
+      "confidence": -0.163,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 294.53,
+      "end": 296.51,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.358,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 296.67,
+      "end": 297.89,
+      "text": "Three years from now though.",
+      "speaker": "Caller",
+      "confidence": -0.147,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 300.1,
+      "end": 302.21,
+      "text": "Uhhuh. What what do you what do you have to do?",
+      "speaker": "Caller",
+      "confidence": -0.364,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 302.34,
+      "end": 308.93,
+      "text": "Okay, if if I'm gonna target my absolute ideal world, um",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 309.28,
+      "end": 311.39,
+      "text": "And this might be realistic. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.359,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 311.68,
+      "end": 315.17,
+      "text": "I deal be a brilliant younger.",
+      "speaker": "Caller",
+      "confidence": -0.526,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 315.33,
+      "end": 317.76,
+      "text": "My ideal world is to have enough money to be",
+      "speaker": "Caller",
+      "confidence": -0.044,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 317.92,
+      "end": 318.91,
+      "text": "Somewhat of a",
+      "speaker": "Caller",
+      "confidence": -0.302,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 319.17,
+      "end": 319.58,
+      "text": "Like",
+      "speaker": "Caller",
+      "confidence": -0.539,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 319.68,
+      "end": 323.52,
+      "text": "do like philanthropic work. That's genuinely my ideal world. Now",
+      "speaker": "Caller",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 323.68,
+      "end": 325.31,
+      "text": "I'm saying that because I don't know what",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 325.89,
+      "end": 327.9,
+      "text": "I don't know how much money that is or what that would be.",
+      "speaker": "Caller",
+      "confidence": -0.153,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 328.23,
+      "end": 337.18,
+      "text": "Mean, but if I had all the money in the world, I wouldn't sit and do nothing. Genuinely just that'd be the coolest thing. I'd go like bold bowels in Africa and do like that sort of stuff. Like But that's",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 338.82,
+      "end": 339.26,
+      "text": "Not.",
+      "speaker": "Caller",
+      "confidence": -0.126,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 339.78,
+      "end": 340.06,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.622,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 340.8,
+      "end": 341.21,
+      "text": "Maybe.",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 341.31,
+      "end": 342.59,
+      "text": "So practical.",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 342.82,
+      "end": 345.12,
+      "text": "Um at least definitely not right now. So",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 346.27,
+      "end": 347.9,
+      "text": "In my mind it's like I'm not.",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 348.77,
+      "end": 350.14,
+      "text": "I know I'm I know I I know I'm",
+      "speaker": "Caller",
+      "confidence": -0.236,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 350.4,
+      "end": 357.63,
+      "text": "mentioned to you I I don't like failing and I don't. And I I completely agree with the opportunity Cross. I agree with the, you know, potentially maybe like skewed",
+      "speaker": "Caller",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": [
+        "costs -> Cross"
+      ]
+    },
+    {
+      "start": 357.99,
+      "end": 360.96,
+      "text": "perspective in terms of what timelines are reasonable and what's not.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 361.38,
+      "end": 363.65,
+      "text": "But when I'd go a step further and say I'm also not",
+      "speaker": "Caller",
+      "confidence": -0.119,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 364.23,
+      "end": 365.37,
+      "text": "More Tard.",
+      "speaker": "Caller",
+      "confidence": -1.001,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 365.7,
+      "end": 367.26,
+      "text": "To anything.",
+      "speaker": "Caller",
+      "confidence": -0.365,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 367.36,
+      "end": 368.83,
+      "text": "Uh don't want to fail, but",
+      "speaker": "Caller",
+      "confidence": -0.157,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 369.06,
+      "end": 371.49,
+      "text": "This is about having this conversation with you, right? Because if",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 371.65,
+      "end": 376.61,
+      "text": "When if if black people that are like uh um let's say trust come to me and say, Hey I'm here.",
+      "speaker": "Caller",
+      "confidence": -0.202,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 377.41,
+      "end": 379.01,
+      "text": "This you know might not be",
+      "speaker": "Caller",
+      "confidence": -0.066,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 379.11,
+      "end": 380.29,
+      "text": "The best idea I like.",
+      "speaker": "Caller",
+      "confidence": -0.197,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 380.55,
+      "end": 381.28,
+      "text": "You know, then",
+      "speaker": "Caller",
+      "confidence": -0.242,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 381.76,
+      "end": 383.9,
+      "text": "Like that's what I'm looking for. It's more like",
+      "speaker": "Caller",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 384.03,
+      "end": 385.25,
+      "text": "For some other reason.",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 385.67,
+      "end": 386.24,
+      "text": "I don't",
+      "speaker": "Caller",
+      "confidence": -0.096,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 386.63,
+      "end": 391.97,
+      "text": "That conversation's not happening internally, if that makes sense. So uh that at least for me it needs to come from",
+      "speaker": "Caller",
+      "confidence": -0.084,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 392.51,
+      "end": 394.05,
+      "text": "An external source",
+      "speaker": "Caller",
+      "confidence": -0.019,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 394.21,
+      "end": 395.13,
+      "text": "That uh",
+      "speaker": "Caller",
+      "confidence": -0.239,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 395.49,
+      "end": 402.4,
+      "text": "Like trust in that I believe is actually like looking out for my best interest and there's no like any you know maliciousness or anything like that. Which is obviously the case.",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 402.72,
+      "end": 403.33,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.121,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 404.19,
+      "end": 404.86,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 405.15,
+      "end": 408.35,
+      "text": "I agree w I agree with all of that, right? And I guess what I'm trying to get to is that",
+      "speaker": "Caller",
+      "confidence": -0.078,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 408.48,
+      "end": 409.21,
+      "text": "I'm not.",
+      "speaker": "Caller",
+      "confidence": -0.149,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 409.86,
+      "end": 411.04,
+      "text": "It's not like uh",
+      "speaker": "Caller",
+      "confidence": -0.306,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 411.2,
+      "end": 413.57,
+      "text": "I have you know voice I didn't sound like ma",
+      "speaker": "Caller",
+      "confidence": -0.263,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 414.05,
+      "end": 418.4,
+      "text": "infant child and I can you know never let it go, but I can let it go like that. I have no",
+      "speaker": "Caller",
+      "confidence": -0.137,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 418.66,
+      "end": 422.62,
+      "text": "There's no attachment. I could even let Brad and Calling go like that. Like I could.",
+      "speaker": "Caller",
+      "confidence": -0.116,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 422.88,
+      "end": 424.09,
+      "text": "If there was something.",
+      "speaker": "Caller",
+      "confidence": -0.347,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 424.23,
+      "end": 426.97,
+      "text": "From an opportunity cost perspective, that made more",
+      "speaker": "Caller",
+      "confidence": -0.102,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 427.2,
+      "end": 427.87,
+      "text": "Sense.",
+      "speaker": "Caller",
+      "confidence": -0.538,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 428.16,
+      "end": 430.72,
+      "text": "Right, so it's not that I'm tired to",
+      "speaker": "Caller",
+      "confidence": -0.058,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 431.55,
+      "end": 434.43,
+      "text": "Or taste to these things, it's more just like",
+      "speaker": "Caller",
+      "confidence": -0.342,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 436.07,
+      "end": 437.12,
+      "text": "Oh, I'm not gonna fail.",
+      "speaker": "Caller",
+      "confidence": -0.173,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 437.25,
+      "end": 438.3,
+      "text": "Which means I'll have to",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 439.07,
+      "end": 445.57,
+      "text": "Continue. Does that does that make sense? Exactly that's why I mean it's uh not. Yeah, exactly.",
+      "speaker": "Caller",
+      "confidence": -0.313,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 445.67,
+      "end": 446.46,
+      "text": "It's like",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 446.79,
+      "end": 449.98,
+      "text": "Yes, the hypothesis is correct, then I think that",
+      "speaker": "Caller",
+      "confidence": -0.252,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 450.53,
+      "end": 453.34,
+      "text": "You you don't know what's out there. And uh",
+      "speaker": "Caller",
+      "confidence": -0.205,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 454.11,
+      "end": 456.03,
+      "text": "you can achieve that goal.",
+      "speaker": "Caller",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 457.79,
+      "end": 460.51,
+      "text": "With a clearer part of more certainty with",
+      "speaker": "Caller",
+      "confidence": -0.228,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 461.57,
+      "end": 467.01,
+      "text": "Yeah, and that certainty's huge. The uncertainty will that you live in with these startups that's",
+      "speaker": "Caller",
+      "confidence": -0.268,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 467.78,
+      "end": 468.67,
+      "text": "It's not left.",
+      "speaker": "Caller",
+      "confidence": -0.381,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 469.15,
+      "end": 473.44,
+      "text": "It's an emotional roller coaster. And I mean all careers are but like it's",
+      "speaker": "Caller",
+      "confidence": -0.235,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 473.67,
+      "end": 477.12,
+      "text": "I take it, you cannot have the same expected outcome without that.",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 477.99,
+      "end": 483.1,
+      "text": "Um I just don't think you know that. No I'm not exposed to it.",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 483.62,
+      "end": 484.38,
+      "text": "I'm not.",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 484.87,
+      "end": 488.29,
+      "text": "You're completely you're you're right. Again, like if I if I",
+      "speaker": "Caller",
+      "confidence": -0.117,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 489.25,
+      "end": 494.33,
+      "text": "saw this massive other opportunity which made sense to stop everything I was currently doing, I'd come to and say, Hey son.",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 494.85,
+      "end": 499.42,
+      "text": "mass opportunity, I think I should stop everything I'm doing. Do you know what I mean? Like but I don't",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 499.94,
+      "end": 501.63,
+      "text": "I don't have that, um",
+      "speaker": "Caller",
+      "confidence": -0.11,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 503.04,
+      "end": 504.16,
+      "text": "I don't know, exposure.",
+      "speaker": "Caller",
+      "confidence": -0.237,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 505.09,
+      "end": 507.39,
+      "text": "I don't know what you'd call it, maybe exposure.",
+      "speaker": "Caller",
+      "confidence": -0.089,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 507.87,
+      "end": 508.96,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.216,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 510.69,
+      "end": 514.17,
+      "text": "Which is why it sucked me well, this is what I have now.",
+      "speaker": "Caller",
+      "confidence": -0.193,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 514.72,
+      "end": 515.29,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.102,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 518.11,
+      "end": 521.47,
+      "text": "I don't know if this is the right mindset, but it's like this is what I have now. So it's like",
+      "speaker": "Caller",
+      "confidence": -0.056,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 522.53,
+      "end": 523.84,
+      "text": "Makes the most sense to do",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 523.97,
+      "end": 525.53,
+      "text": "That as opposed to potentially",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 525.67,
+      "end": 527.23,
+      "text": "Stopping this and maybe not finding",
+      "speaker": "Caller",
+      "confidence": -0.046,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 527.87,
+      "end": 532.16,
+      "text": "Do you know what I mean? Like maybe unlock look elsewhere and then put these things on port, but then it's like well",
+      "speaker": "Caller",
+      "confidence": -0.078,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 532.9,
+      "end": 536.22,
+      "text": "nothing comes out of that and then I've stopped what I was doing and then I don't have anything",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 536.55,
+      "end": 540.89,
+      "text": "New and that might be more of like a fear based mindset, so it's not must say that it's right, but like",
+      "speaker": "Caller",
+      "confidence": -0.147,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 543.52,
+      "end": 547.52,
+      "text": "Uh it is what I think, if that makes sense. Um",
+      "speaker": "Caller",
+      "confidence": -0.157,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 549.25,
+      "end": 549.98,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.189,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 553.15,
+      "end": 553.98,
+      "text": "Yeah, it's like",
+      "speaker": "Caller",
+      "confidence": -0.108,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 557.57,
+      "end": 560.51,
+      "text": "I still believe in everything as much as I believed in it from the beginning.",
+      "speaker": "Caller",
+      "confidence": -0.004,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 561.06,
+      "end": 564.29,
+      "text": "I really do. Like that that belief hasn't changed.",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 565.19,
+      "end": 566.75,
+      "text": "But I'm also just like",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 568.45,
+      "end": 571.42,
+      "text": "Yeah, I mean I guess I'm also just like looking at you and being like Hi",
+      "speaker": "Caller",
+      "confidence": -0.071,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 572.19,
+      "end": 577.12,
+      "text": "Am I being retarded? You know? That's kinda what um",
+      "speaker": "Caller",
+      "confidence": -0.215,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 577.41,
+      "end": 579.13,
+      "text": "That's kind of what a um",
+      "speaker": "Caller",
+      "confidence": -0.278,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 580.45,
+      "end": 581.57,
+      "text": "Think you and it's not like",
+      "speaker": "Caller",
+      "confidence": -0.31,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 582.85,
+      "end": 586.21,
+      "text": "It's not because I'd out like myself or the product or anything like that. It's more just like",
+      "speaker": "Caller",
+      "confidence": -0.078,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 586.72,
+      "end": 589.89,
+      "text": "And again, it probably comes back to it's the exposure that I I have.",
+      "speaker": "Caller",
+      "confidence": -0.146,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 590.47,
+      "end": 593.15,
+      "text": "Which is all I can know, if that makes sense.",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 593.28,
+      "end": 595.45,
+      "text": "And then it's like based off that I'll think this, but",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 595.91,
+      "end": 597.02,
+      "text": "I'm definitely not.",
+      "speaker": "Caller",
+      "confidence": -0.091,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 597.51,
+      "end": 599.61,
+      "text": "Saying I'm right because I only have",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 599.78,
+      "end": 600.13,
+      "text": "But",
+      "speaker": "Caller",
+      "confidence": -0.353,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 600.45,
+      "end": 602.43,
+      "text": "limited exposure which is guarding my",
+      "speaker": "Caller",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 602.69,
+      "end": 603.26,
+      "text": "Decision.",
+      "speaker": "Caller",
+      "confidence": -0.147,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 603.87,
+      "end": 604.32,
+      "text": "Does that",
+      "speaker": "Caller",
+      "confidence": -0.124,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 604.8,
+      "end": 605.69,
+      "text": "Does that make sense?",
+      "speaker": "Caller",
+      "confidence": -0.006,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 606.98,
+      "end": 607.93,
+      "text": "Yeah. Um",
+      "speaker": "Caller",
+      "confidence": -0.388,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 610.47,
+      "end": 611.13,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.116,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 615.71,
+      "end": 616.67,
+      "text": "Yeah, I don't",
+      "speaker": "Caller",
+      "confidence": -0.149,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 620.35,
+      "end": 620.96,
+      "text": "I don't know.",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 621.31,
+      "end": 623.07,
+      "text": "to be honest. I I really don't",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 623.65,
+      "end": 624.67,
+      "text": "We don't know.",
+      "speaker": "Caller",
+      "confidence": -0.089,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 625.15,
+      "end": 625.6,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.149,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 625.73,
+      "end": 631.9,
+      "text": "Meaning like I definitely relate to the opportunity cost aspect. Meaning like I definitely still think let's just use AR calling. Let's just",
+      "speaker": "Caller",
+      "confidence": -0.101,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 632.23,
+      "end": 632.54,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.55,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 632.67,
+      "end": 634.81,
+      "text": "Leave the branded calling stuff for that because",
+      "speaker": "Caller",
+      "confidence": -0.227,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 635.14,
+      "end": 635.77,
+      "text": "I think that",
+      "speaker": "Caller",
+      "confidence": -0.216,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 636.13,
+      "end": 638.4,
+      "text": "We are not a massive breakthrough there, please.",
+      "speaker": "Caller",
+      "confidence": -0.249,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 638.79,
+      "end": 639.74,
+      "text": "It should be.",
+      "speaker": "Caller",
+      "confidence": -0.135,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 640.1,
+      "end": 642.01,
+      "text": "Um but the voice it is like",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 644.99,
+      "end": 645.63,
+      "text": "Everything",
+      "speaker": "Caller",
+      "confidence": -0.021,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 645.73,
+      "end": 646.85,
+      "text": "Still makes",
+      "speaker": "Caller",
+      "confidence": -0.138,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 648.55,
+      "end": 654.37,
+      "text": "sense to me. But those points that you mentioned also make sense, right? The the modes, the fact that like you're",
+      "speaker": "Caller",
+      "confidence": -0.131,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 654.88,
+      "end": 663.49,
+      "text": "telephony providers are adding this onto their solutions and then they're already in the big clouds then now you're fighting with those people and you're likely not gonna beat those like those things make sense.",
+      "speaker": "Caller",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 663.97,
+      "end": 664.61,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 665.54,
+      "end": 670.14,
+      "text": "But then I'm just like okay, well then there's all these other clients which aren't working with Amazon or",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 670.75,
+      "end": 674.75,
+      "text": "you know, Connects or Ava or whatever, Cisco and all those guys who",
+      "speaker": "Caller",
+      "confidence": -0.182,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 675.14,
+      "end": 678.11,
+      "text": "Wouldn't necessarily have direct access to those and who those",
+      "speaker": "Caller",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 678.31,
+      "end": 680.25,
+      "text": "Who those big guys probably wouldn't ever wanna",
+      "speaker": "Caller",
+      "confidence": -0.169,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 680.35,
+      "end": 682.14,
+      "text": "Work with. So then it's like well, maybe we could",
+      "speaker": "Caller",
+      "confidence": -0.368,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 682.34,
+      "end": 683.55,
+      "text": "You know, look at something.",
+      "speaker": "Caller",
+      "confidence": -0.19,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 684.03,
+      "end": 684.67,
+      "text": "More like",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 685.06,
+      "end": 686.08,
+      "text": "That so it's like",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 693.38,
+      "end": 695.1,
+      "text": "I guess it's like I'm not I don't have",
+      "speaker": "Caller",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 695.52,
+      "end": 700.16,
+      "text": "solutions just to be clear. I'm not coming with solutions. I'm coming with like I'm just kind of",
+      "speaker": "Caller",
+      "confidence": -0.078,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 700.99,
+      "end": 702.46,
+      "text": "Maybe explaining where",
+      "speaker": "Caller",
+      "confidence": -0.171,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 703.43,
+      "end": 707.58,
+      "text": "Like my head's out.",
+      "speaker": "Caller",
+      "confidence": -0.31,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 707.87,
+      "end": 711.9,
+      "text": "And'cause I don't know what the next step so I'm just letting it talk. Okay.",
+      "speaker": "Caller",
+      "confidence": -0.116,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 712.1,
+      "end": 714.88,
+      "text": "No, thank you. I'm just I'm just yeah, I'm gonna make sure that we're",
+      "speaker": "Caller",
+      "confidence": -0.161,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 715.46,
+      "end": 716.73,
+      "text": "But I guess first",
+      "speaker": "Caller",
+      "confidence": -0.161,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 716.99,
+      "end": 717.37,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.595,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 717.83,
+      "end": 719.65,
+      "text": "Expressing myself properly.",
+      "speaker": "Caller",
+      "confidence": -0.129,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 720.39,
+      "end": 722.49,
+      "text": "So that we're on the same page there and there's no like",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 722.79,
+      "end": 724.73,
+      "text": "Massalama there, which I think is important.",
+      "speaker": "Caller",
+      "confidence": -0.583,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 725.35,
+      "end": 726.05,
+      "text": "And then",
+      "speaker": "Caller",
+      "confidence": -0.028,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 726.63,
+      "end": 728.99,
+      "text": "Well yeah, also just kind of reaching that like",
+      "speaker": "Caller",
+      "confidence": -0.277,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 732.58,
+      "end": 733.28,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 739.01,
+      "end": 740.99,
+      "text": "There's no change in",
+      "speaker": "Caller",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 741.63,
+      "end": 742.37,
+      "text": "Believe.",
+      "speaker": "Caller",
+      "confidence": -0.253,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 743.11,
+      "end": 744.09,
+      "text": "From my side.",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 744.23,
+      "end": 747.01,
+      "text": "It's literally just what you said, which is like well",
+      "speaker": "Caller",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 747.59,
+      "end": 750.05,
+      "text": "of the ten billion things that someone could be doing.",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 750.59,
+      "end": 751.52,
+      "text": "Is this the right?",
+      "speaker": "Caller",
+      "confidence": -0.158,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 751.87,
+      "end": 753.6,
+      "text": "thing to be doing. And it's like",
+      "speaker": "Caller",
+      "confidence": -0.135,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 754.05,
+      "end": 756.06,
+      "text": "There's a yes and there's also",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 756.74,
+      "end": 758.08,
+      "text": "A knot in my head.",
+      "speaker": "Caller",
+      "confidence": -0.28,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 758.4,
+      "end": 759.07,
+      "text": "And it's like",
+      "speaker": "Caller",
+      "confidence": -0.171,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 759.39,
+      "end": 761.73,
+      "text": "The no is more just like not because I actually",
+      "speaker": "Caller",
+      "confidence": -0.1,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 761.89,
+      "end": 764.13,
+      "text": "think no this is bad. It's more just like well",
+      "speaker": "Caller",
+      "confidence": -0.165,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 766.43,
+      "end": 773.34,
+      "text": "This is where we're at. Granted, there's proposals out, things are you know, could go well, could not go well. We don't we don't really know. And that's where I'm kind of like, Well",
+      "speaker": "Caller",
+      "confidence": -0.125,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 774.18,
+      "end": 775.55,
+      "text": "sitting in saying like well",
+      "speaker": "Caller",
+      "confidence": -0.506,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 778.05,
+      "end": 779.39,
+      "text": "Could be good.",
+      "speaker": "Caller",
+      "confidence": -0.064,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 780.39,
+      "end": 783.29,
+      "text": "But of your own.",
+      "speaker": "Caller",
+      "confidence": -0.721,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 783.49,
+      "end": 786.27,
+      "text": "Your goal was to make a hundred million rand that's one thing.",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 786.95,
+      "end": 792.51,
+      "text": "Your goal is to have passive income so that you don't have to worry about money and can do go do what's meaningful to you.",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 792.74,
+      "end": 793.25,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.035,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 793.63,
+      "end": 794.53,
+      "text": "Oh.",
+      "speaker": "Caller",
+      "confidence": -1.057,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 794.69,
+      "end": 797.25,
+      "text": "But actually your goal is okay, how do I get",
+      "speaker": "Caller",
+      "confidence": -0.17,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 797.89,
+      "end": 799.74,
+      "text": "Over the next two years to",
+      "speaker": "Caller",
+      "confidence": -0.358,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 800.26,
+      "end": 802.11,
+      "text": "Sixty grand in your TN crown.",
+      "speaker": "Caller",
+      "confidence": -0.197,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 802.88,
+      "end": 805.5,
+      "text": "And that will continue to go with time, but uh",
+      "speaker": "Caller",
+      "confidence": -0.249,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 806.21,
+      "end": 809.15,
+      "text": "That's what my bow is. And when you said that as a bowl is fucked.",
+      "speaker": "Caller",
+      "confidence": -0.363,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 810.53,
+      "end": 811.74,
+      "text": "Oh okay.",
+      "speaker": "Caller",
+      "confidence": -0.388,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 811.87,
+      "end": 813.02,
+      "text": "I just do.",
+      "speaker": "Caller",
+      "confidence": -0.395,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 815.87,
+      "end": 817.47,
+      "text": "Appropriate and",
+      "speaker": "Caller",
+      "confidence": -0.554,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 818.05,
+      "end": 821.28,
+      "text": "And find it and then do the match and get my",
+      "speaker": "Caller",
+      "confidence": -0.226,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 821.38,
+      "end": 823.01,
+      "text": "Ah shit, well I just need it.",
+      "speaker": "Caller",
+      "confidence": -0.364,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 825.6,
+      "end": 829.18,
+      "text": "Protect this business that exists in Jodeberg, offer to",
+      "speaker": "Caller",
+      "confidence": -0.284,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 829.28,
+      "end": 831.17,
+      "text": "Expand it to Cape Town.",
+      "speaker": "Caller",
+      "confidence": -0.234,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 831.3,
+      "end": 832.96,
+      "text": "And do styles and get",
+      "speaker": "Caller",
+      "confidence": -0.329,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 833.06,
+      "end": 836.32,
+      "text": "You know, Chmission or",
+      "speaker": "Caller",
+      "confidence": -0.568,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 836.83,
+      "end": 843.55,
+      "text": "There's a million different ways to do it. Especially when you just uh Oh my goal is actually to get to sixty grand in your T in coming two years.",
+      "speaker": "Caller",
+      "confidence": -0.183,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 844.19,
+      "end": 845.57,
+      "text": "It probably wouldn't say.",
+      "speaker": "Caller",
+      "confidence": -0.125,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 845.89,
+      "end": 848.96,
+      "text": "Well let me go do an overnight thing like a tech company.",
+      "speaker": "Caller",
+      "confidence": -0.177,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 849.67,
+      "end": 850.14,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.17,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 850.95,
+      "end": 853.05,
+      "text": "You wouldn't say that, yeah. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.22,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 853.47,
+      "end": 856.29,
+      "text": "And so that's that's that's what I'm pointing out.",
+      "speaker": "Caller",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 856.42,
+      "end": 858.33,
+      "text": "You're right, and I guess I think my goal was",
+      "speaker": "Caller",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 860.99,
+      "end": 861.53,
+      "text": "A lot.",
+      "speaker": "Caller",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 862.56,
+      "end": 864.16,
+      "text": "Big uh because ma",
+      "speaker": "Caller",
+      "confidence": -0.458,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 865.92,
+      "end": 871.93,
+      "text": "goal goal is to like to like you mentioned, like meaningful stuff. And to do meaningful stuff you need meaningful",
+      "speaker": "Caller",
+      "confidence": -0.108,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 872.35,
+      "end": 872.96,
+      "text": "Cash.",
+      "speaker": "Caller",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 873.51,
+      "end": 875.42,
+      "text": "Gee substantial cash.",
+      "speaker": "Caller",
+      "confidence": -0.491,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 875.55,
+      "end": 876.35,
+      "text": "To do that.",
+      "speaker": "Caller",
+      "confidence": -0.232,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 876.64,
+      "end": 878.01,
+      "text": "So I guess that's why I was",
+      "speaker": "Caller",
+      "confidence": -0.102,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 882.79,
+      "end": 884.03,
+      "text": "looking at things like say",
+      "speaker": "Caller",
+      "confidence": -0.259,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 884.48,
+      "end": 885.41,
+      "text": "Larger",
+      "speaker": "Caller",
+      "confidence": -0.229,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 886.43,
+      "end": 887.07,
+      "text": "Things.",
+      "speaker": "Caller",
+      "confidence": -0.614,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 887.55,
+      "end": 889.05,
+      "text": "And my hair was always aqui, uh",
+      "speaker": "Caller",
+      "confidence": -0.386,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 889.15,
+      "end": 892.03,
+      "text": "But you only really need one large thing to Landau in order for it to make",
+      "speaker": "Caller",
+      "confidence": -0.056,
+      "low_confidence": false,
+      "corrections": [
+        "land -> Landau"
+      ]
+    },
+    {
+      "start": 893.03,
+      "end": 893.66,
+      "text": "Sands.",
+      "speaker": "Caller",
+      "confidence": -0.503,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 894.11,
+      "end": 894.72,
+      "text": "But of course.",
+      "speaker": "Caller",
+      "confidence": -0.149,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 894.88,
+      "end": 896.96,
+      "text": "larger things have a less lower probability of",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 897.09,
+      "end": 897.69,
+      "text": "Flanding.",
+      "speaker": "Caller",
+      "confidence": -0.633,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 898.69,
+      "end": 899.1,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.903,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 900.26,
+      "end": 907.36,
+      "text": "But yes, you're you're right. If it's like if your goal's sixty thousand Frans and you're T income, then does it make sense to do an all the mapping tech business.",
+      "speaker": "Caller",
+      "confidence": -0.212,
+      "low_confidence": false,
+      "corrections": [
+        "francs -> Frans"
+      ]
+    },
+    {
+      "start": 908.23,
+      "end": 910.53,
+      "text": "Probably not. It doesn't seem like the smartest.",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 910.79,
+      "end": 912.09,
+      "text": "Thing to do, I guess my",
+      "speaker": "Caller",
+      "confidence": -0.176,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 912.42,
+      "end": 914.91,
+      "text": "Go, which I don't think I actually necessarily defant.",
+      "speaker": "Caller",
+      "confidence": -0.24,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 915.33,
+      "end": 919.71,
+      "text": "with myself as well just like well I wanna do all these big things, which means I need big money to do these big things.",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 920.07,
+      "end": 921.25,
+      "text": "And big money comes from",
+      "speaker": "Caller",
+      "confidence": -0.091,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 922.79,
+      "end": 923.2,
+      "text": "Please.",
+      "speaker": "Caller",
+      "confidence": -0.64,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 923.43,
+      "end": 926.01,
+      "text": "Like big swings like the drone",
+      "speaker": "Caller",
+      "confidence": -0.289,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 926.18,
+      "end": 929.02,
+      "text": "In that language it's not big money.",
+      "speaker": "Caller",
+      "confidence": -0.223,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 929.73,
+      "end": 930.62,
+      "text": "Security.",
+      "speaker": "Caller",
+      "confidence": -0.066,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 930.72,
+      "end": 932.38,
+      "text": "And I'm not doing that is just",
+      "speaker": "Caller",
+      "confidence": -0.277,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 933.89,
+      "end": 936.29,
+      "text": "Creating a ton of money and being able to split off of it.",
+      "speaker": "Caller",
+      "confidence": -0.104,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 936.99,
+      "end": 938.43,
+      "text": "Either way I'm doing it, it's just",
+      "speaker": "Caller",
+      "confidence": -0.181,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 938.66,
+      "end": 940.73,
+      "text": "having save and UT in constraints.",
+      "speaker": "Caller",
+      "confidence": -0.565,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 942.82,
+      "end": 946.81,
+      "text": "The language you were using is what drives you to think that it has to be some big",
+      "speaker": "Caller",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 947.75,
+      "end": 949.09,
+      "text": "Start up thing or",
+      "speaker": "Caller",
+      "confidence": -0.225,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 949.44,
+      "end": 951.17,
+      "text": "You know, that has a wild success.",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 951.39,
+      "end": 953.44,
+      "text": "You have a share in that thing, yeah. You sell out.",
+      "speaker": "Caller",
+      "confidence": -0.325,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 955.39,
+      "end": 956.86,
+      "text": "That actually wasn't your goal.",
+      "speaker": "Caller",
+      "confidence": -0.013,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 957.22,
+      "end": 957.92,
+      "text": "You're always.",
+      "speaker": "Caller",
+      "confidence": -0.493,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 958.02,
+      "end": 960.03,
+      "text": "I want big money. So that.",
+      "speaker": "Caller",
+      "confidence": -0.262,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 960.51,
+      "end": 961.34,
+      "text": "I have freedom.",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 962.37,
+      "end": 964.64,
+      "text": "You didn't want big money. You didn't want",
+      "speaker": "Caller",
+      "confidence": -0.046,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 964.83,
+      "end": 969.41,
+      "text": "A crazy lifestyle and a Ferrari and a whatever you actually wanted.",
+      "speaker": "Caller",
+      "confidence": -0.224,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 970.27,
+      "end": 970.81,
+      "text": "Second.",
+      "speaker": "Caller",
+      "confidence": -0.822,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 970.91,
+      "end": 972.96,
+      "text": "Financial security so that",
+      "speaker": "Caller",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 973.51,
+      "end": 978.75,
+      "text": "Yeah. And but but by using the words big money it led you down the the wrong the wrong path.",
+      "speaker": "Caller",
+      "confidence": -0.146,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 980.23,
+      "end": 982.24,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.074,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 984.32,
+      "end": 985.95,
+      "text": "That that's right, that's what I'm that's what I'm",
+      "speaker": "Caller",
+      "confidence": -0.176,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 986.24,
+      "end": 989.02,
+      "text": "Okay. No, I see what you're saying. I think that could be right.",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 994.24,
+      "end": 995.39,
+      "text": "It could be",
+      "speaker": "Caller",
+      "confidence": -0.05,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 995.97,
+      "end": 998.78,
+      "text": "It could be yeah, it could be right. I just I never think",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1000.19,
+      "end": 1001.09,
+      "text": "Right or wrong.",
+      "speaker": "Caller",
+      "confidence": -0.142,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1001.86,
+      "end": 1002.88,
+      "text": "I never think",
+      "speaker": "Caller",
+      "confidence": -0.01,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1004.35,
+      "end": 1008.32,
+      "text": "Small. I don't know what it is. I just",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1009.73,
+      "end": 1010.69,
+      "text": "I don't like",
+      "speaker": "Caller",
+      "confidence": -0.24,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1011.75,
+      "end": 1013.21,
+      "text": "Small to me.",
+      "speaker": "Caller",
+      "confidence": -0.22,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1016.16,
+      "end": 1016.67,
+      "text": "Is lucky.",
+      "speaker": "Caller",
+      "confidence": -0.473,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1018.4,
+      "end": 1019.65,
+      "text": "I want to say boring.",
+      "speaker": "Caller",
+      "confidence": -0.356,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1019.94,
+      "end": 1021.63,
+      "text": "If that's the right word, it's like",
+      "speaker": "Caller",
+      "confidence": -0.071,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1022.34,
+      "end": 1024.67,
+      "text": "Oh, we can do better than that.",
+      "speaker": "Caller",
+      "confidence": -0.148,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1025.44,
+      "end": 1028.48,
+      "text": "And again, I'm not saying it's right, it's just my head, I don't know.",
+      "speaker": "Caller",
+      "confidence": -0.084,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1028.74,
+      "end": 1030.65,
+      "text": "But that's how it thinks.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1031.49,
+      "end": 1032.61,
+      "text": "It's also nonsense.",
+      "speaker": "Caller",
+      "confidence": -0.109,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1034.5,
+      "end": 1034.97,
+      "text": "F",
+      "speaker": "Caller",
+      "confidence": -1.123,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1037.51,
+      "end": 1040.41,
+      "text": "You know, it's the narrative that that people I intend.",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1041.63,
+      "end": 1045.15,
+      "text": "We gotta do something special or whatever to be special.",
+      "speaker": "Caller",
+      "confidence": -0.037,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1045.31,
+      "end": 1046.53,
+      "text": "Well big to be",
+      "speaker": "Caller",
+      "confidence": -0.477,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1047.2,
+      "end": 1048.96,
+      "text": "And non Trump. Yeah, that's like that.",
+      "speaker": "Caller",
+      "confidence": -0.453,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1049.7,
+      "end": 1054.3,
+      "text": "And I'm the same, like I I can't do I literally send to to a lawyer.",
+      "speaker": "Caller",
+      "confidence": -0.154,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1054.79,
+      "end": 1056.96,
+      "text": "Of the these guys I'm doing a deal with, that's it.",
+      "speaker": "Caller",
+      "confidence": -0.197,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1057.92,
+      "end": 1062.72,
+      "text": "I'm just I said on the email I'm sorry that this is unprofessional, but I actually just don't have time for this.",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1063.14,
+      "end": 1063.55,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.586,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1064.19,
+      "end": 1067.36,
+      "text": "make these changes and make my life easier, I'm gonna get working.",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1067.68,
+      "end": 1068.19,
+      "text": "You know?",
+      "speaker": "Caller",
+      "confidence": -0.439,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1068.42,
+      "end": 1068.77,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.449,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1068.87,
+      "end": 1069.63,
+      "text": "Slot it out.",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1070.56,
+      "end": 1070.88,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.5,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1071.39,
+      "end": 1075.58,
+      "text": "I I don't have time for untimulating things, I understand that part.",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1076.39,
+      "end": 1079.55,
+      "text": "But I think there's there's that that ideal perceived self.",
+      "speaker": "Caller",
+      "confidence": -0.18,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1080.26,
+      "end": 1081.44,
+      "text": "Which isn't actually",
+      "speaker": "Caller",
+      "confidence": -0.045,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1082.82,
+      "end": 1085.69,
+      "text": "You know, it's it's just an ego thing or something.",
+      "speaker": "Caller",
+      "confidence": -0.142,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1086.21,
+      "end": 1087.55,
+      "text": "That confuses the two.",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1088.61,
+      "end": 1092.57,
+      "text": "And yeah you you y you can be doing things that",
+      "speaker": "Caller",
+      "confidence": -0.138,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1092.67,
+      "end": 1095.42,
+      "text": "On paper, like oh I mean insurance, I mean that's it.",
+      "speaker": "Caller",
+      "confidence": -0.272,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1095.71,
+      "end": 1098.78,
+      "text": "That looks boring, but actually I think of what a Grammy does.",
+      "speaker": "Caller",
+      "confidence": -0.205,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1099.36,
+      "end": 1103.9,
+      "text": "He's got a portfolio of multiple businesses working with high energy people. Mm-hmm.",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1104.93,
+      "end": 1107.97,
+      "text": "building little companies all the time, building annuity income.",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1108.35,
+      "end": 1108.89,
+      "text": "Uh.",
+      "speaker": "Caller",
+      "confidence": -0.286,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1109.67,
+      "end": 1111.77,
+      "text": "Storing new product all the time.",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1112.0,
+      "end": 1112.51,
+      "text": "No.",
+      "speaker": "Caller",
+      "confidence": -0.514,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1113.79,
+      "end": 1114.88,
+      "text": "Like the six out.",
+      "speaker": "Caller",
+      "confidence": -0.726,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1115.94,
+      "end": 1118.37,
+      "text": "And it's hard work and it's not taken for granted.",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1118.88,
+      "end": 1119.55,
+      "text": "And that's",
+      "speaker": "Caller",
+      "confidence": -0.171,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1120.51,
+      "end": 1123.07,
+      "text": "What's rocket science is is a simplicity.",
+      "speaker": "Caller",
+      "confidence": -0.174,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1123.59,
+      "end": 1126.72,
+      "text": "It's that's a big thing and brilliant because just bala.",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1127.46,
+      "end": 1133.21,
+      "text": "Working hard, finding opportunities, working with energising people, getting shit done, pulling it all together.",
+      "speaker": "Caller",
+      "confidence": -0.046,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1134.15,
+      "end": 1138.27,
+      "text": "constantly moving, you can actually build this safety without",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1138.75,
+      "end": 1140.54,
+      "text": "Needing to go build Tesla.",
+      "speaker": "Caller",
+      "confidence": -0.271,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1141.35,
+      "end": 1141.69,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.684,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1141.86,
+      "end": 1143.2,
+      "text": "It's uh that's actually",
+      "speaker": "Caller",
+      "confidence": -0.406,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1143.39,
+      "end": 1144.16,
+      "text": "She's small.",
+      "speaker": "Caller",
+      "confidence": -0.409,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1144.77,
+      "end": 1146.11,
+      "text": "You know, and I think that uh",
+      "speaker": "Caller",
+      "confidence": -0.163,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1147.07,
+      "end": 1149.44,
+      "text": "Lot of people have a chip on their shoulder because",
+      "speaker": "Caller",
+      "confidence": -0.135,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1150.56,
+      "end": 1150.91,
+      "text": "It's",
+      "speaker": "Caller",
+      "confidence": -0.343,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1152.1,
+      "end": 1155.1,
+      "text": "smart and successful and doing great things has been",
+      "speaker": "Caller",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1155.87,
+      "end": 1157.15,
+      "text": "Define by",
+      "speaker": "Caller",
+      "confidence": -0.479,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1157.7,
+      "end": 1160.25,
+      "text": "Ways and values and articles and media.",
+      "speaker": "Caller",
+      "confidence": -0.191,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1161.44,
+      "end": 1162.01,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1162.43,
+      "end": 1164.32,
+      "text": "But actually success for you is",
+      "speaker": "Caller",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1164.77,
+      "end": 1166.27,
+      "text": "Financial security.",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1166.69,
+      "end": 1167.71,
+      "text": "Mm-hmm.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1169.99,
+      "end": 1170.53,
+      "text": "Go ahead.",
+      "speaker": "Caller",
+      "confidence": -0.372,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1171.43,
+      "end": 1172.67,
+      "text": "Meaningful word for",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1178.43,
+      "end": 1179.87,
+      "text": "Yeah, and I think maybe",
+      "speaker": "Caller",
+      "confidence": -0.101,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1181.57,
+      "end": 1184.03,
+      "text": "I would say and I think like",
+      "speaker": "Caller",
+      "confidence": -0.302,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1187.3,
+      "end": 1192.32,
+      "text": "What you're saying it makes uh like I'm understanding and it makes perfect sense to maybe this just eagle talking when I say like",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1193.99,
+      "end": 1195.04,
+      "text": "When I think of like",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1195.75,
+      "end": 1196.35,
+      "text": "I don't know.",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1197.06,
+      "end": 1197.98,
+      "text": "Insurance that",
+      "speaker": "Caller",
+      "confidence": -0.213,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1198.56,
+      "end": 1199.9,
+      "text": "Brokerage, I think a black",
+      "speaker": "Caller",
+      "confidence": -0.171,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1201.47,
+      "end": 1202.49,
+      "text": "Is there anything more",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1202.59,
+      "end": 1202.91,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.249,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1203.01,
+      "end": 1203.68,
+      "text": "Boring.",
+      "speaker": "Caller",
+      "confidence": -0.165,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1204.51,
+      "end": 1206.21,
+      "text": "In the whole world. And it's like",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1206.5,
+      "end": 1207.52,
+      "text": "When I think of like",
+      "speaker": "Caller",
+      "confidence": -0.037,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1208.42,
+      "end": 1209.34,
+      "text": "Let's say",
+      "speaker": "Caller",
+      "confidence": -0.035,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1210.63,
+      "end": 1211.97,
+      "text": "corporate and like",
+      "speaker": "Caller",
+      "confidence": -0.232,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1212.16,
+      "end": 1213.92,
+      "text": "That like I don't know what it is. Maybe that's like",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1214.02,
+      "end": 1216.86,
+      "text": "And this again could be ego, maybe that's like that grandeur or",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1217.25,
+      "end": 1220.06,
+      "text": "No, that's a right word, but let's just say grandeur around those",
+      "speaker": "Caller",
+      "confidence": -0.139,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1220.23,
+      "end": 1221.85,
+      "text": "Like corporate like these like",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1222.05,
+      "end": 1223.07,
+      "text": "Top corporate.",
+      "speaker": "Caller",
+      "confidence": -0.239,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1223.55,
+      "end": 1224.06,
+      "text": "You know",
+      "speaker": "Caller",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1224.26,
+      "end": 1226.56,
+      "text": "that environment, I think that's cool.",
+      "speaker": "Caller",
+      "confidence": -0.129,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1227.87,
+      "end": 1229.28,
+      "text": "But when I think of like",
+      "speaker": "Caller",
+      "confidence": -0.03,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1231.46,
+      "end": 1232.09,
+      "text": "These back.",
+      "speaker": "Caller",
+      "confidence": -0.602,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1233.47,
+      "end": 1236.19,
+      "text": "I don't know, let's call it small scale",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1236.48,
+      "end": 1237.63,
+      "text": "I'm just like",
+      "speaker": "Caller",
+      "confidence": -0.206,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1238.63,
+      "end": 1239.45,
+      "text": "That's for it.",
+      "speaker": "Caller",
+      "confidence": -0.278,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1241.28,
+      "end": 1241.92,
+      "text": "And",
+      "speaker": "Caller",
+      "confidence": -0.322,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1245.28,
+      "end": 1254.05,
+      "text": "I don't probably know why I think that if I'm being honest, I don't. Cause I know it doesn't doesn't probably make it's definitely not true across the ball, yeah.",
+      "speaker": "Caller",
+      "confidence": -0.117,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1255.49,
+      "end": 1258.4,
+      "text": "You've got a definition of it that's come from elsewhere.",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1258.79,
+      "end": 1260.06,
+      "text": "You might find us boring.",
+      "speaker": "Caller",
+      "confidence": -0.255,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1260.29,
+      "end": 1262.88,
+      "text": "I'm not your definition of all these things are",
+      "speaker": "Caller",
+      "confidence": -0.342,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1263.75,
+      "end": 1264.99,
+      "text": "Or coming externally.",
+      "speaker": "Caller",
+      "confidence": -0.216,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1266.91,
+      "end": 1268.41,
+      "text": "And I don't think you factually.",
+      "speaker": "Caller",
+      "confidence": -0.479,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1268.64,
+      "end": 1272.0,
+      "text": "question whether you know and that's my point.",
+      "speaker": "Caller",
+      "confidence": -0.253,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1272.48,
+      "end": 1272.93,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.649,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1273.83,
+      "end": 1277.95,
+      "text": "And it's fine if you you go and explore and legitimate reasons and so are",
+      "speaker": "Caller",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1278.75,
+      "end": 1280.16,
+      "text": "It's not exciting, guys.",
+      "speaker": "Caller",
+      "confidence": -0.201,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1280.39,
+      "end": 1282.85,
+      "text": "I'm not saying go be it, bro. Okay, I'm saying go ahead.",
+      "speaker": "Caller",
+      "confidence": -0.305,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1283.78,
+      "end": 1289.98,
+      "text": "I can structure a deal and find an opportunity and get into V C and do this or do that or I don't know.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1290.5,
+      "end": 1291.23,
+      "text": "Betla.",
+      "speaker": "Caller",
+      "confidence": -1.293,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1292.1,
+      "end": 1292.48,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1293.22,
+      "end": 1294.01,
+      "text": "Point was that.",
+      "speaker": "Caller",
+      "confidence": -0.18,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1294.18,
+      "end": 1297.57,
+      "text": "These things are being defined for you from external forces.",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1297.89,
+      "end": 1299.07,
+      "text": "It's misleading you.",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1299.55,
+      "end": 1303.07,
+      "text": "Because your your authentic self and your ideal self.",
+      "speaker": "Caller",
+      "confidence": -0.099,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1303.62,
+      "end": 1306.85,
+      "text": "Okay. And that's why the entire confusion is kind of huh.",
+      "speaker": "Caller",
+      "confidence": -0.345,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1310.98,
+      "end": 1312.06,
+      "text": "Yeah, yeah, I.",
+      "speaker": "Caller",
+      "confidence": -0.406,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1340.07,
+      "end": 1342.75,
+      "text": "Interesting conversation.",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1342.88,
+      "end": 1345.28,
+      "text": "Very interesting conversation.",
+      "speaker": "Caller",
+      "confidence": -0.044,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1345.51,
+      "end": 1346.27,
+      "text": "Nothing like",
+      "speaker": "Caller",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1346.85,
+      "end": 1351.1,
+      "text": "The leaves shattering around. Nothing quite happened.",
+      "speaker": "Caller",
+      "confidence": -0.163,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1351.3,
+      "end": 1352.0,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1353.35,
+      "end": 1353.89,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.319,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1357.19,
+      "end": 1358.72,
+      "text": "So I'd say to you what do you",
+      "speaker": "Caller",
+      "confidence": -0.352,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1363.2,
+      "end": 1363.58,
+      "text": "Fight.",
+      "speaker": "Caller",
+      "confidence": -1.069,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1364.29,
+      "end": 1368.06,
+      "text": "You have let's say a larger picture of the business world definitely than I have.",
+      "speaker": "Caller",
+      "confidence": -0.01,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1368.9,
+      "end": 1369.37,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.254,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1369.83,
+      "end": 1370.4,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.593,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1371.2,
+      "end": 1372.45,
+      "text": "If I had to say to you",
+      "speaker": "Caller",
+      "confidence": -0.05,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1374.53,
+      "end": 1377.37,
+      "text": "Excluding anything let's say excluding I mean like",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1380.0,
+      "end": 1382.91,
+      "text": "Irrespective of whether it's it's like quote unquote boring or not.",
+      "speaker": "Caller",
+      "confidence": -0.092,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1387.17,
+      "end": 1388.06,
+      "text": "If you were me",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1392.67,
+      "end": 1393.05,
+      "text": "Mm-hmm.",
+      "speaker": "Caller",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1396.23,
+      "end": 1397.63,
+      "text": "Where would you put your energy?",
+      "speaker": "Caller",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1398.24,
+      "end": 1399.33,
+      "text": "Where would you put your",
+      "speaker": "Caller",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1400.48,
+      "end": 1401.15,
+      "text": "Focus.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1405.19,
+      "end": 1407.49,
+      "text": "But getting it fast, yeah.",
+      "speaker": "Caller",
+      "confidence": -0.602,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1408.39,
+      "end": 1408.89,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.497,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1409.06,
+      "end": 1409.82,
+      "text": "Uh good.",
+      "speaker": "Caller",
+      "confidence": -0.32,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1412.26,
+      "end": 1413.18,
+      "text": "Not that simple.",
+      "speaker": "Caller",
+      "confidence": -0.2,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1413.41,
+      "end": 1414.72,
+      "text": "But I've got the solution for you.",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1417.15,
+      "end": 1418.14,
+      "text": "You should come.",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1420.1,
+      "end": 1421.21,
+      "text": "B Mar.",
+      "speaker": "Caller",
+      "confidence": -1.157,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1424.8,
+      "end": 1425.89,
+      "text": "Do you even know what I'm doing?",
+      "speaker": "Caller",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1426.34,
+      "end": 1427.58,
+      "text": "No.",
+      "speaker": "Caller",
+      "confidence": -0.493,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1428.26,
+      "end": 1429.34,
+      "text": "I don't know what to do.",
+      "speaker": "Caller",
+      "confidence": -0.134,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1430.24,
+      "end": 1430.53,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.397,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1431.81,
+      "end": 1434.4,
+      "text": "I'm spending my time doing multiple things of",
+      "speaker": "Caller",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1434.59,
+      "end": 1437.53,
+      "text": "Uh probability of success uh effect.",
+      "speaker": "Caller",
+      "confidence": -0.294,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1438.02,
+      "end": 1442.27,
+      "text": "That's gonna build me annuity income, so I can do whatever I want with my time.",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1443.01,
+      "end": 1446.01,
+      "text": "And already part of my time is being spent.",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1447.01,
+      "end": 1453.6,
+      "text": "consulting to community organizations for causes that I think are meaningful and have not convinced them to pay any consulting rates.",
+      "speaker": "Caller",
+      "confidence": -0.077,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1454.27,
+      "end": 1455.01,
+      "text": "I'll do so.",
+      "speaker": "Caller",
+      "confidence": -0.528,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1456.13,
+      "end": 1458.78,
+      "text": "You have charities paying you consulting rates?",
+      "speaker": "Caller",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1461.03,
+      "end": 1464.48,
+      "text": "She said you can do that, you can you can basically do anything.",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1466.53,
+      "end": 1467.2,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1467.91,
+      "end": 1469.09,
+      "text": "Well, that's very",
+      "speaker": "Caller",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1470.31,
+      "end": 1471.61,
+      "text": "That's very interesting.",
+      "speaker": "Caller",
+      "confidence": -0.012,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1471.91,
+      "end": 1472.83,
+      "text": "And then what?",
+      "speaker": "Caller",
+      "confidence": -0.224,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1479.84,
+      "end": 1480.86,
+      "text": "What's like",
+      "speaker": "Caller",
+      "confidence": -0.386,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1482.05,
+      "end": 1483.2,
+      "text": "Can I ask like what",
+      "speaker": "Caller",
+      "confidence": -0.129,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1484.58,
+      "end": 1487.13,
+      "text": "Wha what things uh",
+      "speaker": "Caller",
+      "confidence": -0.516,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1488.16,
+      "end": 1489.53,
+      "text": "Everything and anything.",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1490.02,
+      "end": 1490.46,
+      "text": "Those.",
+      "speaker": "Caller",
+      "confidence": -0.863,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1490.66,
+      "end": 1492.51,
+      "text": "I've invested in uh",
+      "speaker": "Caller",
+      "confidence": -0.276,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1493.76,
+      "end": 1497.28,
+      "text": "Uh there's an opportunity to bring everything Avon is doing.",
+      "speaker": "Caller",
+      "confidence": -0.175,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1497.73,
+      "end": 1499.77,
+      "text": "Go to be like an agent for them.",
+      "speaker": "Caller",
+      "confidence": -0.117,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1502.18,
+      "end": 1503.49,
+      "text": "Both up and things.",
+      "speaker": "Caller",
+      "confidence": -0.773,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1503.71,
+      "end": 1504.41,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1505.95,
+      "end": 1507.65,
+      "text": "The uh",
+      "speaker": "Caller",
+      "confidence": -0.202,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1508.07,
+      "end": 1510.78,
+      "text": "I just bought into a vitamin company.",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1510.95,
+      "end": 1512.51,
+      "text": "No way's which brand?",
+      "speaker": "Caller",
+      "confidence": -0.293,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1513.86,
+      "end": 1515.74,
+      "text": "Yeah, you see. You're back there.",
+      "speaker": "Caller",
+      "confidence": -0.695,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1516.32,
+      "end": 1519.23,
+      "text": "Yeah, would have been a",
+      "speaker": "Caller",
+      "confidence": -1.066,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1519.68,
+      "end": 1521.12,
+      "text": "A company that",
+      "speaker": "Caller",
+      "confidence": -0.326,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1521.7,
+      "end": 1523.42,
+      "text": "A social network is",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1523.97,
+      "end": 1525.37,
+      "text": "Oh, Cremus is there.",
+      "speaker": "Caller",
+      "confidence": -0.645,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1525.54,
+      "end": 1529.34,
+      "text": "People aren't connecting in person anymore, so let's vote back.",
+      "speaker": "Caller",
+      "confidence": -0.116,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1529.67,
+      "end": 1532.48,
+      "text": "And that's AI stuff comes people when I just crack it.",
+      "speaker": "Caller",
+      "confidence": -0.305,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1532.9,
+      "end": 1533.92,
+      "text": "Human connection.",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1534.59,
+      "end": 1535.93,
+      "text": "Met with him yesterday.",
+      "speaker": "Caller",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1536.61,
+      "end": 1537.21,
+      "text": "In it.",
+      "speaker": "Caller",
+      "confidence": -0.689,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1543.04,
+      "end": 1544.19,
+      "text": "I'm gonna you know.",
+      "speaker": "Caller",
+      "confidence": -0.359,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1544.74,
+      "end": 1545.12,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.491,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1545.63,
+      "end": 1546.85,
+      "text": "That's cool fucking wet.",
+      "speaker": "Caller",
+      "confidence": -0.195,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1547.33,
+      "end": 1549.31,
+      "text": "Um yeah, so",
+      "speaker": "Caller",
+      "confidence": -0.634,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1549.54,
+      "end": 1551.61,
+      "text": "I get Sean to Cape Town.",
+      "speaker": "Caller",
+      "confidence": -0.323,
+      "low_confidence": false,
+      "corrections": [
+        "sent -> Sean"
+      ]
+    },
+    {
+      "start": 1551.84,
+      "end": 1553.69,
+      "text": "businesses to go into",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1554.88,
+      "end": 1556.83,
+      "text": "Probably eight different things on that.",
+      "speaker": "Caller",
+      "confidence": -0.183,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1557.31,
+      "end": 1559.23,
+      "text": "And that's the ar things that I'm",
+      "speaker": "Caller",
+      "confidence": -0.318,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1559.87,
+      "end": 1561.6,
+      "text": "When fixed income stuff that's.",
+      "speaker": "Caller",
+      "confidence": -0.291,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1561.83,
+      "end": 1565.41,
+      "text": "That's that's generating eleven and a half percent guaranteed.",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1566.18,
+      "end": 1567.97,
+      "text": "Which helps on my Capital.",
+      "speaker": "Caller",
+      "confidence": -0.304,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1568.19,
+      "end": 1569.89,
+      "text": "Which helps us annuity and time.",
+      "speaker": "Caller",
+      "confidence": -0.341,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1570.66,
+      "end": 1575.58,
+      "text": "And slightly slightly I'm boarding with both of different streams and gold. That's that's kinda",
+      "speaker": "Caller",
+      "confidence": -0.292,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1576.74,
+      "end": 1579.04,
+      "text": "Bring me in what I need to bring in, so",
+      "speaker": "Caller",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1580.67,
+      "end": 1581.89,
+      "text": "Uh never.",
+      "speaker": "Caller",
+      "confidence": -0.559,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1586.05,
+      "end": 1588.38,
+      "text": "Oh that sounds very cool.",
+      "speaker": "Caller",
+      "confidence": -0.218,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1589.28,
+      "end": 1589.73,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.377,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1597.57,
+      "end": 1598.08,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.495,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1598.24,
+      "end": 1602.49,
+      "text": "You know, that's an example of being able to achieve what you want to achieve with",
+      "speaker": "Caller",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1604.64,
+      "end": 1605.09,
+      "text": "Well",
+      "speaker": "Caller",
+      "confidence": -0.226,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1606.18,
+      "end": 1608.45,
+      "text": "With with less financial pressure.",
+      "speaker": "Caller",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1608.74,
+      "end": 1611.2,
+      "text": "With higher degree of certainty.",
+      "speaker": "Caller",
+      "confidence": -0.127,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1611.81,
+      "end": 1613.53,
+      "text": "More diversity.",
+      "speaker": "Caller",
+      "confidence": -0.263,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1613.76,
+      "end": 1615.07,
+      "text": "Much results showing.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1615.17,
+      "end": 1616.03,
+      "text": "Oh sta.",
+      "speaker": "Caller",
+      "confidence": -0.787,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1616.45,
+      "end": 1616.96,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.271,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1617.28,
+      "end": 1625.6,
+      "text": "where you can see success building and growing with all your you know, that diversification element. I'm just gonna keep repeating that, it's like huge.",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1625.86,
+      "end": 1626.37,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.352,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1626.95,
+      "end": 1627.52,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.518,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1628.51,
+      "end": 1630.49,
+      "text": "And we sitting in picking deals.",
+      "speaker": "Caller",
+      "confidence": -0.257,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1631.75,
+      "end": 1632.19,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.248,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1633.09,
+      "end": 1634.21,
+      "text": "But I help people.",
+      "speaker": "Caller",
+      "confidence": -0.499,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1634.66,
+      "end": 1639.58,
+      "text": "A the the one company. The button company that's hit the contract that's hit.",
+      "speaker": "Caller",
+      "confidence": -0.435,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1639.97,
+      "end": 1642.94,
+      "text": "You know I need to actively participate for twelve months.",
+      "speaker": "Caller",
+      "confidence": -0.026,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1643.55,
+      "end": 1646.17,
+      "text": "I said you can you can throw this contract away.",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1646.27,
+      "end": 1649.15,
+      "text": "You think there's gonna be anything that comes me to anything.",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1649.83,
+      "end": 1652.35,
+      "text": "That I'm an investor, strategic investor, I'm not.",
+      "speaker": "Caller",
+      "confidence": -0.205,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1652.51,
+      "end": 1654.4,
+      "text": "Yeah. I'm not working an Horn for you.",
+      "speaker": "Caller",
+      "confidence": -0.227,
+      "low_confidence": false,
+      "corrections": [
+        "hour -> Horn"
+      ]
+    },
+    {
+      "start": 1654.98,
+      "end": 1656.57,
+      "text": "Do not work as much as that need.",
+      "speaker": "Caller",
+      "confidence": -0.563,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1657.15,
+      "end": 1658.4,
+      "text": "To get the job done.",
+      "speaker": "Caller",
+      "confidence": -0.124,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1658.5,
+      "end": 1660.96,
+      "text": "There's nothing in contract about our own.",
+      "speaker": "Caller",
+      "confidence": -0.244,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1661.54,
+      "end": 1662.69,
+      "text": "You said we",
+      "speaker": "Caller",
+      "confidence": -0.627,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1662.88,
+      "end": 1663.93,
+      "text": "Got the power.",
+      "speaker": "Caller",
+      "confidence": -0.209,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1664.48,
+      "end": 1666.49,
+      "text": "Like a good deal of put things together.",
+      "speaker": "Caller",
+      "confidence": -0.212,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1667.71,
+      "end": 1668.8,
+      "text": "And",
+      "speaker": "Caller",
+      "confidence": -0.477,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1669.92,
+      "end": 1673.53,
+      "text": "There's tons of opportunities. There's opportunities that come to",
+      "speaker": "Caller",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1674.11,
+      "end": 1675.17,
+      "text": "To buy, right?",
+      "speaker": "Caller",
+      "confidence": -0.257,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1675.84,
+      "end": 1679.55,
+      "text": "that isn't for me, that might actually be great for you, you know, but",
+      "speaker": "Caller",
+      "confidence": -0.109,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1680.0,
+      "end": 1681.63,
+      "text": "A twenty million, right?",
+      "speaker": "Caller",
+      "confidence": -0.261,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1681.76,
+      "end": 1682.97,
+      "text": "Company that",
+      "speaker": "Caller",
+      "confidence": -0.194,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1683.49,
+      "end": 1686.49,
+      "text": "Needs uh you know, the the owners want to exit.",
+      "speaker": "Caller",
+      "confidence": -0.342,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1686.88,
+      "end": 1689.63,
+      "text": "But what they're offering me is to buy the company.",
+      "speaker": "Caller",
+      "confidence": -0.102,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1692.19,
+      "end": 1694.01,
+      "text": "You know, investors will come in.",
+      "speaker": "Caller",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1694.59,
+      "end": 1695.68,
+      "text": "But after twenty minutes.",
+      "speaker": "Caller",
+      "confidence": -0.265,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1695.81,
+      "end": 1696.73,
+      "text": "I get random.",
+      "speaker": "Caller",
+      "confidence": -0.866,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1697.09,
+      "end": 1698.81,
+      "text": "Give me a two million rand salary.",
+      "speaker": "Caller",
+      "confidence": -0.143,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1699.14,
+      "end": 1703.29,
+      "text": "If I hit 12, but I got forty percent of the company. That's I would never do that.",
+      "speaker": "Caller",
+      "confidence": -0.233,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1703.84,
+      "end": 1704.77,
+      "text": "Someone up here.",
+      "speaker": "Caller",
+      "confidence": -0.27,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1705.25,
+      "end": 1707.26,
+      "text": "Could be exactly perfect.",
+      "speaker": "Caller",
+      "confidence": -0.492,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1708.1,
+      "end": 1710.59,
+      "text": "You hit that a massive big salary and then",
+      "speaker": "Caller",
+      "confidence": -0.345,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1711.2,
+      "end": 1713.12,
+      "text": "Um over five years.",
+      "speaker": "Caller",
+      "confidence": -0.193,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1713.28,
+      "end": 1720.03,
+      "text": "on on a business that already exists, you're only needing to gather that over here if you pick an industry that you know you can do it in.",
+      "speaker": "Caller",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1720.35,
+      "end": 1721.53,
+      "text": "You do it with me.",
+      "speaker": "Caller",
+      "confidence": -0.131,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1721.86,
+      "end": 1726.24,
+      "text": "And then next thing you earn forty percent of it and then you're T income thing, you equipped as",
+      "speaker": "Caller",
+      "confidence": -0.323,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1727.04,
+      "end": 1732.73,
+      "text": "CEO you sell as a direct uh sixty grand a month and you've got dividends coming in every year as you say.",
+      "speaker": "Caller",
+      "confidence": -0.217,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1733.38,
+      "end": 1738.37,
+      "text": "Uh it's not that simple, but the point is that you go in and pulling off a discovery product.",
+      "speaker": "Caller",
+      "confidence": -0.176,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1739.04,
+      "end": 1740.96,
+      "text": "Same amount of it, but as putting that off.",
+      "speaker": "Caller",
+      "confidence": -0.202,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1741.25,
+      "end": 1742.43,
+      "text": "In terms of getting the deal done.",
+      "speaker": "Caller",
+      "confidence": -0.119,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1743.97,
+      "end": 1749.15,
+      "text": "And and so that's that's the difference, yeah, is that you put in effort and you get",
+      "speaker": "Caller",
+      "confidence": -0.11,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1749.54,
+      "end": 1752.61,
+      "text": "Diversification, certainty results.",
+      "speaker": "Caller",
+      "confidence": -0.147,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1752.77,
+      "end": 1754.56,
+      "text": "All those sort of things.",
+      "speaker": "Caller",
+      "confidence": -0.134,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1755.27,
+      "end": 1757.79,
+      "text": "And you've just got a higher chance of reaching your goals.",
+      "speaker": "Caller",
+      "confidence": -0.047,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1758.5,
+      "end": 1758.91,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.559,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1759.04,
+      "end": 1762.78,
+      "text": "you can't really recommend people to do that because they don't really",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1763.01,
+      "end": 1765.21,
+      "text": "Have the know how or the network to do that.",
+      "speaker": "Caller",
+      "confidence": -0.176,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1767.04,
+      "end": 1768.41,
+      "text": "But if you had some on that.",
+      "speaker": "Caller",
+      "confidence": -0.224,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1771.71,
+      "end": 1773.66,
+      "text": "That's looks out for your interest.",
+      "speaker": "Caller",
+      "confidence": -0.272,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1774.4,
+      "end": 1776.73,
+      "text": "And then that will do it and you can just tag it up.",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1776.99,
+      "end": 1777.69,
+      "text": "That's uh",
+      "speaker": "Caller",
+      "confidence": -0.167,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1778.24,
+      "end": 1779.13,
+      "text": "Yeah, that's a dream.",
+      "speaker": "Caller",
+      "confidence": -0.203,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1782.37,
+      "end": 1786.49,
+      "text": "I mean I'd I'd need to think about it. That that's what that's that's what you should be doing.",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1787.84,
+      "end": 1790.08,
+      "text": "Uh we literally have the same goal guys but I'm dead.",
+      "speaker": "Caller",
+      "confidence": -0.281,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1791.11,
+      "end": 1792.29,
+      "text": "And uh I'm not gonna fail.",
+      "speaker": "Caller",
+      "confidence": -0.055,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1798.43,
+      "end": 1800.96,
+      "text": "I just loved how you ended it up, I was just",
+      "speaker": "Caller",
+      "confidence": -0.284,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1801.47,
+      "end": 1802.59,
+      "text": "That was perfect.",
+      "speaker": "Caller",
+      "confidence": -0.224,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1804.16,
+      "end": 1804.99,
+      "text": "That sounds",
+      "speaker": "Caller",
+      "confidence": -0.012,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1805.86,
+      "end": 1806.4,
+      "text": "Awesome.",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1807.39,
+      "end": 1808.77,
+      "text": "I'm being honest. That's so",
+      "speaker": "Caller",
+      "confidence": -0.394,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1811.81,
+      "end": 1813.79,
+      "text": "Uh um",
+      "speaker": "Caller",
+      "confidence": -0.3,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1814.66,
+      "end": 1818.97,
+      "text": "But for me the relationships are the most important. I'm here to support you, you know, so that",
+      "speaker": "Caller",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1820.77,
+      "end": 1823.33,
+      "text": "When you when you're that you want to do this, I'm not cool.",
+      "speaker": "Caller",
+      "confidence": -0.202,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1823.52,
+      "end": 1824.96,
+      "text": "Now you're back here.",
+      "speaker": "Caller",
+      "confidence": -0.57,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1826.24,
+      "end": 1830.3,
+      "text": "Sumptions change, uh I'm just looking after your interest.",
+      "speaker": "Caller",
+      "confidence": -0.276,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1831.01,
+      "end": 1831.77,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.573,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1832.0,
+      "end": 1835.26,
+      "text": "I didn't understand your your your your kitty.",
+      "speaker": "Caller",
+      "confidence": -0.223,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1835.84,
+      "end": 1837.05,
+      "text": "Thank you as well.",
+      "speaker": "Caller",
+      "confidence": -0.252,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1837.22,
+      "end": 1840.8,
+      "text": "Yeah, I didn't.",
+      "speaker": "Caller",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1841.31,
+      "end": 1841.85,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1843.65,
+      "end": 1844.64,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -1.375,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1846.69,
+      "end": 1851.81,
+      "text": "You're going to build a new team. I would not go be doing a zero or one thing.",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1852.29,
+      "end": 1853.89,
+      "text": "Just doesn't make any sense.",
+      "speaker": "Caller",
+      "confidence": -0.016,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1854.31,
+      "end": 1854.97,
+      "text": "When it does.",
+      "speaker": "Caller",
+      "confidence": -0.46,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1855.52,
+      "end": 1858.88,
+      "text": "Five years of my life had absolutely zero income.",
+      "speaker": "Caller",
+      "confidence": -0.238,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1860.26,
+      "end": 1861.85,
+      "text": "Oh oh maybe have",
+      "speaker": "Caller",
+      "confidence": -0.48,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1861.99,
+      "end": 1865.34,
+      "text": "Uh uh uh you know thirty millionaire company.",
+      "speaker": "Caller",
+      "confidence": -0.323,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1865.89,
+      "end": 1868.35,
+      "text": "Wow would I risk five years.",
+      "speaker": "Caller",
+      "confidence": -0.368,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1869.03,
+      "end": 1872.48,
+      "text": "And that alternative is it if I have five years, could I create",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1872.58,
+      "end": 1875.13,
+      "text": "Sixty thousand Rand of a New TM coming trend.",
+      "speaker": "Caller",
+      "confidence": -0.387,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1876.19,
+      "end": 1878.85,
+      "text": "That seems like a much easier thing to do.",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1879.62,
+      "end": 1881.6,
+      "text": "It seems very easy.",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1881.7,
+      "end": 1883.49,
+      "text": "Relatively very easy to achieve.",
+      "speaker": "Caller",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1885.25,
+      "end": 1893.05,
+      "text": "Yeah again as opposed to aiming for like a I don't know upfront two million rand annuity income, which is yeah, well",
+      "speaker": "Caller",
+      "confidence": -0.16,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1894.5,
+      "end": 1895.84,
+      "text": "Yeah, that the moment.",
+      "speaker": "Caller",
+      "confidence": -0.787,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1896.87,
+      "end": 1898.65,
+      "text": "As one of my biggest things.",
+      "speaker": "Caller",
+      "confidence": -0.158,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1899.55,
+      "end": 1899.93,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.221,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1900.03,
+      "end": 1901.28,
+      "text": "Uh challenge people.",
+      "speaker": "Caller",
+      "confidence": -0.276,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1901.41,
+      "end": 1904.41,
+      "text": "I think that does it be at",
+      "speaker": "Caller",
+      "confidence": -0.804,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1905.76,
+      "end": 1906.49,
+      "text": "Idiots.",
+      "speaker": "Caller",
+      "confidence": -0.193,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1906.66,
+      "end": 1908.22,
+      "text": "You have admitted that.",
+      "speaker": "Caller",
+      "confidence": -0.415,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1908.55,
+      "end": 1911.77,
+      "text": "You know, enough is nearly enough. I want to be done by the billionaire.",
+      "speaker": "Caller",
+      "confidence": -0.21,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1912.77,
+      "end": 1916.54,
+      "text": "Everyone says that what's a figure, what's your figure, what's your figure, that's your figure.",
+      "speaker": "Caller",
+      "confidence": -0.146,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1917.15,
+      "end": 1918.65,
+      "text": "Did you think of it all wrong?",
+      "speaker": "Caller",
+      "confidence": -0.308,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1919.01,
+      "end": 1926.46,
+      "text": "Like if you're thinking about your figure that you don't understand what your needs are'cause you don't know your Monty expenses and it's just gonna get higher when you get there.",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": [
+        "monthly -> Monty"
+      ]
+    },
+    {
+      "start": 1927.2,
+      "end": 1931.52,
+      "text": "People are like oh no, like one save ten million dollars, you know, then I'll slow down.",
+      "speaker": "Caller",
+      "confidence": -0.229,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1932.35,
+      "end": 1935.29,
+      "text": "Uh it's some arbitrary thing that you put in it.",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1935.78,
+      "end": 1938.43,
+      "text": "And it's so hard to achieve and set you on the wrong.",
+      "speaker": "Caller",
+      "confidence": -0.172,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1938.56,
+      "end": 1943.84,
+      "text": "Why do you need ten million dollars? Oh no, it's that kind. Okay, cool. How much does that equal Monty?",
+      "speaker": "Caller",
+      "confidence": -0.199,
+      "low_confidence": false,
+      "corrections": [
+        "monthly -> Monty"
+      ]
+    },
+    {
+      "start": 1944.29,
+      "end": 1945.82,
+      "text": "Okay, cool. So",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1946.69,
+      "end": 1947.55,
+      "text": "You just need",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1948.07,
+      "end": 1954.24,
+      "text": "The safety pound of this, of this, of this and and then UT income of two hundred fifty grand a month for your family.",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1954.85,
+      "end": 1955.55,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1955.91,
+      "end": 1957.47,
+      "text": "I'm not causalizing that to though.",
+      "speaker": "Caller",
+      "confidence": -0.37,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1959.17,
+      "end": 1962.21,
+      "text": "lot easier than trying to create a ten million dollar company.",
+      "speaker": "Caller",
+      "confidence": -0.058,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1964.48,
+      "end": 1966.17,
+      "text": "No, that makes sense. That makes",
+      "speaker": "Caller",
+      "confidence": -0.16,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1967.81,
+      "end": 1969.28,
+      "text": "That makes perfect sense.",
+      "speaker": "Caller",
+      "confidence": -0.005,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1969.6,
+      "end": 1971.29,
+      "text": "I think that's what I was",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1976.58,
+      "end": 1977.15,
+      "text": "That's",
+      "speaker": "Caller",
+      "confidence": -0.188,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1977.79,
+      "end": 1978.81,
+      "text": "Yeah, my mind said.",
+      "speaker": "Caller",
+      "confidence": -0.237,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1979.84,
+      "end": 1980.48,
+      "text": "Was wrong.",
+      "speaker": "Caller",
+      "confidence": -0.287,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1982.08,
+      "end": 1982.78,
+      "text": "Most wrong.",
+      "speaker": "Caller",
+      "confidence": -0.175,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1996.07,
+      "end": 1996.61,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -1.15,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2006.59,
+      "end": 2007.61,
+      "text": "Look, the sounds",
+      "speaker": "Caller",
+      "confidence": -0.347,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2008.19,
+      "end": 2008.89,
+      "text": "Awesome.",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2009.76,
+      "end": 2010.46,
+      "text": "To me.",
+      "speaker": "Caller",
+      "confidence": -0.205,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2011.75,
+      "end": 2013.12,
+      "text": "What you say makes a lot of",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2013.38,
+      "end": 2014.27,
+      "text": "S.",
+      "speaker": "Caller",
+      "confidence": -1.079,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2016.03,
+      "end": 2019.26,
+      "text": "Even the fact that we can have this conversation is great because there's no one else in",
+      "speaker": "Caller",
+      "confidence": -0.04,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2020.42,
+      "end": 2021.05,
+      "text": "I don't know.",
+      "speaker": "Caller",
+      "confidence": -0.376,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2021.28,
+      "end": 2022.97,
+      "text": "Working or whatever you want to call.",
+      "speaker": "Caller",
+      "confidence": -0.194,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2024.32,
+      "end": 2024.61,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.263,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2025.03,
+      "end": 2027.58,
+      "text": "Would honestly even trust to have the conversation about",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2028.45,
+      "end": 2029.37,
+      "text": "Thank you.",
+      "speaker": "Caller",
+      "confidence": -0.245,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2029.73,
+      "end": 2034.37,
+      "text": "Do they have like an agenda for setting out with me or like uh",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2034.72,
+      "end": 2035.29,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2035.43,
+      "end": 2037.05,
+      "text": "I don't take that for granted.",
+      "speaker": "Caller",
+      "confidence": -0.009,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2037.86,
+      "end": 2038.4,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2040.03,
+      "end": 2042.24,
+      "text": "So I I do I I do appreciate it.",
+      "speaker": "Caller",
+      "confidence": -0.275,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2043.68,
+      "end": 2044.41,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2054.31,
+      "end": 2055.74,
+      "text": "Yeah, you got",
+      "speaker": "Caller",
+      "confidence": -0.591,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2055.94,
+      "end": 2057.31,
+      "text": "There's nothing to talk about now.",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2057.83,
+      "end": 2059.04,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.251,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2059.81,
+      "end": 2060.48,
+      "text": "Oh.",
+      "speaker": "Caller",
+      "confidence": -1.281,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2061.54,
+      "end": 2062.72,
+      "text": "So again, you don't know.",
+      "speaker": "Caller",
+      "confidence": -0.4,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2063.2,
+      "end": 2072.8,
+      "text": "There's not nothing for you to say now. That's that unless you have more questions like uh that's that's overall feeling of you know, making the decision not offering you anything like uh",
+      "speaker": "Caller",
+      "confidence": -0.157,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2073.79,
+      "end": 2074.69,
+      "text": "I mean I'm",
+      "speaker": "Caller",
+      "confidence": -0.607,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2074.79,
+      "end": 2076.83,
+      "text": "If if that's what you want. But I'm saying not.",
+      "speaker": "Caller",
+      "confidence": -0.18,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2077.6,
+      "end": 2079.1,
+      "text": "I reflect on this. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.221,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2079.39,
+      "end": 2081.76,
+      "text": "No for sure, but I'm just I'm just thinking, I'm calm.",
+      "speaker": "Caller",
+      "confidence": -0.206,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2082.75,
+      "end": 2083.71,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.184,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2085.35,
+      "end": 2086.59,
+      "text": "Lot true.",
+      "speaker": "Caller",
+      "confidence": -0.293,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2087.59,
+      "end": 2088.35,
+      "text": "Process.",
+      "speaker": "Caller",
+      "confidence": -0.299,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2089.31,
+      "end": 2092.61,
+      "text": "Yeah. Lots of process. That's a process.",
+      "speaker": "Caller",
+      "confidence": -0.357,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2097.19,
+      "end": 2097.82,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.095,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2098.79,
+      "end": 2101.73,
+      "text": "Think what you use this as an opportunity to really",
+      "speaker": "Caller",
+      "confidence": -0.165,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2102.66,
+      "end": 2105.98,
+      "text": "Think about what you want and challenge. Challenge those things.",
+      "speaker": "Caller",
+      "confidence": -0.032,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2106.11,
+      "end": 2110.14,
+      "text": "Do I really want that? That sounds like a made up thing or",
+      "speaker": "Caller",
+      "confidence": -0.037,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2110.53,
+      "end": 2114.46,
+      "text": "But society like really is an opportunity to",
+      "speaker": "Caller",
+      "confidence": -0.209,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2115.11,
+      "end": 2117.92,
+      "text": "Get very internal successful fact for you.",
+      "speaker": "Caller",
+      "confidence": -0.521,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2118.79,
+      "end": 2123.42,
+      "text": "And and and and and also be honest if it's so it actually is",
+      "speaker": "Caller",
+      "confidence": -0.318,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2127.43,
+      "end": 2129.47,
+      "text": "It's a high video, it's actually that.",
+      "speaker": "Caller",
+      "confidence": -0.385,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2131.27,
+      "end": 2132.03,
+      "text": "Cool. Alright.",
+      "speaker": "Caller",
+      "confidence": -0.418,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2132.77,
+      "end": 2133.12,
+      "text": "If",
+      "speaker": "Caller",
+      "confidence": -0.741,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2133.25,
+      "end": 2134.62,
+      "text": "If actually you're at us",
+      "speaker": "Caller",
+      "confidence": -0.355,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2135.04,
+      "end": 2137.92,
+      "text": "I think it's so you wanna just go do w work.",
+      "speaker": "Caller",
+      "confidence": -0.415,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2138.24,
+      "end": 2141.21,
+      "text": "Is it paid for work? Is it this, is it that?",
+      "speaker": "Caller",
+      "confidence": -0.226,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2143.04,
+      "end": 2148.48,
+      "text": "And actually ask yourself those questions so that you don't arrive in at that stage in your life.",
+      "speaker": "Caller",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2148.58,
+      "end": 2151.87,
+      "text": "And then you actually start thinking about it practically. And that's",
+      "speaker": "Caller",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2154.75,
+      "end": 2155.26,
+      "text": "You know.",
+      "speaker": "Caller",
+      "confidence": -0.327,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2156.26,
+      "end": 2161.66,
+      "text": "Okay. You uh you uh you you just that quickly you wrote down the goal'cause it's sort of made sense and",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2162.53,
+      "end": 2164.83,
+      "text": "You did you didn't think too hard about it, but no.",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2165.35,
+      "end": 2167.26,
+      "text": "And do you really want to add uh",
+      "speaker": "Caller",
+      "confidence": -0.299,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2168.42,
+      "end": 2169.34,
+      "text": "Thirty five.",
+      "speaker": "Caller",
+      "confidence": -0.204,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2169.44,
+      "end": 2173.47,
+      "text": "Let's say you've got your income be traveling to Uganda and",
+      "speaker": "Caller",
+      "confidence": -0.237,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2174.08,
+      "end": 2174.4,
+      "text": "Uh.",
+      "speaker": "Caller",
+      "confidence": -0.816,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2176.16,
+      "end": 2177.44,
+      "text": "People, you know, uh",
+      "speaker": "Caller",
+      "confidence": -0.383,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2177.92,
+      "end": 2181.37,
+      "text": "Honestly, maybe you actually don't care about them. You think you care about them. But it's not.",
+      "speaker": "Caller",
+      "confidence": -0.091,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2181.95,
+      "end": 2183.1,
+      "text": "Maybe you read eyes.",
+      "speaker": "Caller",
+      "confidence": -0.206,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2183.52,
+      "end": 2186.24,
+      "text": "You be honest with yourself when you say, No, I w I wanna",
+      "speaker": "Caller",
+      "confidence": -0.18,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2187.04,
+      "end": 2189.34,
+      "text": "Or or water, doesn't matter, but",
+      "speaker": "Caller",
+      "confidence": -0.255,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2189.44,
+      "end": 2189.76,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.301,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2190.5,
+      "end": 2192.06,
+      "text": "Yeah, medicine, that does.",
+      "speaker": "Caller",
+      "confidence": -0.329,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2192.64,
+      "end": 2195.61,
+      "text": "Yeah, yeah, does",
+      "speaker": "Caller",
+      "confidence": -0.568,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2196.1,
+      "end": 2200.03,
+      "text": "Okay, cool. I actually just really want to be in a position where I can",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2200.64,
+      "end": 2201.25,
+      "text": "What",
+      "speaker": "Caller",
+      "confidence": -0.832,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2202.34,
+      "end": 2203.55,
+      "text": "Oh.",
+      "speaker": "Caller",
+      "confidence": -0.638,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2203.78,
+      "end": 2207.26,
+      "text": "It might even be for Jewish one, guys and it might be for uh",
+      "speaker": "Caller",
+      "confidence": -0.427,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2207.75,
+      "end": 2210.97,
+      "text": "uh it might be for you and an organization",
+      "speaker": "Caller",
+      "confidence": -0.327,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2211.17,
+      "end": 2213.95,
+      "text": "but you just want to focus on malaria prevention.",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2214.15,
+      "end": 2217.66,
+      "text": "And you allow me doing a salary of thirty thousand random month.",
+      "speaker": "Caller",
+      "confidence": -0.308,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2218.69,
+      "end": 2219.42,
+      "text": "You know that.",
+      "speaker": "Caller",
+      "confidence": -0.264,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2220.51,
+      "end": 2227.01,
+      "text": "Knowing that now as opposed to being a couple of up, and that just completely changes also the build up today.",
+      "speaker": "Caller",
+      "confidence": -0.241,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2227.87,
+      "end": 2232.16,
+      "text": "Because suddenly by saying no and I I'll need a thirty grand amount salary.",
+      "speaker": "Caller",
+      "confidence": -0.148,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2233.28,
+      "end": 2236.8,
+      "text": "means you don't need sixty grand on your team count. You only need thirty.",
+      "speaker": "Caller",
+      "confidence": -0.174,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2237.03,
+      "end": 2237.47,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.789,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2238.18,
+      "end": 2238.69,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.483,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2239.78,
+      "end": 2240.96,
+      "text": "¿Quién es todo?",
+      "speaker": "Caller",
+      "confidence": -0.324,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2241.54,
+      "end": 2243.23,
+      "text": "And if you're not sure that's fine as well.",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2243.68,
+      "end": 2248.61,
+      "text": "Say I'm not sure. I'm not sure if I'd want that pressure of having to get a salary or whatever.",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2249.35,
+      "end": 2253.98,
+      "text": "Um or actually well thirty grand no one's gonna not get thirty grand, so it's not a red but uh",
+      "speaker": "Caller",
+      "confidence": -0.284,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2254.75,
+      "end": 2257.89,
+      "text": "But I I don't want the I wanna be able to work whenever I want that.",
+      "speaker": "Caller",
+      "confidence": -0.2,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2258.91,
+      "end": 2262.14,
+      "text": "You might not know the answers, but ask the fucking questions.",
+      "speaker": "Caller",
+      "confidence": -0.084,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2262.95,
+      "end": 2264.03,
+      "text": "It is clear as you can.",
+      "speaker": "Caller",
+      "confidence": -0.26,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2264.26,
+      "end": 2264.77,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.365,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2266.56,
+      "end": 2267.07,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.499,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2267.2,
+      "end": 2268.29,
+      "text": "Then we can claim.",
+      "speaker": "Caller",
+      "confidence": -0.32,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2268.96,
+      "end": 2269.6,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.1,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2270.11,
+      "end": 2271.01,
+      "text": "That makes sense.",
+      "speaker": "Caller",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2272.71,
+      "end": 2273.69,
+      "text": "Let me do some",
+      "speaker": "Caller",
+      "confidence": -0.025,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2274.37,
+      "end": 2275.71,
+      "text": "Introspection.",
+      "speaker": "Caller",
+      "confidence": -0.142,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2276.96,
+      "end": 2277.34,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2277.51,
+      "end": 2279.9,
+      "text": "And see what you're doing.",
+      "speaker": "Caller",
+      "confidence": -0.631,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2280.03,
+      "end": 2280.77,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.821,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2280.96,
+      "end": 2281.95,
+      "text": "I do need to do it.",
+      "speaker": "Caller",
+      "confidence": -0.546,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2282.31,
+      "end": 2285.05,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.303,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2286.21,
+      "end": 2289.69,
+      "text": "I do what you would do if you wanted to think or",
+      "speaker": "Caller",
+      "confidence": -0.253,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2290.15,
+      "end": 2290.46,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2294.05,
+      "end": 2294.75,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2296.58,
+      "end": 2297.44,
+      "text": "That makes sense.",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2301.12,
+      "end": 2303.77,
+      "text": "And then when you're ready, let me know and you want me to share it.",
+      "speaker": "Caller",
+      "confidence": -0.23,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2303.87,
+      "end": 2305.18,
+      "text": "Where you've landed or",
+      "speaker": "Caller",
+      "confidence": -0.17,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2305.83,
+      "end": 2309.25,
+      "text": "I can almost guarantee it's largely gonna be another",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2309.51,
+      "end": 2311.17,
+      "text": "Conversation I don't think I'm gonna",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2312.42,
+      "end": 2313.15,
+      "text": "A marked, but",
+      "speaker": "Caller",
+      "confidence": -0.587,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2313.38,
+      "end": 2315.2,
+      "text": "Do they're gonna go back with the absolute",
+      "speaker": "Caller",
+      "confidence": -0.416,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2316.13,
+      "end": 2317.28,
+      "text": "Full cloud sea like.",
+      "speaker": "Caller",
+      "confidence": -0.455,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2322.27,
+      "end": 2324.93,
+      "text": "Well once you've processed and be ready.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2325.76,
+      "end": 2326.4,
+      "text": "Let's try it.",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2327.33,
+      "end": 2327.81,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2328.55,
+      "end": 2329.02,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.273,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2330.08,
+      "end": 2330.78,
+      "text": "Yeah, I'm gonna",
+      "speaker": "Caller",
+      "confidence": -0.137,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2331.97,
+      "end": 2335.29,
+      "text": "I'm gonna pick your brain. That's okay, I like",
+      "speaker": "Caller",
+      "confidence": -0.153,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2335.91,
+      "end": 2336.61,
+      "text": "Just like",
+      "speaker": "Caller",
+      "confidence": -0.56,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2337.09,
+      "end": 2342.59,
+      "text": "I trust very few people.",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2343.55,
+      "end": 2344.77,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.254,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2345.12,
+      "end": 2346.49,
+      "text": "I'm gonna pick your brain.",
+      "speaker": "Caller",
+      "confidence": -0.153,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2346.79,
+      "end": 2347.13,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.757,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2348.93,
+      "end": 2350.24,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.589,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2350.79,
+      "end": 2352.7,
+      "text": "Yeah. Well done, be brave.",
+      "speaker": "Caller",
+      "confidence": -0.418,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2353.03,
+      "end": 2355.65,
+      "text": "Okay. That's it. Perfect. Thank you very much.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2356.42,
+      "end": 2357.85,
+      "text": "Sure.",
+      "speaker": "Caller",
+      "confidence": -0.764,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2360.29,
+      "end": 2360.93,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.719,
+      "low_confidence": true,
+      "corrections": []
+    }
+  ]
+}

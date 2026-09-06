@@ -1,0 +1,32 @@
+{
+  "id": "2026-08-19-cell-c-meeting",
+  "title": "Cell C meeting",
+  "started_at": "2026-08-19T13:19:47Z",
+  "ended_at": "",
+  "participants": [
+    {
+      "name": "Chris",
+      "email": "",
+      "company": "Cell C",
+      "role": ""
+    },
+    {
+      "name": "Alex",
+      "email": "",
+      "company": "First Orion",
+      "role": ""
+    },
+    {
+      "name": "Salvador",
+      "email": "",
+      "company": "Cell C",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "recorded by the phone's own dialer",
+  "tracks": [],
+  "tags": [],
+  "transcribed": true,
+  "transcript_engine": ""
+}

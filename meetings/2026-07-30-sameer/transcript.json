@@ -1,0 +1,5907 @@
+{
+  "meta": {
+    "generated_at": "2026-09-06T14:05:52Z",
+    "engine": "onnx-asr",
+    "model": "nemo-parakeet-tdt-0.6b-v3",
+    "expected_accuracy": "6.3%",
+    "duration": "00:42:17",
+    "tracks": "system",
+    "speaker_method": "separate audio tracks (attribution is exact)",
+    "segments": 652,
+    "low_confidence_segments": 46,
+    "names_corrected": 12,
+    "live": false
+  },
+  "segments": [
+    {
+      "start": 305.83,
+      "end": 306.59,
+      "text": "Not many.",
+      "speaker": "Caller",
+      "confidence": -0.699,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 306.72,
+      "end": 309.05,
+      "text": "I am responsible for project management.",
+      "speaker": "Caller",
+      "confidence": -0.274,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 312.48,
+      "end": 313.57,
+      "text": "Wow.",
+      "speaker": "Caller",
+      "confidence": -0.624,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 315.43,
+      "end": 316.38,
+      "text": "Do we get any go in?",
+      "speaker": "Caller",
+      "confidence": -0.536,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 318.59,
+      "end": 319.29,
+      "text": "Nice.",
+      "speaker": "Caller",
+      "confidence": -0.583,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 328.16,
+      "end": 329.69,
+      "text": "Cont me on email as well.",
+      "speaker": "Caller",
+      "confidence": -0.33,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 329.99,
+      "end": 330.88,
+      "text": "F the look.",
+      "speaker": "Caller",
+      "confidence": -0.946,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 333.6,
+      "end": 338.65,
+      "text": "Chase my friend later about this uh notebook that you created in uh Copilac.",
+      "speaker": "Caller",
+      "confidence": -0.351,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 338.85,
+      "end": 339.61,
+      "text": "I have no touch.",
+      "speaker": "Caller",
+      "confidence": -0.427,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 340.71,
+      "end": 342.72,
+      "text": "Did you get an email for it?",
+      "speaker": "Caller",
+      "confidence": -0.189,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 342.88,
+      "end": 343.81,
+      "text": "I like one.",
+      "speaker": "Caller",
+      "confidence": -0.606,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 345.86,
+      "end": 346.88,
+      "text": "Yeah, I'm got my",
+      "speaker": "Caller",
+      "confidence": -0.415,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 347.3,
+      "end": 349.09,
+      "text": "Makes me think stuff then, so I'm sorry.",
+      "speaker": "Caller",
+      "confidence": -0.391,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 349.7,
+      "end": 351.55,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.797,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 355.65,
+      "end": 361.02,
+      "text": "Hey man shall they dude how's it?",
+      "speaker": "Caller",
+      "confidence": -0.533,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 361.22,
+      "end": 363.71,
+      "text": "Not a much at all.",
+      "speaker": "Caller",
+      "confidence": -0.474,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 363.84,
+      "end": 368.09,
+      "text": "Message at uh ten past nine saying, Hey, are you joining this meeting?",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 369.51,
+      "end": 370.78,
+      "text": "Because I have.",
+      "speaker": "Caller",
+      "confidence": -0.21,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 371.46,
+      "end": 372.89,
+      "text": "Uh the Deroid laptop.",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 373.19,
+      "end": 380.06,
+      "text": "Yeah. I was about to ask actually how am I sharing the other meeting? I was actually about to ask you.",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 380.71,
+      "end": 382.56,
+      "text": "Yeah. It's just it's it's uh",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 383.14,
+      "end": 388.86,
+      "text": "And the droid laptops locked down one. Lockdown. You can't do anything.",
+      "speaker": "Caller",
+      "confidence": -0.211,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 388.99,
+      "end": 391.29,
+      "text": "Like your work.",
+      "speaker": "Caller",
+      "confidence": -0.873,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 391.49,
+      "end": 395.2,
+      "text": "Sometimes you need a tool, you want to check this and check that. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 396.35,
+      "end": 398.08,
+      "text": "Not hundred percent.",
+      "speaker": "Caller",
+      "confidence": -0.24,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 399.91,
+      "end": 400.35,
+      "text": "Sure.",
+      "speaker": "Caller",
+      "confidence": -0.751,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 401.12,
+      "end": 407.93,
+      "text": "Yeah, good to see you two. Thanks for making the time and for sending the signed agreements. I'll send the counter sign version today or later tomorrow.",
+      "speaker": "Caller",
+      "confidence": -0.093,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 408.51,
+      "end": 409.41,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 410.72,
+      "end": 415.49,
+      "text": "And yeah, I mean I think today we can really just discuss next steps, maybe a lot on you know exactly who we're targeting",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 415.68,
+      "end": 419.97,
+      "text": "Uh any information I should get, and then I can just prepare the collateral for you to",
+      "speaker": "Caller",
+      "confidence": -0.089,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 420.23,
+      "end": 422.49,
+      "text": "You know, kinda just have those initial discussions.",
+      "speaker": "Caller",
+      "confidence": -0.166,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 422.98,
+      "end": 423.71,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.219,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 424.13,
+      "end": 433.21,
+      "text": "Can maybe just help me understand from a commercial perspective, are we comfortable I mean, I know you you I know you signed that and you put that in the contract, but are we comfortable with everything is anything you want to discuss or clarify further, or",
+      "speaker": "Caller",
+      "confidence": -0.142,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 433.41,
+      "end": 434.81,
+      "text": "No, I'm I'm comfortable.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 437.19,
+      "end": 438.11,
+      "text": "I think the",
+      "speaker": "Caller",
+      "confidence": -0.031,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 438.66,
+      "end": 441.15,
+      "text": "The devil will be in the detail as we uh",
+      "speaker": "Caller",
+      "confidence": -0.028,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 442.18,
+      "end": 445.47,
+      "text": "As we move through we may realize oh you know this is uh",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 446.37,
+      "end": 446.94,
+      "text": "This",
+      "speaker": "Caller",
+      "confidence": -0.506,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 448.13,
+      "end": 450.59,
+      "text": "commercial structures not working for you.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 450.91,
+      "end": 451.49,
+      "text": "I mean yeah.",
+      "speaker": "Caller",
+      "confidence": -0.293,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 451.71,
+      "end": 458.27,
+      "text": "And we may have to revisit it or it's not working for me, we may have to revisit it. Uh but I I'm I'm comfortable",
+      "speaker": "Caller",
+      "confidence": -0.135,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 458.47,
+      "end": 461.02,
+      "text": "From a a values perspective. And from a",
+      "speaker": "Caller",
+      "confidence": -0.258,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 461.25,
+      "end": 462.62,
+      "text": "Personal perspective. Okay.",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 462.85,
+      "end": 463.97,
+      "text": "Everything's in order.",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 464.32,
+      "end": 471.23,
+      "text": "Um no no concerns. The the thing I have been thinking about a lot including my drive back home from my daughter's school is",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 471.62,
+      "end": 474.33,
+      "text": "the collateral becomes really important and",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 475.59,
+      "end": 481.53,
+      "text": "The simplification of the message but also the complexity of the message needs to there needs to be a balance. Sure.",
+      "speaker": "Caller",
+      "confidence": -0.114,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 482.21,
+      "end": 491.23,
+      "text": "Sure. But it's like a founding principle of consulting is simple but complex.",
+      "speaker": "Caller",
+      "confidence": -0.135,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 491.39,
+      "end": 493.34,
+      "text": "Um and when I put that together, I mean",
+      "speaker": "Caller",
+      "confidence": -0.121,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 494.08,
+      "end": 500.99,
+      "text": "I I like one your thoughts, meaning like you know, if if you think this is cuck so A B C or remove this or what then that's perfect, you must tell me.",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 501.35,
+      "end": 506.78,
+      "text": "Um opening that Dror. I would have absolutely done that because uh",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": [
+        "door -> Dror"
+      ]
+    },
+    {
+      "start": 507.49,
+      "end": 510.14,
+      "text": "If I can't explain something to someone.",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 510.53,
+      "end": 513.21,
+      "text": "And if you send something to me and I read it and I",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 513.35,
+      "end": 514.21,
+      "text": "Not getting it?",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 514.91,
+      "end": 521.18,
+      "text": "Can they show you. Exactly, exactly. And and and and because you know you mean you know these guys, so like that's why like",
+      "speaker": "Caller",
+      "confidence": -0.194,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 521.6,
+      "end": 526.24,
+      "text": "I'm actually asking I'm not you saying you would have done it, I'm actually asking you for the feedback. Like",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 527.49,
+      "end": 532.67,
+      "text": "Please do it. You know, if I could if I could if I could put it that way. Um",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 533.51,
+      "end": 543.77,
+      "text": "Okay, cool. So before we get into the cloud and that sort of stuff, in terms of the BPO um opportunity, is that something that you'd want to explore further or not really? What are your thoughts around that?",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 544.07,
+      "end": 546.59,
+      "text": "Interestingly I met with uh",
+      "speaker": "Caller",
+      "confidence": -0.161,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 546.75,
+      "end": 549.92,
+      "text": "I present it to our board yes. So my says yes, I wanna talk about it more.",
+      "speaker": "Caller",
+      "confidence": -0.31,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 550.15,
+      "end": 553.82,
+      "text": "Um I met my somebody else. I met to the board yesterday.",
+      "speaker": "Caller",
+      "confidence": -0.082,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 553.92,
+      "end": 555.49,
+      "text": "And",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 556.07,
+      "end": 559.39,
+      "text": "One of the things that came out they've got this massive um",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 559.75,
+      "end": 562.01,
+      "text": "Collections gap. They settled it in house.",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 562.31,
+      "end": 563.01,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.151,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 563.23,
+      "end": 567.84,
+      "text": "You've got someone phoning clients saying hey you owe us money, blah blah and it's a big number.",
+      "speaker": "Caller",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 568.16,
+      "end": 569.09,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.139,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 569.89,
+      "end": 573.34,
+      "text": "There is an opportunity potentially there.",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 573.54,
+      "end": 577.09,
+      "text": "One of the board members asked me Seneca have you thought about this?",
+      "speaker": "Caller",
+      "confidence": -0.271,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 577.28,
+      "end": 582.11,
+      "text": "And I was like, yeah, look at that little star on that slide. It's exactly what you asked me.",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 582.27,
+      "end": 584.16,
+      "text": "So yes, it is part of the consideration.",
+      "speaker": "Caller",
+      "confidence": -0.099,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 584.32,
+      "end": 585.69,
+      "text": "I say that to solo.",
+      "speaker": "Caller",
+      "confidence": -0.341,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 585.95,
+      "end": 594.94,
+      "text": "Um so absolutely something but maybe you wanna maybe take two minutes to explain it to me if it's or five minutes. Yeah we can it's quite simple in my mind, right? Like",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 595.11,
+      "end": 596.45,
+      "text": "Tell me if I'm it's",
+      "speaker": "Caller",
+      "confidence": -0.126,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 596.9,
+      "end": 605.37,
+      "text": "It's like a BPO, your typical call center, but they do collections and the collections are a percentage of uh whatever they collect. That's what",
+      "speaker": "Caller",
+      "confidence": -0.096,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 605.6,
+      "end": 607.93,
+      "text": "And that's how it is. It's success based. Don't collect",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 608.03,
+      "end": 608.96,
+      "text": "Don't get paid.",
+      "speaker": "Caller",
+      "confidence": -0.048,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 609.15,
+      "end": 610.01,
+      "text": "Generally it's like",
+      "speaker": "Caller",
+      "confidence": -0.171,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 610.24,
+      "end": 610.78,
+      "text": "You know.",
+      "speaker": "Caller",
+      "confidence": -0.479,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 611.33,
+      "end": 613.41,
+      "text": "Let's start off like you know, give us a",
+      "speaker": "Caller",
+      "confidence": -0.066,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 613.51,
+      "end": 614.81,
+      "text": "Give us a you know.",
+      "speaker": "Caller",
+      "confidence": -0.207,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 615.01,
+      "end": 615.26,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.871,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 615.46,
+      "end": 625.31,
+      "text": "five hundred customers to test with. If we fail, we fail, you lose nothing. If we you know better than what you're already using, then you know, you'd probably want to use us for this. So we generally just find a it's a let's say like a break in point.",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 625.44,
+      "end": 626.11,
+      "text": "To be like",
+      "speaker": "Caller",
+      "confidence": -0.326,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 626.31,
+      "end": 628.73,
+      "text": "How can we just start with something?",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 628.87,
+      "end": 630.85,
+      "text": "After that stage, I mean we",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 631.17,
+      "end": 636.48,
+      "text": "Let's say generally successful and then we generally start to, you know, scale scale further after that. But",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 636.58,
+      "end": 638.62,
+      "text": "That is the exact um",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 638.91,
+      "end": 642.33,
+      "text": "Exact offering. We also put it under B E level one",
+      "speaker": "Caller",
+      "confidence": -0.138,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 642.5,
+      "end": 643.17,
+      "text": "Company.",
+      "speaker": "Caller",
+      "confidence": -0.246,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 643.43,
+      "end": 645.18,
+      "text": "So if that's a",
+      "speaker": "Caller",
+      "confidence": -0.024,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 646.21,
+      "end": 647.1,
+      "text": "Concern or",
+      "speaker": "Caller",
+      "confidence": -0.455,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 647.78,
+      "end": 652.0,
+      "text": "Issue at all, then that is um solved or can be solved.",
+      "speaker": "Caller",
+      "confidence": -0.104,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 652.42,
+      "end": 657.5,
+      "text": "Absolutely come up'cause this these are um it's for medical company and these are patient",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 657.67,
+      "end": 659.36,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 659.84,
+      "end": 665.63,
+      "text": "Th there's the issue of security, poppy, blah blah blah. So do you have any",
+      "speaker": "Caller",
+      "confidence": -0.124,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 667.75,
+      "end": 671.97,
+      "text": "Can you can you quickly give someone comfort that the data is secure?",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 672.13,
+      "end": 676.48,
+      "text": "Uh that you only get the phone number, the amount owed and I don't know.",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 676.61,
+      "end": 678.43,
+      "text": "Yeah,",
+      "speaker": "Caller",
+      "confidence": -0.397,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 678.59,
+      "end": 681.82,
+      "text": "What type of information needs to be shared, so I think that's important. Uh",
+      "speaker": "Caller",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 682.27,
+      "end": 683.55,
+      "text": "My commitment to you",
+      "speaker": "Caller",
+      "confidence": -0.012,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 684.13,
+      "end": 685.69,
+      "text": "is within the next",
+      "speaker": "Caller",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 686.91,
+      "end": 687.39,
+      "text": "Mano.",
+      "speaker": "Caller",
+      "confidence": -0.545,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 689.76,
+      "end": 690.78,
+      "text": "I will introduce you to them.",
+      "speaker": "Caller",
+      "confidence": -0.025,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 692.13,
+      "end": 692.93,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 695.01,
+      "end": 696.16,
+      "text": "From that perspective.",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 696.42,
+      "end": 697.09,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.092,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 698.02,
+      "end": 705.6,
+      "text": "is I'd actually like to just have like a thirty minute session with me, you and the the CO of the BPOs just kinda maybe to expand a bit more. There's pretty much",
+      "speaker": "Caller",
+      "confidence": -0.095,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 706.02,
+      "end": 707.2,
+      "text": "Two BPOs.",
+      "speaker": "Caller",
+      "confidence": -0.246,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 707.52,
+      "end": 708.13,
+      "text": "But",
+      "speaker": "Caller",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 708.29,
+      "end": 709.31,
+      "text": "The C o of",
+      "speaker": "Caller",
+      "confidence": -0.56,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 709.63,
+      "end": 714.24,
+      "text": "the one has a share in the other and it's separated because of B E and that sort of stuff. So",
+      "speaker": "Caller",
+      "confidence": -0.106,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 714.37,
+      "end": 716.54,
+      "text": "The one BPO is called IntelliBPO BPO.",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": [
+        "Intelli -> IntelliBPO"
+      ]
+    },
+    {
+      "start": 716.67,
+      "end": 720.09,
+      "text": "Um they pretty much focus on the more international",
+      "speaker": "Caller",
+      "confidence": -0.022,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 720.32,
+      "end": 725.12,
+      "text": "Clients are out there HIPAA compliant, everything that you'd need in order to actually service those types of clients.",
+      "speaker": "Caller",
+      "confidence": -0.05,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 725.35,
+      "end": 726.85,
+      "text": "Then for the local clouds. Now",
+      "speaker": "Caller",
+      "confidence": -0.211,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 727.49,
+      "end": 731.36,
+      "text": "They can also do dead d dead collection under them, but they'll be e level two.",
+      "speaker": "Caller",
+      "confidence": -0.188,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 731.84,
+      "end": 734.4,
+      "text": "So what often happens is they put Dead Collection under their",
+      "speaker": "Caller",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 735.27,
+      "end": 739.07,
+      "text": "It's called it sister company. Again, the CEO has a share in that company. It's called more",
+      "speaker": "Caller",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 739.2,
+      "end": 744.48,
+      "text": "I don't know the exact name, I I can't pronounce it so well. It's called like Mokali or Mokali or something like that.",
+      "speaker": "Caller",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 744.61,
+      "end": 747.93,
+      "text": "Um so there B E level one. If there's any concerns around BE",
+      "speaker": "Caller",
+      "confidence": -0.166,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 748.07,
+      "end": 752.22,
+      "text": "then it typically goes under there. They do a lot of work for government like",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 752.51,
+      "end": 755.9,
+      "text": "SARS, municipalities, you know, that sort of stuff. So they're very much",
+      "speaker": "Caller",
+      "confidence": -0.148,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 756.39,
+      "end": 760.25,
+      "text": "um it's a geared for that type of space in South Africa.",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 760.77,
+      "end": 763.01,
+      "text": "But what I would like to do",
+      "speaker": "Caller",
+      "confidence": -0.012,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 763.59,
+      "end": 766.11,
+      "text": "It's actually to have a session with us and the CEO.",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 766.4,
+      "end": 768.96,
+      "text": "Um just so first of you guys can get acquainted.",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 769.22,
+      "end": 769.92,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 770.91,
+      "end": 778.53,
+      "text": "And then so that we can just you know, you can ask the question that you want to ask directly to him and he can give you all the you know clarity and um comfort that you need there.",
+      "speaker": "Caller",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 778.75,
+      "end": 782.69,
+      "text": "And then I think that would probably be, you know, the best next step.",
+      "speaker": "Caller",
+      "confidence": -0.096,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 782.98,
+      "end": 791.42,
+      "text": "Alerts him to a potential opportunity with you. And I didn't tell him your name because it doesn't really matter, but um so he is aware um you know that there is something there.",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 791.52,
+      "end": 793.21,
+      "text": "And I think to me that would you know",
+      "speaker": "Caller",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 793.6,
+      "end": 798.37,
+      "text": "That would be the next best step, in my view. So would you be comfortable with that and then I can maybe just ask him",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 799.3,
+      "end": 804.09,
+      "text": "Yeah, maybe or even ask you for some times next week and then we can we can take it forward like um",
+      "speaker": "Caller",
+      "confidence": -0.088,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 804.19,
+      "end": 805.28,
+      "text": "Perfect.",
+      "speaker": "Caller",
+      "confidence": -0.249,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 805.57,
+      "end": 806.14,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.375,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 806.56,
+      "end": 807.04,
+      "text": "Yep.",
+      "speaker": "Caller",
+      "confidence": -0.251,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 807.62,
+      "end": 808.61,
+      "text": "Uh kind of it.",
+      "speaker": "Caller",
+      "confidence": -0.68,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 810.34,
+      "end": 811.55,
+      "text": "The next ten weeks.",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 813.38,
+      "end": 817.41,
+      "text": "Every day from nine to ten I bought. So the next ten weeks every day from nine to ten.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 818.72,
+      "end": 820.64,
+      "text": "Next ten weeks.",
+      "speaker": "Caller",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 820.74,
+      "end": 821.31,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.237,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 821.41,
+      "end": 821.76,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.312,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 822.18,
+      "end": 824.77,
+      "text": "Fine. So that's the time that we definitely shouldn't do.",
+      "speaker": "Caller",
+      "confidence": -0.159,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 824.99,
+      "end": 829.37,
+      "text": "Okay. No that's perfect. Um that's perfect.",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 829.76,
+      "end": 830.46,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.099,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 830.66,
+      "end": 835.01,
+      "text": "Okay, cool. So that's fine. I'll just have a chat with you then we can we can set that up.",
+      "speaker": "Caller",
+      "confidence": -0.126,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 835.52,
+      "end": 836.45,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.161,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 837.31,
+      "end": 841.79,
+      "text": "Cool. Then in terms of the clouds right, and we can maybe just go through",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 842.05,
+      "end": 848.09,
+      "text": "everything so that I know what you know what sort of planner I need to prepare for you. So there's something I just want to clarify up front, so we're on the same page. And I know it's",
+      "speaker": "Caller",
+      "confidence": -0.103,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 848.29,
+      "end": 848.83,
+      "text": "I guess.",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 849.41,
+      "end": 853.02,
+      "text": "indirectly specified in the agreement, but obviously this is a non exclusive",
+      "speaker": "Caller",
+      "confidence": -0.088,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 853.41,
+      "end": 854.75,
+      "text": "um you know, relationship.",
+      "speaker": "Caller",
+      "confidence": -0.282,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 855.11,
+      "end": 859.17,
+      "text": "Meaning we don't give partners exclusivity on clients. We used to give Vodacom exclusivity, but",
+      "speaker": "Caller",
+      "confidence": -0.142,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 859.27,
+      "end": 867.68,
+      "text": "Honestly, we even removed that from them as well. So the general rule is pretty much locked into the first person that kind of gets us the point of hey, we're contracting is the person that, you know",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 868.13,
+      "end": 869.41,
+      "text": "gets that um",
+      "speaker": "Caller",
+      "confidence": -0.218,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 870.21,
+      "end": 871.33,
+      "text": "And",
+      "speaker": "Caller",
+      "confidence": -0.609,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 872.61,
+      "end": 880.51,
+      "text": "From my side, I want to be fully transparent with what has been done, what hasn't been done. So be spending our time on the things that make the most sense, and you're not starting on",
+      "speaker": "Caller",
+      "confidence": -0.092,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 880.93,
+      "end": 886.59,
+      "text": "you know, a client which is already halfway through with another partner, if if the if that makes sense.'Cause I don't see that as the best spend of",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 886.95,
+      "end": 887.81,
+      "text": "Um Tom.",
+      "speaker": "Caller",
+      "confidence": -0.483,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 888.9,
+      "end": 890.27,
+      "text": "So in my mind",
+      "speaker": "Caller",
+      "confidence": -0.031,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 890.43,
+      "end": 894.3,
+      "text": "Right, these are the let's say opportunities that are worthwhile.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 894.85,
+      "end": 897.12,
+      "text": "Don't like using Google. Oh there's the chat box.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 897.41,
+      "end": 899.07,
+      "text": "These are opportunities that are",
+      "speaker": "Caller",
+      "confidence": -0.092,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 899.36,
+      "end": 901.18,
+      "text": "Let's say worthwhile exploring.",
+      "speaker": "Caller",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 901.54,
+      "end": 903.55,
+      "text": "I've just put them in the",
+      "speaker": "Caller",
+      "confidence": -0.013,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 903.68,
+      "end": 904.41,
+      "text": "Chats.",
+      "speaker": "Caller",
+      "confidence": -0.622,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 904.96,
+      "end": 905.63,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 908.07,
+      "end": 913.76,
+      "text": "Nothing has happened with them yet, meaning I haven't had any meetings with any of them.",
+      "speaker": "Caller",
+      "confidence": -0.017,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 914.24,
+      "end": 915.68,
+      "text": "But they are being targeted.",
+      "speaker": "Caller",
+      "confidence": -0.067,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 916.19,
+      "end": 918.59,
+      "text": "Now I say they are being targeted because to be honest",
+      "speaker": "Caller",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 919.49,
+      "end": 924.29,
+      "text": "A lot of people say, Yes, I can do that and then when it comes time to actually doing it, they actually",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 924.58,
+      "end": 925.95,
+      "text": "end up not being Alex to do it.",
+      "speaker": "Caller",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": [
+        "able -> Alex"
+      ]
+    },
+    {
+      "start": 926.08,
+      "end": 927.93,
+      "text": "So um",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 928.16,
+      "end": 931.07,
+      "text": "You know, in my view it's like these are all worthwhile.",
+      "speaker": "Caller",
+      "confidence": -0.074,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 931.65,
+      "end": 932.35,
+      "text": "Can they not",
+      "speaker": "Caller",
+      "confidence": -0.363,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 933.28,
+      "end": 936.41,
+      "text": "They are being targeted, but I literally haven't had a single meeting with",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 936.96,
+      "end": 938.17,
+      "text": "With any of them?",
+      "speaker": "Caller",
+      "confidence": -0.3,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 938.98,
+      "end": 944.06,
+      "text": "So that's not true. Old Mutual, I think I told you I met with them like a year and a half ago, but had to stop engaging.",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 944.26,
+      "end": 948.61,
+      "text": "Talk bank I met with the head of treasury, he's the only person I knew there and unfortunately he just",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 949.95,
+      "end": 953.5,
+      "text": "He didn't have the pool with the influence in the company to actually do what he needed to do.",
+      "speaker": "Caller",
+      "confidence": -0.088,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 953.92,
+      "end": 956.48,
+      "text": "Those are the only meetings I have had um",
+      "speaker": "Caller",
+      "confidence": -0.032,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 956.58,
+      "end": 958.88,
+      "text": "With respect to those guys.",
+      "speaker": "Caller",
+      "confidence": -0.134,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 959.46,
+      "end": 960.25,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.115,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 960.67,
+      "end": 962.33,
+      "text": "Well so can be technology, you know, um",
+      "speaker": "Caller",
+      "confidence": -0.561,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 962.91,
+      "end": 965.63,
+      "text": "I spoke with the head of fraud very briefly.",
+      "speaker": "Caller",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 965.92,
+      "end": 968.32,
+      "text": "It's actually just on LinkedIn, so it wasn't like a very",
+      "speaker": "Caller",
+      "confidence": -0.246,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 968.61,
+      "end": 969.89,
+      "text": "serious conversation.",
+      "speaker": "Caller",
+      "confidence": -0.15,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 970.11,
+      "end": 973.18,
+      "text": "He rejected me. So I think in Capitech anyone other than fraud",
+      "speaker": "Caller",
+      "confidence": -0.15,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 973.44,
+      "end": 975.97,
+      "text": "would be worth um would be worth a shot.",
+      "speaker": "Caller",
+      "confidence": -0.077,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 976.39,
+      "end": 979.1,
+      "text": "Town Bank there was a lot of interest. I could even go back and look",
+      "speaker": "Caller",
+      "confidence": -0.211,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 979.39,
+      "end": 981.47,
+      "text": "who the head of treasury spoke to",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 981.7,
+      "end": 984.8,
+      "text": "But he couldn't get people to actually move on anything.",
+      "speaker": "Caller",
+      "confidence": -0.014,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 985.41,
+      "end": 986.08,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.102,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 987.46,
+      "end": 988.86,
+      "text": "Netbank",
+      "speaker": "Caller",
+      "confidence": -0.757,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 989.95,
+      "end": 995.87,
+      "text": "Netbanks a good one, F and B's a good one, Old Mutual's also a good one. I know you mentioned that you haven't spoken to the old mutual guys in quite some time.",
+      "speaker": "Caller",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 996.48,
+      "end": 1001.47,
+      "text": "Um but yeah, those are all um those are all good opportunities.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1002.34,
+      "end": 1003.84,
+      "text": "I'm trying to think if there's",
+      "speaker": "Caller",
+      "confidence": -0.015,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1004.19,
+      "end": 1005.79,
+      "text": "Anyone else?",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1006.08,
+      "end": 1006.88,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1008.83,
+      "end": 1011.61,
+      "text": "Is there anyone else you can think of from your side?'Cause maybe I would've just",
+      "speaker": "Caller",
+      "confidence": -0.17,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1013.22,
+      "end": 1014.56,
+      "text": "Maybe I just can't think of them.",
+      "speaker": "Caller",
+      "confidence": -0.022,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1015.55,
+      "end": 1019.87,
+      "text": "Um this is obviously from a b I guess mostly from a banking perspective, right? But this is for the app based.",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1020.61,
+      "end": 1022.3,
+      "text": "um solution that we refer to.",
+      "speaker": "Caller",
+      "confidence": -0.099,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1023.33,
+      "end": 1024.25,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.04,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1025.38,
+      "end": 1031.87,
+      "text": "Are these are these danky? Like we we jump between spoke to them, didn't speak to them. Are these off the table or on the table? These are on the table.",
+      "speaker": "Caller",
+      "confidence": -0.109,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1032.29,
+      "end": 1035.77,
+      "text": "In my view it's like I think somebody if you can if you you know.",
+      "speaker": "Caller",
+      "confidence": -0.184,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1035.94,
+      "end": 1039.58,
+      "text": "can target these p these these banks, I think it's worthwhile targeting these banks.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1040.45,
+      "end": 1040.89,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.625,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1041.47,
+      "end": 1044.0,
+      "text": "And from an actual just opportunity perspective,",
+      "speaker": "Caller",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1044.16,
+      "end": 1045.63,
+      "text": "Right, it would obviously be",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1045.73,
+      "end": 1049.53,
+      "text": "Well not obviously, but I mean F and B netbank can capitec would be above",
+      "speaker": "Caller",
+      "confidence": -0.184,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1049.83,
+      "end": 1052.64,
+      "text": "Tom Bank and Old Mutual, and I think that's somewhat obvious, but just",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1052.93,
+      "end": 1054.65,
+      "text": "Just to kind of emphasize that point.",
+      "speaker": "Caller",
+      "confidence": -0.036,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1055.84,
+      "end": 1056.61,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1057.09,
+      "end": 1057.66,
+      "text": "Cool, so",
+      "speaker": "Caller",
+      "confidence": -0.37,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1057.76,
+      "end": 1058.72,
+      "text": "What are your",
+      "speaker": "Caller",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1060.16,
+      "end": 1063.58,
+      "text": "Should I kind of run through everything first and then you give me your overall? Okay, fine, got you.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1064.03,
+      "end": 1064.57,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1065.19,
+      "end": 1072.73,
+      "text": "Then for the app international route so for Standard Bank we can do Zambia, Kenya and Mobia. We've because we've done so much work with standard banks in Africa, a lot of that",
+      "speaker": "Caller",
+      "confidence": -0.204,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1072.99,
+      "end": 1076.77,
+      "text": "should actually go faster than you know if we just went to like a",
+      "speaker": "Caller",
+      "confidence": -0.026,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1076.9,
+      "end": 1078.4,
+      "text": "Yeah, a random bank that we hadn't.",
+      "speaker": "Caller",
+      "confidence": -0.411,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1078.63,
+      "end": 1080.32,
+      "text": "you know, works for you.",
+      "speaker": "Caller",
+      "confidence": -0.668,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1080.71,
+      "end": 1083.36,
+      "text": "Um we can definitely target all of those guys.",
+      "speaker": "Caller",
+      "confidence": -0.038,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1084.19,
+      "end": 1090.21,
+      "text": "When it comes to the unnetwork solution for South Africa, right the one we're launching with um",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1090.95,
+      "end": 1098.43,
+      "text": "Vodacom. So two things there. The first one is Vodacom will definitely be selling this. We've clarified this with Vodacom as well as the wholesale team locally.",
+      "speaker": "Caller",
+      "confidence": -0.078,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1098.66,
+      "end": 1105.57,
+      "text": "So that's definitely gonna happen and I've kinda just been told like we don't, you know, that's as sufficient as it gets. We don't need anything for now.",
+      "speaker": "Caller",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1105.67,
+      "end": 1112.25,
+      "text": "the only let's say gap which is why there's a let's say broad opportunity now as opposed to when we actually go live is because they will only sell",
+      "speaker": "Caller",
+      "confidence": -0.034,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1112.42,
+      "end": 1113.53,
+      "text": "After we go live.",
+      "speaker": "Caller",
+      "confidence": -0.071,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1114.08,
+      "end": 1121.73,
+      "text": "they for some reason are not allowed to, let's say, gear up clients before there, maybe from reputational risk something break, something doesn't work. So they can only do it once.",
+      "speaker": "Caller",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1121.83,
+      "end": 1125.53,
+      "text": "Everything is perfect for them to basically to basically do.",
+      "speaker": "Caller",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1126.02,
+      "end": 1126.78,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.321,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1126.95,
+      "end": 1128.8,
+      "text": "So I think from that perspective",
+      "speaker": "Caller",
+      "confidence": -0.009,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1129.19,
+      "end": 1132.41,
+      "text": "Obviously the clients that you let say from the from those list of banks or",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1132.77,
+      "end": 1137.82,
+      "text": "Or if there's any others than others from those clients that you engage, you can have both the conversations simultaneously.",
+      "speaker": "Caller",
+      "confidence": -0.064,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1137.92,
+      "end": 1140.25,
+      "text": "At least that's what I would probably suggest.",
+      "speaker": "Caller",
+      "confidence": -0.034,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1140.93,
+      "end": 1141.69,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1142.53,
+      "end": 1145.34,
+      "text": "Alternatively you can just have the app based s um.",
+      "speaker": "Caller",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1145.76,
+      "end": 1146.69,
+      "text": "Conversation.",
+      "speaker": "Caller",
+      "confidence": -0.371,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1147.36,
+      "end": 1154.14,
+      "text": "There's always a question of what happens if the customer doesn't have our app? And that's when I'll say, Well, we're actually launching a Vodacom to solve for exactly that. So",
+      "speaker": "Caller",
+      "confidence": -0.096,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1154.98,
+      "end": 1158.27,
+      "text": "You know, we can just see it whatever whatever makes the most sense there.",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1158.66,
+      "end": 1159.49,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1159.81,
+      "end": 1160.96,
+      "text": "But it would be",
+      "speaker": "Caller",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1161.12,
+      "end": 1162.33,
+      "text": "Sh",
+      "speaker": "Caller",
+      "confidence": -0.882,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1162.5,
+      "end": 1163.36,
+      "text": "So I'm clear.",
+      "speaker": "Caller",
+      "confidence": -0.214,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1164.8,
+      "end": 1167.84,
+      "text": "And we'll have to have a few more conversations'cause I'm a bit slow sometimes.",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1170.59,
+      "end": 1171.36,
+      "text": "Voter con?",
+      "speaker": "Caller",
+      "confidence": -0.88,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1171.81,
+      "end": 1172.51,
+      "text": "Signing up.",
+      "speaker": "Caller",
+      "confidence": -0.151,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1174.53,
+      "end": 1176.96,
+      "text": "What happens then Vircom selling it to who?",
+      "speaker": "Caller",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1178.31,
+      "end": 1181.25,
+      "text": "Vodocom would sell this to their enterprise customers.",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1181.51,
+      "end": 1183.87,
+      "text": "So net bank. Yes.",
+      "speaker": "Caller",
+      "confidence": -0.324,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1184.61,
+      "end": 1185.21,
+      "text": "Exactly.",
+      "speaker": "Caller",
+      "confidence": -0.015,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1186.98,
+      "end": 1187.9,
+      "text": "That's exactly it.",
+      "speaker": "Caller",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1188.16,
+      "end": 1190.81,
+      "text": "But if we get net bank",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1191.07,
+      "end": 1201.28,
+      "text": "First, right, because we would need a contract with them so that they go live on launch day. Well then the clients take it. Then they can't target them. Because remember Vodacom when they resell they'd be signing under us.",
+      "speaker": "Caller",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1202.59,
+      "end": 1203.13,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1203.46,
+      "end": 1205.21,
+      "text": "Well specifically under first arrive.",
+      "speaker": "Caller",
+      "confidence": -0.1,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1205.73,
+      "end": 1211.42,
+      "text": "So the wholesale team yeah, so Schengen and those guys, I'm not sure if you know them, they'd be signing under First Orient as a reseller.",
+      "speaker": "Caller",
+      "confidence": -0.128,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1211.87,
+      "end": 1212.35,
+      "text": "Right?",
+      "speaker": "Caller",
+      "confidence": -0.577,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1212.8,
+      "end": 1213.5,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1214.37,
+      "end": 1219.01,
+      "text": "And then if we've let's say taken up certain clients, then but then we've taken up certain clients then they can't",
+      "speaker": "Caller",
+      "confidence": -0.082,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1219.27,
+      "end": 1219.87,
+      "text": "Talk at them.",
+      "speaker": "Caller",
+      "confidence": -0.278,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1220.42,
+      "end": 1222.37,
+      "text": "Um but the key thing is to really just get",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1223.33,
+      "end": 1229.21,
+      "text": "that agreement in place before they have the opportunity to do it themselves.",
+      "speaker": "Caller",
+      "confidence": -0.015,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1229.41,
+      "end": 1231.42,
+      "text": "Basically.",
+      "speaker": "Caller",
+      "confidence": -0.281,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1231.87,
+      "end": 1236.86,
+      "text": "extensive or at least the wholesale team has got people in every province with relationships everywhere now.",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1237.15,
+      "end": 1238.75,
+      "text": "Everyone always talks about game, but",
+      "speaker": "Caller",
+      "confidence": -0.139,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1239.01,
+      "end": 1241.76,
+      "text": "You know, so I take it with a grain of salt, but I still just you know",
+      "speaker": "Caller",
+      "confidence": -0.177,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1242.31,
+      "end": 1250.43,
+      "text": "I think it's a great model. If I was launching something, they would be one of the the companies that I would work with for exactly that same reason. Uh",
+      "speaker": "Caller",
+      "confidence": -0.048,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1251.49,
+      "end": 1251.9,
+      "text": "Mike.",
+      "speaker": "Caller",
+      "confidence": -0.355,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1252.0,
+      "end": 1253.21,
+      "text": "But if I have a startup.",
+      "speaker": "Caller",
+      "confidence": -0.342,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1253.41,
+      "end": 1259.71,
+      "text": "that I think should get into the market for a particular division. It's usually the first place I go, and they're just incredible. So Okay.",
+      "speaker": "Caller",
+      "confidence": -0.154,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1260.48,
+      "end": 1261.57,
+      "text": "Okay. Brilliant.",
+      "speaker": "Caller",
+      "confidence": -0.2,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1261.67,
+      "end": 1265.21,
+      "text": "No, then that sounds good. And then just I mean just so that you know",
+      "speaker": "Caller",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1265.41,
+      "end": 1268.29,
+      "text": "Um we are also engaging with MTN's wholesale.",
+      "speaker": "Caller",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1269.03,
+      "end": 1271.26,
+      "text": "Um so that's seemingly going quite well.",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1271.71,
+      "end": 1272.77,
+      "text": "And then",
+      "speaker": "Caller",
+      "confidence": -0.035,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1273.38,
+      "end": 1276.57,
+      "text": "We've had some engagement at Telcoms also, but it's not going",
+      "speaker": "Caller",
+      "confidence": -0.21,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1276.93,
+      "end": 1279.07,
+      "text": "We haven't gotten the most traction there, so",
+      "speaker": "Caller",
+      "confidence": -0.058,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1279.43,
+      "end": 1282.01,
+      "text": "Um yeah, but I mean MTN's the main",
+      "speaker": "Caller",
+      "confidence": -0.231,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1282.85,
+      "end": 1284.13,
+      "text": "Got it. That's what we",
+      "speaker": "Caller",
+      "confidence": -0.505,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1284.42,
+      "end": 1285.92,
+      "text": "You spoke a lot about banks, yeah.",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1286.15,
+      "end": 1286.94,
+      "text": "It was less.",
+      "speaker": "Caller",
+      "confidence": -0.743,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1287.23,
+      "end": 1295.97,
+      "text": "What's the other segments or sectors that uh and M and O aside. Yeah. Uh what are the other sectors that this might be.",
+      "speaker": "Caller",
+      "confidence": -0.26,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1296.23,
+      "end": 1299.52,
+      "text": "So for the app based solution it becomes a bit tricky because",
+      "speaker": "Caller",
+      "confidence": -0.03,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1300.23,
+      "end": 1306.27,
+      "text": "I mean I'll give you examples, right? Like we've met with like outsurance, right, as an example. They've got a decent size app, it's like a million or so.",
+      "speaker": "Caller",
+      "confidence": -0.103,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1306.72,
+      "end": 1307.58,
+      "text": "Users but",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1307.78,
+      "end": 1312.57,
+      "text": "They still couldn't justify all of the work for d in t which you know",
+      "speaker": "Caller",
+      "confidence": -0.153,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1312.71,
+      "end": 1313.92,
+      "text": "That would need to be done.",
+      "speaker": "Caller",
+      "confidence": -0.188,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1314.31,
+      "end": 1318.49,
+      "text": "where the result is only branding to a such a small number of their overall customers.",
+      "speaker": "Caller",
+      "confidence": -0.067,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1318.79,
+      "end": 1320.96,
+      "text": "So for the app based solution I would say.",
+      "speaker": "Caller",
+      "confidence": -0.175,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1321.95,
+      "end": 1323.77,
+      "text": "Probably let's just focus on the banks.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1324.45,
+      "end": 1326.72,
+      "text": "Right. For the on network solution.",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1326.95,
+      "end": 1334.05,
+      "text": "Right. Insurance companies are absolutely perfect. The recruitment companies are perfect. Utility companies, transport companies, like literally",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1334.63,
+      "end": 1336.8,
+      "text": "Any company that makes outbound calls",
+      "speaker": "Caller",
+      "confidence": -0.014,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1337.44,
+      "end": 1338.33,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.263,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1338.5,
+      "end": 1342.33,
+      "text": "would want the app by I'm sorry, would want the on network solution.",
+      "speaker": "Caller",
+      "confidence": -0.11,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1342.85,
+      "end": 1345.92,
+      "text": "So maybe even career companies like DHL or",
+      "speaker": "Caller",
+      "confidence": -0.055,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1346.05,
+      "end": 1349.79,
+      "text": "Ram or, you know, those types of cars, absolutely perfect.",
+      "speaker": "Caller",
+      "confidence": -0.151,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1349.92,
+      "end": 1351.68,
+      "text": "Um I can send you uh",
+      "speaker": "Caller",
+      "confidence": -0.156,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1353.22,
+      "end": 1355.33,
+      "text": "Wanna just open up a slide because I have",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1355.62,
+      "end": 1357.79,
+      "text": "A slot on the swit shows",
+      "speaker": "Caller",
+      "confidence": -0.354,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1358.02,
+      "end": 1363.04,
+      "text": "Some industries and use cases that also might just help you.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1363.46,
+      "end": 1364.41,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.878,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1366.5,
+      "end": 1370.43,
+      "text": "But I can also just send this presentation it's a very like it's say generic.",
+      "speaker": "Caller",
+      "confidence": -0.16,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1371.36,
+      "end": 1372.41,
+      "text": "Presentation.",
+      "speaker": "Caller",
+      "confidence": -0.243,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1373.06,
+      "end": 1373.69,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1374.59,
+      "end": 1375.68,
+      "text": "That might help.",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1377.92,
+      "end": 1378.91,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.604,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1381.28,
+      "end": 1382.33,
+      "text": "Uh uh",
+      "speaker": "Caller",
+      "confidence": -0.558,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1383.36,
+      "end": 1385.12,
+      "text": "Can you not upload screenshots in",
+      "speaker": "Caller",
+      "confidence": -0.029,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1386.31,
+      "end": 1399.77,
+      "text": "I don't know. I also don't like using Google. I realize I didn't put a link, so when I was driving this morning I quickly just uh phone because it's super easy to put a link. Let me just share my screen quickly and",
+      "speaker": "Caller",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1400.26,
+      "end": 1402.85,
+      "text": "I don't know why it's not showing so these are just some",
+      "speaker": "Caller",
+      "confidence": -0.066,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1403.43,
+      "end": 1408.86,
+      "text": "You know, example. So like obviously banking and insurance we know. Logistics are just mentioned, retail is a good one.",
+      "speaker": "Caller",
+      "confidence": -0.124,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1409.35,
+      "end": 1411.77,
+      "text": "I made a note of e commerce yeah.",
+      "speaker": "Caller",
+      "confidence": -0.172,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1411.91,
+      "end": 1415.49,
+      "text": "Yeah, so I got I I take a lot of time. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1415.71,
+      "end": 1422.14,
+      "text": "Automotive like Toyota, Cherry, whatever, they're all good. Travel and entertainment, I mean like if you can get the bigger airlines.",
+      "speaker": "Caller",
+      "confidence": -0.143,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1422.75,
+      "end": 1423.97,
+      "text": "Um that would be",
+      "speaker": "Caller",
+      "confidence": -0.071,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1424.13,
+      "end": 1427.84,
+      "text": "Good, meaning like I spoke with the left as an example because the CFO is my friend, they just",
+      "speaker": "Caller",
+      "confidence": -0.137,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1428.32,
+      "end": 1430.05,
+      "text": "Don't really make enough outbound calls.",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1430.56,
+      "end": 1434.21,
+      "text": "Um and then obviously let's just say BPOs or call centers in general.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1434.66,
+      "end": 1435.49,
+      "text": "Or a good one.",
+      "speaker": "Caller",
+      "confidence": -0.233,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1435.59,
+      "end": 1436.67,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.313,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1437.12,
+      "end": 1443.2,
+      "text": "Let's say some of the more obvious. And then there's let's say the less obvious ones like the big recruitment companies, maybe like a Mark or Page of sorts or",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1443.36,
+      "end": 1444.86,
+      "text": "I don't know who the other big guys are.",
+      "speaker": "Caller",
+      "confidence": -0.012,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1445.51,
+      "end": 1446.33,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1450.43,
+      "end": 1450.97,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.045,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1451.49,
+      "end": 1452.73,
+      "text": "I mean I think that's",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1453.7,
+      "end": 1457.98,
+      "text": "I think that's largely it. I mean I'm sure there's some more that I haven't thought of.",
+      "speaker": "Caller",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1458.66,
+      "end": 1459.36,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1460.0,
+      "end": 1461.44,
+      "text": "But I would think that's you know.",
+      "speaker": "Caller",
+      "confidence": -0.103,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1462.21,
+      "end": 1463.07,
+      "text": "Most of them.",
+      "speaker": "Caller",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1463.55,
+      "end": 1464.35,
+      "text": "Mm, mm, mm.",
+      "speaker": "Caller",
+      "confidence": -0.253,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1464.61,
+      "end": 1471.13,
+      "text": "Um but again it's really just like do you make our path calls? Well then you're likely gonna wanna use this type of uh this type of solution.",
+      "speaker": "Caller",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1476.1,
+      "end": 1477.37,
+      "text": "The the more I speak to you.",
+      "speaker": "Caller",
+      "confidence": -0.345,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1478.15,
+      "end": 1479.74,
+      "text": "Uh the more I think is",
+      "speaker": "Caller",
+      "confidence": -0.337,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1481.12,
+      "end": 1481.5,
+      "text": "What.",
+      "speaker": "Caller",
+      "confidence": -0.706,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1481.76,
+      "end": 1484.0,
+      "text": "Such a huge market for this.",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1484.26,
+      "end": 1485.05,
+      "text": "It is.",
+      "speaker": "Caller",
+      "confidence": -0.433,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1485.38,
+      "end": 1485.89,
+      "text": "It is.",
+      "speaker": "Caller",
+      "confidence": -0.134,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1486.18,
+      "end": 1490.49,
+      "text": "The the address will marketized in order. Say again?",
+      "speaker": "Caller",
+      "confidence": -0.275,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1490.91,
+      "end": 1494.37,
+      "text": "Which is why you've taken it on as an opportunity.",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1494.85,
+      "end": 1495.71,
+      "text": "So this took",
+      "speaker": "Caller",
+      "confidence": -0.302,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1495.87,
+      "end": 1498.24,
+      "text": "I cannot explain how long this took to get",
+      "speaker": "Caller",
+      "confidence": -0.011,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1498.79,
+      "end": 1505.98,
+      "text": "to get to this point. I know you come here already there. This took years to get to this point where we actually like, you know, going at a network level.",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1506.4,
+      "end": 1507.71,
+      "text": "And those types of things like",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1508.96,
+      "end": 1510.69,
+      "text": "It was a ridiculous amount of work, but",
+      "speaker": "Caller",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1510.91,
+      "end": 1521.12,
+      "text": "This is yeah, this is obviously the goal. So I mean I I kind of saw this, you know this has been my goal for like three years, pretty much to get here. If you ask me three years ago what am I doing, I I would say I'm gonna change how",
+      "speaker": "Caller",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1521.41,
+      "end": 1524.86,
+      "text": "of enterprises reach out to their customers in this country.",
+      "speaker": "Caller",
+      "confidence": -0.127,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1525.03,
+      "end": 1529.57,
+      "text": "My goal. Now we're finally actually reaching that goal, like you know, three or so",
+      "speaker": "Caller",
+      "confidence": -0.092,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1529.99,
+      "end": 1531.1,
+      "text": "Three or so years later.",
+      "speaker": "Caller",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1531.62,
+      "end": 1536.19,
+      "text": "Um so I think for the inform South Africa or the R Network for South Africa",
+      "speaker": "Caller",
+      "confidence": -0.1,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1537.06,
+      "end": 1539.61,
+      "text": "I don't think it's worthwhile gonna go get a hundred clouds.",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1539.78,
+      "end": 1548.38,
+      "text": "To be honest, I think you know, whoever let's say your friendlies are, which are still, let's say, somewhat significant opportunities would probably be worthwhile engaging. We can also then double um",
+      "speaker": "Caller",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1548.61,
+      "end": 1553.6,
+      "text": "when it comes to engaging with the banks we can double the conversation like I've mentioned. So that would be my subjects approach.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1553.79,
+      "end": 1554.11,
+      "text": "But",
+      "speaker": "Caller",
+      "confidence": -0.935,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1554.4,
+      "end": 1558.17,
+      "text": "By all means you know you you can you know do whatever you really want and that's fine.",
+      "speaker": "Caller",
+      "confidence": -0.093,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1559.04,
+      "end": 1559.68,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.091,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1560.03,
+      "end": 1560.29,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.693,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1560.42,
+      "end": 1563.33,
+      "text": "What I'd like from you after the call, please, is",
+      "speaker": "Caller",
+      "confidence": -0.101,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1565.99,
+      "end": 1568.32,
+      "text": "I don't think you've ever Sean me any presentations.",
+      "speaker": "Caller",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": [
+        "sent -> Sean"
+      ]
+    },
+    {
+      "start": 1568.45,
+      "end": 1577.05,
+      "text": "Uh then I'll send them all through to you. That's not a sense. Because in my mind I also really need to",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1577.99,
+      "end": 1582.05,
+      "text": "I I need to break it up so there's now when you said photo comes to be Cell.",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": [
+        "cellar -> Cell"
+      ]
+    },
+    {
+      "start": 1582.24,
+      "end": 1583.07,
+      "text": "That's cool'cause you",
+      "speaker": "Caller",
+      "confidence": -0.134,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1583.36,
+      "end": 1584.51,
+      "text": "W we um",
+      "speaker": "Caller",
+      "confidence": -0.568,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1585.09,
+      "end": 1588.77,
+      "text": "You're using lingo that you're familiar with for three years, right? I'm trying to get out to speed.",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1588.96,
+      "end": 1591.68,
+      "text": "Linguistic network, app based solution, etc.",
+      "speaker": "Caller",
+      "confidence": -0.324,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1592.19,
+      "end": 1592.64,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.167,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1592.93,
+      "end": 1594.24,
+      "text": "If you can send me",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1594.75,
+      "end": 1595.84,
+      "text": "Collateral that you",
+      "speaker": "Caller",
+      "confidence": -0.422,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1596.1,
+      "end": 1596.8,
+      "text": "And",
+      "speaker": "Caller",
+      "confidence": -1.325,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1597.79,
+      "end": 1600.16,
+      "text": "Introductory collateral. It will give me a good",
+      "speaker": "Caller",
+      "confidence": -0.135,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1600.32,
+      "end": 1601.5,
+      "text": "When you play it in mind.",
+      "speaker": "Caller",
+      "confidence": -0.481,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1601.67,
+      "end": 1604.29,
+      "text": "And then I can start segmenting a lot better.",
+      "speaker": "Caller",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1604.42,
+      "end": 1605.82,
+      "text": "Not a hundred percent.",
+      "speaker": "Caller",
+      "confidence": -0.236,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1605.92,
+      "end": 1607.29,
+      "text": "Couple of things there's the",
+      "speaker": "Caller",
+      "confidence": -0.158,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1607.87,
+      "end": 1609.53,
+      "text": "There's a segmentation piece.",
+      "speaker": "Caller",
+      "confidence": -0.084,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1610.08,
+      "end": 1612.0,
+      "text": "So we've got banks, the sector base.",
+      "speaker": "Caller",
+      "confidence": -0.189,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1612.39,
+      "end": 1615.71,
+      "text": "Then we've got country based, so Center Bank Zambia is an example.",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1616.35,
+      "end": 1623.55,
+      "text": "And that's the app based but then we also have the on network, which is now both comes to be seller, but there's also the on network solution, right? So",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1623.65,
+      "end": 1625.69,
+      "text": "I'm just trying to frame it. So I see three pieces, yeah.",
+      "speaker": "Caller",
+      "confidence": -0.185,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1625.95,
+      "end": 1629.66,
+      "text": "And I could be gone. I see App, I see on network and then I see",
+      "speaker": "Caller",
+      "confidence": -0.234,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1630.18,
+      "end": 1631.36,
+      "text": "The seller model.",
+      "speaker": "Caller",
+      "confidence": -0.329,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1632.35,
+      "end": 1636.19,
+      "text": "But the reseller model and the on network model are essentially the same. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.247,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1636.42,
+      "end": 1640.45,
+      "text": "I'm trying to do it. Yes. So that's exactly right.",
+      "speaker": "Caller",
+      "confidence": -0.309,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1640.77,
+      "end": 1643.55,
+      "text": "Peace which is the on network outside of South Africa.",
+      "speaker": "Caller",
+      "confidence": -0.125,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1644.83,
+      "end": 1647.13,
+      "text": "R that's the the let's say the other piece.",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1647.39,
+      "end": 1650.46,
+      "text": "So that's remember where we live in US, UK, Germany",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1650.66,
+      "end": 1651.49,
+      "text": "Spine.",
+      "speaker": "Caller",
+      "confidence": -0.611,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1652.1,
+      "end": 1654.01,
+      "text": "And a few others I don't even remember them all.",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1654.37,
+      "end": 1655.01,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.755,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1655.68,
+      "end": 1659.17,
+      "text": "So that's the that's the other piece. I remember for that you mentioned there was",
+      "speaker": "Caller",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1659.94,
+      "end": 1662.17,
+      "text": "Think you said it was a BPO, if I remember correctly.",
+      "speaker": "Caller",
+      "confidence": -0.108,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1662.37,
+      "end": 1663.29,
+      "text": "So again from that.",
+      "speaker": "Caller",
+      "confidence": -0.43,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1663.71,
+      "end": 1666.53,
+      "text": "Yeah. So from that perspective, as long as we're not working with them.",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1667.04,
+      "end": 1673.05,
+      "text": "We can target them. I did actually I'm not sure if you still have a relationship with A B and B but I did just check they're not on our system, so that's not a",
+      "speaker": "Caller",
+      "confidence": -0.091,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1673.51,
+      "end": 1675.42,
+      "text": "we're not working with them if that's something that",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1675.59,
+      "end": 1678.94,
+      "text": "You know, you think would make sense and that's also fun. Um",
+      "speaker": "Caller",
+      "confidence": -0.147,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1679.59,
+      "end": 1681.37,
+      "text": "And I'm more than comfortable just to be clear.",
+      "speaker": "Caller",
+      "confidence": -0.058,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1681.57,
+      "end": 1683.45,
+      "text": "If you want to have the engagement first.",
+      "speaker": "Caller",
+      "confidence": -0.102,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1683.78,
+      "end": 1686.59,
+      "text": "Rats, you can do it that way if you want to check with me first, hi.",
+      "speaker": "Caller",
+      "confidence": -0.222,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1686.82,
+      "end": 1689.63,
+      "text": "Are we you know, working with these guys already? We can do it that way.",
+      "speaker": "Caller",
+      "confidence": -0.093,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1690.18,
+      "end": 1691.71,
+      "text": "Whatever makes more sense.",
+      "speaker": "Caller",
+      "confidence": -0.044,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1691.84,
+      "end": 1692.35,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.189,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1692.67,
+      "end": 1693.15,
+      "text": "You know",
+      "speaker": "Caller",
+      "confidence": -0.159,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1693.51,
+      "end": 1694.3,
+      "text": "In your view.",
+      "speaker": "Caller",
+      "confidence": -0.139,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1694.75,
+      "end": 1695.39,
+      "text": "Cool.",
+      "speaker": "Caller",
+      "confidence": -0.486,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1695.62,
+      "end": 1699.2,
+      "text": "Then lastly is the unnetwork for new regions. That's actually a fourth piece.",
+      "speaker": "Caller",
+      "confidence": -0.111,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1699.43,
+      "end": 1700.16,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.172,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1701.31,
+      "end": 1708.41,
+      "text": "So I would suggest that we this is just my view, and again, if you think it's worthwhile exploring we can, but I would personally suggest we pin this until next year.",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1708.64,
+      "end": 1710.08,
+      "text": "What's the title?",
+      "speaker": "Caller",
+      "confidence": -0.159,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1710.27,
+      "end": 1714.72,
+      "text": "On network outside SA. Yeah, on network for let's just say new regions.",
+      "speaker": "Caller",
+      "confidence": -0.193,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1714.88,
+      "end": 1715.81,
+      "text": "I was a",
+      "speaker": "Caller",
+      "confidence": -0.602,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1715.97,
+      "end": 1716.99,
+      "text": "JSP pinn this.",
+      "speaker": "Caller",
+      "confidence": -0.577,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1717.47,
+      "end": 1718.91,
+      "text": "This is again just my view.",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1719.33,
+      "end": 1722.14,
+      "text": "Maybe just to explain a bit more. There's three add there's three let's say",
+      "speaker": "Caller",
+      "confidence": -0.128,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1722.72,
+      "end": 1725.82,
+      "text": "pricing or commercial aspects, there's development, there's support.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1726.21,
+      "end": 1730.97,
+      "text": "Right, and then there is the revenue share that we would get between us and the teleport. Now",
+      "speaker": "Caller",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1731.14,
+      "end": 1732.25,
+      "text": "Generally what happens is",
+      "speaker": "Caller",
+      "confidence": -0.157,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1732.67,
+      "end": 1736.61,
+      "text": "The revenue share is the one piece and the dev and support are the other piece, meaning",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1736.96,
+      "end": 1737.53,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1738.08,
+      "end": 1745.34,
+      "text": "What would sometimes happen is we'll say, Cool, we'll cover half of the development Cross, but then we need to have a slightly higher revenue share, or alternatively",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": [
+        "costs -> Cross"
+      ]
+    },
+    {
+      "start": 1745.54,
+      "end": 1749.5,
+      "text": "the first six months of revenue only comes to us, meaning we have to cover those Cross.",
+      "speaker": "Caller",
+      "confidence": -0.048,
+      "low_confidence": false,
+      "corrections": [
+        "costs -> Cross"
+      ]
+    },
+    {
+      "start": 1749.79,
+      "end": 1750.3,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.288,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1750.66,
+      "end": 1752.93,
+      "text": "But we only take a revenue share",
+      "speaker": "Caller",
+      "confidence": -0.019,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1753.19,
+      "end": 1753.82,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.273,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1754.24,
+      "end": 1756.06,
+      "text": "when we actually have a presence in the country.",
+      "speaker": "Caller",
+      "confidence": -0.032,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1756.99,
+      "end": 1758.21,
+      "text": "Far down the line. Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.107,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1758.43,
+      "end": 1767.81,
+      "text": "So because we don't have a presence in let's just say you know these other African countries, it will pretty much just be well now the dev Cross are the dev cost, the support Cross are the support Cross and",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": [
+        "costs -> Cross",
+        "costs -> Cross",
+        "costs -> Cross"
+      ]
+    },
+    {
+      "start": 1767.91,
+      "end": 1772.99,
+      "text": "I can tell you from my experience, often Telco's lack of negotiation and say, Oh, we don't want to pay all of those fees, we'll give you",
+      "speaker": "Caller",
+      "confidence": -0.189,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1773.19,
+      "end": 1773.85,
+      "text": "You know",
+      "speaker": "Caller",
+      "confidence": -0.126,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1773.95,
+      "end": 1775.33,
+      "text": "So that's where I'm just thinking like",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1775.71,
+      "end": 1776.32,
+      "text": "The",
+      "speaker": "Caller",
+      "confidence": -0.789,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1776.51,
+      "end": 1777.66,
+      "text": "Financial benefit.",
+      "speaker": "Caller",
+      "confidence": -0.19,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1778.02,
+      "end": 1782.72,
+      "text": "is not necessarily better than the other opportunities, but the timelines are almost certainly longer.",
+      "speaker": "Caller",
+      "confidence": -0.039,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1783.2,
+      "end": 1784.86,
+      "text": "If we were gonna have revenue shares.",
+      "speaker": "Caller",
+      "confidence": -0.092,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1784.99,
+      "end": 1785.57,
+      "text": "Right?",
+      "speaker": "Caller",
+      "confidence": -0.368,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1786.02,
+      "end": 1786.94,
+      "text": "A hundred percent.",
+      "speaker": "Caller",
+      "confidence": -0.243,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1787.27,
+      "end": 1790.11,
+      "text": "You can't compare the opportunity, that's a mass opportunity.",
+      "speaker": "Caller",
+      "confidence": -0.066,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1790.72,
+      "end": 1792.99,
+      "text": "So the reason why I'm saying let's pin this for next year is that",
+      "speaker": "Caller",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1793.47,
+      "end": 1793.95,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1794.72,
+      "end": 1796.86,
+      "text": "I wanna actually, you know, see",
+      "speaker": "Caller",
+      "confidence": -0.149,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1797.31,
+      "end": 1799.68,
+      "text": "You know, maybe we can maybe just look at, you know, what are the",
+      "speaker": "Caller",
+      "confidence": -0.093,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1800.07,
+      "end": 1807.65,
+      "text": "top you know, two regions, and maybe actually see if we can develop some sort of presence there. And at that stage it would really make a lot of sense to",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1807.84,
+      "end": 1813.44,
+      "text": "engage because I mean from our side we can go to any voter common M T N that you know you you know",
+      "speaker": "Caller",
+      "confidence": -0.157,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1813.7,
+      "end": 1818.56,
+      "text": "But again it just it really only makes sense when we have the present there so we can presence there so we can actually get",
+      "speaker": "Caller",
+      "confidence": -0.055,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1818.82,
+      "end": 1820.93,
+      "text": "Revenue share which is where most of the money",
+      "speaker": "Caller",
+      "confidence": -0.039,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1821.25,
+      "end": 1821.85,
+      "text": "Sets.",
+      "speaker": "Caller",
+      "confidence": -1.1,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1822.27,
+      "end": 1826.43,
+      "text": "And these timelines are really long for for the on network deal specifically.",
+      "speaker": "Caller",
+      "confidence": -0.078,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1826.88,
+      "end": 1827.71,
+      "text": "It's it.",
+      "speaker": "Caller",
+      "confidence": -0.587,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1828.13,
+      "end": 1830.33,
+      "text": "Tell me. Uh any videos.",
+      "speaker": "Caller",
+      "confidence": -0.313,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1833.19,
+      "end": 1834.49,
+      "text": "Um I have",
+      "speaker": "Caller",
+      "confidence": -0.077,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1834.59,
+      "end": 1836.54,
+      "text": "Demos for the",
+      "speaker": "Caller",
+      "confidence": -0.23,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1837.09,
+      "end": 1838.08,
+      "text": "App based solution.",
+      "speaker": "Caller",
+      "confidence": -0.319,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1838.69,
+      "end": 1845.28,
+      "text": "Um so all of the clans, um all the banks I'm mentioned to you except for maybe F and B I have",
+      "speaker": "Caller",
+      "confidence": -0.131,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1845.86,
+      "end": 1846.81,
+      "text": "Temo of them.",
+      "speaker": "Caller",
+      "confidence": -0.801,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1847.3,
+      "end": 1851.07,
+      "text": "For the on network, uh I'll just show you what I normally do. I'm not I don't really need a",
+      "speaker": "Caller",
+      "confidence": -0.169,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1851.94,
+      "end": 1853.34,
+      "text": "A demo because it's",
+      "speaker": "Caller",
+      "confidence": -0.139,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1853.76,
+      "end": 1856.61,
+      "text": "I can let's just edit this on a PowerPoint. It's like not",
+      "speaker": "Caller",
+      "confidence": -0.114,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1857.54,
+      "end": 1859.26,
+      "text": "Not that much to change.",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1859.87,
+      "end": 1860.7,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1864.32,
+      "end": 1865.98,
+      "text": "I don't even know if it's working, can",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1866.91,
+      "end": 1868.19,
+      "text": "I can see. Oh okay.",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1868.29,
+      "end": 1868.89,
+      "text": "Summon.",
+      "speaker": "Caller",
+      "confidence": -0.636,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1869.92,
+      "end": 1871.26,
+      "text": "I literally just edit this.",
+      "speaker": "Caller",
+      "confidence": -0.117,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1872.13,
+      "end": 1877.85,
+      "text": "Oh let's just say A B and Bev and I'll say calling you back or A B and Bev query resolved or whatever the case may be.",
+      "speaker": "Caller",
+      "confidence": -0.191,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1878.15,
+      "end": 1878.81,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1879.01,
+      "end": 1881.02,
+      "text": "I'm not sure if I manage this to not. I don't want to give it a lot.",
+      "speaker": "Caller",
+      "confidence": -0.469,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1882.05,
+      "end": 1884.89,
+      "text": "too much information so it becomes like the information overload but",
+      "speaker": "Caller",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1885.22,
+      "end": 1888.99,
+      "text": "But maybe I think it probably is quite important. So just that you're aware, right?",
+      "speaker": "Caller",
+      "confidence": -0.117,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1889.22,
+      "end": 1895.65,
+      "text": "For this on network, there's actually two variations. There's the one like this where it's just text, company name and core reason.",
+      "speaker": "Caller",
+      "confidence": -0.031,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1895.91,
+      "end": 1898.81,
+      "text": "That's what Vodacom is doing. They're doing it that way.",
+      "speaker": "Caller",
+      "confidence": -0.082,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1899.84,
+      "end": 1902.21,
+      "text": "There's another option where we can have a logo.",
+      "speaker": "Caller",
+      "confidence": -0.035,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1902.34,
+      "end": 1902.91,
+      "text": "As well.",
+      "speaker": "Caller",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1903.65,
+      "end": 1907.87,
+      "text": "Right. So it's pretty much the app based solution, but I don't add fully on network. So",
+      "speaker": "Caller",
+      "confidence": -0.142,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1908.03,
+      "end": 1908.51,
+      "text": "That",
+      "speaker": "Caller",
+      "confidence": -1.442,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1908.64,
+      "end": 1910.08,
+      "text": "Logo option is there,",
+      "speaker": "Caller",
+      "confidence": -0.342,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1910.75,
+      "end": 1913.12,
+      "text": "I'm pretty confident MTN would do the logo.",
+      "speaker": "Caller",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1914.15,
+      "end": 1920.0,
+      "text": "Vodacomma are one hundred percent not doing the logo. They haven't done that in any other region that we've worked with them in, so they will not be doing it.",
+      "speaker": "Caller",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1920.32,
+      "end": 1922.81,
+      "text": "But MTN MTN should and Talkamau pushed it.",
+      "speaker": "Caller",
+      "confidence": -0.297,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1923.33,
+      "end": 1923.81,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.047,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1924.74,
+      "end": 1930.72,
+      "text": "Um as just say let's say another point to kind of keep in mind because some of the Clara asked and you would likely have that logo.",
+      "speaker": "Caller",
+      "confidence": -0.149,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1931.27,
+      "end": 1932.09,
+      "text": "Option. Cool.",
+      "speaker": "Caller",
+      "confidence": -0.28,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1932.35,
+      "end": 1933.25,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.356,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1933.51,
+      "end": 1934.3,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.221,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1936.0,
+      "end": 1937.37,
+      "text": "So I think that's",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1939.33,
+      "end": 1940.7,
+      "text": "Pretty much.",
+      "speaker": "Caller",
+      "confidence": -0.31,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1941.54,
+      "end": 1943.42,
+      "text": "Everything from Massa. I know I said uh",
+      "speaker": "Caller",
+      "confidence": -0.341,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1944.03,
+      "end": 1944.96,
+      "text": "A lot.",
+      "speaker": "Caller",
+      "confidence": -0.259,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1945.19,
+      "end": 1948.03,
+      "text": "So maybe this kid is paying them. So",
+      "speaker": "Caller",
+      "confidence": -0.513,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1949.83,
+      "end": 1955.13,
+      "text": "would sign up signal network. Vodocom would sign up. So can you go back to that slide? Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.289,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1955.84,
+      "end": 1956.57,
+      "text": "Voting comment?",
+      "speaker": "Caller",
+      "confidence": -1.048,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1957.6,
+      "end": 1958.81,
+      "text": "So before",
+      "speaker": "Caller",
+      "confidence": -0.277,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1959.04,
+      "end": 1960.16,
+      "text": "A B in Bev.",
+      "speaker": "Caller",
+      "confidence": -0.454,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1960.32,
+      "end": 1965.92,
+      "text": "Or or mutual phones a client about food. But before it should come up as O A three one two three.",
+      "speaker": "Caller",
+      "confidence": -0.253,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1966.15,
+      "end": 1967.39,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.18,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1967.52,
+      "end": 1968.61,
+      "text": "Voted com",
+      "speaker": "Caller",
+      "confidence": -1.091,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1968.74,
+      "end": 1969.95,
+      "text": "has showed it.",
+      "speaker": "Caller",
+      "confidence": -0.408,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1970.08,
+      "end": 1970.59,
+      "text": "True.",
+      "speaker": "Caller",
+      "confidence": -0.195,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1972.45,
+      "end": 1973.82,
+      "text": "Uh oh mutual.",
+      "speaker": "Caller",
+      "confidence": -0.286,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1974.43,
+      "end": 1975.13,
+      "text": "And so",
+      "speaker": "Caller",
+      "confidence": -0.035,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1975.87,
+      "end": 1980.86,
+      "text": "It will now set regardless of the network where the call is coming from.",
+      "speaker": "Caller",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1981.47,
+      "end": 1982.4,
+      "text": "Anything.",
+      "speaker": "Caller",
+      "confidence": -0.358,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1983.2,
+      "end": 1984.54,
+      "text": "It's gonna pop up here.",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1984.64,
+      "end": 1985.79,
+      "text": "And it's gonna say",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1986.88,
+      "end": 1987.74,
+      "text": "Oh mutual.",
+      "speaker": "Caller",
+      "confidence": -0.407,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1987.91,
+      "end": 1988.61,
+      "text": "He's calling you.",
+      "speaker": "Caller",
+      "confidence": -0.057,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1988.93,
+      "end": 1989.47,
+      "text": "Yes.",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1989.95,
+      "end": 1990.75,
+      "text": "Remember.",
+      "speaker": "Caller",
+      "confidence": -0.32,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1991.11,
+      "end": 1993.44,
+      "text": "Doesn't matter what phone I have. Doesn't matter",
+      "speaker": "Caller",
+      "confidence": -0.108,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1993.99,
+      "end": 1998.4,
+      "text": "Uh I think you need a smartphone. Yeah, I was gonna say if you have a brick phone, I don't think it will",
+      "speaker": "Caller",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1998.53,
+      "end": 1999.68,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.746,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1999.87,
+      "end": 2002.21,
+      "text": "Phone model is why we apple it.",
+      "speaker": "Caller",
+      "confidence": -0.49,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2002.34,
+      "end": 2005.05,
+      "text": "Networking. Uh doesn't matter if I have two colour.",
+      "speaker": "Caller",
+      "confidence": -0.312,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2005.19,
+      "end": 2022.05,
+      "text": "No. Does it matter if I have this new Apple spam thing that Apple's bought in. Oh that's that's the question mark. That I actually have to go into a bit more detail. If that like pre core check thing might still activate. I think if I'm not mistaken that will that will still activate. I'll need a double check on that.",
+      "speaker": "Caller",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2022.69,
+      "end": 2024.16,
+      "text": "I'll need to double check on that part.",
+      "speaker": "Caller",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2024.39,
+      "end": 2029.5,
+      "text": "And and because it's our network solution, I'm asking now how to come signed up, but",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2030.4,
+      "end": 2030.97,
+      "text": "What about",
+      "speaker": "Caller",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2031.11,
+      "end": 2032.8,
+      "text": "If it's uh",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2033.31,
+      "end": 2033.85,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.462,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2035.55,
+      "end": 2040.73,
+      "text": "Uh Votocom signs up then in all likelihood the call is coming from your Vodocom uh",
+      "speaker": "Caller",
+      "confidence": -0.224,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2040.93,
+      "end": 2041.73,
+      "text": "Starting point.",
+      "speaker": "Caller",
+      "confidence": -0.46,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2042.18,
+      "end": 2045.02,
+      "text": "With the clients of All Mutual? All Mutual's making the call.",
+      "speaker": "Caller",
+      "confidence": -0.332,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2045.54,
+      "end": 2048.13,
+      "text": "It's all mutual number, it's for the com.",
+      "speaker": "Caller",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2048.64,
+      "end": 2049.25,
+      "text": "Network.",
+      "speaker": "Caller",
+      "confidence": -0.106,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2050.18,
+      "end": 2057.09,
+      "text": "Typically. Okay. No wait, sorry. Let me just clarify this. That could happen, but it's not a requirement. The only requirement is that the customer that we are calling",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2057.22,
+      "end": 2060.22,
+      "text": "Is subscribe to a telco that we have integrated with.",
+      "speaker": "Caller",
+      "confidence": -0.058,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2060.96,
+      "end": 2061.47,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -0.756,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2061.86,
+      "end": 2064.89,
+      "text": "That's the So Oh Buchal can call off an MTN number.",
+      "speaker": "Caller",
+      "confidence": -0.323,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2065.15,
+      "end": 2070.21,
+      "text": "As long as they're calling to a Vodocom number as an example, so we've into where the Vodocom the core brand.",
+      "speaker": "Caller",
+      "confidence": -0.166,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2070.43,
+      "end": 2071.74,
+      "text": "Doesn't matter where the",
+      "speaker": "Caller",
+      "confidence": -0.037,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2071.97,
+      "end": 2075.36,
+      "text": "The A number or the originating number is, it matters where the B number or the",
+      "speaker": "Caller",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2076.1,
+      "end": 2083.33,
+      "text": "Yeah, and the originating number is MTN and the termination point is MTN.",
+      "speaker": "Caller",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2084.07,
+      "end": 2086.88,
+      "text": "Not gonna work. Yes, unless we actually integrate with MTN.",
+      "speaker": "Caller",
+      "confidence": -0.131,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2086.98,
+      "end": 2091.68,
+      "text": "So that's the whole thing. Exactly as you said, the termination point is is the key point.",
+      "speaker": "Caller",
+      "confidence": -0.046,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2092.1,
+      "end": 2092.83,
+      "text": "If they're",
+      "speaker": "Caller",
+      "confidence": -0.281,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2094.21,
+      "end": 2097.69,
+      "text": "a customer of a telco we've integrated with, they will receive a branded call.",
+      "speaker": "Caller",
+      "confidence": -0.085,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2098.27,
+      "end": 2100.45,
+      "text": "Origination doesn't matter. Doesn't matter.",
+      "speaker": "Caller",
+      "confidence": -0.093,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2103.62,
+      "end": 2104.06,
+      "text": "See it.",
+      "speaker": "Caller",
+      "confidence": -0.716,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2104.48,
+      "end": 2107.45,
+      "text": "You need to get a hundred percent market share for this to be magic.",
+      "speaker": "Caller",
+      "confidence": -0.029,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2107.87,
+      "end": 2109.25,
+      "text": "Yeah, we will.",
+      "speaker": "Caller",
+      "confidence": -0.309,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2109.6,
+      "end": 2110.17,
+      "text": "We won't.",
+      "speaker": "Caller",
+      "confidence": -0.16,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2110.63,
+      "end": 2115.84,
+      "text": "The only somewhat questionable one is Telcom, I mean even Celsi, which I didn't even really plan to target, but",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2116.23,
+      "end": 2129.79,
+      "text": "I told you I just literally happened to meet the guy at the jumps, and I was like, okay, we could do it. Yes, exactly. So I mean everyone's pretty",
+      "speaker": "Caller",
+      "confidence": -0.159,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2130.21,
+      "end": 2134.43,
+      "text": "I'm pretty confident with everyone except for Talcom at the moment. I don't know exactly what's happening.",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2135.23,
+      "end": 2146.78,
+      "text": "Do you want me to knock on the Dror at the Telcom? I might know someone I sometimes I know someone, sometimes I know someone that knows someone, and if I don't know anyone, uh I have a business network that I can send a WhatsApp on.",
+      "speaker": "Caller",
+      "confidence": -0.136,
+      "low_confidence": false,
+      "corrections": [
+        "door -> Dror"
+      ]
+    },
+    {
+      "start": 2147.04,
+      "end": 2148.16,
+      "text": "And I might get someone",
+      "speaker": "Caller",
+      "confidence": -0.128,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2148.29,
+      "end": 2150.46,
+      "text": "Will connect me with someone. Okay.",
+      "speaker": "Caller",
+      "confidence": -0.225,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2150.91,
+      "end": 2157.31,
+      "text": "That sounds good. I think give me a week and a half to two weeks before I say yes or no to that um to that offer.",
+      "speaker": "Caller",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2157.51,
+      "end": 2163.55,
+      "text": "But that's a good option to have on keeping it. Um",
+      "speaker": "Caller",
+      "confidence": -0.411,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2165.44,
+      "end": 2167.87,
+      "text": "That was a question I had. Uh",
+      "speaker": "Caller",
+      "confidence": -0.276,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2170.69,
+      "end": 2171.04,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.503,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2171.49,
+      "end": 2173.02,
+      "text": "Topical departments.",
+      "speaker": "Caller",
+      "confidence": -0.204,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2173.83,
+      "end": 2177.63,
+      "text": "that you would speak to. If I connect you for example",
+      "speaker": "Caller",
+      "confidence": -0.064,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2178.69,
+      "end": 2181.41,
+      "text": "with the CEO at Standard Bank Zambia.",
+      "speaker": "Caller",
+      "confidence": -0.183,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2181.73,
+      "end": 2186.08,
+      "text": "And he's not techy, he doesn't understand, you know, he's a CA, he's a finance guy.",
+      "speaker": "Caller",
+      "confidence": -0.158,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2186.21,
+      "end": 2187.45,
+      "text": "But connect us with him.",
+      "speaker": "Caller",
+      "confidence": -0.196,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2188.1,
+      "end": 2189.12,
+      "text": "I need to say too",
+      "speaker": "Caller",
+      "confidence": -0.186,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2189.22,
+      "end": 2194.91,
+      "text": "Hey, I also need to speak to your department and to your marketing department.",
+      "speaker": "Caller",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2195.07,
+      "end": 2195.61,
+      "text": "Something like that.",
+      "speaker": "Caller",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2195.81,
+      "end": 2197.18,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.16,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2197.63,
+      "end": 2200.03,
+      "text": "From that perspective, it's really just the retail side.",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2200.32,
+      "end": 2200.89,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.607,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2201.12,
+      "end": 2208.7,
+      "text": "So I wouldn't even get to department specific, but if I was choosing, I'd probably say sales departments generally care a lot about this.",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2209.09,
+      "end": 2211.17,
+      "text": "And so do the fraud departments.",
+      "speaker": "Caller",
+      "confidence": -0.01,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2211.49,
+      "end": 2212.32,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.458,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2212.64,
+      "end": 2221.21,
+      "text": "Yeah, service is also a good one. Collections is also a good one. Pretty much any retail part that's calling customers is typically a good one, but sales is generally my first.",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2221.54,
+      "end": 2223.55,
+      "text": "Floor is my second, service is my third.",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2224.1,
+      "end": 2224.93,
+      "text": "And then the rest.",
+      "speaker": "Caller",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2225.95,
+      "end": 2229.25,
+      "text": "But collections is a good one purely because their core volumes are generally",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2229.86,
+      "end": 2230.85,
+      "text": "Very very hot.",
+      "speaker": "Caller",
+      "confidence": -0.184,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2232.9,
+      "end": 2234.94,
+      "text": "you know, even though they may be not first on the list.",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2235.23,
+      "end": 2235.87,
+      "text": "In terms of",
+      "speaker": "Caller",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2236.03,
+      "end": 2238.01,
+      "text": "Opportunity stars they generally are.",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2238.79,
+      "end": 2241.09,
+      "text": "First on the list, but maybe not first in the list from",
+      "speaker": "Caller",
+      "confidence": -0.129,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2241.73,
+      "end": 2252.83,
+      "text": "If I see Standard Bank is calling me Standard Bank Collections Department, they're not going to be Alex to do it.",
+      "speaker": "Caller",
+      "confidence": -0.298,
+      "low_confidence": false,
+      "corrections": [
+        "able -> Alex"
+      ]
+    },
+    {
+      "start": 2253.28,
+      "end": 2256.16,
+      "text": "Standard bank let us help you like frame it in a way which",
+      "speaker": "Caller",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2257.47,
+      "end": 2263.36,
+      "text": "isn't saying hey we gotta collect money pay us. So not we obviously wouldn't we don't do it like that.",
+      "speaker": "Caller",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2263.59,
+      "end": 2266.53,
+      "text": "Um I mean test of that part in South Africa and it worked.",
+      "speaker": "Caller",
+      "confidence": -0.114,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2267.01,
+      "end": 2270.24,
+      "text": "Yeah, it's like a man. I uh I like the thinking.",
+      "speaker": "Caller",
+      "confidence": -0.296,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2270.69,
+      "end": 2275.55,
+      "text": "Okay, I'm gonna get into the technicals, how many characters, whatever, the client will talk about that. So Yeah. Uh",
+      "speaker": "Caller",
+      "confidence": -0.179,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2276.16,
+      "end": 2282.75,
+      "text": "Yeah. I like this uh let us help you help you let me help you. Exactly. That's that's the framework for collections.",
+      "speaker": "Caller",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2283.11,
+      "end": 2283.68,
+      "text": "Back to mine.",
+      "speaker": "Caller",
+      "confidence": -0.853,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2283.81,
+      "end": 2284.29,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.23,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2284.39,
+      "end": 2286.01,
+      "text": "You will send me the stick.",
+      "speaker": "Caller",
+      "confidence": -0.241,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2286.24,
+      "end": 2289.34,
+      "text": "Uh please you will send me the",
+      "speaker": "Caller",
+      "confidence": -0.036,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2293.25,
+      "end": 2298.91,
+      "text": "Videos that you have? You should you have a couple of videos. I'd love to see those. Yeah um and is this your intro deck?",
+      "speaker": "Caller",
+      "confidence": -0.187,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2299.55,
+      "end": 2300.29,
+      "text": "Um",
+      "speaker": "Caller",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2301.25,
+      "end": 2305.89,
+      "text": "So I have this is a very general deck just for the on network stuff.",
+      "speaker": "Caller",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2306.27,
+      "end": 2313.6,
+      "text": "Um but I'll send you one for our network and I'll send you one for the app solution. Problem is very much the same, it's just the solution which varies slightly.",
+      "speaker": "Caller",
+      "confidence": -0.064,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2313.79,
+      "end": 2314.62,
+      "text": "So",
+      "speaker": "Caller",
+      "confidence": -1.069,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2314.75,
+      "end": 2315.71,
+      "text": "Too much of a difference.",
+      "speaker": "Caller",
+      "confidence": -0.216,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2315.94,
+      "end": 2317.02,
+      "text": "And B P O",
+      "speaker": "Caller",
+      "confidence": -0.507,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2317.15,
+      "end": 2318.37,
+      "text": "What said to a",
+      "speaker": "Caller",
+      "confidence": -0.612,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2318.66,
+      "end": 2319.65,
+      "text": "Uh",
+      "speaker": "Caller",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2320.55,
+      "end": 2322.56,
+      "text": "If we speak into a BPO directly.",
+      "speaker": "Caller",
+      "confidence": -0.19,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2322.85,
+      "end": 2326.27,
+      "text": "It would be the app based solution as well, then? No. So",
+      "speaker": "Caller",
+      "confidence": -0.217,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2326.95,
+      "end": 2331.1,
+      "text": "Not necessarily. If it's like I'm a BPO and I'm calling on behalf of a bank",
+      "speaker": "Caller",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2331.33,
+      "end": 2332.0,
+      "text": "then Shina.",
+      "speaker": "Caller",
+      "confidence": -1.083,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2332.32,
+      "end": 2334.88,
+      "text": "But if it's just I'm a BPO and I'm calling on behalf of",
+      "speaker": "Caller",
+      "confidence": -0.04,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2335.11,
+      "end": 2336.32,
+      "text": "D H within the",
+      "speaker": "Caller",
+      "confidence": -0.646,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2336.8,
+      "end": 2338.72,
+      "text": "You know, it's like no one has the app, so then",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2339.07,
+      "end": 2341.73,
+      "text": "PPOs in my view would largely be for our network.",
+      "speaker": "Caller",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2342.08,
+      "end": 2344.25,
+      "text": "Unless we know that this call center",
+      "speaker": "Caller",
+      "confidence": -0.152,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2344.42,
+      "end": 2345.92,
+      "text": "BPO calls on behalf of",
+      "speaker": "Caller",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2346.15,
+      "end": 2347.84,
+      "text": "All of these big plants, yeah, then.",
+      "speaker": "Caller",
+      "confidence": -0.301,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2347.94,
+      "end": 2354.27,
+      "text": "they can always get permission to brand calls through that client's app. But now you have a third party coming into a bank saying, hey, I need access",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2354.59,
+      "end": 2355.45,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.16,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2355.65,
+      "end": 2359.68,
+      "text": "It's probably better to drive it internally before driving it from a third party. That's my personal",
+      "speaker": "Caller",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2360.23,
+      "end": 2360.77,
+      "text": "View.",
+      "speaker": "Caller",
+      "confidence": -0.159,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2361.41,
+      "end": 2361.73,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.352,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2361.86,
+      "end": 2363.07,
+      "text": "I'd like to understand an app.",
+      "speaker": "Caller",
+      "confidence": -0.212,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2363.23,
+      "end": 2368.73,
+      "text": "A lot more'cause that's where the big pieces will be. Uh so the demos I think would help me just frame it.",
+      "speaker": "Caller",
+      "confidence": -0.084,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2368.87,
+      "end": 2370.11,
+      "text": "Se vuol.",
+      "speaker": "Caller",
+      "confidence": -0.981,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2370.34,
+      "end": 2371.2,
+      "text": "Yeah.",
+      "speaker": "Caller",
+      "confidence": -0.106,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2371.97,
+      "end": 2377.21,
+      "text": "Okay.",
+      "speaker": "Caller",
+      "confidence": -0.309,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2377.41,
+      "end": 2379.13,
+      "text": "I would like is",
+      "speaker": "Caller",
+      "confidence": -0.011,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2379.49,
+      "end": 2382.17,
+      "text": "One of your outreach messages, one of your outreach",
+      "speaker": "Caller",
+      "confidence": -0.133,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2382.27,
+      "end": 2386.78,
+      "text": "Your LinkedIn message or one of your outreach emails. Uh like to see how you face that.",
+      "speaker": "Caller",
+      "confidence": -0.119,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2386.91,
+      "end": 2389.34,
+      "text": "Okay, since RG Gmail, it's V Joe, it's this dick.",
+      "speaker": "Caller",
+      "confidence": -0.364,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2389.54,
+      "end": 2390.62,
+      "text": "Um and then",
+      "speaker": "Caller",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2390.85,
+      "end": 2394.49,
+      "text": "I don't know what marketing collapses you guys have ever used to like to have a look at that.",
+      "speaker": "Caller",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2394.66,
+      "end": 2397.73,
+      "text": "Yeah, I have I have one pages for the on network.",
+      "speaker": "Caller",
+      "confidence": -0.101,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2397.83,
+      "end": 2401.21,
+      "text": "For the appearance I don't because it's just way too specific and it",
+      "speaker": "Caller",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2401.6,
+      "end": 2404.8,
+      "text": "Takes a very long time to make those one pages. Um",
+      "speaker": "Caller",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2405.15,
+      "end": 2406.97,
+      "text": "Okay, that's fine. So then I'll send you all of",
+      "speaker": "Caller",
+      "confidence": -0.106,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2407.14,
+      "end": 2408.16,
+      "text": "That and I think",
+      "speaker": "Caller",
+      "confidence": -0.248,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2410.4,
+      "end": 2413.69,
+      "text": "So I'll send everything for the banks that we've mentioned. I'll just in terms of that",
+      "speaker": "Caller",
+      "confidence": -0.137,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2414.98,
+      "end": 2422.59,
+      "text": "As well as for standard bank, I'll just need to put the standard bank lateral together,'cause I haven't done that yet, but I have all the demos done already, so all of the",
+      "speaker": "Caller",
+      "confidence": -0.096,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2422.85,
+      "end": 2425.47,
+      "text": "you know, screens and stuff done, I just need to put it together.",
+      "speaker": "Caller",
+      "confidence": -0.227,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2425.83,
+      "end": 2426.81,
+      "text": "And then for",
+      "speaker": "Caller",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2430.69,
+      "end": 2438.3,
+      "text": "Inform or the on network international, it's just called outside of Africa. How do you want to go about that? Do you want to reach out to them first?",
+      "speaker": "Caller",
+      "confidence": -0.162,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2438.56,
+      "end": 2441.41,
+      "text": "Or do you want to check if we work with them first? What makes more sense to you?",
+      "speaker": "Caller",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2441.95,
+      "end": 2446.14,
+      "text": "It's not even clear in my mind yet on that on network outside S A. Okay.",
+      "speaker": "Caller",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2446.4,
+      "end": 2448.86,
+      "text": "Fine, so then let's do this. Let me send you everything.",
+      "speaker": "Caller",
+      "confidence": -0.121,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2449.41,
+      "end": 2449.98,
+      "text": "Right.",
+      "speaker": "Caller",
+      "confidence": -0.477,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2450.24,
+      "end": 2453.09,
+      "text": "Take a few days look at it, whatever you need to do, ask me questions.",
+      "speaker": "Caller",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2453.57,
+      "end": 2455.84,
+      "text": "Please like le leverage whatever I know.",
+      "speaker": "Caller",
+      "confidence": -0.202,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2455.97,
+      "end": 2458.24,
+      "text": "And then maybe help me understand",
+      "speaker": "Caller",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2458.63,
+      "end": 2463.42,
+      "text": "you know, your next steps in terms of how you'd like to take it forward. So I'll send you everything I have and then you can just tell me",
+      "speaker": "Caller",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2463.75,
+      "end": 2465.44,
+      "text": "You know, this is what I think we should do next.",
+      "speaker": "Caller",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2465.99,
+      "end": 2467.17,
+      "text": "Does that sound good?",
+      "speaker": "Caller",
+      "confidence": -0.025,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2467.3,
+      "end": 2470.4,
+      "text": "I will spend um time on Sunday. Going, great. Okay.",
+      "speaker": "Caller",
+      "confidence": -0.22,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2470.56,
+      "end": 2471.04,
+      "text": "Brilliant.",
+      "speaker": "Caller",
+      "confidence": -0.014,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2471.68,
+      "end": 2475.13,
+      "text": "Cool. Thanks, man. Good too. Okay, great, good to see you too.",
+      "speaker": "Caller",
+      "confidence": -0.236,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2475.49,
+      "end": 2476.38,
+      "text": "Thank you.",
+      "speaker": "Caller",
+      "confidence": -0.606,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2476.51,
+      "end": 2478.69,
+      "text": "I'd wait for the information looking forward to working with you on this.",
+      "speaker": "Caller",
+      "confidence": -0.299,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2478.79,
+      "end": 2481.12,
+      "text": "Brilliant. Looking forward. Thank you very much, Samir.",
+      "speaker": "Caller",
+      "confidence": -0.056,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2481.38,
+      "end": 2482.88,
+      "text": "Appreciate your time and chat soon.",
+      "speaker": "Caller",
+      "confidence": -0.015,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 2483.01,
+      "end": 2484.7,
+      "text": "And you and you chiz.",
+      "speaker": "Caller",
+      "confidence": -0.788,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2485.67,
+      "end": 2486.17,
+      "text": "Mm.",
+      "speaker": "Caller",
+      "confidence": -0.725,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 2488.87,
+      "end": 2490.27,
+      "text": "Very very nice brute.",
+      "speaker": "Caller",
+      "confidence": -0.143,
+      "low_confidence": false,
+      "corrections": []
+    }
+  ]
+}
