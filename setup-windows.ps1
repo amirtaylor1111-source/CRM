@@ -1,3 +1,8 @@
+﻿# Keep this file ASCII, or keep the UTF-8 byte-order mark it starts with.
+# Windows PowerShell 5.1 reads a file with no mark as the ANSI code page,
+# where the last byte of an em dash is a curly quote that ends a string,
+# and the whole script then fails to parse with errors on other lines.
+#
 # One-time setup. Run from this folder:
 #
 #     powershell -ExecutionPolicy Bypass -File setup-windows.ps1
@@ -72,7 +77,7 @@ $py = Find-Python
 
 if (-not $py) {
     Say ""
-    Say "No real Python found — only the Microsoft Store placeholder."
+    Say "No real Python found - only the Microsoft Store placeholder."
     Say "Installing Python 3.12. This takes a couple of minutes."
     Say ""
 
@@ -132,7 +137,7 @@ Say "Installing dependencies. This takes a few minutes the first time."
 Say ""
 
 & $venvPy -m pip install --upgrade pip --quiet
-& $venvPy -m pip install --quiet soundcard numpy "onnx-asr[cpu,hub]"
+& $venvPy -m pip install --quiet soundcard numpy "onnx-asr[cpu,hub]" pywebview
 if ($LASTEXITCODE -eq 0) {
     # Install the tool itself, so `notetaker` imports from anywhere and the
     # `mtg` command exists inside the venv, rather than relying on the
@@ -142,7 +147,7 @@ if ($LASTEXITCODE -eq 0) {
 if ($LASTEXITCODE -ne 0) {
     Bad "Dependency install failed."
     Say "Try running it directly to see the error:"
-    Say "  .venv\Scripts\python.exe -m pip install soundcard numpy onnx-asr[cpu,hub]"
+    Say "  .venv\Scripts\python.exe -m pip install soundcard numpy onnx-asr[cpu,hub] pywebview"
     exit 2
 }
 Ok "Dependencies installed"
@@ -171,7 +176,7 @@ try {
     $shell    = New-Object -ComObject WScript.Shell
     $shortcut = $shell.CreateShortcut($lnk)
     $shortcut.TargetPath       = $pythonw
-    $shortcut.Arguments        = "-m notetaker.server"
+    $shortcut.Arguments        = "-m notetaker.widget"
     $shortcut.WorkingDirectory = $root
     $shortcut.Description      = "Record a meeting and hand it to Claude"
     $shortcut.IconLocation     = "$env:SystemRoot\System32\SndVol.exe,0"
@@ -181,25 +186,40 @@ try {
     Say "  (could not create the shortcut - use Notetaker.cmd in this folder)"
 }
 
-# --- run the watcher at login ---------------------------------------------
+# --- run the widget at login ----------------------------------------------
+# The widget took over from the separate calendar watcher; an older install
+# left a watcher shortcut here, and two things watching would offer twice.
 Say ""
-Say "Setting the calendar watcher to run at login ..."
+Say "Setting the widget to run at login ..."
 try {
     $startup = [Environment]::GetFolderPath("Startup")
-    $lnk     = Join-Path $startup "Meeting Notetaker Watcher.lnk"
+    $old     = Join-Path $startup "Meeting Notetaker Watcher.lnk"
+    if (Test-Path $old) { Remove-Item $old -Force; Say "  (removed the old watcher shortcut)" }
+    $lnk     = Join-Path $startup "Meeting Notetaker.lnk"
     $pythonw = Join-Path $root ".venv\Scripts\pythonw.exe"
 
     $shell    = New-Object -ComObject WScript.Shell
     $shortcut = $shell.CreateShortcut($lnk)
     $shortcut.TargetPath       = $pythonw
-    $shortcut.Arguments        = "-m notetaker.watcher"
+    $shortcut.Arguments        = "-m notetaker.widget"
     $shortcut.WorkingDirectory = $root
-    $shortcut.Description      = "Offers to record when a meeting starts"
+    $shortcut.Description      = "The meeting widget; offers to record when a meeting starts"
     $shortcut.Save()
-    Ok "Watcher will start with Windows"
+    Ok "Widget will start with Windows"
     Say "  (delete '$lnk' to turn it off)"
 } catch {
-    Say "  (could not set autostart - run 'mtg watch' by hand if you want it)"
+    Say "  (could not set autostart - double-click the desktop shortcut instead)"
+}
+
+# --- Claude Code, for the widget's brain ------------------------------------
+Say ""
+if (Get-Command claude -ErrorAction SilentlyContinue) {
+    Ok "Claude Code found"
+    Say "  The widget runs it headlessly on your subscription. If it has never"
+    Say "  been logged in from a terminal, run  claude  once and then  /login."
+} else {
+    Say "  NOTE  Claude Code is not on PATH. The widget records and transcribes"
+    Say "        without it; the live panels and the automatic write-up need it."
 }
 
 # --- verify ---------------------------------------------------------------
@@ -209,6 +229,6 @@ Write-Host ""
 Write-Host ""
 Write-Host "  Setup done." -ForegroundColor Cyan
 Write-Host ""
-Say "Double-click 'Meeting Notetaker' on your desktop to record."
+Say "The widget sits at the bottom right of your screen; it also starts at login."
 Say "Wear headphones, or both voices land on both tracks."
 Write-Host ""
