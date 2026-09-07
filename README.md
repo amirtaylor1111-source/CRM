@@ -12,7 +12,14 @@ worth asking before the call ends, what the CRM already has on the person you
 are talking to, and a box for asking your own questions. It is hidden from
 screen sharing, so none of it shows in a shared window.
 
-<!-- The screenshots in docs/img/ show the old browser window and need re-taking. -->
+<!-- The screenshots in docs/img/ show the old browser window and need re-taking.
+     They have to be taken by hand. The widget sets WDA_EXCLUDEFROMCAPTURE so it
+     never appears in a shared screen, which also means a screen grab of it comes
+     back as whatever is behind it, and PrintWindow returns a black bitmap because
+     WebView2 renders on the GPU. To take one: turn the exclusion off in
+     widget.hide_from_capture, grab the window with nothing on top of it, and put
+     the exclusion back. -->
+
 
 The widget sits at the bottom right of your screen from login, as a small
 strip showing your next meeting. Two minutes before a calendar meeting it

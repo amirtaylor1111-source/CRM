@@ -290,12 +290,25 @@ def speaker_method(segments: Iterable[Segment], tracks: Iterable[str]) -> str:
     exact = "separate audio tracks (attribution is exact)"
     if len(list(tracks)) < 2:
         return exact
-    heard = {s.speaker for s in segments if s.text.strip()}
-    silent = [label for label in ("Me", "Them") if label not in heard]
-    if not silent:
+    spoken: dict[str, float] = {}
+    for segment in segments:
+        if segment.text.strip():
+            spoken[segment.speaker] = spoken.get(segment.speaker, 0.0) + (
+                segment.end - segment.start)
+    total = sum(spoken.values())
+    if not total:
         return exact
-    which = " and ".join(silent)
-    return f"{exact}; no speech on the {which} track, so every voice heard is labelled the same"
+    # A stray "Yeah." on an otherwise empty track is not that speaker taking
+    # part; it is bleed, or the one word loud enough to reach a muted
+    # microphone. A real drive produced two such segments, 1.2 seconds
+    # against 202, and a test for literal silence would have passed it.
+    quiet = [label for label in ("Me", "Them")
+             if spoken.get(label, 0.0) / total < 0.02]
+    if not quiet:
+        return exact
+    which = " and ".join(quiet)
+    return (f"{exact}; almost no speech on the {which} track, so both sides may "
+            f"be under one label")
 
 
 def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:

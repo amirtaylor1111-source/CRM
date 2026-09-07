@@ -131,8 +131,28 @@ class TestSpeakerMethod:
         segments = [Segment(0, 1, "hello", speaker="Them"),
                     Segment(2, 3, "hi", speaker="Them")]
         method = speaker_method(segments, ["mic", "system"])
-        assert "no speech on the Me track" in method
+        assert "almost no speech on the Me track" in method
         assert "attribution is exact" in method     # still true of what is there
+
+    def test_a_stray_word_does_not_count_as_taking_part(self):
+        """Measured on a real drive: 1.2 seconds on the mic against 202.
+
+        A first version of this test asked whether the track was silent.
+        The run that motivated it had two segments on the microphone,
+        "Yeah." and "Okay.", which was enough to pass while the transcript
+        was still labelling one voice as two people.
+        """
+        segments = [Segment(0, 200, "the whole meeting", speaker="Them"),
+                    Segment(20, 20.6, "Yeah.", speaker="Me"),
+                    Segment(90, 90.6, "Okay.", speaker="Me")]
+        assert "almost no speech on the Me track" in \
+            speaker_method(segments, ["mic", "system"])
+
+    def test_a_quiet_but_real_participant_is_not_flagged(self):
+        segments = [Segment(0, 100, "mostly them", speaker="Them"),
+                    Segment(100, 110, "a real contribution", speaker="Me")]
+        assert speaker_method(segments, ["mic", "system"]) == \
+            "separate audio tracks (attribution is exact)"
 
     def test_a_single_track_recording_claims_nothing_extra(self):
         # A phone import is one channel by nature; there is no second track
