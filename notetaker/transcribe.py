@@ -298,24 +298,31 @@ def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:
         def replace(match: re.Match) -> str:
             nonlocal changed
             word = match.group(0)
+            # A possessive is the name plus an ending. Compare the name and
+            # put the ending back, or "Salvador's Quest" loses its apostrophe
+            # and becomes "Salvador Quest".
+            ending = ""
+            if len(word) > 3 and word[-2:].lower() == "'s":
+                word, ending = word[:-2], word[-2:]
             lowered = word.lower()
             if lowered in _COMMON or len(word) <= 3:
-                return word
+                return word + ending
             if lowered in targets:
-                return word if word == targets[lowered] else targets[lowered]
+                fixed = word if word == targets[lowered] else targets[lowered]
+                return fixed + ending
             cutoff = MIN_SIMILARITY if word[:1].isupper() else LOWERCASE_SIMILARITY
             close = difflib.get_close_matches(lowered, targets.keys(), n=1,
                                               cutoff=cutoff)
             if not close:
-                return word
+                return word + ending
             candidate = targets[close[0]]
             # Same opening letter is a cheap proxy for the phonetic check and
             # rejects most coincidental matches.
             if candidate[0].lower() != word[0].lower():
-                return word
+                return word + ending
             changed += 1
-            segment.corrections.append(f"{word} -> {candidate}")
-            return candidate
+            segment.corrections.append(f"{word}{ending} -> {candidate}{ending}")
+            return candidate + ending
 
         segment.text = re.sub(r"\b[A-Za-z][A-Za-z'-]+\b", replace, segment.text)
     return changed

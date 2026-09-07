@@ -73,6 +73,22 @@ class TestNameCorrection:
         assert correct_names([segment], self.VOCAB) == 2
         assert segment.text == "Jane from Acme called"
 
+    def test_a_possessive_keeps_its_ending(self):
+        """Found on a real call: "Salvador's Quest" became "Salvador Quest".
+
+        The word pattern treats an apostrophe as part of the word, so the
+        possessive was compared against the bare name and lost its ending.
+        """
+        segment = Segment(0, 1, "that was Jane's idea")
+        assert correct_names([segment], self.VOCAB) == 0
+        assert segment.text == "that was Jane's idea"
+
+    def test_a_misheard_possessive_is_repaired_with_its_ending(self):
+        segment = Segment(0, 1, "that was Jain's idea")
+        assert correct_names([segment], self.VOCAB) == 1
+        assert segment.text == "that was Jane's idea"
+        assert segment.corrections == ["Jain's -> Jane's"]
+
     def test_empty_vocabulary_is_a_no_op(self):
         segment = Segment(0, 1, "Jain at Akme")
         assert correct_names([segment], []) == 0
