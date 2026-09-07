@@ -100,7 +100,7 @@ preserves hand-written notes, idempotent linking, atomic writes, slug
 collisions, the Fathom and phone importers, the calendar layer, the name
 corrector's false-positive boundary, the whole transcription pipeline on
 real espeak-generated speech, the local HTTP API over real sockets, and the
-recording lifecycle driven by a fake audio device. 251 tests.
+recording lifecycle driven by a fake audio device. 291 tests.
 
 **Found by installing the libraries in the container, before any hardware
 run** (the hardware run itself is described below): the `soundcard` WASAPI
@@ -204,7 +204,7 @@ pointing at the entry points that came before the widget.
 **Verified on the laptop:** the window, the capture exclusion, the pill,
 live transcription during a solo call with speech through the speakers,
 Stop finishing the live transcript in seconds, and every headless
-path against a stand-in `claude` (251 tests). Two more things surfaced on
+path against a stand-in `claude` (291 tests). Two more things surfaced on
 the laptop and were fixed: loading the model holds the interpreter lock for
 about twelve seconds, so live transcription runs in a worker process per
 call and the widget process never loads a model; and the wave module's
@@ -260,7 +260,7 @@ treats it like any other app.
 ## Working on it
 
 ```powershell
-.venv\Scripts\python.exe -m pytest tests/ -q     # 251 tests, all must stay green
+.venv\Scripts\python.exe -m pytest tests/ -q     # 291 tests, all must stay green
 ```
 
 Modules must import on a machine with no audio libraries, no ffmpeg and no
