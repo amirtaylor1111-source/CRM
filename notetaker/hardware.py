@@ -178,6 +178,20 @@ def detect() -> Hardware:
     )
 
 
+def ram_budget(hw: Hardware) -> float:
+    """The largest model footprint, in GB, this machine can comfortably hold.
+
+    Deliberately generous above 5 GB: on a 16 GB laptop the model is not the
+    constraint, speed and accuracy are. Below that it tightens sharply,
+    because swapping mid-transcription is far worse than a smaller model.
+    """
+    if hw.ram_gb < 3:
+        return 1.0
+    if hw.ram_gb < 5:
+        return 1.5
+    return 8.0
+
+
 def recommend(hw: Hardware | None = None, english_only: bool = True) -> dict:
     """Pick an engine for this machine.
 
@@ -194,10 +208,11 @@ def recommend(hw: Hardware | None = None, english_only: bool = True) -> dict:
         choice["cpu_threads"] = _threads_for(hw)
         return choice
 
-    if hw.ram_gb < 3:
+    budget = ram_budget(hw)
+    if budget <= 1.0:
         key = "base"
         why = "under 3 GB of RAM, so the smallest model is the safe choice"
-    elif hw.ram_gb < 5:
+    elif budget <= 1.5:
         key = "small"
         why = "limited RAM; small is the largest model that fits comfortably"
     else:
@@ -224,6 +239,50 @@ def _threads_for(hw: Hardware) -> int:
     cores finish late and stall the batch. Leave headroom for the OS.
     """
     return max(1, min(8, hw.threads - 2 if hw.threads > 4 else hw.threads))
+
+
+ENGINE_BACKENDS = {"onnx-asr": "parakeet", "faster-whisper": "faster-whisper"}
+
+
+def pick_installed(backends: list[str], hw: Hardware | None = None) -> dict:
+    """The best engine this machine can actually run right now.
+
+    recommend() picks on hardware alone. If that engine is not installed,
+    fall back within what is — but never to one that needs MORE memory than
+    the choice we already rejected the machine for. A 2 GB model on a
+    machine we sized for a 1 GB one is worse than a smaller model.
+    """
+    hw = hw or detect()
+    choice = recommend(hw)
+    if ENGINE_BACKENDS.get(choice["engine"]) in backends:
+        return choice
+
+    # The ceiling is what the MACHINE can hold, not what the preferred model
+    # happened to use. On a 16 GB laptop the preferred engine is chosen for
+    # accuracy, not memory, so capping at its footprint would reject better
+    # alternatives that fit perfectly well.
+    budget = ram_budget(hw)
+    affordable = [
+        (key, spec) for key, spec in ENGINES.items()
+        if ENGINE_BACKENDS.get(spec["engine"]) in backends
+        and spec["ram_gb"] <= budget
+    ]
+    if not affordable:
+        # Nothing installed fits the budget; take the smallest that is here
+        # rather than refusing to transcribe at all.
+        affordable = [(k, v) for k, v in ENGINES.items()
+                      if ENGINE_BACKENDS.get(v["engine"]) in backends]
+    if not affordable:
+        return choice                      # caller already checked; be safe
+
+    # Best available = lowest word error among those that fit.
+    key, spec = min(affordable, key=lambda kv: float(kv[1]["wer"].strip("~%")))
+    picked = dict(spec)
+    picked["key"] = key
+    picked["why"] = (f"{choice['model']} is not installed; "
+                     f"{spec['model']} is the best that is")
+    picked["cpu_threads"] = _threads_for(hw)
+    return picked
 
 
 def estimate_minutes(audio_seconds: float, choice: dict | None = None,

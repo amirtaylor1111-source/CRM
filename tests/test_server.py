@@ -349,3 +349,33 @@ class TestResilience:
         monkeypatch.setattr(server.log, "log_dir", lambda: tmp_path)
         (tmp_path / "app.lock").write_text(json.dumps({"port": live["port"]}))    # no pid
         assert server._running_instance() == f"http://127.0.0.1:{live['port']}/"
+
+
+class TestPollCost:
+    """The window polls twice a second; that must not rescan the whole repo."""
+
+    def test_repeat_polls_do_not_rescan_disk(self, live, monkeypatch):
+        calls = {"n": 0}
+        real = server.store.list_meetings
+        monkeypatch.setattr(server.store, "list_meetings",
+                            lambda *a, **k: (calls.__setitem__("n", calls["n"] + 1), real(*a, **k))[1])
+        for _ in range(6):
+            call(live, "GET", "/api/state")
+        assert calls["n"] == 1, f"rescanned {calls['n']} times across 6 polls"
+
+    def test_starting_a_recording_refreshes_immediately(self, live, monkeypatch):
+        call(live, "GET", "/api/state")                      # warm the cache
+        calls = {"n": 0}
+        real = server.store.list_meetings
+        monkeypatch.setattr(server.store, "list_meetings",
+                            lambda *a, **k: (calls.__setitem__("n", calls["n"] + 1), real(*a, **k))[1])
+        call(live, "POST", "/api/start", {"title": "New call", "consent": True})
+        call(live, "GET", "/api/state")
+        assert calls["n"] >= 1, "cache not invalidated after a write"
+
+    def test_cache_expires(self, live):
+        call(live, "GET", "/api/state")
+        live["session"]._cache_at -= server.CACHE_SECONDS + 1
+        stale = live["session"]._cache_at
+        call(live, "GET", "/api/state")
+        assert live["session"]._cache_at > stale

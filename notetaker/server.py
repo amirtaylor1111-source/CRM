@@ -46,8 +46,12 @@ BRIEF_AFTER_SECONDS = 120     # of new speech, before the next automatic brief
 BRIEF_MIN_GAP_SECONDS = 30    # even by hand, no more often than this
 BRIEF_BACKOFF_SECONDS = (120, 240, 480)   # after failures; then give up until Stop
 CALENDAR_POLL_SECONDS = 60
-SNAPSHOT_TTL_SECONDS = 3.0    # the parts of the state that read the disk
 STALE_RECORDING_HOURS = 4     # an adopted recording older than this is probably forgotten
+
+# How long the calendar and meeting list may be stale. The window polls far
+# faster than either actually changes: rescanning every file on every poll
+# costs about 90 file opens here, and grows with the meeting history.
+CACHE_SECONDS = 4.0
 
 
 def _items(value: Any) -> list:
@@ -139,6 +143,9 @@ class Session:
         self.capture_hidden = False     # the widget sets this once the window is up
         self._brief_last = 0.0
         self._brief_failures = 0
+        # The meeting list and calendar change on the order of minutes, so
+        # the parts of a poll that read the disk are cached and only the
+        # live state is recomputed.
         self._cache: dict[str, Any] = {}
         self._cache_at = 0.0
         self._adopt()
@@ -186,8 +193,9 @@ class Session:
         parts of a poll that read the disk, cached for a few seconds because
         the widget polls from login to logout."""
         now = time.time()
-        if self._cache and now - self._cache_at < SNAPSHOT_TTL_SECONDS:
+        if self._cache and now - self._cache_at < CACHE_SECONDS:
             return self._cache
+
         me = os.environ.get("MTG_ME", "")
         try:
             suggestion = uistate.suggest(store, me=me)
@@ -222,10 +230,13 @@ class Session:
         return self._cache
 
     def invalidate(self) -> None:
+        """Force a rescan after we ourselves changed something on disk."""
         self._cache_at = 0.0
 
     def snapshot(self) -> dict[str, Any]:
+        self.last_seen = time.time()
         disk = self._disk_state()
+
         with self.lock:
             lt = self.live
             busy = self.state in (uistate.RECORDING, uistate.TRANSCRIBING, uistate.WRITING)
@@ -394,7 +405,7 @@ class Session:
             store.rebuild_index()
             self.invalidate()
             _log.info("transcribed: %s", self.meeting_dir.name)
-            self._write_notes()
+            self._write_notes()          # sets DONE when Claude has finished
         except Exception as exc:
             _log.exception("finish failed")
             self._release_recorder()
