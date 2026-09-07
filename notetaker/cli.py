@@ -307,7 +307,7 @@ def cmd_doctor(args) -> int:
     choice = hardware.recommend(hw)
 
     print(f"\n  Machine   {hw.summary()}")
-    print(f"  Engine    {choice['model']}  ({choice['wer']} expected word error)")
+    print(f"  Engine    {choice['model']}  ({choice['wer']} word error on published benchmarks)")
     print(f"  Speed     1-hour meeting -> {hardware.format_estimate(3600, choice, hw)}")
     print(f"  Reason    {choice['why']}")
     print()
