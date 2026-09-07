@@ -12,6 +12,7 @@ dependencies = [
     "numpy>=1.24",
     "onnx-asr[cpu,hub]>=0.12",  # Parakeet via ONNX Runtime; cpu= the runtime,
                                 # hub= model download. Neither is implied.
+    "pywebview>=5.0",     # the always-on-top widget window (WebView2 on Windows)
 ]
 
 [project.optional-dependencies]

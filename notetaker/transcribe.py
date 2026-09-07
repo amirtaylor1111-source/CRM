@@ -73,10 +73,31 @@ _COMMON = {
     "what", "when", "where", "whether", "which", "while", "who", "why",
     "will", "with", "within", "without", "work", "working", "would", "write",
     "year", "yes", "yeah", "yet", "you", "your",
+    # Words this corrector was caught rewriting into contact names.
+    "able", "cellar", "cost", "costs", "door", "drop", "firms", "firstly",
+    "francs", "frank", "hour", "land", "monthly", "mount", "pull", "race",
+    "rape", "rate", "rely", "seen", "sent", "volume",
+    # Companies whose names are ordinary English words. Without these, an
+    # exact match capitalises the ordinary word: "a capital idea" became
+    # "a Capital idea" because a contact works at Capital Legacy. "forex" and
+    # "horn" arrived the same way, from Future Forex and Sean Horn, and were
+    # caught only once case changes started being logged: "business forex"
+    # became "business Forex" in a client transcript.
+    "capital", "cell", "cotton", "cross", "discovery", "forex", "future",
+    "horn", "legacy", "orion",
 }
 
 MIN_SIMILARITY = 0.74      # calibrated: real errors land at 0.75+,
                            # coincidental matches below 0.70
+LOWERCASE_SIMILARITY = 0.92
+# The model capitalises what it heard as a name, so a lowercase word is one
+# it heard as an ordinary word, and rewriting those is where this went wrong:
+# across seven real meetings it made 106 substitutions, and 97 of them were
+# lowercase words at exactly this kind of distance. "able" became a contact
+# called Alex thirteen times, "costs" became Cross ten times, "seen" became
+# Sean, "hour" became Horn, "rate" became Rael. A lowercase word therefore
+# has to be near enough to be a spelling of the name ("kubernets") rather
+# than merely similar to it.
 LOW_CONFIDENCE = -0.6      # avg_logprob threshold for the review flag
 
 
@@ -135,12 +156,13 @@ def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[
     each segment carries per-token log-probabilities we can turn into a
     confidence score.
 
-    API verified against onnx-asr 0.12: load_model().with_vad().with_timestamps()
-    .recognize() returns a list of TimestampedSegmentResult(start, end, text,
-    timestamps, tokens, logprobs).
+    API verified by running onnx-asr 0.12 on Windows: for a single file,
+    load_model().with_vad().with_timestamps().recognize() returns a
+    *generator* of TimestampedSegmentResult(start, end, text, timestamps,
+    tokens, logprobs), not a list. Wrapping that generator in a list, as an
+    earlier version did, produced a transcript with zero segments from a
+    perfectly good recording.
     """
-    import math
-
     import onnx_asr
 
     sess_options = None
@@ -156,28 +178,42 @@ def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[
     pipeline = model.with_vad(vad).with_timestamps()
 
     results = pipeline.recognize(str(path))
-    if not isinstance(results, list):
-        results = [results]
+    if hasattr(results, "text"):
+        results = [results]          # an un-segmented adapter: one result
+    else:
+        results = list(results)      # the VAD adapter's generator, or a list
 
     segments: list[Segment] = []
     for item in results:
-        text = (getattr(item, "text", "") or "").strip()
-        if not text:
-            continue
-        logprobs = getattr(item, "logprobs", None) or []
-        # Mean token log-prob, on the same scale Whisper reports avg_logprob,
-        # so one threshold flags uncertain segments from either engine.
-        confidence = (sum(logprobs) / len(logprobs)) if logprobs else 0.0
-        if not math.isfinite(confidence):
-            confidence = 0.0
-        segments.append(Segment(
-            start=float(getattr(item, "start", 0.0) or 0.0),
-            end=float(getattr(item, "end", 0.0) or 0.0),
-            text=text,
-            confidence=confidence,
-            low_confidence=bool(logprobs) and confidence < LOW_CONFIDENCE,
-        ))
+        seg = segment_from_result(item)
+        if seg is not None:
+            segments.append(seg)
     return segments
+
+
+def segment_from_result(item) -> Segment | None:
+    """A Segment from one onnx-asr result, or None when it carries no text.
+
+    Shared with the live transcriber so both paths score confidence the same
+    way: the mean token log-probability, on the scale Whisper reports
+    avg_logprob, so one threshold flags uncertain segments from any engine.
+    """
+    import math
+
+    text = (getattr(item, "text", "") or "").strip()
+    if not text:
+        return None
+    logprobs = getattr(item, "logprobs", None) or []
+    confidence = (sum(logprobs) / len(logprobs)) if logprobs else 0.0
+    if not math.isfinite(confidence):
+        confidence = 0.0
+    return Segment(
+        start=float(getattr(item, "start", 0.0) or 0.0),
+        end=float(getattr(item, "end", 0.0) or 0.0),
+        text=text,
+        confidence=confidence,
+        low_confidence=bool(logprobs) and confidence < LOW_CONFIDENCE,
+    )
 
 
 def _transcribe_whisper(path: Path, model_name: str, threads: int,
@@ -244,6 +280,41 @@ def _duration(path: Path) -> float:
 # --- name correction -------------------------------------------------------
 
 
+def speaker_method(segments: Iterable[Segment], tracks: Iterable[str]) -> str:
+    """How attribution was decided, said honestly for what was captured.
+
+    The two-track split is exact: audio in the mic file is the user and audio
+    in the system file is everyone else. That stays true even when a track
+    holds nothing, and a track holding nothing is exactly what happens when
+    the user is on speakers rather than headphones, or their microphone is
+    muted: both sides then land on one track under one label. Claiming
+    exactness without saying so reads as a guarantee that both speakers were
+    separated, which in that case they were not.
+    """
+    exact = "separate audio tracks (attribution is exact)"
+    if len(list(tracks)) < 2:
+        return exact
+    spoken: dict[str, float] = {}
+    for segment in segments:
+        if segment.text.strip():
+            spoken[segment.speaker] = spoken.get(segment.speaker, 0.0) + (
+                segment.end - segment.start)
+    total = sum(spoken.values())
+    if not total:
+        return exact
+    # A stray "Yeah." on an otherwise empty track is not that speaker taking
+    # part; it is bleed, or the one word loud enough to reach a muted
+    # microphone. A real drive produced two such segments, 1.2 seconds
+    # against 202, and a test for literal silence would have passed it.
+    quiet = [label for label in ("Me", "Them")
+             if spoken.get(label, 0.0) / total < 0.02]
+    if not quiet:
+        return exact
+    which = " and ".join(quiet)
+    return (f"{exact}; almost no speech on the {which} track, so both sides may "
+            f"be under one label")
+
+
 def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:
     """Repair mis-transcribed proper nouns against the CRM's known names.
 
@@ -270,23 +341,37 @@ def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:
         def replace(match: re.Match) -> str:
             nonlocal changed
             word = match.group(0)
+            # A possessive is the name plus an ending. Compare the name and
+            # put the ending back, or "Salvador's Quest" loses its apostrophe
+            # and becomes "Salvador Quest".
+            ending = ""
+            if len(word) > 3 and word[-2:].lower() == "'s":
+                word, ending = word[:-2], word[-2:]
             lowered = word.lower()
             if lowered in _COMMON or len(word) <= 3:
-                return word
+                return word + ending
             if lowered in targets:
-                return word if word == targets[lowered] else targets[lowered]
+                fixed = targets[lowered]
+                if fixed == word:
+                    return word + ending
+                # Spelt right, cased wrong. Still a change to what was said,
+                # so it belongs in the log with every other one.
+                changed += 1
+                segment.corrections.append(f"{word}{ending} -> {fixed}{ending}")
+                return fixed + ending
+            cutoff = MIN_SIMILARITY if word[:1].isupper() else LOWERCASE_SIMILARITY
             close = difflib.get_close_matches(lowered, targets.keys(), n=1,
-                                              cutoff=MIN_SIMILARITY)
+                                              cutoff=cutoff)
             if not close:
-                return word
+                return word + ending
             candidate = targets[close[0]]
             # Same opening letter is a cheap proxy for the phonetic check and
             # rejects most coincidental matches.
             if candidate[0].lower() != word[0].lower():
-                return word
+                return word + ending
             changed += 1
-            segment.corrections.append(f"{word} -> {candidate}")
-            return candidate
+            segment.corrections.append(f"{word}{ending} -> {candidate}{ending}")
+            return candidate + ending
 
         segment.text = re.sub(r"\b[A-Za-z][A-Za-z'-]+\b", replace, segment.text)
     return changed
@@ -390,18 +475,30 @@ def transcribe_meeting(
         "expected_accuracy": choice.get("wer", "unknown"),
         "duration": hhmmss(total_audio),
         "tracks": ", ".join(sorted(tracks)),
-        "speaker_method": "separate audio tracks (attribution is exact)",
+        "speaker_method": speaker_method(segments, tracks),
         "segments": len(segments),
         "low_confidence_segments": flagged,
         "names_corrected": fixed,
+        "live": False,
     }
 
-    md_path = meeting_dir / "transcript.md"
-    md_path.write_text(render_markdown(segments, meta), encoding="utf-8")
-    (meeting_dir / "transcript.json").write_text(
-        json.dumps({"meta": meta, "segments": [s.to_dict() for s in segments]},
-                   indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
+    md_path = write_transcript(meeting_dir, segments, meta)
     progress(f"Wrote {md_path} ({len(segments)} segments, {flagged} flagged)")
+    return md_path
+
+
+def write_transcript(meeting_dir: Path, segments: list[Segment], meta: dict[str, Any]) -> Path:
+    """Write transcript.md and transcript.json; returns the markdown path.
+
+    Atomic, because the live transcriber rewrites these every half minute
+    while a headless Claude may be reading them for a brief.
+    """
+    from .store import _write_atomic
+
+    meeting_dir = Path(meeting_dir)
+    md_path = meeting_dir / "transcript.md"
+    _write_atomic(md_path, render_markdown(segments, meta))
+    _write_atomic(meeting_dir / "transcript.json",
+                  json.dumps({"meta": meta, "segments": [s.to_dict() for s in segments]},
+                             indent=2, ensure_ascii=False))
     return md_path

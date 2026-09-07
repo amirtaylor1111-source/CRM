@@ -13,6 +13,7 @@ from typing import Any
 IDLE = "idle"
 RECORDING = "recording"
 TRANSCRIBING = "transcribing"
+WRITING = "writing"          # the transcript is done; Claude is writing the notes
 DONE = "done"
 ERROR = "error"
 
@@ -110,6 +111,8 @@ def status_line(state: str, started_at: float = 0.0, detail: str = "") -> str:
         return f"Recording  {elapsed_text(time.time() - started_at)}"
     if state == TRANSCRIBING:
         return detail or "Transcribing..."
+    if state == WRITING:
+        return detail or "Writing up the notes..."
     if state == DONE:
         return "Done — open Claude Code and run /notes"
     if state == ERROR:
@@ -122,6 +125,7 @@ def button_label(state: str) -> str:
         IDLE: "Start recording",
         RECORDING: "Stop",
         TRANSCRIBING: "Working...",
+        WRITING: "Working...",
         DONE: "Start recording",
         ERROR: "Try again",
     }.get(state, "Start recording")

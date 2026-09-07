@@ -1,17 +1,7 @@
 {
-  "generated_at": "2026-09-05T13:19:11Z",
-  "count": 19,
+  "generated_at": "2026-09-07T12:57:41Z",
+  "count": 26,
   "meetings": [
-    {
-      "id": "2026-09-04-impromptu-microsoft-teams-meeting",
-      "title": "Impromptu Microsoft Teams Meeting",
-      "started_at": "2026-09-04T00:00:00Z",
-      "ended_at": "2026-09-04T00:00:00Z",
-      "participants": [],
-      "consent_obtained": true,
-      "transcribed": false,
-      "path": "meetings/2026-09-04-impromptu-microsoft-teams-meeting"
-    },
     {
       "id": "2026-09-04-chat-cont",
       "title": "Chat (Cont)",
@@ -26,6 +16,26 @@
       "path": "meetings/2026-09-04-chat-cont"
     },
     {
+      "id": "2026-09-04-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-09-04T00:00:00Z",
+      "ended_at": "2026-09-04T00:00:00Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-09-04-impromptu-microsoft-teams-meeting"
+    },
+    {
+      "id": "2026-08-27-discovery-1",
+      "title": "Discovery 1",
+      "started_at": "2026-08-27T08:37:16Z",
+      "ended_at": "",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-08-27-discovery-1"
+    },
+    {
       "id": "2026-08-25-branded-call-catch-up-session",
       "title": "Branded Call Catch up Session",
       "started_at": "2026-08-25T00:00:00Z",
@@ -36,6 +46,45 @@
       "consent_obtained": true,
       "transcribed": false,
       "path": "meetings/2026-08-25-branded-call-catch-up-session"
+    },
+    {
+      "id": "2026-08-24-adam-meeting",
+      "title": "Adam meeting",
+      "started_at": "2026-08-24T09:01:18Z",
+      "ended_at": "",
+      "participants": [
+        "Adam"
+      ],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-08-24-adam-meeting"
+    },
+    {
+      "id": "2026-08-20-future-forex-kayleigh-and-harry",
+      "title": "Future Forex, Kayleigh and Harry",
+      "started_at": "2026-08-20T12:57:38Z",
+      "ended_at": "",
+      "participants": [
+        "Kayleigh",
+        "Harry"
+      ],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-08-20-future-forex-kayleigh-and-harry"
+    },
+    {
+      "id": "2026-08-19-cell-c-meeting",
+      "title": "Cell C meeting",
+      "started_at": "2026-08-19T13:19:47Z",
+      "ended_at": "",
+      "participants": [
+        "Chris",
+        "Alex",
+        "Salvador"
+      ],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-08-19-cell-c-meeting"
     },
     {
       "id": "2026-08-12-shan-amir-chat",
@@ -87,6 +136,18 @@
       "consent_obtained": true,
       "transcribed": false,
       "path": "meetings/2026-07-31-scg-corporate-branded-calling-discussion-cont"
+    },
+    {
+      "id": "2026-07-30-sameer",
+      "title": "Sameer",
+      "started_at": "2026-07-30T08:09:42Z",
+      "ended_at": "",
+      "participants": [
+        "Sameer"
+      ],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-07-30-sameer"
     },
     {
       "id": "2026-07-30-chat-with-paul-cross",
@@ -150,16 +211,6 @@
       "path": "meetings/2026-07-28-re-technology-introduction-for-simca-smd"
     },
     {
-      "id": "2026-07-27-impromptu-microsoft-teams-meeting",
-      "title": "Impromptu Microsoft Teams Meeting",
-      "started_at": "2026-07-27T00:00:00Z",
-      "ended_at": "2026-07-27T00:00:00Z",
-      "participants": [],
-      "consent_obtained": true,
-      "transcribed": false,
-      "path": "meetings/2026-07-27-impromptu-microsoft-teams-meeting"
-    },
-    {
       "id": "2026-07-27-chat-with-eitan-dubb",
       "title": "Chat with Eitan Dubb",
       "started_at": "2026-07-27T00:00:00Z",
@@ -185,17 +236,14 @@
       "path": "meetings/2026-07-27-chat-with-john-smith"
     },
     {
-      "id": "2026-07-24-re-intellibpo-client-acquisition-feedback",
-      "title": "RE: IntelliBPO - Client Acquisition Feedback",
-      "started_at": "2026-07-24T00:00:00Z",
-      "ended_at": "2026-07-24T00:00:00Z",
-      "participants": [
-        "Rael Landau",
-        "Dror Taylor"
-      ],
+      "id": "2026-07-27-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-07-27T00:00:00Z",
+      "ended_at": "2026-07-27T00:00:00Z",
+      "participants": [],
       "consent_obtained": true,
       "transcribed": false,
-      "path": "meetings/2026-07-24-re-intellibpo-client-acquisition-feedback"
+      "path": "meetings/2026-07-27-impromptu-microsoft-teams-meeting"
     },
     {
       "id": "2026-07-24-chat-with-eitan-dubb",
@@ -210,14 +258,17 @@
       "path": "meetings/2026-07-24-chat-with-eitan-dubb"
     },
     {
-      "id": "2026-07-23-impromptu-microsoft-teams-meeting",
-      "title": "Impromptu Microsoft Teams Meeting",
-      "started_at": "2026-07-23T00:00:00Z",
-      "ended_at": "2026-07-23T00:00:00Z",
-      "participants": [],
+      "id": "2026-07-24-re-intellibpo-client-acquisition-feedback",
+      "title": "RE: IntelliBPO - Client Acquisition Feedback",
+      "started_at": "2026-07-24T00:00:00Z",
+      "ended_at": "2026-07-24T00:00:00Z",
+      "participants": [
+        "Rael Landau",
+        "Dror Taylor"
+      ],
       "consent_obtained": true,
       "transcribed": false,
-      "path": "meetings/2026-07-23-impromptu-microsoft-teams-meeting"
+      "path": "meetings/2026-07-24-re-intellibpo-client-acquisition-feedback"
     },
     {
       "id": "2026-07-23-chat-with-eitan-dubb",
@@ -230,6 +281,36 @@
       "consent_obtained": true,
       "transcribed": false,
       "path": "meetings/2026-07-23-chat-with-eitan-dubb"
+    },
+    {
+      "id": "2026-07-23-impromptu-microsoft-teams-meeting",
+      "title": "Impromptu Microsoft Teams Meeting",
+      "started_at": "2026-07-23T00:00:00Z",
+      "ended_at": "2026-07-23T00:00:00Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-07-23-impromptu-microsoft-teams-meeting"
+    },
+    {
+      "id": "2026-07-14-voice-095",
+      "title": "Voice 095",
+      "started_at": "2026-07-14T08:30:33Z",
+      "ended_at": "",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-07-14-voice-095"
+    },
+    {
+      "id": "2026-07-07-eitan-new-business",
+      "title": "Eitan new business",
+      "started_at": "2026-07-07T07:39:44Z",
+      "ended_at": "",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-07-07-eitan-new-business"
     }
   ]
 }

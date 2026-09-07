@@ -64,7 +64,8 @@ actually costs the user something.
 
 ## Commands
 
-The user runs `mtg start` / `mtg stop` in a terminal. In here:
+The user records from the widget (or `mtg start` / `mtg stop` in a
+terminal). In here:
 
 - `/notes [meeting]` — write up a meeting (the `meeting-notes` skill)
 - `/prep <person>` — pre-call briefing from history
@@ -72,6 +73,23 @@ The user runs `mtg start` / `mtg stop` in a terminal. In here:
 - `/calendar` — sync upcoming meetings from Outlook
 - `/import-fathom` — pull history out of Fathom
 - `/dealroom <company>` — client-facing page assembled from the CRM
+- `/live-brief <meeting>` and `/ask <meeting> <question>` — what the widget
+  runs headlessly during and after a call; fine to run by hand too
+
+## The widget runs you headlessly
+
+The always-on-top widget (`notetaker/widget.py`) runs Claude Code itself,
+`claude -p` in this folder, for four things: `/prep` when a call starts,
+`/live-brief` every couple of minutes of speech, `/ask` for its ask box, and
+`/notes` the moment a call's transcript is finished. That is the same
+subscription as this session, not an API. When you are run that way you
+have Read, Glob, Grep and Skill, and for `/notes` the right to write
+`notes.md` and the participant list in `meeting.json`; never a contact file,
+never a transcript, never Bash. Contact files hold the user's own notes and
+a transcript can contain anything a caller chose to say, so the CRM update
+in the meeting-notes skill is left to an interactive `/notes`, where the
+user sees the change. A transcript whose frontmatter says `live: True` is
+still being written: treat it as a partial record, not the meeting.
 
 Phone calls arrive via `mtg phone <folder>`, which imports Samsung's own call
 recordings. Those are single-track, so everything is labelled as the caller;
@@ -101,7 +119,7 @@ name, the calendar wins — the person typed their own address into it.
 ## Working on the tool itself
 
 ```bash
-python3 -m pytest tests/ -q
+.venv\Scripts\python.exe -m pytest tests -q
 ```
 
 Modules must import on a machine with no audio libraries, no ffmpeg and no

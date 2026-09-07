@@ -1,0 +1,20 @@
+{
+  "id": "2026-07-30-sameer",
+  "title": "Sameer",
+  "started_at": "2026-07-30T08:09:42Z",
+  "ended_at": "",
+  "participants": [
+    {
+      "name": "Sameer",
+      "email": "",
+      "company": "",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "recorded by the phone's own dialer",
+  "tracks": [],
+  "tags": [],
+  "transcribed": true,
+  "transcript_engine": ""
+}

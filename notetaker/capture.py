@@ -36,12 +36,29 @@ _log = log.get("capture")
 SAMPLE_RATE = 16_000   # everything downstream wants 16 kHz mono; capturing
 CHANNELS = 1           # at source avoids a resample and saves ~6x the disk
 BLOCK = 2_048
+BUFFER_SECONDS = 1.0   # WASAPI capture buffer, Windows only. The 128 ms default
+                       # overflowed whenever the reader stalled, and lost audio.
+GAP_TOLERANCE = 0.1    # a pause in delivery shorter than this is jitter, not a stall
+SETTLE = 1.5           # never fill silence closer to now than this: a packet
+                       # recovered from the buffer can be BUFFER_SECONDS old
 STOP_FLAG = "stop.flag"
 STATE_FILE = "recording.json"
 
 
 class CaptureError(RuntimeError):
     """Raised when recording cannot start, with a fix the user can act on."""
+
+
+_clock = time.perf_counter   # sub-millisecond on Windows; monotonic() is not before 3.13
+
+try:
+    import numpy as np
+except ImportError:          # the module must still import, for `mtg doctor`
+    np = None
+
+# IAudioCaptureClient::GetBuffer flags, and its "nothing to read" success code.
+_DISCONTINUITY, _SILENT, _TIMESTAMP_ERROR = 0x1, 0x2, 0x4
+_BUFFER_EMPTY = 0x08890001
 
 
 def _require_soundcard():
@@ -77,6 +94,11 @@ class Track:
     device: str
     frames: int = 0
     error: str = ""
+    timing: str = ""           # "wasapi": placed by timestamp; "sequential": appended
+    lead: float = 0.0          # seconds of silence before the first real frame
+    filled: float = 0.0        # seconds of silence standing in for lost or paused audio
+    discontinuities: int = 0   # packets WASAPI flagged as following a gap
+    overlap: float = 0.0       # seconds a packet was stamped earlier than the file end
 
 
 def list_devices() -> dict[str, Any]:
@@ -115,38 +137,274 @@ def _default_devices():
     return mic, loopback
 
 
-def _record_track(device, path: Path, stop: threading.Event, track: Track) -> None:
+def _record_track(device, path: Path, stop: threading.Event, track: Track,
+                  t0: float | None = None) -> None:
     """Stream one device to a WAV file until stopped.
 
     Frames are written as they arrive rather than accumulated, so memory use
     is flat regardless of how long the meeting runs and a crash costs only
     the last fraction of a second.
+
+    Two things make a plain append loop drift off the wall clock, and both
+    were measured on the Latitude 3440:
+
+    * The devices do not start together. The digital microphone array takes
+      one to two seconds to open its WASAPI stream; the loopback opens at
+      once. Appended naively, every "Me" line would sort early against
+      "Them" in the merged transcript.
+    * The microphone stream pauses for a moment every ten seconds or so at
+      idle, and constantly under CPU load. soundcard's record() fills a pause
+      with wall-clock silence and then hands over the device's real frames
+      for the same interval, so the file gains time it never lived: 1% long
+      at idle, 26% long under six CPU burners. The loopback, when nothing is
+      playing, delivers nothing at all and comes out as invented silence.
+
+    So on Windows this does not use soundcard's record() loop. WASAPI stamps
+    every capture packet with the QueryPerformanceCounter time of its first
+    sample, on the same counter perf_counter reads, and each packet is placed
+    in the file at that position relative to the shared start `t0`. A packet
+    that arrives after a pause, or that WASAPI flags as following a gap, goes
+    where its stamp says and the interval before it, audio the engine lost or
+    a device that was paused, becomes silence. A packet that arrives on time
+    is appended as is. Nothing is ever deleted and no sample value is ever
+    changed; the only synthetic content is silence standing in for time in
+    which the device produced nothing. Both files start at `t0` and end at
+    the stop instant, so they line up. Everywhere else (the fake device in
+    the tests, other platforms) the plain block loop runs, with the lead
+    measured before the first read.
     """
-    try:
-        import numpy as np
-    except ImportError:
+    if np is None:
         track.error = "numpy is not installed (pip install numpy)"
         return
 
+    origin = _clock() if t0 is None else t0
+    windows = sys.platform == "win32"
+    blocksize = int(BUFFER_SECONDS * SAMPLE_RATE) if windows else BLOCK
     try:
         with wave.open(str(path), "wb") as out:
             out.setnchannels(CHANNELS)
             out.setsampwidth(2)          # 16-bit PCM
             out.setframerate(SAMPLE_RATE)
             with device.recorder(samplerate=SAMPLE_RATE, channels=CHANNELS,
-                                 blocksize=BLOCK) as rec:
-                while not stop.is_set():
-                    chunk = rec.record(numframes=BLOCK)
-                    if chunk is None or len(chunk) == 0:
-                        continue
-                    if chunk.ndim > 1:           # downmix if the device insists
-                        chunk = chunk.mean(axis=1)
-                    clipped = np.clip(chunk, -1.0, 1.0)
-                    out.writeframes((clipped * 32767).astype("<i2").tobytes())
-                    track.frames += len(chunk)
+                                 blocksize=blocksize) as rec:
+                source = _WasapiSource.open(rec, CHANNELS) if windows else None
+                if windows and source is None and type(rec).__module__.startswith("soundcard"):
+                    _log.warning("WASAPI packet timing unavailable (soundcard internals "
+                                 "changed?); %s will be timed sequentially", track.name)
+                if source is not None:
+                    track.timing = "wasapi"
+                    _record_packets(source, out, stop, track, origin)
+                else:
+                    track.timing = "sequential"
+                    _record_blocks(rec, out, stop, track, origin)
     except Exception as exc:                     # one dead track must not
         track.error = str(exc)                   # end the whole recording
         _log.exception("track %s failed", track.name)
+
+
+class _Timeline:
+    """Writes audio into a WAV at the position its timestamps give it.
+
+    Frames go in with writeframesraw: the wave module's writeframes seeks
+    back to patch the header on every call, four system calls per 10 ms
+    packet, and one of those seeks failed with EINVAL on the laptop under
+    load and killed a track. The header is patched once, at close; if the
+    recorder dies first, stop_recording's repair_wav puts it right from the
+    file size. A flush every FLUSH_SECONDS keeps the live transcriber's view
+    of the file current.
+
+    A failed write skips that packet and counts it; it never ends the track.
+    """
+
+    FLUSH_SECONDS = 0.5
+
+    def __init__(self, out, origin: float):
+        self.out = out
+        self.origin = origin
+        self.frames = 0          # frames in the file so far, silence included
+        self.filled = 0          # silence standing in for lost or paused audio
+        self.started = False     # has any real audio been written yet
+        self.write_errors = 0
+        self._last_flush = _clock()
+
+    def position(self, stamp: float) -> int:
+        """File position, in frames, of an instant on the shared clock."""
+        return int(round((stamp - self.origin) * SAMPLE_RATE))
+
+    def _write(self, data: bytes, frames: int) -> bool:
+        try:
+            self.out.writeframesraw(data)
+        except OSError as exc:
+            self.write_errors += 1
+            if self.write_errors in (1, 10, 100, 1000):
+                _log.warning("write failed (%d so far): %s", self.write_errors, exc)
+            return False
+        self.frames += frames
+        now = _clock()
+        if now - self._last_flush >= self.FLUSH_SECONDS:
+            self._last_flush = now
+            try:
+                self.out._file.flush()
+            except Exception:
+                pass
+        return True
+
+    def fill_to(self, frames: int) -> None:
+        """Extend the file with silence up to a position; never shortens."""
+        gap = frames - self.frames
+        if gap > 0 and self._write(b"\x00\x00" * gap, gap) and self.started:
+            self.filled += gap
+
+    def append(self, samples) -> None:
+        clipped = np.clip(samples, -1.0, 1.0)
+        self._write((clipped * 32767).astype("<i2").tobytes(), len(samples))
+        self.started = True
+
+
+class _WasapiSource:
+    """Capture packets straight from soundcard's WASAPI client, with stamps.
+
+    soundcard's own record() is what invents silence, so this reads the
+    packets it wraps: IAudioCaptureClient::GetBuffer, including the QPC
+    position soundcard discards. It relies on private attributes of
+    soundcard 0.4.x; if they are missing, open() returns None and the block
+    loop runs instead, which records correctly but cannot keep time.
+    """
+
+    def __init__(self, client, available, release, check, ffi, channels: int):
+        self._client = client
+        self._available = available
+        self._release = release
+        self._check = check
+        self._ffi = ffi
+        self._channels = channels
+
+    @classmethod
+    def open(cls, rec, channels: int):
+        # Look before importing: a fake recorder in the tests has none of
+        # these, and importing soundcard cold takes long enough to matter.
+        if not all(hasattr(rec, name) for name in
+                   ("_ppCaptureClient", "_capture_available_frames", "_capture_release")):
+            return None
+        try:
+            from soundcard import mediafoundation as mf
+
+            return cls(rec._ppCaptureClient, rec._capture_available_frames,
+                       rec._capture_release, mf._com.check_error, mf._ffi, channels)
+        except (ImportError, AttributeError):
+            return None
+
+    def read(self):
+        """(samples, flags, stamp) for the next packet, or None if none is waiting.
+
+        `stamp` is the perf_counter-scale time of the first sample, or None
+        when WASAPI says its timestamp is unreliable.
+        """
+        if self._available() == 0:
+            return None
+        ffi = self._ffi
+        data = ffi.new("BYTE**")
+        count = ffi.new("UINT32*")
+        flags = ffi.new("DWORD*")
+        devpos = ffi.new("UINT64*")
+        qpc = ffi.new("UINT64*")
+        hr = self._client[0][0].lpVtbl.GetBuffer(self._client[0], data, count, flags,
+                                                 devpos, qpc)
+        if hr == _BUFFER_EMPTY:          # a success code: nothing to read after all
+            return None
+        self._check(hr)
+        n = int(count[0])
+        if n == 0:
+            return None
+        samples = np.frombuffer(ffi.buffer(data[0], n * 4 * self._channels),
+                                dtype=np.float32).copy()
+        fl = int(flags[0])
+        stamp = None if fl & _TIMESTAMP_ERROR else qpc[0] / 1e7   # 100 ns units
+        self._release(n)
+        if fl & _SILENT:                 # the buffer holds nothing meaningful
+            samples[:] = 0.0
+        if self._channels > 1:
+            samples = samples.reshape(-1, self._channels).mean(axis=1)
+        return samples, fl, stamp
+
+
+def _record_packets(source, out, stop: threading.Event, track: Track, origin: float) -> None:
+    """The Windows loop: place every packet at its stamped position."""
+    tl = _Timeline(out, origin)
+    state = {"last_arrival": _clock(), "first": True, "overlap": 0}
+
+    def place(packet, now: float) -> None:
+        samples, flags, stamp = packet
+        first = state["first"]
+        after_gap = bool(flags & _DISCONTINUITY) and not first   # always set on the first
+        if after_gap:
+            track.discontinuities += 1
+        if first or after_gap or now - state["last_arrival"] > GAP_TOLERANCE:
+            # WASAPI occasionally marks a stamp unreliable; then the packet
+            # cannot have begun later than one packet before it was read.
+            anchor = stamp if stamp is not None else now - len(samples) / SAMPLE_RATE
+            pos = tl.position(anchor)
+            if pos > tl.frames:
+                tl.fill_to(pos)
+            elif pos < tl.frames - SAMPLE_RATE // 100:      # over 10 ms early: keep
+                state["overlap"] += tl.frames - pos          # the audio, note it
+        if first:
+            state["first"] = False
+            track.lead = tl.frames / SAMPLE_RATE
+        tl.append(samples)
+        state["last_arrival"] = now
+        track.frames = tl.frames
+
+    try:
+        while not stop.is_set():
+            packet = source.read()
+            now = _clock()
+            if packet is None:
+                # Nothing waiting. A paused device (the loopback with nothing
+                # playing) still owes the file its silence, but only up to
+                # SETTLE ago: a packet recovered from the buffer can be that old.
+                tl.fill_to(tl.position(now - SETTLE))
+                time.sleep(0.003)
+                continue
+            place(packet, now)
+        # The flag says finish, not discard: take what the engine still holds,
+        # at most one buffer's worth of packets.
+        for _ in range(int(BUFFER_SECONDS * 100) + 10):
+            packet = source.read()
+            if packet is None:
+                break
+            place(packet, _clock())
+        tl.fill_to(tl.position(_clock()))    # every track ends at the stop instant
+    finally:
+        track.frames = tl.frames
+        track.filled = tl.filled / SAMPLE_RATE
+        track.overlap = state["overlap"] / SAMPLE_RATE
+        if tl.write_errors and not track.error:
+            track.error = f"{tl.write_errors} packet(s) could not be written"
+
+
+def _record_blocks(rec, out, stop: threading.Event, track: Track, origin: float) -> None:
+    """The plain loop: append blocks as soundcard hands them over.
+
+    Used by the fake device in the tests and on platforms without the WASAPI
+    packet path. It measures the lead from just before the first read, which
+    the first sample cannot predate, and otherwise trusts the device's rate.
+    """
+    tl = _Timeline(out, origin)
+    before = _clock()
+    first = True
+    while not stop.is_set():
+        chunk = rec.record(numframes=BLOCK)
+        if chunk is None or len(chunk) == 0:
+            continue
+        if chunk.ndim > 1:                       # downmix if the device insists
+            chunk = chunk.mean(axis=1)
+        if first:
+            first = False
+            tl.fill_to(tl.position(before))
+            track.lead = tl.frames / SAMPLE_RATE
+        tl.append(chunk)
+        track.frames = tl.frames
 
 
 def repair_wav(path: Path) -> bool:
@@ -215,10 +473,11 @@ def start_recording(meeting_dir: Path, video: bool = False) -> dict[str, Any]:
     (meeting_dir / STATE_FILE).write_text(json.dumps(state, indent=2), encoding="utf-8")
 
     devices = {"system": loopback, "mic": mic}
+    t0 = _clock()                                # one origin for every track
     for track in tracks:
         thread = threading.Thread(
             target=_record_track,
-            args=(devices[track.name], track.path, stop, track),
+            args=(devices[track.name], track.path, stop, track, t0),
             daemon=True,
         )
         thread.start()
@@ -243,10 +502,14 @@ def start_recording(meeting_dir: Path, video: bool = False) -> dict[str, Any]:
 
     state["ended_at"] = time.time()
     state["duration_seconds"] = round(state["ended_at"] - state["started_at"], 1)
-    _log.info("stopped after %ss; frames=%s", state["duration_seconds"],
-              {t.name: t.frames for t in tracks})
+    _log.info("stopped after %ss; %s", state["duration_seconds"],
+              {t.name: (t.timing, t.frames, round(t.lead, 3), round(t.filled, 3),
+                        t.discontinuities, round(t.overlap, 3)) for t in tracks})
     state["results"] = [
-        {"name": t.name, "path": str(t.path), "frames": t.frames, "error": t.error}
+        {"name": t.name, "path": str(t.path), "frames": t.frames, "error": t.error,
+         "timing": t.timing, "lead_seconds": round(t.lead, 3),
+         "filled_seconds": round(t.filled, 3), "discontinuities": t.discontinuities,
+         "overlap_seconds": round(t.overlap, 3)}
         for t in tracks
     ]
     (meeting_dir / STATE_FILE).write_text(json.dumps(state, indent=2), encoding="utf-8")

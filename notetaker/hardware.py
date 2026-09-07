@@ -18,6 +18,11 @@ from pathlib import Path
 
 # Realtime factor: audio_seconds / wall_seconds. Higher is faster.
 # 1.0x means a one-hour meeting takes one hour to transcribe.
+#
+# Every "wer" below is a published benchmark figure for the model, on the
+# corpora the leaderboard uses. None of them has been measured on this
+# machine, on a laptop microphone, or on a South African accent, and nothing
+# in this repo measures one. Quote them as the citation they are.
 ENGINES = {
     # Parakeet is the default everywhere it applies. It beats Whisper
     # large-v3 on accuracy (6.34% vs 7.44% average word error) while running
@@ -215,9 +220,9 @@ def recommend(hw: Hardware | None = None, english_only: bool = True) -> dict:
         # covered, which is the overwhelmingly common case.
         key = "parakeet"
         why = (
-            "best accuracy available on CPU (6.3% word error, better than "
-            "Whisper large-v3) and roughly 10x faster than any Whisper model "
-            "of comparable quality"
+            "best accuracy available on CPU (6.3% word error on published "
+            "benchmarks, better than Whisper large-v3) and roughly 10x faster "
+            "than any Whisper model of comparable quality"
         )
 
     choice = dict(ENGINES[key])

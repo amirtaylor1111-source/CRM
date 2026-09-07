@@ -26,7 +26,9 @@ Read, in this order:
 1. `meetings/<id>/meeting.json` — participants, consent record, timings.
 2. `meetings/<id>/transcript.md` — the frontmatter matters. It reports the
    engine, the expected accuracy, and how many segments came back
-   low-confidence.
+   low-confidence. `live: True` means the call is still going and the
+   transcript is partial; a write-up from it is a mid-call brief, not the
+   record.
 3. The `contacts/<slug>.md` file for each known participant, so you carry
    forward what is already known rather than restating it.
 
