@@ -361,7 +361,8 @@ class LiveTranscriber:
             "expected_accuracy": choice["wer"],
             "duration": tr.hhmmss(self.seconds()),
             "tracks": ", ".join(sorted(n for n, t in self.tracks.items() if t.path.exists())),
-            "speaker_method": "separate audio tracks (attribution is exact)",
+            "speaker_method": tr.speaker_method(
+                segments, [n for n, t in self.tracks.items() if t.path.exists()]),
             "segments": len(segments),
             "low_confidence_segments": flagged,
             "names_corrected": self.names_corrected,

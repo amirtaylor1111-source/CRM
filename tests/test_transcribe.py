@@ -10,6 +10,7 @@ from notetaker.transcribe import (
     correct_names,
     hhmmss,
     merge_tracks,
+    speaker_method,
     render_markdown,
 )
 
@@ -89,10 +90,56 @@ class TestNameCorrection:
         assert segment.text == "that was Jane's idea"
         assert segment.corrections == ["Jain's -> Jane's"]
 
+    def test_a_company_named_after_an_ordinary_word_does_not_capitalise_it(self):
+        """Found on this repo's own CRM: a contact works at Capital Legacy.
+
+        The exact-match branch rewrote every lowercase "capital" as the
+        company, silently, because a case change was not logged as one.
+        """
+        segment = Segment(0, 1, "that is a capital idea and a future concern")
+        assert correct_names([segment], ["Capital Legacy", "Future Forex"]) == 0
+        assert segment.text == "that is a capital idea and a future concern"
+
+    def test_a_case_only_repair_is_logged_like_any_other(self):
+        segment = Segment(0, 1, "I spoke to jane about it")
+        assert correct_names([segment], self.VOCAB) == 1
+        assert segment.text == "I spoke to Jane about it"
+        assert segment.corrections == ["jane -> Jane"]
+
     def test_empty_vocabulary_is_a_no_op(self):
         segment = Segment(0, 1, "Jain at Akme")
         assert correct_names([segment], []) == 0
         assert segment.text == "Jain at Akme"
+
+
+class TestSpeakerMethod:
+    """What the transcript claims about attribution has to be true."""
+
+    def test_two_tracks_that_both_carried_speech_are_exact(self):
+        segments = [Segment(0, 1, "hello", speaker="Me"),
+                    Segment(2, 3, "hi", speaker="Them")]
+        assert speaker_method(segments, ["mic", "system"]) == \
+            "separate audio tracks (attribution is exact)"
+
+    def test_a_silent_track_is_declared(self):
+        """The headphones case, seen on a real run: everything on one track.
+
+        On speakers, or with the microphone muted, both voices land in the
+        system file under one label. The claim of exactness then reads as a
+        guarantee the recording cannot make.
+        """
+        segments = [Segment(0, 1, "hello", speaker="Them"),
+                    Segment(2, 3, "hi", speaker="Them")]
+        method = speaker_method(segments, ["mic", "system"])
+        assert "no speech on the Me track" in method
+        assert "attribution is exact" in method     # still true of what is there
+
+    def test_a_single_track_recording_claims_nothing_extra(self):
+        # A phone import is one channel by nature; there is no second track
+        # whose silence would mean anything.
+        segments = [Segment(0, 1, "hello", speaker="Them")]
+        assert speaker_method(segments, ["system"]) == \
+            "separate audio tracks (attribution is exact)"
 
 
 class TestMergeAndRender:

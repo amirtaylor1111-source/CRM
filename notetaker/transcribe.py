@@ -77,6 +77,10 @@ _COMMON = {
     "able", "cellar", "cost", "costs", "door", "drop", "firms", "firstly",
     "francs", "frank", "hour", "land", "monthly", "mount", "pull", "race",
     "rape", "rate", "rely", "seen", "sent", "volume",
+    # Companies whose names are ordinary English words. Without these, an
+    # exact match capitalises the ordinary word: "a capital idea" became
+    # "a Capital idea" because a contact works at Capital Legacy.
+    "capital", "cell", "cross", "discovery", "future", "legacy", "orion",
 }
 
 MIN_SIMILARITY = 0.74      # calibrated: real errors land at 0.75+,
@@ -272,6 +276,28 @@ def _duration(path: Path) -> float:
 # --- name correction -------------------------------------------------------
 
 
+def speaker_method(segments: Iterable[Segment], tracks: Iterable[str]) -> str:
+    """How attribution was decided, said honestly for what was captured.
+
+    The two-track split is exact: audio in the mic file is the user and audio
+    in the system file is everyone else. That stays true even when a track
+    holds nothing, and a track holding nothing is exactly what happens when
+    the user is on speakers rather than headphones, or their microphone is
+    muted: both sides then land on one track under one label. Claiming
+    exactness without saying so reads as a guarantee that both speakers were
+    separated, which in that case they were not.
+    """
+    exact = "separate audio tracks (attribution is exact)"
+    if len(list(tracks)) < 2:
+        return exact
+    heard = {s.speaker for s in segments if s.text.strip()}
+    silent = [label for label in ("Me", "Them") if label not in heard]
+    if not silent:
+        return exact
+    which = " and ".join(silent)
+    return f"{exact}; no speech on the {which} track, so every voice heard is labelled the same"
+
+
 def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:
     """Repair mis-transcribed proper nouns against the CRM's known names.
 
@@ -308,7 +334,13 @@ def correct_names(segments: Iterable[Segment], vocabulary: list[str]) -> int:
             if lowered in _COMMON or len(word) <= 3:
                 return word + ending
             if lowered in targets:
-                fixed = word if word == targets[lowered] else targets[lowered]
+                fixed = targets[lowered]
+                if fixed == word:
+                    return word + ending
+                # Spelt right, cased wrong. Still a change to what was said,
+                # so it belongs in the log with every other one.
+                changed += 1
+                segment.corrections.append(f"{word}{ending} -> {fixed}{ending}")
                 return fixed + ending
             cutoff = MIN_SIMILARITY if word[:1].isupper() else LOWERCASE_SIMILARITY
             close = difflib.get_close_matches(lowered, targets.keys(), n=1,
@@ -426,7 +458,7 @@ def transcribe_meeting(
         "expected_accuracy": choice.get("wer", "unknown"),
         "duration": hhmmss(total_audio),
         "tracks": ", ".join(sorted(tracks)),
-        "speaker_method": "separate audio tracks (attribution is exact)",
+        "speaker_method": speaker_method(segments, tracks),
         "segments": len(segments),
         "low_confidence_segments": flagged,
         "names_corrected": fixed,
