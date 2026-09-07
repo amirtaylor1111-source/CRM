@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-06T12:28:22Z",
+    "generated_at": "2026-09-06T19:24:23Z",
     "engine": "onnx-asr",
     "model": "nemo-parakeet-tdt-0.6b-v3",
     "expected_accuracy": "6.3%",
@@ -9,7 +9,7 @@
     "speaker_method": "separate audio tracks (attribution is exact)",
     "segments": 128,
     "low_confidence_segments": 3,
-    "names_corrected": 7,
+    "names_corrected": 0,
     "live": false
   },
   "segments": [
@@ -17,7 +17,7 @@
       "start": 0.0,
       "end": 1.09,
       "text": "We do the pilot.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.298,
       "low_confidence": false,
       "corrections": []
@@ -26,7 +26,7 @@
       "start": 1.41,
       "end": 9.69,
       "text": "And that twenty thousand would have been very good to sort of think. Testing to say that during the pilot with first arrive arrive and if calling we got an uplift of",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.244,
       "low_confidence": false,
       "corrections": []
@@ -35,7 +35,7 @@
       "start": 9.79,
       "end": 14.62,
       "text": "our current average CLI, let's say four for you short. Forty forty five percent.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.24,
       "low_confidence": false,
       "corrections": []
@@ -44,7 +44,7 @@
       "start": 14.98,
       "end": 18.37,
       "text": "If you see a five percentage point left during this is pilot.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.201,
       "low_confidence": false,
       "corrections": []
@@ -52,21 +52,17 @@
     {
       "start": 18.72,
       "end": 29.21,
-      "text": "And we can see that because of this CLI contact success Rael from from forty five to fifty percent, we've Sean the lead to sell Rael from that specific from those leads generated from that.",
-      "speaker": "Caller",
+      "text": "And we can see that because of this CLI contact success rate from from forty five to fifty percent, we've seen the lead to sell rate from that specific from those leads generated from that.",
+      "speaker": "Them",
       "confidence": -0.102,
       "low_confidence": false,
-      "corrections": [
-        "rate -> Rael",
-        "seen -> Sean",
-        "rate -> Rael"
-      ]
+      "corrections": []
     },
     {
       "start": 29.31,
       "end": 31.23,
       "text": "Uh pilot.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.55,
       "low_confidence": false,
       "corrections": []
@@ -75,7 +71,7 @@
       "start": 31.39,
       "end": 34.01,
       "text": "then needs to stay ago from the baseline which would define.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.445,
       "low_confidence": false,
       "corrections": []
@@ -84,7 +80,7 @@
       "start": 34.24,
       "end": 39.87,
       "text": "twenty percent uh to twenty three percent, which results in certain API outcome.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.223,
       "low_confidence": false,
       "corrections": []
@@ -93,7 +89,7 @@
       "start": 39.97,
       "end": 45.76,
       "text": "That would be that would be the the top line sort of set of metrics that would define for the pilot. So it won't be",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.099,
       "low_confidence": false,
       "corrections": []
@@ -102,7 +98,7 @@
       "start": 46.15,
       "end": 48.54,
       "text": "I think we trust the solution. We just need to see",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.109,
       "low_confidence": false,
       "corrections": []
@@ -111,7 +107,7 @@
       "start": 48.67,
       "end": 54.69,
       "text": "We won't hold you accountable for actual",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.136,
       "low_confidence": false,
       "corrections": []
@@ -120,7 +116,7 @@
       "start": 55.04,
       "end": 59.17,
       "text": "Where our value actually comes in is we know if we can get talkability on a call.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.119,
       "low_confidence": false,
       "corrections": []
@@ -128,19 +124,17 @@
     {
       "start": 59.27,
       "end": 62.3,
-      "text": "Naturally allows them to look. We've Sean it in all times, right?",
-      "speaker": "Caller",
+      "text": "Naturally allows them to look. We've seen it in all times, right?",
+      "speaker": "Them",
       "confidence": -0.337,
       "low_confidence": false,
-      "corrections": [
-        "seen -> Sean"
-      ]
+      "corrections": []
     },
     {
       "start": 62.53,
       "end": 64.86,
       "text": "So for us it's that that needs to contact",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.08,
       "low_confidence": false,
       "corrections": []
@@ -149,7 +143,7 @@
       "start": 65.22,
       "end": 71.07,
       "text": "And almost contact the code proxy just before it even goes into the formal activation process the critical point.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.111,
       "low_confidence": false,
       "corrections": []
@@ -158,7 +152,7 @@
       "start": 71.33,
       "end": 74.88,
       "text": "And if your solution came to something that will deliver that need to contact.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.154,
       "low_confidence": false,
       "corrections": []
@@ -167,7 +161,7 @@
       "start": 75.07,
       "end": 75.58,
       "text": "Yeah.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.857,
       "low_confidence": true,
       "corrections": []
@@ -176,7 +170,7 @@
       "start": 76.16,
       "end": 78.17,
       "text": "I think for us it will be uh",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.299,
       "low_confidence": false,
       "corrections": []
@@ -185,7 +179,7 @@
       "start": 78.37,
       "end": 81.92,
       "text": "Again change. And that's what we would look to see. I would look to see anything between",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.122,
       "low_confidence": false,
       "corrections": []
@@ -194,7 +188,7 @@
       "start": 82.05,
       "end": 87.77,
       "text": "ten to fifteen percent lift on the need to contact. If it doesn't give me that then it's no different to me rotating now this.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.117,
       "low_confidence": false,
       "corrections": []
@@ -203,7 +197,7 @@
       "start": 87.94,
       "end": 90.14,
       "text": "But what you're up against effectively is",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.101,
       "low_confidence": false,
       "corrections": []
@@ -212,7 +206,7 @@
       "start": 90.34,
       "end": 94.21,
       "text": "Is it easier for me to rotate and repurchase numbers through a CLI manager?",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.074,
       "low_confidence": false,
       "corrections": []
@@ -221,7 +215,7 @@
       "start": 94.34,
       "end": 97.05,
       "text": "Or is it easy for me to integrate first, right? That's your",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.185,
       "low_confidence": false,
       "corrections": []
@@ -230,7 +224,7 @@
       "start": 97.22,
       "end": 104.57,
       "text": "That's all your your basic comparative test, yeah. So if you give me a five to ten percent lift, it's okay, but at the cost you're bringing it doesn't make sense.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.087,
       "low_confidence": false,
       "corrections": []
@@ -239,7 +233,7 @@
       "start": 104.74,
       "end": 105.12,
       "text": "Right.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.446,
       "low_confidence": false,
       "corrections": []
@@ -248,7 +242,7 @@
       "start": 105.54,
       "end": 110.49,
       "text": "If you give me a fifteen to twenty to twenty five percent look, then it starts becoming a conversation, okay.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.076,
       "low_confidence": false,
       "corrections": []
@@ -257,7 +251,7 @@
       "start": 110.91,
       "end": 112.93,
       "text": "This is probably the most easiest solution.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.03,
       "low_confidence": false,
       "corrections": []
@@ -266,7 +260,7 @@
       "start": 113.15,
       "end": 114.65,
       "text": "I granted a lot of the",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.149,
       "low_confidence": false,
       "corrections": []
@@ -275,7 +269,7 @@
       "start": 114.88,
       "end": 121.76,
       "text": "benefits you spoke to last time might also mean you have to do less CLI rotation. So we'll factor in that to reduce cost of rotation management.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.094,
       "low_confidence": false,
       "corrections": []
@@ -284,7 +278,7 @@
       "start": 121.89,
       "end": 124.13,
       "text": "etc. As when we look at the solution our way.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.351,
       "low_confidence": false,
       "corrections": []
@@ -293,7 +287,7 @@
       "start": 124.67,
       "end": 129.85,
       "text": "Okay, cool. No, firstly thanks for that info. So I mean look, I think in my mind I had a had a very similar idea, which is that",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.132,
       "low_confidence": false,
       "corrections": []
@@ -302,7 +296,7 @@
       "start": 130.11,
       "end": 130.78,
       "text": "Um",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.103,
       "low_confidence": false,
       "corrections": []
@@ -311,7 +305,7 @@
       "start": 130.98,
       "end": 138.24,
       "text": "the success metrics should be limited to answer it. Of course we can't change what the products are. We can't change the client's interest, but we can",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.117,
       "low_confidence": false,
       "corrections": []
@@ -320,7 +314,7 @@
       "start": 138.79,
       "end": 140.61,
       "text": "You know, encourage the client to basically",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.14,
       "low_confidence": false,
       "corrections": []
@@ -329,7 +323,7 @@
       "start": 140.96,
       "end": 145.34,
       "text": "to basically on sign with the discovery name. I mean I'm a discovery client, I can tell you that",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.126,
       "low_confidence": false,
       "corrections": []
@@ -338,7 +332,7 @@
       "start": 145.6,
       "end": 157.18,
       "text": "I also bank another bank up like two different accounts and I wouldn't answer them, but I would answer you guys and that's just I can't think that I'm the only person the only person like that. I don't know why it's kind of like discovery just has that like",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.047,
       "low_confidence": false,
       "corrections": []
@@ -347,7 +341,7 @@
       "start": 157.44,
       "end": 159.74,
       "text": "premium sort of name slash brand where",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.093,
       "low_confidence": false,
       "corrections": []
@@ -356,7 +350,7 @@
       "start": 160.61,
       "end": 161.37,
       "text": "Yeah, the bank should",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.346,
       "low_confidence": false,
       "corrections": []
@@ -365,7 +359,7 @@
       "start": 161.6,
       "end": 164.03,
       "text": "At least for me don't don't really have that. So",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.087,
       "low_confidence": false,
       "corrections": []
@@ -374,7 +368,7 @@
       "start": 164.39,
       "end": 168.77,
       "text": "I'm I'm comfortable with the success criteria being linked to on straight. I just want to make sure that",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.098,
       "low_confidence": false,
       "corrections": []
@@ -383,7 +377,7 @@
       "start": 169.63,
       "end": 170.4,
       "text": "Um",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.117,
       "low_confidence": false,
       "corrections": []
@@ -392,7 +386,7 @@
       "start": 170.59,
       "end": 174.72,
       "text": "those answer rates are, let's say, you know, reasonable. So",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.064,
       "low_confidence": false,
       "corrections": []
@@ -401,7 +395,7 @@
       "start": 174.95,
       "end": 181.69,
       "text": "As a next step from from that perspective, what I'd like to maybe just understand from you guys is, you know, these are the product lines or areas you want to test in.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.055,
       "low_confidence": false,
       "corrections": []
@@ -410,7 +404,7 @@
       "start": 181.83,
       "end": 183.42,
       "text": "This is where they're currently sitting at.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.031,
       "low_confidence": false,
       "corrections": []
@@ -419,7 +413,7 @@
       "start": 183.52,
       "end": 187.26,
       "text": "This is where we'd like it to to go to, which would also be considered success.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.133,
       "low_confidence": false,
       "corrections": []
@@ -428,7 +422,7 @@
       "start": 187.52,
       "end": 190.62,
       "text": "And that'll help me understand, you know, from outside, you know, do we think that's",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.071,
       "low_confidence": false,
       "corrections": []
@@ -437,7 +431,7 @@
       "start": 190.82,
       "end": 193.5,
       "text": "That's kind of reasonable and then, you know, does that kind of you know",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.089,
       "low_confidence": false,
       "corrections": []
@@ -446,7 +440,7 @@
       "start": 193.67,
       "end": 197.41,
       "text": "Make sense for us, basically. I don't think we'll we'll help to find the baseline.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.156,
       "low_confidence": false,
       "corrections": []
@@ -455,7 +449,7 @@
       "start": 198.21,
       "end": 200.96,
       "text": "And the expectation of look for you as we do this data exercise.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.105,
       "low_confidence": false,
       "corrections": []
@@ -464,7 +458,7 @@
       "start": 201.19,
       "end": 202.21,
       "text": "Okay, perfect.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.097,
       "low_confidence": false,
       "corrections": []
@@ -473,7 +467,7 @@
       "start": 202.31,
       "end": 205.57,
       "text": "And then a last point which is also quite quite quite important for us and",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.063,
       "low_confidence": false,
       "corrections": []
@@ -482,7 +476,7 @@
       "start": 205.89,
       "end": 210.27,
       "text": "Um this just really comes back to kind of, you know, making this make sense for everyone.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.043,
       "low_confidence": false,
       "corrections": []
@@ -491,7 +485,7 @@
       "start": 210.43,
       "end": 216.09,
       "text": "And what I what I mean by that is that we'd like to basically ensure that there is, you know, commitment once success is achieved.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.032,
       "low_confidence": false,
       "corrections": []
@@ -500,7 +494,7 @@
       "start": 216.51,
       "end": 227.07,
       "text": "Um and to ensure that we kind of, you know, all that the work we invest will translate into a long term partnership on success. So what I mean by that is that, you know, we'd like to basically do a full contract up front.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.063,
       "low_confidence": false,
       "corrections": []
@@ -509,7 +503,7 @@
       "start": 227.43,
       "end": 234.78,
       "text": "Which includes a POC, it specifies the timelines, core volumes, uplifts, everything that you know that would be included in there, and of course the define success criteria.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.077,
       "low_confidence": false,
       "corrections": []
@@ -518,7 +512,7 @@
       "start": 234.88,
       "end": 238.85,
       "text": "And then in that case on success, then the service moves into being a paid service.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.03,
       "low_confidence": false,
       "corrections": []
@@ -527,7 +521,7 @@
       "start": 239.49,
       "end": 242.49,
       "text": "Would you guys be comfortable with that? Does that does that make sense to you guys?",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.03,
       "low_confidence": false,
       "corrections": []
@@ -536,7 +530,7 @@
       "start": 242.82,
       "end": 246.3,
       "text": "Happy free to send you an agreement. We'll get all guys tell them as well.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.309,
       "low_confidence": false,
       "corrections": []
@@ -545,7 +539,7 @@
       "start": 246.53,
       "end": 248.7,
       "text": "Uh you're unhappy for us to commit to",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.066,
       "low_confidence": false,
       "corrections": []
@@ -554,7 +548,7 @@
       "start": 249.06,
       "end": 260.48,
       "text": "If if we you it was almost a caveat on the fact that our success criteria gets met, yes, and then we'll move forward into the contrast, it almost gets triggered upon what the success metrics get delivered.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.139,
       "low_confidence": false,
       "corrections": []
@@ -563,7 +557,7 @@
       "start": 260.99,
       "end": 266.65,
       "text": "I think the commercial discussion we must still have then because it again within the success metrics it does determine",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.047,
       "low_confidence": false,
       "corrections": []
@@ -572,7 +566,7 @@
       "start": 267.62,
       "end": 271.17,
       "text": "X amount lifting success delivers X API, X revenue.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.115,
       "low_confidence": false,
       "corrections": []
@@ -581,7 +575,7 @@
       "start": 271.33,
       "end": 275.68,
       "text": "Of course we always have to be neted off against that. So I'm happy for us to commit in principle to say",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.124,
       "low_confidence": false,
       "corrections": []
@@ -590,7 +584,7 @@
       "start": 276.23,
       "end": 279.29,
       "text": "If success is made, we're happy to move to a solution and use you guys.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.071,
       "low_confidence": false,
       "corrections": []
@@ -599,7 +593,7 @@
       "start": 279.49,
       "end": 283.01,
       "text": "for commercials to be determined between us in a state that is viable and",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.061,
       "low_confidence": false,
       "corrections": []
@@ -608,7 +602,7 @@
       "start": 283.2,
       "end": 283.81,
       "text": "Agreeable.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.53,
       "low_confidence": false,
       "corrections": []
@@ -617,7 +611,7 @@
       "start": 284.07,
       "end": 288.54,
       "text": "That I'm comfortable. I think it would be hard for us to commit up front to the pricing until we see how much of",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.068,
       "low_confidence": false,
       "corrections": []
@@ -626,7 +620,7 @@
       "start": 288.74,
       "end": 289.89,
       "text": "The six hole.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.497,
       "low_confidence": false,
       "corrections": []
@@ -635,7 +629,7 @@
       "start": 289.99,
       "end": 291.77,
       "text": "Successful this actually really is.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.065,
       "low_confidence": false,
       "corrections": []
@@ -644,7 +638,7 @@
       "start": 293.86,
       "end": 294.85,
       "text": "Okay.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.082,
       "low_confidence": false,
       "corrections": []
@@ -653,7 +647,7 @@
       "start": 296.0,
       "end": 299.71,
       "text": "Well so I'll give you an example. If you tell me my success criteria is",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.099,
       "low_confidence": false,
       "corrections": []
@@ -662,7 +656,7 @@
       "start": 299.97,
       "end": 301.34,
       "text": "You give me a twenty percent uplift.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.1,
       "low_confidence": false,
       "corrections": []
@@ -670,19 +664,17 @@
     {
       "start": 301.7,
       "end": 308.29,
-      "text": "Yeah, but twenty percent uplift it gives me ten thousand more sales, which gives me a hundred and extra a month, but your solution Cross me ninety nine.",
-      "speaker": "Caller",
+      "text": "Yeah, but twenty percent uplift it gives me ten thousand more sales, which gives me a hundred and extra a month, but your solution costs me ninety nine.",
+      "speaker": "Them",
       "confidence": -0.13,
       "low_confidence": false,
-      "corrections": [
-        "costs -> Cross"
-      ]
+      "corrections": []
     },
     {
       "start": 308.71,
       "end": 309.92,
       "text": "It's not gonna be valuable.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.204,
       "low_confidence": false,
       "corrections": []
@@ -691,7 +683,7 @@
       "start": 310.02,
       "end": 313.02,
       "text": "That's what I'm basically saying. So I'm happy to commit to doing it.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.063,
       "low_confidence": false,
       "corrections": []
@@ -700,7 +692,7 @@
       "start": 313.41,
       "end": 318.97,
       "text": "As long as we can understand that the uplifting will be able to net net spot make sense for us commercially.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.098,
       "low_confidence": false,
       "corrections": []
@@ -709,7 +701,7 @@
       "start": 320.19,
       "end": 321.05,
       "text": "Okay.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.697,
       "low_confidence": true,
       "corrections": []
@@ -718,7 +710,7 @@
       "start": 321.73,
       "end": 324.83,
       "text": "Um look that might be a little bit tricky to get over the line from",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.01,
       "low_confidence": false,
       "corrections": []
@@ -727,7 +719,7 @@
       "start": 324.99,
       "end": 326.11,
       "text": "From our side because",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.291,
       "low_confidence": false,
       "corrections": []
@@ -736,7 +728,7 @@
       "start": 326.79,
       "end": 328.96,
       "text": "What I've what could then happen is",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.164,
       "low_confidence": false,
       "corrections": []
@@ -745,7 +737,7 @@
       "start": 329.47,
       "end": 330.49,
       "text": "Well we then buy.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.47,
       "low_confidence": false,
       "corrections": []
@@ -754,7 +746,7 @@
       "start": 332.16,
       "end": 334.81,
       "text": "Commercials then could become a sticky point which could then, you know",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.033,
       "low_confidence": false,
       "corrections": []
@@ -763,7 +755,7 @@
       "start": 334.95,
       "end": 337.44,
       "text": "kind of make things go go a bit south. So",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.148,
       "low_confidence": false,
       "corrections": []
@@ -772,7 +764,7 @@
       "start": 337.67,
       "end": 339.04,
       "text": "I really from my side it's like",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.329,
       "low_confidence": false,
       "corrections": []
@@ -781,7 +773,7 @@
       "start": 339.52,
       "end": 343.29,
       "text": "What I'd what I'd like to see is assuming that we achieve those uplifts.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.05,
       "low_confidence": false,
       "corrections": []
@@ -790,7 +782,7 @@
       "start": 343.59,
       "end": 344.13,
       "text": "Right.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.217,
       "low_confidence": false,
       "corrections": []
@@ -799,7 +791,7 @@
       "start": 344.35,
       "end": 345.09,
       "text": "Um",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.079,
       "low_confidence": false,
       "corrections": []
@@ -808,7 +800,7 @@
       "start": 345.22,
       "end": 345.6,
       "text": "No.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.258,
       "low_confidence": false,
       "corrections": []
@@ -817,7 +809,7 @@
       "start": 345.89,
       "end": 352.77,
       "text": "Obviously the commercial the commercial have to do with this thing. Yeah. Share with me what you let us identify the calls first, right?",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.223,
       "low_confidence": false,
       "corrections": []
@@ -826,7 +818,7 @@
       "start": 353.19,
       "end": 356.96,
       "text": "Let us identify the suggestion uplift that we think we want.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.084,
       "low_confidence": false,
       "corrections": []
@@ -834,19 +826,17 @@
     {
       "start": 357.22,
       "end": 360.83,
-      "text": "And you show you didn't recalibrate your pricing to an Horn after this.",
-      "speaker": "Caller",
+      "text": "And you show you didn't recalibrate your pricing to an hour after this.",
+      "speaker": "Them",
       "confidence": -0.192,
       "low_confidence": false,
-      "corrections": [
-        "hour -> Horn"
-      ]
+      "corrections": []
     },
     {
       "start": 361.06,
       "end": 365.85,
       "text": "Because theoretically what I'd be able to tell you is at an X percent lift uplift I'm willing to pay.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.139,
       "low_confidence": false,
       "corrections": []
@@ -855,7 +845,7 @@
       "start": 366.11,
       "end": 379.26,
       "text": "The following one extra on the core and you can tell me if it makes sense to you even before we put a contract on or before we start the POC. If it doesn't make sense then you have to negotiate, then I'm happy to negotiate. Well that work for you. Yeah, that sounds perfect. That we can do. That I can that I can get over the lot.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.167,
       "low_confidence": false,
       "corrections": []
@@ -863,19 +853,17 @@
     {
       "start": 379.55,
       "end": 394.62,
-      "text": "So we can back sort of like from where we need to be because then whatever I put as an uplift we'll make sure I'm enter the gate for whatever I can afford. Does that make sense? I think it's the best we can. That's the most logical way to do it in Mamma because then at least you guys know cool, we've we've Sean the certain uplift.",
-      "speaker": "Caller",
+      "text": "So we can back sort of like from where we need to be because then whatever I put as an uplift we'll make sure I'm enter the gate for whatever I can afford. Does that make sense? I think it's the best we can. That's the most logical way to do it in Mamma because then at least you guys know cool, we've we've seen the certain uplift.",
+      "speaker": "Them",
       "confidence": -0.165,
       "low_confidence": false,
-      "corrections": [
-        "seen -> Sean"
-      ]
+      "corrections": []
     },
     {
       "start": 394.72,
       "end": 403.58,
       "text": "Which means that we can pay this price and then we receive, you know, this amount of sales slash revenue because of this solution. And then you know it makes sense for you, we know it makes sense for us, and we can know that up front.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.06,
       "low_confidence": false,
       "corrections": []
@@ -884,7 +872,7 @@
       "start": 403.68,
       "end": 407.29,
       "text": "So that again on success it triggers and then now it becomes a paid service and there's no",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.062,
       "low_confidence": false,
       "corrections": []
@@ -893,7 +881,7 @@
       "start": 407.52,
       "end": 417.31,
       "text": "It's like contentious points because there's not low pricing is usually the most contentious point, right? So remember this the solution is viable and it takes away and have some cost around CLI management.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.188,
       "low_confidence": false,
       "corrections": []
@@ -902,7 +890,7 @@
       "start": 417.76,
       "end": 426.11,
       "text": "I mean that's what I'm happy to read the point of course, right? So it it actually makes sense to do that, because I don't want you to think the margin we have is just the margin theory.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.172,
       "low_confidence": false,
       "corrections": []
@@ -911,7 +899,7 @@
       "start": 426.79,
       "end": 432.19,
       "text": "What might actually end up happening is we can actually redeploy a cluster we currently become not needing the solution.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.169,
       "low_confidence": false,
       "corrections": []
@@ -920,7 +908,7 @@
       "start": 432.39,
       "end": 437.41,
       "text": "and we deploy it elsewhere. So I'm very happy for us to do that. So I think",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.145,
       "low_confidence": false,
       "corrections": []
@@ -929,7 +917,7 @@
       "start": 437.67,
       "end": 444.32,
       "text": "As next year, let us go and identify the call if you want, let us go identify the success criteria and what we think the outlook will be for those.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.192,
       "low_confidence": false,
       "corrections": []
@@ -938,7 +926,7 @@
       "start": 444.51,
       "end": 446.72,
       "text": "Different uh CLI just.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.453,
       "low_confidence": false,
       "corrections": []
@@ -947,7 +935,7 @@
       "start": 447.17,
       "end": 449.53,
       "text": "Or they come to you and tell you this is what I'm targeting.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.152,
       "low_confidence": false,
       "corrections": []
@@ -956,7 +944,7 @@
       "start": 449.79,
       "end": 455.2,
       "text": "Based on what I'm targeting, I think I can afford up to X percent per call because you guys charge on per core basis.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.223,
       "low_confidence": false,
       "corrections": []
@@ -965,7 +953,7 @@
       "start": 455.49,
       "end": 461.47,
       "text": "Wait, so you tell me if it makes sense. Now you can tell you all what you explain. So I know you operate in a tier structure, if you think",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.226,
       "low_confidence": false,
       "corrections": []
@@ -974,7 +962,7 @@
       "start": 461.67,
       "end": 466.33,
       "text": "You can afford it given the volumes we see and your T structure then we discuss on that if we take that forward.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.144,
       "low_confidence": false,
       "corrections": []
@@ -983,7 +971,7 @@
       "start": 466.43,
       "end": 467.52,
       "text": "That sounds perfect.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.008,
       "low_confidence": false,
       "corrections": []
@@ -992,7 +980,7 @@
       "start": 468.0,
       "end": 468.89,
       "text": "That sounds perfect.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.007,
       "low_confidence": false,
       "corrections": []
@@ -1001,7 +989,7 @@
       "start": 470.08,
       "end": 470.46,
       "text": "Okay.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.576,
       "low_confidence": false,
       "corrections": []
@@ -1010,7 +998,7 @@
       "start": 470.82,
       "end": 471.2,
       "text": "Yeah.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.063,
       "low_confidence": false,
       "corrections": []
@@ -1019,7 +1007,7 @@
       "start": 471.33,
       "end": 472.16,
       "text": "That sounds good.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.041,
       "low_confidence": false,
       "corrections": []
@@ -1028,7 +1016,7 @@
       "start": 472.29,
       "end": 477.82,
       "text": "Um yeah, so I mean I'll just wait for you I'll I'll just wait for you guys to send that through and I think we can then take it from there.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.052,
       "low_confidence": false,
       "corrections": []
@@ -1037,7 +1025,7 @@
       "start": 478.43,
       "end": 482.78,
       "text": "Yeah, I think you are still till the end of next week we have a few engagements happening between",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.177,
       "low_confidence": false,
       "corrections": []
@@ -1046,7 +1034,7 @@
       "start": 482.98,
       "end": 488.19,
       "text": "That's the start of next week. But I think by next week we'll be able to have a clear view on what the data core was look like.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.152,
       "low_confidence": false,
       "corrections": []
@@ -1055,7 +1043,7 @@
       "start": 488.39,
       "end": 492.38,
       "text": "Uh well. So let's give it so by next week, Friday. If you don't hear from us, you can just snatch me.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.263,
       "low_confidence": false,
       "corrections": []
@@ -1064,7 +1052,7 @@
       "start": 492.8,
       "end": 496.8,
       "text": "But we should run out. I deal with close off something before we overbreak for December.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.315,
       "low_confidence": false,
       "corrections": []
@@ -1073,7 +1061,7 @@
       "start": 496.93,
       "end": 501.09,
       "text": "So that typically we can start this nicely in January. Yeah, no, that sounds perfect.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.079,
       "low_confidence": false,
       "corrections": []
@@ -1082,7 +1070,7 @@
       "start": 501.28,
       "end": 502.17,
       "text": "That sounds perfect.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.006,
       "low_confidence": false,
       "corrections": []
@@ -1091,7 +1079,7 @@
       "start": 502.59,
       "end": 503.36,
       "text": "Lakes.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.36,
       "low_confidence": false,
       "corrections": []
@@ -1100,7 +1088,7 @@
       "start": 504.32,
       "end": 504.67,
       "text": "Yeah.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.428,
       "low_confidence": false,
       "corrections": []
@@ -1109,7 +1097,7 @@
       "start": 505.47,
       "end": 508.13,
       "text": "Okay, great. Well then send you anything from your side.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.326,
       "low_confidence": false,
       "corrections": []
@@ -1118,7 +1106,7 @@
       "start": 509.09,
       "end": 517.95,
       "text": "No, I think I think that's so. I think we'll just try and fast track uh defining the data set and and sort of the baseline for the metrics that we'll be testing through the POC.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.113,
       "low_confidence": false,
       "corrections": []
@@ -1127,7 +1115,7 @@
       "start": 518.21,
       "end": 519.87,
       "text": "Once we have your documents.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.499,
       "low_confidence": false,
       "corrections": []
@@ -1136,7 +1124,7 @@
       "start": 521.06,
       "end": 521.44,
       "text": "Mm.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.42,
       "low_confidence": false,
       "corrections": []
@@ -1145,7 +1133,7 @@
       "start": 521.95,
       "end": 522.75,
       "text": "Okay, thank you.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.226,
       "low_confidence": false,
       "corrections": []
@@ -1154,7 +1142,7 @@
       "start": 522.88,
       "end": 526.11,
       "text": "That's all from my side.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.218,
       "low_confidence": false,
       "corrections": []
@@ -1163,7 +1151,7 @@
       "start": 526.82,
       "end": 528.0,
       "text": "Come to more. Yeah.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.627,
       "low_confidence": true,
       "corrections": []
@@ -1172,7 +1160,7 @@
       "start": 528.19,
       "end": 534.62,
       "text": "Thanks again for the quick responses and the quick turnaround. I appreciate it. Of course, I'm looking forward to receiving your your email.",
-      "speaker": "Caller",
+      "speaker": "Them",
       "confidence": -0.108,
       "low_confidence": false,
       "corrections": []
