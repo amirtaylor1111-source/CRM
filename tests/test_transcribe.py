@@ -100,6 +100,13 @@ class TestNameCorrection:
         assert correct_names([segment], ["Capital Legacy", "Future Forex"]) == 0
         assert segment.text == "that is a capital idea and a future concern"
 
+    def test_an_industry_word_that_is_half_a_company_name_stays_lowercase(self):
+        # From a real transcript: "coming from business forex" was rewritten
+        # as "business Forex" because a client is called Future Forex.
+        segment = Segment(0, 1, "coming from business forex, that is the horn of it")
+        assert correct_names([segment], ["Future Forex", "Sean Horn"]) == 0
+        assert "business forex" in segment.text
+
     def test_a_case_only_repair_is_logged_like_any_other(self):
         segment = Segment(0, 1, "I spoke to jane about it")
         assert correct_names([segment], self.VOCAB) == 1

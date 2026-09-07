@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-07T07:47:59Z",
+    "generated_at": "2026-09-07T11:33:21Z",
     "engine": "onnx-asr",
     "model": "nemo-parakeet-tdt-0.6b-v3",
     "expected_accuracy": "6.3%",
@@ -925,7 +925,7 @@
     {
       "start": 340.64,
       "end": 344.61,
-      "text": "internally on your side you go, right, well those two Cell sequels",
+      "text": "internally on your side you go, right, well those two cell sequels",
       "speaker": "Them",
       "confidence": -0.159,
       "low_confidence": false,

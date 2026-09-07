@@ -1,0 +1,23 @@
+{
+  "id": "2026-09-07-catchup",
+  "title": "Catchup",
+  "started_at": "2026-09-07T12:30:09Z",
+  "ended_at": "2026-09-07T12:49:06Z",
+  "participants": [
+    {
+      "name": "Monty Smythe",
+      "email": "",
+      "company": "",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "participants informed",
+  "tracks": [
+    "C:\\Users\\AmirTaylor\\Downloads\\Projects\\CRM\\meetings\\2026-09-07-catchup\\mic.wav",
+    "C:\\Users\\AmirTaylor\\Downloads\\Projects\\CRM\\meetings\\2026-09-07-catchup\\system.wav"
+  ],
+  "tags": [],
+  "transcribed": true,
+  "transcript_engine": ""
+}

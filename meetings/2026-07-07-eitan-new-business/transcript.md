@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-09-06T19:49:10Z
+generated_at: 2026-09-07T11:41:57Z
 engine: onnx-asr
 model: nemo-parakeet-tdt-0.6b-v3
 expected_accuracy: 6.3%
@@ -529,7 +529,7 @@ live: False
 [00:25:57] **Them:** And that's the ar things that I'm
 [00:25:59] **Them:** When fixed income stuff that's.
 [00:26:01] **Them:** That's that's generating eleven and a half percent guaranteed.
-[00:26:06] **Them:** Which helps on my Capital.
+[00:26:06] **Them:** Which helps on my capital.
 [00:26:08] **Them:** Which helps us annuity and time.
 [00:26:10] **Them:** And slightly slightly I'm boarding with both of different streams and gold. That's that's kinda
 [00:26:16] **Them:** Bring me in what I need to bring in, so

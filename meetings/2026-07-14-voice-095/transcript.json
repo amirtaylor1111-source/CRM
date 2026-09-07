@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-07T08:58:28Z",
+    "generated_at": "2026-09-07T12:21:01Z",
     "engine": "onnx-asr",
     "model": "nemo-parakeet-tdt-0.6b-v3",
     "expected_accuracy": "6.3%",
@@ -2322,7 +2322,7 @@
     {
       "start": 736.67,
       "end": 739.33,
-      "text": "Or venture Capital with advisory.",
+      "text": "Or venture capital with advisory.",
       "speaker": "Them",
       "confidence": -0.127,
       "low_confidence": false,
@@ -4302,7 +4302,7 @@
     {
       "start": 1375.46,
       "end": 1377.02,
-      "text": "Future outcomes then",
+      "text": "future outcomes then",
       "speaker": "Them",
       "confidence": -0.125,
       "low_confidence": false,
@@ -11709,7 +11709,7 @@
     {
       "start": 3778.5,
       "end": 3784.19,
-      "text": "Cell reasons and other things like these the products should be taken daily, but they don't market it like that.",
+      "text": "cell reasons and other things like these the products should be taken daily, but they don't market it like that.",
       "speaker": "Them",
       "confidence": -0.147,
       "low_confidence": false,

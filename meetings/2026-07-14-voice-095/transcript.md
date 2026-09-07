@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-09-07T08:58:28Z
+generated_at: 2026-09-07T12:21:01Z
 engine: onnx-asr
 model: nemo-parakeet-tdt-0.6b-v3
 expected_accuracy: 6.3%
@@ -271,7 +271,7 @@ live: False
 [00:12:11] **Them:** This whole consulting for equity model.
 [00:12:14] **Them:** Essentially.
 [00:12:15] **Them:** Yeah.
-[00:12:16] **Them:** Or venture Capital with advisory.
+[00:12:16] **Them:** Or venture capital with advisory.
 [00:12:19] **Them:** Offer as part of the service.
 [00:12:21] **Them:** Uh
 [00:12:23] **Them:** But we eventually, yeah, we wouldn't
@@ -491,7 +491,7 @@ live: False
 [00:22:46] **Them:** Um
 [00:22:47] **Them:** It's also maybe a strong one, but I'm usually just tired and then if the work is let's say
 [00:22:53] **Them:** Important that it's gonna dictate
-[00:22:55] **Them:** Future outcomes then
+[00:22:55] **Them:** future outcomes then
 [00:22:57] **Them:** I will push it off because I feel I see
 [00:22:59] **Them:** the risk of packing it up as much greater than the
 [00:23:02] **Them:** risk of pushing it off one day.
@@ -1314,7 +1314,7 @@ live: False
 [01:02:45] **Them:** And it's like aligning backstop incentives, client incentives.
 [01:02:50] **Them:** That is basics that you go into stores, there's just not stock and then you're asked it's that just because no one's restocked.
 [01:02:55] **Them:** You know, that just the product's not there.
-[01:02:58] **Them:** Cell reasons and other things like these the products should be taken daily, but they don't market it like that.
+[01:02:58] **Them:** cell reasons and other things like these the products should be taken daily, but they don't market it like that.
 [01:03:04] **Them:** And
 [01:03:05] **Them:** This should actually be like a subscription business.
 [01:03:08] **Them:** And when it's delivered to you directly.

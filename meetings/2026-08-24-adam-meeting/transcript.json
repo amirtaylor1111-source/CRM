@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-07T08:13:17Z",
+    "generated_at": "2026-09-07T12:55:35Z",
     "engine": "onnx-asr",
     "model": "nemo-parakeet-tdt-0.6b-v3",
     "expected_accuracy": "6.3%",
@@ -2581,7 +2581,7 @@
     {
       "start": 725.28,
       "end": 729.6,
-      "text": "Internally I haven't gone and said we always go with Future products.",
+      "text": "Internally I haven't gone and said we always go with future products.",
       "speaker": "Them",
       "confidence": -0.113,
       "low_confidence": false,
@@ -2952,7 +2952,7 @@
     {
       "start": 822.37,
       "end": 827.52,
-      "text": "is what dictates are they gonna go back to their old process or are they gonna, you know, actually use Future Forex. Is that",
+      "text": "is what dictates are they gonna go back to their old process or are they gonna, you know, actually use future forex. Is that",
       "speaker": "Them",
       "confidence": -0.129,
       "low_confidence": false,
@@ -6106,7 +6106,7 @@
     {
       "start": 1757.47,
       "end": 1758.91,
-      "text": "Coming from business Forex.",
+      "text": "Coming from business forex.",
       "speaker": "Them",
       "confidence": -0.435,
       "low_confidence": false,
@@ -7735,7 +7735,7 @@
     {
       "start": 2241.47,
       "end": 2245.47,
-      "text": "Once it is, we're the only ones doing it. So if you want to Future proof your business",
+      "text": "Once it is, we're the only ones doing it. So if you want to future proof your business",
       "speaker": "Them",
       "confidence": -0.075,
       "low_confidence": false,
@@ -9175,7 +9175,7 @@
     {
       "start": 2622.53,
       "end": 2625.15,
-      "text": "Let's connect them for two Future parts because there's",
+      "text": "Let's connect them for two future parts because there's",
       "speaker": "Them",
       "confidence": -0.202,
       "low_confidence": false,

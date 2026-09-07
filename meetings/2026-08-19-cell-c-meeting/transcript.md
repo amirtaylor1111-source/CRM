@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-09-07T07:47:59Z
+generated_at: 2026-09-07T11:33:21Z
 engine: onnx-asr
 model: nemo-parakeet-tdt-0.6b-v3
 expected_accuracy: 6.3%
@@ -116,7 +116,7 @@ live: False
 [00:05:25] **Them:** tentacles you would say, okay, well
 [00:05:28] **Them:** out of these ten calls, only two of them were on Celsius, the other eight were on the other network, but to the end c the enterprise customer it doesn't matter what network it landed on.
 [00:05:36] **Them:** you brand it a call for them, right? You don't give them a breakdown of what network it landed on.
-[00:05:40] **Them:** internally on your side you go, right, well those two Cell sequels
+[00:05:40] **Them:** internally on your side you go, right, well those two cell sequels
 [00:05:44] **Them:** Those were
 [00:05:46] **Them:** free, let's say, like you made five cents on them. The other ones you need to pay
 [00:05:50] **Them:** I don't know, two cents.

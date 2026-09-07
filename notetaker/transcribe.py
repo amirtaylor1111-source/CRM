@@ -79,8 +79,12 @@ _COMMON = {
     "rape", "rate", "rely", "seen", "sent", "volume",
     # Companies whose names are ordinary English words. Without these, an
     # exact match capitalises the ordinary word: "a capital idea" became
-    # "a Capital idea" because a contact works at Capital Legacy.
-    "capital", "cell", "cross", "discovery", "future", "legacy", "orion",
+    # "a Capital idea" because a contact works at Capital Legacy. "forex" and
+    # "horn" arrived the same way, from Future Forex and Sean Horn, and were
+    # caught only once case changes started being logged: "business forex"
+    # became "business Forex" in a client transcript.
+    "capital", "cell", "cotton", "cross", "discovery", "forex", "future",
+    "horn", "legacy", "orion",
 }
 
 MIN_SIMILARITY = 0.74      # calibrated: real errors land at 0.75+,

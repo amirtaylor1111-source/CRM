@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-06T19:49:10Z",
+    "generated_at": "2026-09-07T11:41:57Z",
     "engine": "onnx-asr",
     "model": "nemo-parakeet-tdt-0.6b-v3",
     "expected_accuracy": "6.3%",
@@ -4642,7 +4642,7 @@
     {
       "start": 1566.18,
       "end": 1567.97,
-      "text": "Which helps on my Capital.",
+      "text": "Which helps on my capital.",
       "speaker": "Them",
       "confidence": -0.304,
       "low_confidence": false,

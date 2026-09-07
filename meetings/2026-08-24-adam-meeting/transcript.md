@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-09-07T08:13:17Z
+generated_at: 2026-09-07T12:55:35Z
 engine: onnx-asr
 model: nemo-parakeet-tdt-0.6b-v3
 expected_accuracy: 6.3%
@@ -300,7 +300,7 @@ live: False
 [00:11:53] **Them:** You you know that they're waiting for the R to weaken it. It's fifteen ninety eight you hit them up with the missus say that's a big time.
 [00:12:00] **Them:** Yeah.
 [00:12:01] **Them:** When they when the ones you
-[00:12:05] **Them:** Internally I haven't gone and said we always go with Future products.
+[00:12:05] **Them:** Internally I haven't gone and said we always go with future products.
 [00:12:10] **Them:** Essentially what happens is they have they still have their old account open.
 [00:12:13] **Them:** And it ever's more front of mind and creates better service, slowly the the volume starts switching to that.
 [00:12:20] **Them:** Fair. Correct.
@@ -341,7 +341,7 @@ live: False
 [00:13:32] **Them:** Their work, let's just say it.
 [00:13:34] **Them:** Right, but then like the key change now is that they actually have the time for the relationship building and it seems like
 [00:13:40] **Them:** That relationship aspect
-[00:13:42] **Them:** is what dictates are they gonna go back to their old process or are they gonna, you know, actually use Future Forex. Is that
+[00:13:42] **Them:** is what dictates are they gonna go back to their old process or are they gonna, you know, actually use future forex. Is that
 [00:13:48] **Them:** Is the it's so like that's the actual change, right? That ability or the time to actually
 [00:13:52] **Them:** Both that relationship so that you know they're actually gonna keep.
 [00:13:55] **Them:** Using you.
@@ -691,7 +691,7 @@ live: False
 [00:29:10] **Them:** ⚠ Artly all
 [00:29:12] **Them:** Our revenue is
 [00:29:14] **Them:** About sixty to sixty five percent.
-[00:29:17] **Them:** Coming from business Forex.
+[00:29:17] **Them:** Coming from business forex.
 [00:29:19] **Them:** Um
 [00:29:21] **Them:** Thirty five to forty percent coming from individuals.
 [00:29:24] **Them:** And
@@ -872,7 +872,7 @@ live: False
 [00:37:09] **Them:** We it's bet on speed and it's bet on price, digital parts.
 [00:37:15] **Them:** At some point down the line this is gonna be legal.
 [00:37:18] **Them:** In South Africa we really believe that for awkward flows.
-[00:37:21] **Them:** Once it is, we're the only ones doing it. So if you want to Future proof your business
+[00:37:21] **Them:** Once it is, we're the only ones doing it. So if you want to future proof your business
 [00:37:26] **Them:** You should be
 [00:37:27] **Them:** Offering us to apply to the universe.
 [00:37:29] **Them:** So that has had some success in the scale of one.
@@ -1032,7 +1032,7 @@ live: False
 [00:43:32] **Them:** That's my
 [00:43:36] **Them:** I need financing of this invoice up out of this overseas supply.
 [00:43:40] **Them:** Overseas.
-[00:43:42] **Them:** Let's connect them for two Future parts because there's
+[00:43:42] **Them:** Let's connect them for two future parts because there's
 [00:43:45] **Them:** It's monetary movement. They just don't think like that.
 [00:43:48] **Them:** You know.
 [00:43:49] **Them:** Good afternoon.
