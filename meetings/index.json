@@ -1,43 +1,7 @@
 {
-  "generated_at": "2026-09-07T12:55:35Z",
-  "count": 29,
+  "generated_at": "2026-09-07T12:57:41Z",
+  "count": 26,
   "meetings": [
-    {
-      "id": "2026-09-07-catchup",
-      "title": "Catchup",
-      "started_at": "2026-09-07T12:30:09Z",
-      "ended_at": "2026-09-07T12:49:06Z",
-      "participants": [
-        "Monty Smythe"
-      ],
-      "consent_obtained": true,
-      "transcribed": true,
-      "path": "meetings/2026-09-07-catchup"
-    },
-    {
-      "id": "2026-09-07-branded-calling-pilot-2",
-      "title": "Branded calling pilot",
-      "started_at": "2026-09-07T11:14:29Z",
-      "ended_at": "2026-09-07T11:19:26Z",
-      "participants": [
-        "Monty Smythe"
-      ],
-      "consent_obtained": true,
-      "transcribed": true,
-      "path": "meetings/2026-09-07-branded-calling-pilot-2"
-    },
-    {
-      "id": "2026-09-07-branded-calling-pilot",
-      "title": "Branded calling pilot",
-      "started_at": "2026-09-07T10:33:09Z",
-      "ended_at": "2026-09-07T10:41:01Z",
-      "participants": [
-        "Monty Smythe"
-      ],
-      "consent_obtained": true,
-      "transcribed": true,
-      "path": "meetings/2026-09-07-branded-calling-pilot"
-    },
     {
       "id": "2026-09-04-chat-cont",
       "title": "Chat (Cont)",
