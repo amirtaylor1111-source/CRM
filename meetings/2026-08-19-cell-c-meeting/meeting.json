@@ -26,9 +26,7 @@
   "consent_obtained": true,
   "consent_note": "recorded by the phone's own dialer",
   "tracks": [],
-  "tags": [
-    "date-disputed"
-  ],
+  "tags": [],
   "transcribed": true,
   "transcript_engine": ""
 }
