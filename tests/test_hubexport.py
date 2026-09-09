@@ -5,6 +5,8 @@ tests are this repo's half of it: a change here that would break Hub fails
 here rather than silently in that repository.
 """
 import json
+import os
+import pathlib
 
 import pytest
 
@@ -284,3 +286,31 @@ class TestFindingTheUnknowns:
         meeting.lane = "business"
         store.save_meeting(directory, meeting)
         assert hubexport.undecided(root=crm) == []
+
+
+class TestTheSuiteCannotReachProduction:
+    """The guard that should have existed before the server tests did.
+
+    On 9 September the widget's export refresh fired inside the server tests
+    and overwrote the real 26-meeting export with one fixture meeting. Hub
+    read it. Nothing asserted wrongly; the suite simply wrote where the
+    product writes.
+    """
+
+    def test_the_export_path_is_never_the_real_one_during_tests(self):
+        import os
+        real = os.environ.get("LOCALAPPDATA", "")
+        path = str(hubexport.export_path())
+        assert hubexport.EXPORT_DIR_ENV in os.environ
+        if real:
+            assert not path.startswith(str(pathlib.Path(real) / "mtg"))
+
+    def test_the_widget_refresh_writes_to_the_scratch_path(self, crm, monkeypatch):
+        """The exact path that caused it: server refreshes after a write-up."""
+        from notetaker import server
+        meeting_with(crm, notes=NOTES)
+        monkeypatch.setattr(store, "meetings_dir", lambda root=None: crm / "meetings")
+        server._refresh_hub_export()
+        assert hubexport.export_path().exists()
+        assert str(hubexport.export_path()).startswith(
+            os.environ[hubexport.EXPORT_DIR_ENV])

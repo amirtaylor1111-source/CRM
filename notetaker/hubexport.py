@@ -56,8 +56,18 @@ DUE = re.compile(r"\(due:\s*(?P<due>[^)]*)\)\s*$", re.I)
 LANES = ("business", "personal", "unknown")
 
 
+#: Overrides the export directory. The test suite sets it for every test, so
+#: no test can name the production path even by accident. On 9 September the
+#: server tests wrote a fixture meeting over Amir's real export, and Hub came
+#: one collector run away from ingesting "Monty Smythe" as a client with an
+#: action item attributed to Amir.
+EXPORT_DIR_ENV = "MTG_EXPORT_DIR"
+
+
 def export_dir() -> Path:
     """`%LOCALAPPDATA%\\mtg\\exports`, matching where `log.py` already writes."""
+    if override := os.environ.get(EXPORT_DIR_ENV):
+        return Path(override)
     base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
     return base / "mtg" / "exports"
 
