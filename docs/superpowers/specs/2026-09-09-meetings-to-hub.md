@@ -215,7 +215,19 @@ it is one command.
 
 **Hub must handle `unknown` explicitly rather than coercing it.** Whatever it
 does with the value, the one thing it must not do is treat it as `business`,
-which would undo the point. Recording the lane during the write-up, so it is
+which would undo the point.
+
+Hub's resolution, agreed 9 September: `messages.lane` has a CHECK constraint
+of `('business','personal')` and cannot store a third value, so a meeting
+whose lane is `unknown` **is not written at all** on that pass, and the
+refusal is recorded rather than passed over in silence. Declining to file is
+the honest form of declining to guess.
+
+That has a consequence on this side worth stating: an undecided meeting is
+invisible in Hub, not merely uncategorised. So `mtg lane` with no arguments
+lists exactly those meetings and says Hub will not file them, because
+otherwise the only way to discover the gap is to already know to look for
+it. Six of the twenty-six are in that state today. Recording the lane during the write-up, so it is
 stated rather than inferred by a regex, is the better long-term answer and is
 out of scope here.
 

@@ -247,6 +247,17 @@ def build(root: Path | None = None) -> dict[str, Any]:
     }
 
 
+def undecided(root: Path | None = None) -> list[dict[str, Any]]:
+    """Meetings whose lane could not be derived, newest first.
+
+    Hub declines to file an `unknown` meeting at all, which is the honest
+    form of refusing to guess but means such a meeting is invisible there
+    rather than merely uncategorised. So the tool has to offer this list
+    rather than leave Amir to know he should ask for it.
+    """
+    return [m for m in build(root=root)["meetings"] if m["lane"] == "unknown"]
+
+
 def write(destination: Path | None = None, root: Path | None = None) -> Path:
     """Write the export atomically, so Hub never reads half a file."""
     path = Path(destination) if destination else export_path()

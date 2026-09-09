@@ -262,3 +262,25 @@ class TestTheShapeHubRelieson:
         """mtg doctor has to run on a machine with none of them."""
         import importlib
         importlib.reload(hubexport)
+
+
+class TestFindingTheUnknowns:
+    """Hub does not file an `unknown` meeting at all, so a meeting left
+    unknown is invisible to Hub rather than merely uncategorised. That makes
+    the list of them something the tool has to offer, not something Amir has
+    to know to go looking for."""
+
+    def test_it_lists_only_the_undecided_ones(self, crm):
+        meeting_with(crm, title="With People", participants=["Kayleigh Adams"])
+        meeting_with(crm, title="Impromptu One")
+        meeting_with(crm, title="Impromptu Two")
+        unknown = hubexport.undecided(root=crm)
+        assert [m["title"] for m in unknown] == ["Impromptu One", "Impromptu Two"]
+
+    def test_setting_a_lane_removes_it_from_the_list(self, crm):
+        directory = meeting_with(crm, title="Impromptu One")
+        assert len(hubexport.undecided(root=crm)) == 1
+        meeting = store.load_meeting(directory)
+        meeting.lane = "business"
+        store.save_meeting(directory, meeting)
+        assert hubexport.undecided(root=crm) == []

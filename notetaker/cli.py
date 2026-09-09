@@ -550,12 +550,37 @@ def cmd_export_hub(args) -> int:
 
 
 def cmd_lane(args) -> int:
-    """Set a meeting's lane by hand, when the export's guess is wrong."""
+    """Set a meeting's lane by hand, or list the ones with no lane yet.
+
+    Hub declines to file a meeting whose lane is unknown, so an undecided
+    meeting is invisible there rather than merely uncategorised. With no
+    arguments this lists them, because otherwise the only way to find out is
+    to know to ask.
+    """
+    if not args.meeting:
+        undecided = hubexport.undecided()
+        if not undecided:
+            print()
+            print("  Every meeting has a lane.")
+            return OK
+        print()
+        print(f"  {len(undecided)} meeting(s) with no lane. Hub will not file"
+              " these until one is set:")
+        print()
+        for meeting in undecided:
+            print(f"    {meeting['date'][:10]}  {meeting['title'][:44]:46}"
+                  f" {meeting['id']}")
+        print()
+        print("  Set one with:  mtg lane <meeting> business")
+        print()
+        return OK
+
     directory = store.resolve_meeting(args.meeting)
     if directory is None:
         print(f"  No meeting matching {args.meeting!r}.")
         return USER_ERROR
     if args.lane not in ("business", "personal", "unknown"):
+        print("  Usage: mtg lane <meeting> <business|personal|unknown>")
         print("  Lane must be business, personal or unknown.")
         return USER_ERROR
     meeting = store.load_meeting(directory)
@@ -640,8 +665,11 @@ def build_parser() -> argparse.ArgumentParser:
     eh.set_defaults(func=cmd_export_hub)
 
     ln = sub.add_parser("lane", help="mark a meeting business or personal")
-    ln.add_argument("meeting", help="meeting id or a fragment of its title")
-    ln.add_argument("lane", help="business, personal or unknown")
+    ln.add_argument("meeting", nargs="?", default="",
+                    help="meeting id or a fragment of its title; omit to list"
+                         " meetings with no lane")
+    ln.add_argument("lane", nargs="?", default="",
+                    help="business, personal or unknown")
     ln.set_defaults(func=cmd_lane)
 
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
