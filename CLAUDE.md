@@ -32,6 +32,9 @@ meetings/<YYYY-MM-DD>-<slug>/
 meetings/index.json   rollup, rebuildable from disk
 contacts/<slug>.md    frontmatter + managed meeting list + human notes
 notetaker/            the Python tool
+
+%LOCALAPPDATA%\mtg\exports\meetings.json   what Hub reads    <- we write
+<hub repo>/data/exports/organisations.json  what Hub writes   <- we read
 ```
 
 ## Who authors what
@@ -76,6 +79,10 @@ terminal). In here:
 - `/live-brief <meeting>` and `/ask <meeting> <question>` — what the widget
   runs headlessly during and after a call; fine to run by hand too
 
+And two on the command line: `mtg export-hub` rebuilds the export Hub reads,
+and `mtg lane <meeting> <business|personal|unknown>` corrects the lane the
+export guessed.
+
 ## The widget runs you headlessly
 
 The always-on-top widget (`notetaker/widget.py`) runs Claude Code itself,
@@ -108,6 +115,28 @@ When you sync or import, write the JSON to a temp file and call the CLI. Do
 not reach into `meetings/` and write files yourself — `store.py` handles slug
 collisions, idempotency and the managed contact block, and hand-written files
 will get those wrong.
+
+## Hub reads our meetings, and we do not write into Hub
+
+`notetaker/hubexport.py` writes `meetings.json` for Hub's collector, rebuilt
+whole every time a write-up lands. The contract is
+`docs/superpowers/specs/2026-09-09-meetings-to-hub.md`, agreed with the Hub
+session on 9 September and changed only by agreement. One writer per file: we
+write that one and only read Hub's.
+
+Two rules in it are load-bearing and will look like oversights to anyone who
+did not read the argument:
+
+**The transcript goes as a path, never as text.** Hub indexes what it stores
+and feeds it to prompts. A 92-97% accurate transcript would put words nobody
+said into that index and let Hub read a mis-transcribed figure as fact.
+`notes.md` is where those errors are already repaired, so it is the more
+accurate artifact and it is what travels.
+
+**`lane` is three-valued and never guesses.** `business`, `personal` or
+`unknown`. Filing a personal conversation as business puts Amir's own
+finances into Hub's business surfaces; saying `unknown` costs a search miss.
+Those are not the same size of mistake.
 
 ## Names are the thing worth getting right
 
