@@ -73,12 +73,36 @@ So: only a large and consistent Whisper win, across more than one accent
 config, would justify revisiting, and even then the fabrication risk needs
 its own check rather than being traded away against a WER delta.
 
-## Cost
+## What to compare, measured from the engine table
 
-`faster-whisper` is already an optional extra. A scoring library is needed;
-`jiwer` is not installed, and hand-rolling word error over a few hundred
-utterances is a dozen lines if adding a dependency is unwelcome. One accent
-config, streamed, both engines, report per-engine WER with sample counts.
+`hardware.py` already carries every candidate, so this is a config change
+rather than new work. `MTG_ENGINE` selects one.
+
+| key | engine | model | disk | published WER |
+|---|---|---|---|---|
+| `parakeet` | onnx-asr | nemo-parakeet-tdt-0.6b-v3 | 670 MB | 6.3% |
+| `distil` | faster-whisper | distil-large-v3.5 | 1500 MB | ~7.5% |
+| `turbo` | faster-whisper | large-v3-turbo | 1600 MB | ~7.8% |
+| `small` | faster-whisper | small | 500 MB | ~13.8% |
+| `base` | faster-whisper | base | 150 MB | ~16.6% |
+
+Compare `parakeet` against `turbo`, and `distil` if there is appetite. The
+two small models are there for machines that cannot fit the others and are
+not candidates for this laptop.
+
+## Cost, checked rather than estimated
+
+Only `onnx_asr` is installed. Missing on 9 September: `datasets`,
+`faster_whisper`, `jiwer`, `soundfile`, `librosa`.
+
+Roughly 1.6 GB for the Whisper weights plus a few hundred MB of Python
+packages, against 11.2 GB free after the Temp clean-up. Notably
+`faster-whisper` uses CTranslate2 and not torch, so this does not repeat what
+filled the disk today. Parakeet's weights are already in `models/`.
+
+Stream the dataset so it never lands on disk. Report per-engine WER with
+sample counts, and record which accent config was used, because a single
+config is not "African-accented English".
 
 Write the result into `docs/accuracy.md` as a measurement, clearly separated
 from the published figures, and correct `hardware.py:21` so it stops saying
