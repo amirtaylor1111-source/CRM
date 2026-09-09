@@ -11,7 +11,7 @@ wait for his decision, so this is written as a plan a later session can execute
 in one sitting rather than as code.
 
 Precondition already met: the sherpa-onnx spike passed, conditional on
-calibration. See `docs/spikes/2026-09-06-sherpa-onnx-diarization.md`.
+calibration. See `docs/superpowers/spikes/2026-09-06-sherpa-onnx-diarization.md`.
 
 ## What this feature is, and what it must never become
 

@@ -145,6 +145,21 @@ you add improves every future transcript. When a calendar address resolves to
 someone the CRM does not know, say so. When two sources disagree about a
 name, the calendar wins — the person typed their own address into it.
 
+## Decisions live in docs/superpowers/, and only there
+
+`specs/` for agreed interfaces, `plans/` for work designed but not built,
+`spikes/` for questions answered including the ones answered "no". Read all
+three before proposing anything: several of them record capabilities this
+repo already has, and a decision recorded only in a commit message is a
+decision that gets re-proposed.
+
+There is a test pinning this. Until 9 September the spikes were split across
+`docs/spikes/` and `docs/superpowers/spikes/`, and a peer session proposed
+speaker diarization for phone calls that had already been spiked three days
+earlier with a better implementation. It had read `docs/superpowers/` and
+reasonably believed it had seen everything. A convention that is only mostly
+true is worse than none, because it is trusted.
+
 ## Working on the tool itself
 
 ```bash
