@@ -65,6 +65,48 @@ Rebuilding does not mean the file is authoritative about absence. See
 }
 ```
 
+## One writer, everyone else reads
+
+The notetaker is the **sole writer** of `meetings.json`. Hub reads it and
+never writes it, exactly as Hub owns `organisations.json` and the notetaker
+will only ever read that. No third party writes either file.
+
+This is the same rule as the Hub and Mini CRM publish contract: one writer,
+everyone else reads, changed only by agreement. It is stated because the
+failure it prevents is quiet. Two writers to one file produce a corruption
+that looks like a parsing bug in the reader, and it is found days later by
+whoever is least equipped to recognise it.
+
+The canonical copy of this spec lives in this repo, because this repo owns
+the producer. Hub vendors it. The pair carries a hash and a self-test that
+fails on drift.
+
+## What it costs
+
+Measured on 9 September 2026 against the real corpus: 26 meetings, 8 of them
+with write-ups.
+
+| | Size |
+|---|---|
+| Export with every notes body inlined | 92 KB |
+| Export with notes omitted | 28 KB |
+| All notes bodies together | 63 KB |
+| Largest single `notes.md` | 12 KB |
+| Transcripts on disk, deliberately **not** exported | 1.7 MB |
+
+Extrapolating from a mean of about 8 KB per write-up, a year of daily
+meetings is roughly 2 MB. Rewritten in full on every trigger.
+
+The number is here because the machine has been at its disk limit for three
+days and Hub established that it wrote 873 MB of that itself today. The
+honest position is that this export is not a contributor and will not become
+one, and that claim is worth pinning to a measurement rather than a shrug.
+
+The transcript row is the one worth reading twice. Inlining transcripts would
+multiply the export by roughly twenty at today's corpus and grow with audio
+rather than with attention, which is a second reason for the
+path-not-text rule beyond the accuracy argument.
+
 ## The meeting record
 
 Field names follow Hub's existing `IndexMeeting` shape wherever one exists,
