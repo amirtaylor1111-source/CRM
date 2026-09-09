@@ -16,7 +16,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from . import capture, hardware, log, store
+from . import capture, hardware, hubexport, log, store
 from .schema import utcnow
 
 DISCLOSURE = (
@@ -526,6 +526,46 @@ def cmd_import(args) -> int:
     return OK
 
 
+def cmd_export_hub(args) -> int:
+    """Rebuild the meetings export that Hub reads.
+
+    Full rebuild every time. Absence from the file is not a claim that a
+    meeting was deleted; see docs/superpowers/specs/2026-09-09-meetings-to-hub.md.
+    """
+    path = hubexport.write()
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    lanes: dict[str, int] = {}
+    for meeting in doc["meetings"]:
+        lanes[meeting["lane"]] = lanes.get(meeting["lane"], 0) + 1
+    size = path.stat().st_size
+    print()
+    print(f"  Wrote {len(doc['meetings'])} meeting(s) to {path}"
+          f"  ({size / 1024:.0f} KB)")
+    if lanes:
+        print("  " + ", ".join(f"{n} {lane}" for lane, n in sorted(lanes.items())))
+    if lanes.get("unknown"):
+        print("  Meetings with no participants and no personal marker are"
+              " exported as lane 'unknown' rather than guessed.")
+    return OK
+
+
+def cmd_lane(args) -> int:
+    """Set a meeting's lane by hand, when the export's guess is wrong."""
+    directory = store.resolve_meeting(args.meeting)
+    if directory is None:
+        print(f"  No meeting matching {args.meeting!r}.")
+        return USER_ERROR
+    if args.lane not in ("business", "personal", "unknown"):
+        print("  Lane must be business, personal or unknown.")
+        return USER_ERROR
+    meeting = store.load_meeting(directory)
+    meeting.lane = args.lane
+    store.save_meeting(directory, meeting)
+    print(f"  {directory.name} is now {args.lane}.")
+    hubexport.write()
+    return OK
+
+
 def cmd_prune(args) -> int:
     """Delete raw audio from meetings that are already transcribed."""
     freed = 0
@@ -595,6 +635,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     dr = sub.add_parser("doctor", help="check everything is set up")
     dr.set_defaults(func=cmd_doctor)
+
+    eh = sub.add_parser("export-hub", help="rebuild the meetings export Hub reads")
+    eh.set_defaults(func=cmd_export_hub)
+
+    ln = sub.add_parser("lane", help="mark a meeting business or personal")
+    ln.add_argument("meeting", help="meeting id or a fragment of its title")
+    ln.add_argument("lane", help="business, personal or unknown")
+    ln.set_defaults(func=cmd_lane)
 
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
     pr.add_argument("--dry-run", action="store_true")

@@ -21,6 +21,7 @@ import json
 import os
 import re
 import tempfile
+import time
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -51,6 +52,25 @@ def contacts_dir(root: Path | None = None) -> Path:
     return (root or repo_root()) / "contacts"
 
 
+#: Windows refuses os.replace onto a file another handle has open, so an
+#: ordinary concurrent read fails the writer. Every reader here holds a file
+#: for microseconds, so a few short retries clear it; a lock that outlives
+#: them is a real problem and still raises.
+_REPLACE_ATTEMPTS = 5
+_REPLACE_BACKOFF = 0.05
+
+
+def _replace_with_retry(tmp: str, path: Path) -> None:
+    for attempt in range(_REPLACE_ATTEMPTS):
+        try:
+            os.replace(tmp, path)
+            return
+        except PermissionError:
+            if attempt == _REPLACE_ATTEMPTS - 1:
+                raise
+            time.sleep(_REPLACE_BACKOFF * (attempt + 1))
+
+
 def _write_atomic(path: Path, text: str) -> None:
     """Write via a temp file in the same directory, then replace.
 
@@ -64,7 +84,7 @@ def _write_atomic(path: Path, text: str) -> None:
     try:
         with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:
             fh.write(text)
-        os.replace(tmp, path)
+        _replace_with_retry(tmp, path)
     except BaseException:
         # Leave no debris if anything went wrong on the way.
         try:

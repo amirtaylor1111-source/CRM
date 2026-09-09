@@ -1,4 +1,7 @@
 import json
+import os
+
+import pytest
 
 from notetaker import store
 from notetaker.schema import utcnow
@@ -159,4 +162,45 @@ class TestAtomicWrite:
             pass
         assert target.read_text() == "original content"
         # and no temp debris left behind
+        assert not list(target.parent.glob(".tmp-*"))
+
+
+class TestAtomicWriteUnderWindowsSharing:
+    """A reader holding the destination open must not fail the writer.
+
+    Found on 9 September 2026 by the Hub export, which reads every
+    meeting.json while the widget is finalising one. On Windows os.replace
+    onto a file another process has open raises PermissionError, so a
+    perfectly ordinary concurrent read broke a write. Retrying briefly is the
+    fix, and it belongs here rather than in any one reader: search, the index
+    rebuild and every skill read these files too.
+    """
+
+    def test_a_transient_sharing_violation_is_retried(self, crm, monkeypatch):
+        target = crm / "meetings" / "x.json"
+        target.write_text("old", encoding="utf-8")
+
+        real = os.replace
+        calls = []
+
+        def flaky(src, dst):
+            calls.append(1)
+            if len(calls) < 3:
+                raise PermissionError(5, "Access is denied")
+            return real(src, dst)
+
+        monkeypatch.setattr(store.os, "replace", flaky)
+        store._write_atomic(target, "new")
+        assert target.read_text(encoding="utf-8") == "new"
+        assert len(calls) == 3
+
+    def test_it_still_raises_when_the_lock_never_clears(self, crm, monkeypatch):
+        target = crm / "meetings" / "y.json"
+
+        def always_locked(src, dst):
+            raise PermissionError(5, "Access is denied")
+
+        monkeypatch.setattr(store.os, "replace", always_locked)
+        with pytest.raises(PermissionError):
+            store._write_atomic(target, "new")
         assert not list(target.parent.glob(".tmp-*"))

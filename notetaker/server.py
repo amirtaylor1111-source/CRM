@@ -111,6 +111,20 @@ def _process_alive(pid: Any) -> bool:
     return True
 
 
+def _refresh_hub_export() -> None:
+    """Hand the finished write-up to Hub.
+
+    Best effort by design: Hub reading a slightly stale export is a smaller
+    problem than the widget failing after a call because an export could not
+    be written.
+    """
+    try:
+        from . import hubexport
+        hubexport.write()
+    except Exception:
+        log.get().warning("could not refresh the Hub export", exc_info=True)
+
+
 class Session:
     """Everything the UI needs to know, owned by the server process."""
 
@@ -451,6 +465,7 @@ class Session:
             if result.ok:
                 self.notes = _read_notes(self.meeting_dir)
                 self.notes_state = "done" if self.notes else "error"
+                _refresh_hub_export()
                 self.notes_error = "" if self.notes else "Claude finished but wrote no notes.md"
             else:
                 self.notes_state = "login" if result.error == "login" else "error"

@@ -169,6 +169,9 @@ class Meeting:
     tags: list[str] = field(default_factory=list)
     transcribed: bool = False
     transcript_engine: str = ""
+    #: "business", "personal" or "" for undecided. Set by hand when the
+    #: export's heuristic gets it wrong; see notetaker/hubexport.py.
+    lane: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
@@ -189,6 +192,7 @@ class Meeting:
             tags=list(d.get("tags", [])),
             transcribed=bool(d.get("transcribed", False)),
             transcript_engine=d.get("transcript_engine", ""),
+            lane=d.get("lane", ""),
         )
 
 

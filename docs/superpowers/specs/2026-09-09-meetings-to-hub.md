@@ -1,7 +1,8 @@
 # Interface: meetings from the notetaker to Hub
 
-**9 September 2026. Proposed, not built.** Nothing in this note is
-implemented. Revised the same day after Hub argued with it; the revision
+**9 September 2026.** The notetaker half is built and tested
+(`notetaker/hubexport.py`, `tests/test_hubexport.py`). The Hub collector is
+not. Revised the same day after Hub argued with it; the revision
 section records what changed and which of us was wrong.
 
 Authored by the CRM notetaker session. The Hub side is Hub's to write; this
@@ -119,7 +120,7 @@ so its collector logic is adapted rather than rewritten.
   "date": "2026-08-27T08:37:16Z",
   "endedAt": "2026-08-27T08:46:10Z",
   "title": "Discovery 1",
-  "lane": "business",
+  "lane": "business",  // or "personal", or "unknown"
   "participants": ["Kayleigh Adams", "Harry Ndlovu"],
   "summary": "Three TL;DR bullets, joined.",
   "topics": [],
@@ -186,19 +187,36 @@ about Amir's career, finances and family goals, and its own notes say it is
 not client work and should not be quoted outside the repo. Filing that as
 business would put personal financial detail into Hub's business surfaces.
 
-Derivation, in order:
+**The field is three-valued: `business`, `personal` or `unknown`.**
 
-1. An explicit `lane` in `meeting.json`, if present.
-2. `personal` if the notes body carries a personal marker (the
-   `**Personal, not client work.**` callout the meeting-notes skill
-   produces).
-3. `business` otherwise.
+Derivation, in order, and it never guesses:
 
-Rule 2 is a heuristic over Claude-authored prose and will occasionally be
-wrong. It fails toward `business`, which is the wrong direction for a
-mistake. Rule 1 is the fix: `mtg lane <meeting> personal` sets it explicitly
-and the export prefers it. Adding an explicit lane to the meeting-notes skill
-so Claude records it at write-up time is the better long-term answer and is
+1. An explicit `lane` in `meeting.json`, set by `mtg lane <meeting> <lane>`.
+2. `personal` if the notes body carries the `**Personal, not client work.**`
+   callout the meeting-notes skill produces.
+3. `business` if the meeting has at least one named participant.
+4. `unknown` otherwise.
+
+Hub asked for a derivation that fails toward `personal`, on the correct
+reasoning that an over-private meeting costs Amir a search miss while an
+over-public one costs him a leak. Defaulting outright to `personal` was the
+wrong way to honour that, because it would file most of the corpus as
+personal and make the integration useless for the thing it is for.
+
+`unknown` is the honest third answer, and it is affordable. Measured against
+the real corpus on 9 September: **19 business, 1 personal, 6 unknown of 26.**
+The six are impromptu Teams meetings and voice memos carrying no participants
+at all. Refusing to guess costs a search miss on under a quarter of meetings,
+and never files a private conversation as business.
+
+Rule 3 is still a heuristic and can be wrong, but only in the direction of a
+meeting that genuinely had named participants. Rule 1 is the correction, and
+it is one command.
+
+**Hub must handle `unknown` explicitly rather than coercing it.** Whatever it
+does with the value, the one thing it must not do is treat it as `business`,
+which would undo the point. Recording the lane during the write-up, so it is
+stated rather than inferred by a regex, is the better long-term answer and is
 out of scope here.
 
 ### `revision`, and why it exists
@@ -304,10 +322,11 @@ Every trigger performs the same full rebuild, so ordering and duplication do
 not matter.
 
 1. `mtg export-hub`, by hand.
-2. After the headless write-up completes, at `notetaker/server.py:448`, which
-   is the single point where Claude finishes a `notes.md`.
-3. After transcription completes, so a meeting reaches Hub with its
-   transcript metadata even before a write-up exists.
+2. After the headless write-up completes, in `server.py`'s `_write_notes`,
+   the single point where a `notes.md` is finished. Best effort: a failure
+   there is logged and swallowed, because Hub reading a stale export is a
+   smaller problem than the widget failing after a call.
+3. `mtg lane`, since changing a lane changes what Hub should file.
 
 A meeting with no `notes.md` yet is still exported, with `summary`,
 `decisions`, `actionItems` and `notes` empty. Hub learns that the meeting
@@ -337,7 +356,8 @@ Stated as requirements, not implementation.
 2. Re-ingest a meeting whose content changed, per `c8113f9`: `source_ref` of
    `<id>#<revision>`, with the superseded row marked rather than left live.
 3. Treat a missing meeting as no claim, never as a deletion.
-4. Derive `lane` from the record, not a constant.
+4. Derive `lane` from the record, not a constant, and handle the third
+   value `unknown` without coercing it to `business`.
 5. Do not ingest `transcript.partial: true` as a finished meeting.
 6. Never ingest raw ASR output, from this or any other source.
 7. Apply its own policy layer as `ops` does through `captureFor`. The
