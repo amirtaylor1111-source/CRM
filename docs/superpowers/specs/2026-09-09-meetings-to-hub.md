@@ -1,8 +1,8 @@
 # Interface: meetings from the notetaker to Hub
 
 **9 September 2026. Proposed, not built.** Nothing in this note is
-implemented. It is the contract for Hub to argue with before either side
-writes code.
+implemented. Revised the same day after Hub argued with it; the revision
+section records what changed and which of us was wrong.
 
 Authored by the CRM notetaker session. The Hub side is Hub's to write; this
 file specifies only what the notetaker guarantees to produce and what Hub
@@ -127,6 +127,12 @@ lossier one. That is what the export carries.
 **If a later change proposes inlining the transcript because more data is
 better, this paragraph is the counter-argument.**
 
+Hub endorsed this and generalised it, and the general form is the one that
+should survive: **Hub never ingests raw ASR output, from any source.** That
+belongs as a rule about Hub rather than a quirk of one collector, because the
+next transcript to arrive will come from somewhere else, and a rule living
+inside a single collector protects nothing but that collector.
+
 ### `lane` is derived, and must not be hardcoded
 
 Hub's schema has `lane` as `business` or `personal`. Its `ops` collector
@@ -155,45 +161,87 @@ out of scope here.
 
 ### `revision`, and why it exists
 
-`revision` is a SHA-256 over the notes body, the decisions and the action
-items. It changes when and only when the content Hub stores would change.
+`revision` is a SHA-256 over exactly the fields Hub ingests, canonically
+ordered: `title`, `lane`, `date`, `endedAt`, `participants` sorted,
+`summary`, `decisions`, `actionItems`, `notes`.
 
-It exists because of a problem in Hub, not in the notetaker.
+It deliberately excludes `transcript`, `notesPath`, `transcriptPath` and
+`revision` itself. A re-transcription that leaves the write-up unchanged must
+not look like a change, or Hub churns its store over content it does not
+hold. This is the rule Hub asked for, stated as an invariant: **the revision
+covers what Hub stores, not what the exporter finds interesting.**
 
-**Hub's collectors are first-write-wins.** `src/collectors/ops.ts:39` reads:
+Because lists are sorted before hashing, a reordered export is not a change.
 
-```ts
-if (ctx.reader.messageExists("meeting", m.id)) continue;
-```
+#### Why it exists, and what actually turned out to be true
 
-Once a meeting id is in Hub, no later version of it is ever read again. And
-`src/store/write.ts:167` lists updatable columns per table, granting update
-permission only to `sessions`. `messages` is not in that table, so Hub's
-write API cannot currently update or supersede a message row even if a
-collector wanted to.
+The original reason was a defect in Hub: its collectors were first-write-wins
+(`src/collectors/ops.ts:39` was `if (ctx.reader.messageExists("meeting",
+m.id)) continue;`), so once a meeting id was in the store no later version of
+it was ever read again. That matters more here than for the ops folder,
+because the premise of this integration is that **every write-up is authored
+headlessly by Claude, and write-ups get rewritten**: a re-run after a name
+correction, a mid-call partial replaced by the real thing at Stop, an
+improvement to the meeting-notes skill applied to old meetings. Hub would
+keep whichever version arrived first, which is systematically the worst one,
+with nothing reporting the mismatch.
 
-This matters here more than it does for the ops folder, because the entire
-premise of this integration is that **every write-up is authored headlessly
-by Claude, and write-ups get rewritten.** A re-run after a name correction, a
-mid-call partial replaced by the real thing at Stop, an improvement to the
-meeting-notes skill applied to old meetings. Under first-write-wins Hub keeps
-whichever version arrived first, which is systematically the worst one, and
-nothing anywhere reports the mismatch.
+**Hub has fixed this, in `c8113f9`.** The record of how the trade-off was
+argued is kept here because two of the three claims were wrong, mine
+included:
 
-The notetaker's half of the fix is to publish `revision` so Hub can tell "I
-have this" from "this changed", which today it has no way to compute.
+- I claimed Hub's write API could not update a message row, citing
+  `src/store/write.ts:167`. **That was wrong.** `COLLECTOR_ALLOW` at :142
+  grants `messages` read-write through an `rw([...])` helper, and
+  `superseded_at` is absent from `IMMUTABLE_ON_UPDATE.messages`, so
+  collectors could always supersede. My error came from grepping for the
+  column name, which only matches `EXECUTOR_ALLOW` because that block names
+  columns explicitly; a grant expressed as a helper over table names is
+  invisible to a column-name search. The instrument could not see the branch.
+- That error inverted the trade-off I put to Hub. I framed supersede as the
+  expensive option needing a permission change. It needed none, and the
+  cleaner shape was also the cheaper one.
+- Neither of us had found the real constraint: **`UNIQUE (source,
+  source_ref)`** on `messages` and `events`
+  (`src/store/migrations/0001_initial.ts:113,142`). That is why a plain
+  supersede-then-reinsert cannot work.
 
-The other half is Hub's, and Hub should choose it. Two shapes:
+Hub's resolution, which this spec adopts: `source_ref` becomes
+`<id>#<revision>` to sidestep the unique index, **and** superseded rows are
+marked rather than left behind, because `#revision` alone would leave two
+live versions of the same meeting in search and in every prompt. Messages,
+events and actions move together.
 
-- **`source_ref` becomes `id#revision`.** A rewritten write-up arrives as a
-  new row. No schema change, no permission change. Costs a stale duplicate
-  that a reader has to know to ignore.
-- **Add `messages` to the update permission table with `superseded_at`,** and
-  supersede the old row before inserting. Cleaner, and a real change to Hub's
-  write API and its guarantees.
+#### The revision is advisory, not authoritative
 
-This spec does not choose. It requires only that Hub not silently keep a
-stale version.
+Hub computes its own hash over the fields it actually stores and trusts that
+one. It does not read this field to decide whether to re-ingest.
+
+That is correct and this spec does not contest it. Hub's defect is live
+against the `meetings-index.json` it already reads, so its fix cannot wait on
+a field only this exporter emits; and a hash computed by the writer would
+cover things the reader does not store.
+
+`revision` is still emitted, and **a mismatch between the two is logged by
+Hub as a signal rather than resolved in either direction.** A disagreement
+about what "changed" means is exactly the thing worth making visible, and
+neither side winning it silently is the point.
+
+### Absence is not deletion
+
+Stated as a requirement rather than left to be inherited from `ops.ts`.
+
+A full-rebuild export that no longer contains a meeting is **not making a
+claim that the meeting was deleted.** It may be a partial rebuild after an
+interrupted run, a folder temporarily moved, or a meeting whose directory was
+renamed. Hub must not remove or supersede a stored meeting because it stopped
+appearing.
+
+Meetings are effectively append-only in practice: `mtg prune` deletes audio
+and leaves the meeting folder and its notes intact. If deletion is ever
+wanted, it needs an explicit mechanism, such as the export declaring itself
+authoritative over the whole set, and it should be designed then rather than
+falling out of a missing record now.
 
 ### Deletion
 
@@ -244,10 +292,13 @@ Stated as requirements, not implementation.
 
 1. A `crm` collector, modelled on `ops.ts`, reading the path above. Absent
    file is not an error: the notetaker may never have run on this machine.
-2. Handle `revision` changing, per the two shapes above.
-3. Derive `lane` from the record, not a constant.
-4. Do not ingest `transcript.partial: true` as a finished meeting.
-5. Apply its own policy layer as `ops` does through `captureFor`. The
+2. Re-ingest a meeting whose content changed, per `c8113f9`: `source_ref` of
+   `<id>#<revision>`, with the superseded row marked rather than left live.
+3. Treat a missing meeting as no claim, never as a deletion.
+4. Derive `lane` from the record, not a constant.
+5. Do not ingest `transcript.partial: true` as a finished meeting.
+6. Never ingest raw ASR output, from this or any other source.
+7. Apply its own policy layer as `ops` does through `captureFor`. The
    notetaker does not know Hub's policy and must not pretend to. Hub deciding
    what it may store is correct and stays Hub's decision.
 
@@ -267,14 +318,15 @@ agreement, never unilaterally.
 
 ## Open questions for Hub
 
-1. Which of the two revision shapes do you want? It is your write API.
-2. Do you want `notes` as the message `body` verbatim, or `summary` as the
+Settled: the revision shape, in `c8113f9`. Still open:
+
+1. Do you want `notes` as the message `body` verbatim, or `summary` as the
    body with `notes` kept separately? Verbatim gives better search and a
    heavier row.
-3. Should action items become rows in your `actions` table as `ops` does?
+2. Should action items become rows in your `actions` table as `ops` does?
    They carry an assignee that is frequently `@me`, which is Amir, and your
    `personByNormalisedName` lookup will need to resolve that.
-4. Is `%LOCALAPPDATA%\mtg\exports\meetings.json` reachable from Hub's
+3. Is `%LOCALAPPDATA%\mtg\exports\meetings.json` reachable from Hub's
    sandbox, or do you need it under your own data directory?
 
 ## Not in scope
@@ -283,5 +335,15 @@ agreement, never unilaterally.
   work, needs Amir's go-ahead, parked.
 - Any UI. Mini CRM owns the shared design system and Hub is its first
   implementation.
-- The notetaker reading Hub's `organisations.json`. Same piece of work,
-  opposite direction, specified separately.
+- The notetaker reading Hub's `organisations.json`. Deferred, and not
+  because it is unwanted. Two findings on 9 September: the file does not
+  exist on this machine, because Hub's data directory (`HUB_DATA_DIR =
+  app.getPath("userData")`, so `%APPDATA%\Hub`) holds only an Electron
+  profile and no `exports` directory or `store.db`; and consuming it safely
+  is not the small change it looked like, because `transcribe.correct_names`
+  splits every vocabulary term into single words, which is the mechanism
+  behind the 106 false substitutions of 6 September. An uncurated
+  organisation list would reintroduce that, guarded only by a hand-written
+  list of ten ordinary words. Doing it properly means the vocabulary carries
+  which terms may be split, which changes the corrector. Its own design, its
+  own tests.
