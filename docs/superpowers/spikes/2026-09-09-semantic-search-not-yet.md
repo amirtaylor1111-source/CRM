@@ -111,21 +111,30 @@ semantic matching, which is the thing it is best at. Building a second
 semantic system in front of the first buys nothing until the text stops
 fitting.
 
-## What would change the answer: two triggers, measuring different failures
+## What would change the answer: one trigger
 
-**Per-query.** Any single contact's meeting history, or one meeting's
-transcript, stops fitting the context window. On today's numbers the heaviest
-meeting contributes about 18k tokens of transcript, so roughly ten recorded
-meetings with one person.
+**When a single query stops fitting the context window.** Either one
+contact's whole meeting history, for `/prep`, or one meeting's transcript,
+for `/ask`. On today's numbers the heaviest meeting contributes about 18k
+tokens of transcript, so roughly ten recorded meetings with one person.
 
-**Whole-corpus.** The notes exceed roughly 60k tokens. That is around 150
-meetings with write-ups, against 8 today.
-
-Neither is close. Re-run the measurement rather than trusting this table: sum
+Not close. Re-run the measurement rather than trusting the table above: sum
 `notes.md` and `transcript.md` sizes per meeting, group by participant,
 divide by four.
 
-Note that argument 1 is not on this list. Size does not fix it.
+**A whole-corpus trigger was proposed and withdrawn, and it is recorded here
+so it is not re-proposed.** The suggestion was to revisit once aggregate
+notes exceeded roughly 60k tokens, about 150 meetings with write-ups against
+8 today. It is the wrong measure, because nothing in this system ever needs
+the whole corpus, only a slice of it: `/prep` needs one person, `/ask` needs
+one meeting. That trigger would have fired while every real query still fit
+comfortably, and sent some future session down this road years early, which
+is precisely the failure this note exists to prevent. A second, looser
+trigger beside the binding one is worse than no trigger at all, because it
+is the one that fires.
+
+Note that argument 1 is not on this list. Size does not fix it, which is why
+it is first.
 
 ## If it is ever built, four conditions
 
