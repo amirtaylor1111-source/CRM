@@ -276,11 +276,23 @@ def pick_installed(backends: list[str], hw: Hardware | None = None) -> dict:
         return choice                      # caller already checked; be safe
 
     # Best available = lowest word error among those that fit.
+    #
+    # NOTE: this sorts on the "wer" values, which the comment at the top of
+    # ENGINES says are published leaderboard figures that nobody has measured
+    # on this machine, this microphone or a South African accent. Here they
+    # stop being a claim in a document and become the input to an automatic
+    # choice, so the "why" string below says so rather than presenting the
+    # ranking as fact. `recommend()` above does NOT work this way: it picks on
+    # the RAM budget alone and hardcodes Parakeet above it.
+    #
+    # docs/superpowers/plans/2026-09-09-measure-asr-on-accented-english.md is
+    # how those numbers get replaced with measurements.
     key, spec = min(affordable, key=lambda kv: float(kv[1]["wer"].strip("~%")))
     picked = dict(spec)
     picked["key"] = key
     picked["why"] = (f"{choice['model']} is not installed; "
-                     f"{spec['model']} is the best that is")
+                     f"{spec['model']} is the best that is, ranked on "
+                     f"published benchmarks rather than a local measurement")
     picked["cpu_threads"] = _threads_for(hw)
     return picked
 

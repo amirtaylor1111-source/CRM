@@ -73,6 +73,36 @@ So: only a large and consistent Whisper win, across more than one accent
 config, would justify revisiting, and even then the fabrication risk needs
 its own check rather than being traded away against a WER delta.
 
+## The numbers are a sort key, not only a claim
+
+Found on 9 September, and it raises the stakes above settling an argument.
+
+`hardware.py` ranks engines by their `wer` values when the preferred model is
+absent:
+
+```python
+key, spec = min(affordable, key=lambda kv: float(kv[1]["wer"].strip("~%")))
+```
+
+So on a machine where Parakeet is not installed, the engine is **selected by
+unverified citations**, not merely described by them.
+
+Traced rather than assumed, because the obvious reading is wrong in a way
+that matters:
+
+- **`recommend()` does not work this way.** It picks on the RAM budget alone
+  and hardcodes Parakeet above 1.5 GB. The default on a healthy machine is
+  not chosen by these numbers.
+- **`pick_installed()` does.** It is the fallback for a machine missing the
+  preferred backend, which is exactly the machine `mtg doctor` exists to
+  diagnose. Rare on Amir's laptop, where `onnx-asr` is a base dependency, but
+  not never: a partial install lands there.
+
+The path now carries a comment pointing at the disclaimer, and its
+user-facing `why` string says the ranking is on published benchmarks rather
+than a local measurement. That is honesty, not a fix. The fix is the
+measurement below.
+
 ## What to compare, measured from the engine table
 
 `hardware.py` already carries every candidate, so this is a config change
