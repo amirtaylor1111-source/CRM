@@ -1,7 +1,27 @@
 {
-  "generated_at": "2026-09-10T11:01:04Z",
-  "count": 28,
+  "generated_at": "2026-09-10T11:25:35Z",
+  "count": 30,
   "meetings": [
+    {
+      "id": "2026-09-10-phone-call-2",
+      "title": "Phone call",
+      "started_at": "2026-09-10T11:15:53Z",
+      "ended_at": "",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-09-10-phone-call-2"
+    },
+    {
+      "id": "2026-09-10-phone-call",
+      "title": "Phone call",
+      "started_at": "2026-09-10T11:15:52Z",
+      "ended_at": "",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": true,
+      "path": "meetings/2026-09-10-phone-call"
+    },
     {
       "id": "2026-09-10-meeting-2",
       "title": "Meeting",

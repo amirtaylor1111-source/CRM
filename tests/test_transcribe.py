@@ -214,6 +214,16 @@ class TestParakeetAdapter:
     Result = namedtuple("TimestampedSegmentResult",
                         "start end text timestamps tokens logprobs")
 
+    def _track(self, tmp_path, seconds=10.0):
+        """A real (silent) wav. Decoding is chunked, so there has to be audio
+        for a window to be cut from; a bare path yields nothing to decode."""
+        import wave
+        path = tmp_path / "system.wav"
+        with wave.open(str(path), "wb") as w:
+            w.setnchannels(1); w.setsampwidth(2); w.setframerate(16000)
+            w.writeframes(bytes(2 * int(seconds * 16000)))
+        return path
+
     def _fake_onnx_asr(self, monkeypatch, results_factory):
         R = self.Result
 
@@ -239,7 +249,8 @@ class TestParakeetAdapter:
             yield R(5.4, 8.3, "The quick brown fox.", None, None, [-0.9, -1.1])
 
         self._fake_onnx_asr(monkeypatch, generator)
-        segments = _transcribe_parakeet(tmp_path / "system.wav", "nemo-parakeet-tdt-0.6b-v3")
+        segments = _transcribe_parakeet(self._track(tmp_path), "nemo-parakeet-tdt-0.6b-v3",
+                                        progress=lambda *a: None)
         assert [s.text for s in segments] == ["This is the install test.",
                                                "The quick brown fox."]
         assert (segments[0].start, segments[1].end) == (1.8, 8.3)
@@ -248,18 +259,18 @@ class TestParakeetAdapter:
 
     def test_list_of_segments_still_works(self, monkeypatch, tmp_path):
         self._fake_onnx_asr(monkeypatch, lambda R: [R(0, 1, "hello", None, None, [-0.1])])
-        segments = _transcribe_parakeet(tmp_path / "mic.wav", "m")
+        segments = _transcribe_parakeet(self._track(tmp_path), "m", progress=lambda *a: None)
         assert [s.text for s in segments] == ["hello"]
 
     def test_single_unsegmented_result_still_works(self, monkeypatch, tmp_path):
         self._fake_onnx_asr(monkeypatch, lambda R: R(0, 2, "one result", None, None, []))
-        segments = _transcribe_parakeet(tmp_path / "mic.wav", "m")
+        segments = _transcribe_parakeet(self._track(tmp_path), "m", progress=lambda *a: None)
         assert [s.text for s in segments] == ["one result"]
         assert not segments[0].low_confidence        # no log-probs: never flagged
 
     def test_empty_generator_gives_no_segments(self, monkeypatch, tmp_path):
         self._fake_onnx_asr(monkeypatch, lambda R: iter(()))
-        assert _transcribe_parakeet(tmp_path / "mic.wav", "m") == []
+        assert _transcribe_parakeet(self._track(tmp_path), "m", progress=lambda *a: None) == []
 
     def test_fake_matches_the_real_result_shape(self):
         """Skips on a machine without onnx-asr; fails loudly if it changes shape."""
@@ -311,3 +322,73 @@ class TestTheWorkingMarker:
         with pytest.raises(tr.TranscribeError):
             tr.transcribe_meeting(tmp_path)
         assert tr.is_being_transcribed(tmp_path) is False
+
+
+class TestChunkedResumableDecoding:
+    """A 62-minute track used to be decoded in one call with nothing written
+    until the end. On 10 September that killed two transcriptions of a real
+    meeting on a laptop with 1.6 GB free — no exception, no log line, and an
+    hour of work lost each time because nothing had been saved."""
+
+    def _wav(self, path, seconds, rate=16000):
+        import wave
+        with wave.open(str(path), "wb") as w:
+            w.setnchannels(1); w.setsampwidth(2); w.setframerate(rate)
+            w.writeframes(b"\x00\x00" * int(seconds * rate))
+        return path
+
+    def test_a_long_track_is_decoded_in_windows(self, tmp_path):
+        from notetaker import transcribe as tr
+        track = self._wav(tmp_path / "mic.wav", 900)          # 15 minutes
+        seen = []
+
+        def decode(window):
+            seen.append(round(tr._duration(window)))
+            return [tr.Segment(start=1.0, end=2.0, text=f"w{len(seen)}")]
+
+        segs = tr._decode_in_chunks(track, decode, lambda *a: None)
+        assert seen == [300, 300, 300]
+        assert [round(s.start) for s in segs] == [1, 301, 601]
+
+    def test_a_kill_mid_track_resumes_instead_of_restarting(self, tmp_path):
+        from notetaker import transcribe as tr
+        track = self._wav(tmp_path / "mic.wav", 900)
+        calls = {"n": 0}
+
+        def dies_after_two(window):
+            calls["n"] += 1
+            if calls["n"] == 3:
+                raise MemoryError("killed")           # what an OOM looks like
+            return [tr.Segment(start=1.0, end=2.0, text=f"w{calls['n']}")]
+
+        with pytest.raises(MemoryError):
+            tr._decode_in_chunks(track, dies_after_two, lambda *a: None)
+
+        resumed = []
+
+        def decode(window):
+            resumed.append(round(tr._duration(window)))
+            return [tr.Segment(start=1.0, end=2.0, text="last")]
+
+        segs = tr._decode_in_chunks(track, decode, lambda *a: None)
+        assert resumed == [300]                       # only the window that was lost
+        assert [s.text for s in segs] == ["w1", "w2", "last"]
+
+    def test_a_half_written_checkpoint_line_is_discarded(self, tmp_path):
+        """A kill mid-write leaves a truncated last line; it must not be parsed."""
+        from notetaker import transcribe as tr
+        track = self._wav(tmp_path / "mic.wav", 600)
+        cp = tr._checkpoint_path(track)
+        cp.write_text('{"start":1,"end":2,"text":"good"}\n{"start":3,"en',
+                      encoding="utf-8")
+        segments, done_to = tr._load_checkpoint(cp)
+        assert [s.text for s in segments] == ["good"]
+        assert done_to == 0.0
+
+    def test_no_checkpoint_means_a_normal_full_run(self, tmp_path):
+        from notetaker import transcribe as tr
+        track = self._wav(tmp_path / "mic.wav", 100)
+        segs = tr._decode_in_chunks(
+            track, lambda w: [tr.Segment(start=0.0, end=1.0, text="x")],
+            lambda *a: None)
+        assert [s.text for s in segs] == ["x"]

@@ -52,7 +52,7 @@ def meeting(crm, monkeypatch):
     return d
 
 
-def fake_parakeet(path, model_name, threads=0):
+def fake_parakeet(path, model_name, threads=0, progress=print):
     """Return what onnx-asr returns, with realistic mis-transcriptions."""
     R = onnx_adapters.TimestampedSegmentResult
     if path.name == "mic.wav":
