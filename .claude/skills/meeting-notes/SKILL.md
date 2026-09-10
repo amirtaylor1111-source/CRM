@@ -19,18 +19,40 @@ for the list, then work inside `meetings/<id>/`.
 If `transcript.md` is missing, tell the user the meeting has not been
 transcribed yet and to run `mtg transcribe`. Do not invent content.
 
-## 2. Read before you write
+## 2. Read the whole transcript, every line
 
 Read, in this order:
 
 1. `meetings/<id>/meeting.json` — participants, consent record, timings.
-2. `meetings/<id>/transcript.md` — the frontmatter matters. It reports the
-   engine, the expected accuracy, and how many segments came back
+2. `meetings/<id>/transcript.md`, **in full**. The frontmatter matters: it
+   reports the engine, the expected accuracy, and how many segments came back
    low-confidence. `live: True` means the call is still going and the
    transcript is partial; a write-up from it is a mid-call brief, not the
    record.
 3. The `contacts/<slug>.md` file for each known participant, so you carry
    forward what is already known rather than restating it.
+
+**Do not sample the transcript.** This is the single mistake that most damages
+a write-up, and it is invisible in the output: notes that skip a section read
+exactly like notes that cover everything.
+
+On 10 September 2026 a 62-minute call was written up from roughly 40% of its
+transcript — the opening, one slice of the middle, the close. The write-up
+missed the entire product demonstration and one real commitment: a promise to
+send integration details that the client had asked for twice and named as the
+thing he cared about most. A competing tool's summary of the same call caught
+all of it. The recording was fine and the transcript was fine; only the
+reading was not.
+
+A long transcript is read in **consecutive chunks**, start to finish, never by
+jumping to the parts that look important. The middle of a call is where a
+walkthrough or a demo sits, which is exactly the stretch that looks skippable
+and exactly where commitments hide.
+
+Before writing, check coverage: **every ten-minute stretch of the recording
+should have left some trace in your notes**, even if that trace is one line in
+"What was covered". If a stretch has left none, go back and read it again
+rather than assuming nothing happened in it.
 
 ## 3. Repair, do not invent
 
@@ -70,6 +92,11 @@ Use exactly this structure:
 
 - [ ] **@owner** — what they committed to (due: date or "unspecified")
 
+## What was covered
+
+- Substance that was explained, demonstrated or worked through, which nobody
+  decided and nobody committed to. Omit if the call was purely a discussion.
+
 ## Open questions
 
 - Things raised and left unresolved.
@@ -93,6 +120,20 @@ Rules for the body:
 - Omit empty sections entirely. A heading with nothing under it is noise.
 - Keep the whole thing skimmable. If it runs past a screen and a half, the
   TL;DR is not doing its job.
+
+**On "What was covered", which is the section most often wrongly omitted.**
+Decisions and action items capture what changed. They capture nothing about a
+demo, a walkthrough, a technical explanation or a product tour — and in a
+sales or onboarding call that is most of the hour and most of what the reader
+will want in a month. A configuration option someone will need to find again,
+a limitation mentioned in passing, an integration that exists or does not: all
+of it belongs here.
+
+Two rules keep it useful rather than a transcript in disguise. Group it by
+what a reader would go looking for, not by the order it was said. And include
+the reactions, because "he found the demo voice too fast, then monotone, and
+nobody landed on a setting he accepted" is worth more than a list of the
+settings that exist.
 
 ## 5. Update the CRM
 
