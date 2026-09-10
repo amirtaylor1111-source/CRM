@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T12:34:34Z",
+  "generated_at": "2026-09-10T14:28:32Z",
   "count": 30,
   "meetings": [
     {
@@ -74,7 +74,7 @@
     },
     {
       "id": "2026-09-10-phone-call",
-      "title": "Discovery (Sbu)",
+      "title": "Discovery - branded calling architecture review",
       "started_at": "2026-08-24T13:24:52Z",
       "ended_at": "",
       "participants": [],
@@ -349,7 +349,7 @@
     },
     {
       "id": "2026-09-10-phone-call-2",
-      "title": "Discovery",
+      "title": "Discovery 1 (duplicate import)",
       "started_at": "2025-11-28T08:55:46Z",
       "ended_at": "",
       "participants": [],
