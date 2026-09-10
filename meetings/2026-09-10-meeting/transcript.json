@@ -1,0 +1,2636 @@
+{
+  "meta": {
+    "generated_at": "2026-09-10T08:24:56Z",
+    "engine": "onnx-asr",
+    "model": "nemo-parakeet-tdt-0.6b-v3",
+    "expected_accuracy": "6.3%",
+    "duration": "00:23:30",
+    "tracks": "mic, system",
+    "speaker_method": "separate audio tracks (attribution is exact)",
+    "segments": 291,
+    "low_confidence_segments": 17,
+    "names_corrected": 0,
+    "live": true
+  },
+  "segments": [
+    {
+      "start": 14.11,
+      "end": 18.75,
+      "text": "I'm showing on my camera, eh? So just give me a second. Maybe it's important. Yeah.",
+      "speaker": "Me",
+      "confidence": -0.199,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 18.95,
+      "end": 20.86,
+      "text": "Well that's it. So it's not",
+      "speaker": "Me",
+      "confidence": -0.175,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 22.43,
+      "end": 23.81,
+      "text": "Can you close my door, please?",
+      "speaker": "Me",
+      "confidence": -0.066,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 23.91,
+      "end": 24.77,
+      "text": "Thank you.",
+      "speaker": "Me",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 24.26,
+      "end": 24.61,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.22,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 26.15,
+      "end": 27.49,
+      "text": "Making us see.",
+      "speaker": "Me",
+      "confidence": -0.401,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 60.67,
+      "end": 61.15,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.425,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 172.8,
+      "end": 173.15,
+      "text": "Okay.",
+      "speaker": "Me",
+      "confidence": -0.27,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 224.21,
+      "end": 225.84,
+      "text": "Underwear pool is",
+      "speaker": "Me",
+      "confidence": -0.217,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 233.74,
+      "end": 234.15,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.218,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 241.39,
+      "end": 242.05,
+      "text": "Let's see.",
+      "speaker": "Me",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 431.99,
+      "end": 432.6,
+      "text": "I coop.",
+      "speaker": "Me",
+      "confidence": -1.445,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 435.16,
+      "end": 436.73,
+      "text": "I'm just checking if we're meeting now.",
+      "speaker": "Me",
+      "confidence": -0.058,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 441.04,
+      "end": 442.3,
+      "text": "few hours but didn't see it.",
+      "speaker": "Me",
+      "confidence": -0.194,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 442.72,
+      "end": 444.67,
+      "text": "Hey, give me one sec. Okay, oh.",
+      "speaker": "Me",
+      "confidence": -0.36,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 444.9,
+      "end": 446.11,
+      "text": "Okay, cool. Thanks then.",
+      "speaker": "Me",
+      "confidence": -0.201,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 447.59,
+      "end": 448.29,
+      "text": "Cheers.",
+      "speaker": "Me",
+      "confidence": -0.841,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 549.69,
+      "end": 559.86,
+      "text": "So this is still out today and then tomorrow I think the travel's actually to Mauritius for a conference or something, so you're just gonna have to be with us for I'll over gets back, I'm sorry and it's not until I'll just you know.",
+      "speaker": "Me",
+      "confidence": -0.222,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 562.08,
+      "end": 567.39,
+      "text": "What you do. Um but I can't get much more metrics now but I'll definitely follow up with you as soon as I can get him.",
+      "speaker": "Me",
+      "confidence": -0.235,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 567.65,
+      "end": 575.01,
+      "text": "Uh minute I think also do I think I'll be able to short those shots probably for the answer.",
+      "speaker": "Me",
+      "confidence": -0.405,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 575.11,
+      "end": 575.55,
+      "text": "Uh",
+      "speaker": "Me",
+      "confidence": -0.371,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 575.81,
+      "end": 577.25,
+      "text": "Maybe that piece of that g.",
+      "speaker": "Me",
+      "confidence": -0.558,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 699.66,
+      "end": 700.14,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.45,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 711.18,
+      "end": 711.72,
+      "text": "Thank you.",
+      "speaker": "Me",
+      "confidence": -0.928,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 716.63,
+      "end": 717.2,
+      "text": "Hammer.",
+      "speaker": "Them",
+      "confidence": -0.433,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 716.98,
+      "end": 717.29,
+      "text": "Mm.",
+      "speaker": "Me",
+      "confidence": -0.644,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 717.84,
+      "end": 719.24,
+      "text": "How are you? How was your trip?",
+      "speaker": "Me",
+      "confidence": -0.098,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 721.97,
+      "end": 725.36,
+      "text": "Good, good. But uh yeah, I'll go to Mir.",
+      "speaker": "Them",
+      "confidence": -0.313,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 725.74,
+      "end": 728.01,
+      "text": "Why do you look a bit distressed for",
+      "speaker": "Me",
+      "confidence": -0.095,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 726.39,
+      "end": 728.37,
+      "text": "I uh I end the bag.",
+      "speaker": "Them",
+      "confidence": -0.604,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 731.41,
+      "end": 732.3,
+      "text": "'Cause I'm only awake.",
+      "speaker": "Them",
+      "confidence": -0.252,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 733.52,
+      "end": 734.09,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.558,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 733.94,
+      "end": 735.28,
+      "text": "You won't you'll be a phone call.",
+      "speaker": "Them",
+      "confidence": -0.193,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 735.41,
+      "end": 737.49,
+      "text": "Oh yeah, I I check the",
+      "speaker": "Them",
+      "confidence": -0.362,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 737.68,
+      "end": 738.54,
+      "text": "Welcome.",
+      "speaker": "Them",
+      "confidence": -0.201,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 738.8,
+      "end": 740.27,
+      "text": "Uh like two A. M.",
+      "speaker": "Them",
+      "confidence": -0.484,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 740.66,
+      "end": 740.97,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.397,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 741.49,
+      "end": 743.66,
+      "text": "Trying to go back and steep for a while, I couldn't.",
+      "speaker": "Them",
+      "confidence": -0.176,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 743.86,
+      "end": 744.62,
+      "text": "But um",
+      "speaker": "Them",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 744.8,
+      "end": 748.76,
+      "text": "I was like, I didn't have any meetings for another hour, so I didn't see a meeting come true.",
+      "speaker": "Them",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 748.96,
+      "end": 751.8,
+      "text": "So I was like, Okay, I'll get a bit of a sleep in.",
+      "speaker": "Them",
+      "confidence": -0.128,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 752.51,
+      "end": 754.04,
+      "text": "But then you rang me, I was like, Oh shit.",
+      "speaker": "Them",
+      "confidence": -0.374,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 754.3,
+      "end": 757.08,
+      "text": "So I hope you missed your meeting like when it when you schedule it, Mayor.",
+      "speaker": "Them",
+      "confidence": -0.219,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 754.48,
+      "end": 755.21,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.931,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 757.26,
+      "end": 757.96,
+      "text": "So",
+      "speaker": "Me",
+      "confidence": -0.726,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 757.6,
+      "end": 758.58,
+      "text": "So um",
+      "speaker": "Them",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 758.57,
+      "end": 764.84,
+      "text": "Oh, that's all right. I'm sorry I woke you. I think you ought to be.",
+      "speaker": "Me",
+      "confidence": -0.194,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 758.88,
+      "end": 759.86,
+      "text": "So that's why.",
+      "speaker": "Them",
+      "confidence": -0.156,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 763.39,
+      "end": 765.21,
+      "text": "No, you're all good. You're all good.",
+      "speaker": "Them",
+      "confidence": -0.048,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 766.48,
+      "end": 768.55,
+      "text": "Oh cool.",
+      "speaker": "Me",
+      "confidence": -0.37,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 767.42,
+      "end": 768.76,
+      "text": "Yeah, all good. Have you done?",
+      "speaker": "Them",
+      "confidence": -0.387,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 769.17,
+      "end": 774.73,
+      "text": "Yeah, everything's good, my side. I actually did a follow it up with lift airlines just so that you know.",
+      "speaker": "Me",
+      "confidence": -0.216,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 775.25,
+      "end": 778.03,
+      "text": "Um,'cause the CFO is my friend.",
+      "speaker": "Me",
+      "confidence": -0.143,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 776.57,
+      "end": 776.82,
+      "text": "Mm.",
+      "speaker": "Them",
+      "confidence": -0.438,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 778.45,
+      "end": 779.53,
+      "text": "So",
+      "speaker": "Me",
+      "confidence": -0.108,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 780.01,
+      "end": 782.41,
+      "text": "We should hope we are back from them next week.",
+      "speaker": "Me",
+      "confidence": -0.053,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 782.77,
+      "end": 786.7,
+      "text": "They all I know is that they're taking not us, but this",
+      "speaker": "Me",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 784.73,
+      "end": 785.05,
+      "text": "No.",
+      "speaker": "Them",
+      "confidence": -0.438,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 787.02,
+      "end": 790.03,
+      "text": "you know, investigation of voice agents quite seriously.",
+      "speaker": "Me",
+      "confidence": -0.048,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 790.54,
+      "end": 792.3,
+      "text": "So let's see how we",
+      "speaker": "Me",
+      "confidence": -0.014,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 792.28,
+      "end": 792.7,
+      "text": "Mm-hmm.",
+      "speaker": "Them",
+      "confidence": -0.25,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 792.78,
+      "end": 793.55,
+      "text": "Continue.",
+      "speaker": "Me",
+      "confidence": -0.69,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 794.29,
+      "end": 795.18,
+      "text": "But",
+      "speaker": "Me",
+      "confidence": -0.034,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 795.85,
+      "end": 797.96,
+      "text": "What already wanted to run on to die?",
+      "speaker": "Me",
+      "confidence": -0.409,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 796.44,
+      "end": 796.95,
+      "text": "And",
+      "speaker": "Them",
+      "confidence": -1.41,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 798.65,
+      "end": 801.78,
+      "text": "Actually is two things.",
+      "speaker": "Me",
+      "confidence": -0.108,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 802.01,
+      "end": 802.68,
+      "text": "Uh",
+      "speaker": "Me",
+      "confidence": -0.426,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 803.03,
+      "end": 807.48,
+      "text": "Applied for an South African number on the Townex portal. I think I did look like a",
+      "speaker": "Me",
+      "confidence": -0.222,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 807.67,
+      "end": 809.24,
+      "text": "Day or two ago.",
+      "speaker": "Me",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 809.75,
+      "end": 811.86,
+      "text": "Do you mind just checking",
+      "speaker": "Me",
+      "confidence": -0.023,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 811.32,
+      "end": 811.74,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.3,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 812.98,
+      "end": 816.98,
+      "text": "Yeah, I don't know if I need to provide anything else or if it could just be approved.",
+      "speaker": "Me",
+      "confidence": -0.048,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 817.43,
+      "end": 819.28,
+      "text": "And then just let me know.",
+      "speaker": "Me",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 819.55,
+      "end": 820.12,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.171,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 819.7,
+      "end": 820.82,
+      "text": "Yeah. Um",
+      "speaker": "Me",
+      "confidence": -0.244,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 822.33,
+      "end": 824.12,
+      "text": "I have some thoughts around",
+      "speaker": "Me",
+      "confidence": -0.003,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 823.93,
+      "end": 826.55,
+      "text": "Was that on your own account, Amir?",
+      "speaker": "Them",
+      "confidence": -0.193,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 826.04,
+      "end": 826.48,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 826.62,
+      "end": 827.76,
+      "text": "That was a",
+      "speaker": "Me",
+      "confidence": -0.228,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 826.75,
+      "end": 828.76,
+      "text": "Or on one of the sub accounts.",
+      "speaker": "Them",
+      "confidence": -0.264,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 828.82,
+      "end": 830.45,
+      "text": "No, that was on my own account.",
+      "speaker": "Me",
+      "confidence": -0.044,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 830.08,
+      "end": 830.49,
+      "text": "Okay.",
+      "speaker": "Them",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 830.97,
+      "end": 831.76,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 832.6,
+      "end": 832.95,
+      "text": "Go.",
+      "speaker": "Them",
+      "confidence": -0.666,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 832.98,
+      "end": 835.35,
+      "text": "'Cause I have a few ideas.",
+      "speaker": "Me",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 835.45,
+      "end": 837.56,
+      "text": "Right in terms of potentially",
+      "speaker": "Me",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 837.69,
+      "end": 838.61,
+      "text": "Using",
+      "speaker": "Me",
+      "confidence": -0.202,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 839.19,
+      "end": 839.99,
+      "text": "Almost like",
+      "speaker": "Me",
+      "confidence": -0.021,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 841.66,
+      "end": 848.05,
+      "text": "What I wanna what I'm thinking of doing is going to one or two small clouds that I know, right? Guys that would never, let's say",
+      "speaker": "Me",
+      "confidence": -0.114,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 848.23,
+      "end": 848.8,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.55,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 848.66,
+      "end": 851.86,
+      "text": "wanna pay for this themselves, but to be honest, I can fund it.",
+      "speaker": "Me",
+      "confidence": -0.139,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 852.09,
+      "end": 858.1,
+      "text": "Myself. It's not like such an expensive thing to find. Um and then",
+      "speaker": "Me",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 855.3,
+      "end": 855.61,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.45,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 857.54,
+      "end": 857.98,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.196,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 858.97,
+      "end": 861.08,
+      "text": "You know, actually just kind of set up like",
+      "speaker": "Me",
+      "confidence": -0.082,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 861.69,
+      "end": 864.98,
+      "text": "you know, one or two sales agents, maybe try one or two companies.",
+      "speaker": "Me",
+      "confidence": -0.112,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 865.18,
+      "end": 869.72,
+      "text": "And then see what type of you know if we get anything from that. Because if we do",
+      "speaker": "Me",
+      "confidence": -0.071,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 867.23,
+      "end": 867.81,
+      "text": "Mm-hmm.",
+      "speaker": "Them",
+      "confidence": -0.34,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 869.91,
+      "end": 872.98,
+      "text": "then either we'll continue doing it for them independently",
+      "speaker": "Me",
+      "confidence": -0.045,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 873.21,
+      "end": 877.94,
+      "text": "Or we'll say cool guys, we've proven the value, we've got a new whatever, one, two, three clients.",
+      "speaker": "Me",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 878.52,
+      "end": 882.64,
+      "text": "Do you want to take this on yourself or you know, should we just continue doing it? Because in either way",
+      "speaker": "Me",
+      "confidence": -0.095,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 883.22,
+      "end": 884.44,
+      "text": "We're um you know",
+      "speaker": "Me",
+      "confidence": -0.209,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 884.98,
+      "end": 888.12,
+      "text": "It's a use it will be like the first plant, if you could put it that way.",
+      "speaker": "Me",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 888.34,
+      "end": 889.01,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 889.27,
+      "end": 892.12,
+      "text": "And potentially use that to actually get",
+      "speaker": "Me",
+      "confidence": -0.094,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 890.37,
+      "end": 890.72,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 892.57,
+      "end": 899.41,
+      "text": "more um you know clients kind of get this one of companies to say, Okay, this makes sense, I should do it, I should prioritize it, et cetera.",
+      "speaker": "Me",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 899.94,
+      "end": 900.48,
+      "text": "So",
+      "speaker": "Me",
+      "confidence": -0.051,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 901.15,
+      "end": 901.82,
+      "text": "Action.",
+      "speaker": "Me",
+      "confidence": -0.554,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 902.15,
+      "end": 904.93,
+      "text": "try to build the first Asian I have to go and test it, but",
+      "speaker": "Me",
+      "confidence": -0.158,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 905.31,
+      "end": 908.57,
+      "text": "I've used Claude, so I'm not sure this is like my first time",
+      "speaker": "Me",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 909.09,
+      "end": 910.59,
+      "text": "Doing this.",
+      "speaker": "Me",
+      "confidence": -0.241,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 910.69,
+      "end": 911.52,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.101,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 913.47,
+      "end": 914.91,
+      "text": "So I need to see how it is, but",
+      "speaker": "Me",
+      "confidence": -0.115,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 915.36,
+      "end": 916.61,
+      "text": "Um that's",
+      "speaker": "Me",
+      "confidence": -0.141,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 915.78,
+      "end": 917.09,
+      "text": "We can take a look at it, maybe.",
+      "speaker": "Them",
+      "confidence": -0.337,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 917.31,
+      "end": 918.4,
+      "text": "That's like the thinking.",
+      "speaker": "Me",
+      "confidence": -0.024,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 919.62,
+      "end": 920.45,
+      "text": "Okay.",
+      "speaker": "Me",
+      "confidence": -0.09,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 920.71,
+      "end": 921.5,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.046,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 922.85,
+      "end": 926.27,
+      "text": "Then with regards to S and D",
+      "speaker": "Me",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 926.75,
+      "end": 927.68,
+      "text": "So",
+      "speaker": "Me",
+      "confidence": -0.313,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 927.84,
+      "end": 935.29,
+      "text": "I I think I think the plan for today should be more or less as follows. Well, I was just kind of going back to the thread and seeing what the expectations, you know, were from",
+      "speaker": "Me",
+      "confidence": -0.079,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 935.52,
+      "end": 937.57,
+      "text": "Eric Side and it was pretty much, you know",
+      "speaker": "Me",
+      "confidence": -0.268,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 937.7,
+      "end": 939.45,
+      "text": "Almost like getting into testing.",
+      "speaker": "Me",
+      "confidence": -0.031,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 940.16,
+      "end": 947.07,
+      "text": "So in my mind, we can almost open the session, I guess I can do that to say that we're gonna run them through the portal, which is what we said we would do.",
+      "speaker": "Me",
+      "confidence": -0.075,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 942.88,
+      "end": 943.26,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 947.2,
+      "end": 949.41,
+      "text": "And show them how to actually build an agent.",
+      "speaker": "Me",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 949.73,
+      "end": 953.89,
+      "text": "Right, as well as some of the features. And then we'll get into the testing or POC plan.",
+      "speaker": "Me",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 952.0,
+      "end": 952.45,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.302,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 954.69,
+      "end": 959.13,
+      "text": "Now before we actually get into the portal, I want to ask them the question of do they have in-house devs?",
+      "speaker": "Me",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 959.68,
+      "end": 960.22,
+      "text": "Oh",
+      "speaker": "Me",
+      "confidence": -1.07,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 960.77,
+      "end": 965.25,
+      "text": "would they need or would they want us to build this? Because and I think that would then depend on",
+      "speaker": "Me",
+      "confidence": -0.095,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 965.35,
+      "end": 969.02,
+      "text": "you know what you actually show them. Meaning if they say no we need you to build this",
+      "speaker": "Me",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 969.22,
+      "end": 975.55,
+      "text": "it might not be worthwhile going into all of the, you know, technical aspects because like they probably are not gonna care.",
+      "speaker": "Me",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 976.23,
+      "end": 979.39,
+      "text": "But in that case it would be very worthwhile going through the",
+      "speaker": "Me",
+      "confidence": -0.016,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 980.48,
+      "end": 981.66,
+      "text": "Maybe I should take a step back.",
+      "speaker": "Me",
+      "confidence": -0.025,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 982.11,
+      "end": 986.49,
+      "text": "Right, depending on if they boarding one or not, Imama would depend or would would w would dictate if",
+      "speaker": "Me",
+      "confidence": -0.17,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 986.59,
+      "end": 989.82,
+      "text": "if the walk through that you give them is let's say more config focused.",
+      "speaker": "Me",
+      "confidence": -0.091,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 990.05,
+      "end": 991.39,
+      "text": "or more feature focused.",
+      "speaker": "Me",
+      "confidence": -0.145,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 991.75,
+      "end": 993.05,
+      "text": "If I could put it that way.",
+      "speaker": "Me",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 993.25,
+      "end": 993.95,
+      "text": "Right, so",
+      "speaker": "Me",
+      "confidence": -0.605,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 993.99,
+      "end": 994.34,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 995.55,
+      "end": 998.05,
+      "text": "Either way, I would love to show them some of the like the quirky",
+      "speaker": "Me",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 998.24,
+      "end": 999.39,
+      "text": "Things like the",
+      "speaker": "Me",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 999.52,
+      "end": 1001.95,
+      "text": "The speed of the voice, the background audio.",
+      "speaker": "Me",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1002.15,
+      "end": 1007.39,
+      "text": "punctuation, interruptions, those types of things. I think that will impress them. I think you guys do that really, really well.",
+      "speaker": "Me",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1007.55,
+      "end": 1010.08,
+      "text": "And then just split you know spend a bit of time there.",
+      "speaker": "Me",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1010.37,
+      "end": 1012.57,
+      "text": "Um, I think that should happen either way.",
+      "speaker": "Me",
+      "confidence": -0.088,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1013.16,
+      "end": 1019.24,
+      "text": "But again, if they're expecting us to bother then we can, you know, focus less on the config because then we probably've probably not adding much",
+      "speaker": "Me",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1019.56,
+      "end": 1021.61,
+      "text": "you know value to them.",
+      "speaker": "Me",
+      "confidence": -0.197,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1021.74,
+      "end": 1027.72,
+      "text": "I'd also like you to mention the core schooling. Again, I think it would just it's just an impressive thing to",
+      "speaker": "Me",
+      "confidence": -0.069,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1024.36,
+      "end": 1024.71,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.065,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1028.17,
+      "end": 1030.95,
+      "text": "Tell them and I mean we don't exactly know, you know",
+      "speaker": "Me",
+      "confidence": -0.031,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1031.08,
+      "end": 1033.35,
+      "text": "Have they landed on us or are they just, you know?",
+      "speaker": "Me",
+      "confidence": -0.138,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1034.25,
+      "end": 1039.66,
+      "text": "interested in moving a step forward of us and a step forward of someone else. So hopefully we can just kind of point out some",
+      "speaker": "Me",
+      "confidence": -0.045,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1040.27,
+      "end": 1042.76,
+      "text": "Differentiators without actually having to understand",
+      "speaker": "Me",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1042.96,
+      "end": 1046.31,
+      "text": "You know, who you're working with, what do they say, you know, those types of things.",
+      "speaker": "Me",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1047.28,
+      "end": 1047.78,
+      "text": "So",
+      "speaker": "Me",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1048.14,
+      "end": 1048.45,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.028,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1048.27,
+      "end": 1057.03,
+      "text": "Thinking we can spend the first twenty minutes or so on, you know, the portal and again it's either config or you know feature focused or both depending on if they board it or not.",
+      "speaker": "Me",
+      "confidence": -0.071,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1057.61,
+      "end": 1058.44,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.035,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1059.21,
+      "end": 1060.3,
+      "text": "And then I think",
+      "speaker": "Me",
+      "confidence": -0.19,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1059.94,
+      "end": 1060.26,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.021,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1060.4,
+      "end": 1066.54,
+      "text": "Once that's done, we can get into the testing. And in my mind, there's really one key question here, which is",
+      "speaker": "Me",
+      "confidence": -0.093,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1067.28,
+      "end": 1067.85,
+      "text": "You know.",
+      "speaker": "Me",
+      "confidence": -0.42,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1068.24,
+      "end": 1072.97,
+      "text": "what would this test basically look like to them, right? What does testing actually mean to them?",
+      "speaker": "Me",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1073.55,
+      "end": 1075.24,
+      "text": "And then based on that answer",
+      "speaker": "Me",
+      "confidence": -0.022,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1075.5,
+      "end": 1080.87,
+      "text": "We can then determine and this again assumes that they don't have the devs in house. If they do then",
+      "speaker": "Me",
+      "confidence": -0.02,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1081.26,
+      "end": 1081.99,
+      "text": "No we can",
+      "speaker": "Me",
+      "confidence": -0.116,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1082.32,
+      "end": 1084.2,
+      "text": "Yeah, we can take a different approach. But",
+      "speaker": "Me",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1084.4,
+      "end": 1086.79,
+      "text": "On the assumption that they want, you know, us to build it.",
+      "speaker": "Me",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1087.28,
+      "end": 1089.22,
+      "text": "But I think it's important for us to understand your",
+      "speaker": "Me",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1089.42,
+      "end": 1091.05,
+      "text": "What would testing look like?",
+      "speaker": "Me",
+      "confidence": -0.063,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1090.02,
+      "end": 1090.36,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.039,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1091.21,
+      "end": 1092.74,
+      "text": "Because if it's let's say it's a",
+      "speaker": "Me",
+      "confidence": -0.413,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1094.19,
+      "end": 1096.17,
+      "text": "On the more simple side.",
+      "speaker": "Me",
+      "confidence": -0.101,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1096.68,
+      "end": 1097.29,
+      "text": "Right.",
+      "speaker": "Me",
+      "confidence": -0.423,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1097.52,
+      "end": 1098.5,
+      "text": "That's when",
+      "speaker": "Me",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1098.7,
+      "end": 1102.15,
+      "text": "I would then think that okay, well then we can set that up for them.",
+      "speaker": "Me",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1102.35,
+      "end": 1109.58,
+      "text": "And we're just you to understand, you know, the use case, the script, as much detail as possible in terms of what that actually, you know, want the agent to do.",
+      "speaker": "Me",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1110.67,
+      "end": 1111.21,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1111.98,
+      "end": 1113.64,
+      "text": "If the answers are",
+      "speaker": "Me",
+      "confidence": -0.138,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1112.54,
+      "end": 1112.92,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.046,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1115.34,
+      "end": 1116.07,
+      "text": "Uh",
+      "speaker": "Me",
+      "confidence": -0.032,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1116.62,
+      "end": 1117.03,
+      "text": "You know.",
+      "speaker": "Me",
+      "confidence": -0.612,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1119.56,
+      "end": 1121.9,
+      "text": "Sorry. So we can explain what what you know",
+      "speaker": "Me",
+      "confidence": -0.077,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1122.99,
+      "end": 1124.87,
+      "text": "We can actually board it for them if it's if it's",
+      "speaker": "Me",
+      "confidence": -0.14,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1124.97,
+      "end": 1125.61,
+      "text": "Some",
+      "speaker": "Me",
+      "confidence": -0.889,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1126.0,
+      "end": 1126.7,
+      "text": "But if it's",
+      "speaker": "Me",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1126.85,
+      "end": 1130.83,
+      "text": "'s say more complex and again they're not bothering it has then we can mention the",
+      "speaker": "Me",
+      "confidence": -0.242,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1129.18,
+      "end": 1129.5,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.018,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1131.09,
+      "end": 1136.98,
+      "text": "you know, the the very five third parties, the cost benefits you can India and the fact that we're not gonna, you know, mark them up.",
+      "speaker": "Me",
+      "confidence": -0.155,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1137.65,
+      "end": 1142.87,
+      "text": "Um and then it's just important in that conversation to understand your success criteria.",
+      "speaker": "Me",
+      "confidence": -0.125,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1143.41,
+      "end": 1144.05,
+      "text": "And",
+      "speaker": "Me",
+      "confidence": -0.073,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1144.41,
+      "end": 1145.52,
+      "text": "Time lines.",
+      "speaker": "Me",
+      "confidence": -0.579,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1145.82,
+      "end": 1146.14,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.029,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1146.2,
+      "end": 1146.9,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1148.5,
+      "end": 1150.67,
+      "text": "And I'm just thinking out loud, right?",
+      "speaker": "Me",
+      "confidence": -0.144,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1151.41,
+      "end": 1151.89,
+      "text": "If",
+      "speaker": "Me",
+      "confidence": -0.026,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1152.31,
+      "end": 1155.73,
+      "text": "And I did an extent about this before. If they are boarding",
+      "speaker": "Me",
+      "confidence": -0.328,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1156.95,
+      "end": 1161.52,
+      "text": "then I think it's important to understand are those you know, are those devs actually on the core.",
+      "speaker": "Me",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1163.0,
+      "end": 1167.09,
+      "text": "Um like are we speaking to them now or do we need to have like another session with them?",
+      "speaker": "Me",
+      "confidence": -0.039,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1165.06,
+      "end": 1165.5,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.036,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1167.7,
+      "end": 1169.55,
+      "text": "I just want to stop there and see like",
+      "speaker": "Me",
+      "confidence": -0.103,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1169.75,
+      "end": 1170.77,
+      "text": "Now you're taught.",
+      "speaker": "Me",
+      "confidence": -0.603,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1170.3,
+      "end": 1170.65,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.041,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1171.06,
+      "end": 1173.65,
+      "text": "Does that make sense? Are you happy with everything that I mentioned?",
+      "speaker": "Me",
+      "confidence": -0.036,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1174.52,
+      "end": 1178.03,
+      "text": "Are you comfortable to border? I'm assuming that it is let's say on the more simple side.",
+      "speaker": "Me",
+      "confidence": -0.105,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1177.09,
+      "end": 1177.44,
+      "text": "Mm-hmm.",
+      "speaker": "Them",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1178.55,
+      "end": 1179.25,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.054,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1181.14,
+      "end": 1181.84,
+      "text": "What do you think?",
+      "speaker": "Me",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1186.14,
+      "end": 1187.51,
+      "text": "Yeah, so",
+      "speaker": "Them",
+      "confidence": -0.178,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1187.7,
+      "end": 1194.23,
+      "text": "I'm okay with building something simple, Mir. Um but but yeah, we just need to figure out what that actually looks like though, right?",
+      "speaker": "Them",
+      "confidence": -0.159,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1190.29,
+      "end": 1190.71,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.077,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1194.45,
+      "end": 1194.93,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.043,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1194.62,
+      "end": 1195.32,
+      "text": "Simple.",
+      "speaker": "Them",
+      "confidence": -0.192,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1195.54,
+      "end": 1196.66,
+      "text": "Oh you know.",
+      "speaker": "Them",
+      "confidence": -0.323,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1199.19,
+      "end": 1205.56,
+      "text": "Like in practice, you know, or you know, so we need to scope that out and see sort of what they're looking for.",
+      "speaker": "Them",
+      "confidence": -0.074,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1205.85,
+      "end": 1206.32,
+      "text": "And then",
+      "speaker": "Them",
+      "confidence": -0.174,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1206.58,
+      "end": 1209.2,
+      "text": "Determine if that's something that we can build for them or not.",
+      "speaker": "Them",
+      "confidence": -0.052,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1209.46,
+      "end": 1209.87,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.033,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1209.46,
+      "end": 1210.29,
+      "text": "Um",
+      "speaker": "Them",
+      "confidence": -0.418,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1211.03,
+      "end": 1211.8,
+      "text": "Sort of.",
+      "speaker": "Them",
+      "confidence": -0.48,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1212.09,
+      "end": 1219.35,
+      "text": "I outside of that, I think the agenda's fine. Um as you said, I think just once we know who's actually on the call today.",
+      "speaker": "Them",
+      "confidence": -0.13,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1219.67,
+      "end": 1221.56,
+      "text": "And we can sort of go over there and",
+      "speaker": "Them",
+      "confidence": -0.083,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1221.91,
+      "end": 1222.45,
+      "text": "You know.",
+      "speaker": "Them",
+      "confidence": -0.409,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1222.74,
+      "end": 1226.74,
+      "text": "More in depth stuff like config or just like generally there sort of",
+      "speaker": "Them",
+      "confidence": -0.113,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1225.43,
+      "end": 1225.94,
+      "text": "Mm-hmm.",
+      "speaker": "Me",
+      "confidence": -0.267,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1226.84,
+      "end": 1228.24,
+      "text": "Features available.",
+      "speaker": "Them",
+      "confidence": -0.122,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1228.09,
+      "end": 1228.63,
+      "text": "We don't.",
+      "speaker": "Me",
+      "confidence": -0.685,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1229.02,
+      "end": 1230.2,
+      "text": "In the Portland as well.",
+      "speaker": "Them",
+      "confidence": -0.237,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1230.46,
+      "end": 1231.19,
+      "text": "Um",
+      "speaker": "Them",
+      "confidence": -0.236,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1232.73,
+      "end": 1234.8,
+      "text": "Yeah, I don't know, it's just",
+      "speaker": "Them",
+      "confidence": -0.302,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1235.0,
+      "end": 1238.8,
+      "text": "Eric did have quite a few questions in the last call as well, so like",
+      "speaker": "Them",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1239.64,
+      "end": 1243.48,
+      "text": "Assuming that the rest of the team goes well then we can sort of you know",
+      "speaker": "Them",
+      "confidence": -0.027,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1243.7,
+      "end": 1245.59,
+      "text": "Go on that as well, then and just sort of",
+      "speaker": "Them",
+      "confidence": -0.163,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1245.94,
+      "end": 1248.28,
+      "text": "Yeah, feel any questions that they",
+      "speaker": "Them",
+      "confidence": -0.231,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1248.54,
+      "end": 1250.32,
+      "text": "That they have and that come up on the callers.",
+      "speaker": "Them",
+      "confidence": -0.378,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1250.65,
+      "end": 1251.09,
+      "text": "Well",
+      "speaker": "Them",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1251.63,
+      "end": 1252.36,
+      "text": "Oh.",
+      "speaker": "Me",
+      "confidence": -0.703,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 1252.81,
+      "end": 1253.64,
+      "text": "Okay, cool.",
+      "speaker": "Me",
+      "confidence": -0.086,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1253.34,
+      "end": 1254.36,
+      "text": "Pain L sounds good.",
+      "speaker": "Them",
+      "confidence": -0.357,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1254.96,
+      "end": 1260.39,
+      "text": "Okay, cool. Then I think that's fine. The key thing is really just understanding who's boarding it, are they on the call and then",
+      "speaker": "Me",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1260.81,
+      "end": 1264.3,
+      "text": "If we're building it how simple or how simple is a POC for you?",
+      "speaker": "Me",
+      "confidence": -0.137,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1264.78,
+      "end": 1266.12,
+      "text": "Yeah,'cause then if it's let's say",
+      "speaker": "Me",
+      "confidence": -0.183,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1266.7,
+      "end": 1272.97,
+      "text": "thousand integrations and all this complex stuff and it's like cool, we need to bring in those third parties. So I'm just gonna rely on you to",
+      "speaker": "Me",
+      "confidence": -0.059,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1267.19,
+      "end": 1267.6,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.047,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1273.65,
+      "end": 1276.11,
+      "text": "To judge that because I don't want to answer those questions.",
+      "speaker": "Me",
+      "confidence": -0.12,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1275.58,
+      "end": 1275.96,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.036,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1276.37,
+      "end": 1277.67,
+      "text": "for you in the course. So",
+      "speaker": "Me",
+      "confidence": -0.259,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1278.22,
+      "end": 1279.69,
+      "text": "Don't even wait for me, you can just",
+      "speaker": "Me",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1280.05,
+      "end": 1281.71,
+      "text": "On to that. Um",
+      "speaker": "Me",
+      "confidence": -0.545,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1280.5,
+      "end": 1280.85,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.042,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1282.06,
+      "end": 1282.86,
+      "text": "So I don't want to",
+      "speaker": "Me",
+      "confidence": -0.252,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1283.28,
+      "end": 1284.39,
+      "text": "Say the wrong",
+      "speaker": "Me",
+      "confidence": -0.119,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1284.56,
+      "end": 1289.32,
+      "text": "thing there or hold us to something that we actually shouldn't be shouldn't be doing.",
+      "speaker": "Me",
+      "confidence": -0.061,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1288.18,
+      "end": 1288.56,
+      "text": "Mm.",
+      "speaker": "Them",
+      "confidence": -0.378,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1289.58,
+      "end": 1290.54,
+      "text": "Um but",
+      "speaker": "Me",
+      "confidence": -0.267,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1290.8,
+      "end": 1292.14,
+      "text": "I think way possible.",
+      "speaker": "Me",
+      "confidence": -0.303,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1291.0,
+      "end": 1291.8,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.368,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1292.59,
+      "end": 1293.58,
+      "text": "We should I mean.",
+      "speaker": "Me",
+      "confidence": -0.129,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1293.93,
+      "end": 1298.73,
+      "text": "Depending on what their POC looks like, we should definitely try and see what we can do for them because",
+      "speaker": "Me",
+      "confidence": -0.047,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1298.86,
+      "end": 1304.14,
+      "text": "What I wanna kinda do again I'm I'm not sure who the else they are assisting, but I mean we saw from their LinkedIn post that they're",
+      "speaker": "Me",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1301.49,
+      "end": 1301.93,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.119,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1304.46,
+      "end": 1307.53,
+      "text": "Rightfully so looking at more than one vendor, which they should be.",
+      "speaker": "Me",
+      "confidence": -0.04,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1307.95,
+      "end": 1308.84,
+      "text": "Uh that's what I'm",
+      "speaker": "Me",
+      "confidence": -0.318,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1309.07,
+      "end": 1311.24,
+      "text": "Well that's what I did do. Um",
+      "speaker": "Me",
+      "confidence": -0.214,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1312.78,
+      "end": 1314.15,
+      "text": "So I think yeah, let's just",
+      "speaker": "Me",
+      "confidence": -0.07,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1312.98,
+      "end": 1313.29,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.029,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1314.32,
+      "end": 1316.39,
+      "text": "Try and gorge that in the beginning.",
+      "speaker": "Me",
+      "confidence": -0.11,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1318.48,
+      "end": 1321.58,
+      "text": "And then that should hopefully dictate, you know.",
+      "speaker": "Me",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1320.5,
+      "end": 1320.88,
+      "text": "Mm-hmm.",
+      "speaker": "Them",
+      "confidence": -0.097,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1321.87,
+      "end": 1323.21,
+      "text": "Things from there.",
+      "speaker": "Me",
+      "confidence": -0.126,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1323.76,
+      "end": 1328.14,
+      "text": "Um but I do think focusing on some of those like quirky features will",
+      "speaker": "Me",
+      "confidence": -0.03,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1328.53,
+      "end": 1332.65,
+      "text": "Hopefully knock the others out.",
+      "speaker": "Me",
+      "confidence": -0.062,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1333.33,
+      "end": 1336.11,
+      "text": "could also potentially knock other people out, right? Because",
+      "speaker": "Me",
+      "confidence": -0.129,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1336.59,
+      "end": 1338.28,
+      "text": "Even though this country's not exactly",
+      "speaker": "Me",
+      "confidence": -0.068,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1339.44,
+      "end": 1344.59,
+      "text": "rich and most people don't actually have phones that have that pre-screening feature, to be honest, they don't.",
+      "speaker": "Me",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1344.97,
+      "end": 1345.77,
+      "text": "Um",
+      "speaker": "Me",
+      "confidence": -0.08,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1346.86,
+      "end": 1352.55,
+      "text": "But they work internationally, remember. So I mean in the let's call it wealthier countries it is much more of a",
+      "speaker": "Me",
+      "confidence": -0.082,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1347.22,
+      "end": 1347.66,
+      "text": "Mm-hmm.",
+      "speaker": "Them",
+      "confidence": -0.067,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1352.14,
+      "end": 1352.52,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.044,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1363.76,
+      "end": 1364.2,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.028,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1366.96,
+      "end": 1367.31,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.049,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1370.86,
+      "end": 1371.21,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.072,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1376.5,
+      "end": 1376.94,
+      "text": "Mm-hmm.",
+      "speaker": "Them",
+      "confidence": -0.163,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1393.87,
+      "end": 1394.28,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.024,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1400.27,
+      "end": 1401.45,
+      "text": "Yeah, sounds good, yeah.",
+      "speaker": "Them",
+      "confidence": -0.076,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1401.68,
+      "end": 1403.28,
+      "text": "I think it um",
+      "speaker": "Them",
+      "confidence": -0.118,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1403.86,
+      "end": 1405.71,
+      "text": "Like Eric had a lot of questions left.",
+      "speaker": "Them",
+      "confidence": -0.216,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 1406.19,
+      "end": 1410.16,
+      "text": "Last time and then it's sort of been a while since then. So it'll be interesting to see",
+      "speaker": "Them",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    }
+  ]
+}

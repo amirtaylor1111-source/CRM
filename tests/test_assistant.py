@@ -298,3 +298,50 @@ class TestCommandPrompt:
         for name in ("prep", "live-brief", "ask", "notes"):
             text = assistant.command_prompt(name, "ARGS", root=root)
             assert "ARGS" in text and "$ARGUMENTS" not in text
+
+
+class TestTheAskPanelCarriesGapsNotAHistory:
+    """The widget's "Ask them" list is questions to ASK, never a record of
+    what was asked. On 10 September Amir reported it drifting into the
+    second thing. The previous brief's questions were being handed back
+    inside the "previous brief" blob, where they read as prior output to
+    continue rather than as suggestions already made."""
+
+    def _args(self, previous):
+        captured = {}
+
+        def fake_run(prompt, **kw):
+            captured["prompt"] = prompt
+            return assistant.Result(ok=True, data={}, text="", error="")
+
+        original, assistant.run = assistant.run, fake_run
+        try:
+            assistant.brief("2026-09-10-meeting", previous=previous)
+        finally:
+            assistant.run = original
+        return captured["prompt"]
+
+    def test_previous_questions_are_marked_as_already_offered(self):
+        prompt = self._args({"as_of": "00:10:00", "summary": "s",
+                             "next_steps": [], "questions": ["When is it due?"]})
+        assert "already put in front of the user" in prompt
+        assert "Do not repeat any of them" in prompt
+
+    def test_they_are_not_inside_the_previous_brief_blob(self):
+        """Where they sat before, and where they read as answer-so-far."""
+        prompt = self._args({"as_of": "00:10:00", "summary": "s",
+                             "next_steps": [], "questions": ["When is it due?"]})
+        head, _, tail = prompt.partition("already put in front of the user")
+        assert "When is it due?" not in head
+        assert "When is it due?" in tail
+
+    def test_no_questions_means_no_extra_instruction(self):
+        prompt = self._args({"as_of": "00:10:00", "summary": "s",
+                             "next_steps": [], "questions": []})
+        assert "already put in front of the user" not in prompt
+
+    def test_dict_shaped_questions_survive(self):
+        """The UI accepts a bare string or an object with .text; so must this."""
+        prompt = self._args({"as_of": "00:10:00", "summary": "s",
+                             "next_steps": [], "questions": [{"text": "How many?"}]})
+        assert "How many?" in prompt
