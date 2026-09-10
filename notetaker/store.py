@@ -415,9 +415,23 @@ def unfinished(root: Path | None = None) -> list[Path]:
             continue                      # still recording; leave it alone
         if meeting.transcribed:
             continue
+        if _being_transcribed(directory):
+            continue
         if any(directory.glob("*.wav")):
             out.append(directory)
     return out
+
+
+def _being_transcribed(directory: Path) -> bool:
+    """Is something already working on this meeting?
+
+    Without this, `mtg finish` races the widget. On 10 September both
+    transcribed the same hour of audio at once on the same six cores, because
+    a meeting mid-transcription looks exactly like an abandoned one: audio
+    present, `transcribed` still false.
+    """
+    from . import transcribe as tr
+    return tr.is_being_transcribed(directory)
 
 
 def search(query: str, root: Path | None = None) -> list[dict[str, Any]]:

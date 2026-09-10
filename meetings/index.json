@@ -1,7 +1,17 @@
 {
-  "generated_at": "2026-09-10T09:09:09Z",
-  "count": 27,
+  "generated_at": "2026-09-10T11:01:04Z",
+  "count": 28,
   "meetings": [
+    {
+      "id": "2026-09-10-meeting-2",
+      "title": "Meeting",
+      "started_at": "2026-09-10T09:59:18Z",
+      "ended_at": "2026-09-10T11:01:04Z",
+      "participants": [],
+      "consent_obtained": true,
+      "transcribed": false,
+      "path": "meetings/2026-09-10-meeting-2"
+    },
     {
       "id": "2026-09-10-meeting",
       "title": "SMD Prep",

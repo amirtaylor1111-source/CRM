@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 import pytest
 
@@ -249,3 +250,41 @@ class TestUnfinishedRecordings:
     def test_a_meeting_that_never_recorded_here_is_not_offered(self, crm):
         store.create_meeting("Imported", [], root=crm)
         assert store.unfinished(crm) == []
+
+
+class TestTheRescueDoesNotRaceTheWidget:
+    """`mtg finish` and the widget both transcribe. A meeting being worked on
+    looks exactly like an abandoned one — audio present, transcribed false —
+    so on 10 September both ran on the same hour of audio at once."""
+
+    def _recorded(self, crm):
+        d = store.create_meeting("Call", [], root=crm)
+        (d / "mic.wav").write_bytes(b"RIFF")
+        (d / "recording.json").write_text(
+            json.dumps({"pid": 1, "started_at": 0.0, "ended_at": 1.0}),
+            encoding="utf-8")
+        return d
+
+    def test_a_meeting_being_transcribed_is_not_offered(self, crm):
+        from notetaker import transcribe as tr
+        d = self._recorded(crm)
+        assert store.unfinished(crm)
+        (d / tr.WORKING_FILE).write_text("999", encoding="utf-8")
+        assert store.unfinished(crm) == []
+
+    def test_it_is_offered_again_once_the_marker_clears(self, crm):
+        from notetaker import transcribe as tr
+        d = self._recorded(crm)
+        (d / tr.WORKING_FILE).write_text("999", encoding="utf-8")
+        assert store.unfinished(crm) == []
+        (d / tr.WORKING_FILE).unlink()
+        assert [p.name for p in store.unfinished(crm)] == [d.name]
+
+    def test_a_marker_from_a_dead_process_does_not_block_forever(self, crm, monkeypatch):
+        from notetaker import transcribe as tr
+        d = self._recorded(crm)
+        (d / tr.WORKING_FILE).write_text("999", encoding="utf-8")
+        marker = d / tr.WORKING_FILE
+        old = time.time() - tr.WORKING_STALE_SECONDS - 10
+        os.utime(marker, (old, old))
+        assert [p.name for p in store.unfinished(crm)] == [d.name]

@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "generated_at": "2026-09-10T10:01:36Z",
+    "engine": "onnx-asr",
+    "model": "nemo-parakeet-tdt-0.6b-v3",
+    "expected_accuracy": "6.3%",
+    "duration": "00:01:56",
+    "tracks": "mic, system",
+    "speaker_method": "separate audio tracks (attribution is exact)",
+    "segments": 13,
+    "low_confidence_segments": 1,
+    "names_corrected": 0,
+    "live": true
+  },
+  "segments": [
+    {
+      "start": 70.58,
+      "end": 70.96,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.197,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 84.75,
+      "end": 85.2,
+      "text": "Yeah.",
+      "speaker": "Them",
+      "confidence": -0.25,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 94.89,
+      "end": 95.63,
+      "text": "How's it, Eric?",
+      "speaker": "Me",
+      "confidence": -0.081,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 96.75,
+      "end": 98.54,
+      "text": "Hey, good uh how you do, man.",
+      "speaker": "Them",
+      "confidence": -0.24,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 97.07,
+      "end": 97.48,
+      "text": "Mm.",
+      "speaker": "Me",
+      "confidence": -0.8,
+      "low_confidence": true,
+      "corrections": []
+    },
+    {
+      "start": 100.75,
+      "end": 102.19,
+      "text": "Yeah, not too bad.",
+      "speaker": "Them",
+      "confidence": -0.06,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 102.38,
+      "end": 102.92,
+      "text": "Too bad.",
+      "speaker": "Them",
+      "confidence": -0.157,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 103.69,
+      "end": 105.96,
+      "text": "Ready for Russia China.",
+      "speaker": "Me",
+      "confidence": -0.198,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 106.8,
+      "end": 107.56,
+      "text": "Not yet.",
+      "speaker": "Them",
+      "confidence": -0.021,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 107.7,
+      "end": 108.88,
+      "text": "Not yet, not yet.",
+      "speaker": "Them",
+      "confidence": -0.087,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 107.95,
+      "end": 108.43,
+      "text": "Yeah.",
+      "speaker": "Me",
+      "confidence": -0.305,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 109.23,
+      "end": 110.73,
+      "text": "That's tomorrow's problem, and yeah.",
+      "speaker": "Them",
+      "confidence": -0.123,
+      "low_confidence": false,
+      "corrections": []
+    },
+    {
+      "start": 111.54,
+      "end": 112.3,
+      "text": "You're idiots.",
+      "speaker": "Them",
+      "confidence": -0.132,
+      "low_confidence": false,
+      "corrections": []
+    }
+  ]
+}

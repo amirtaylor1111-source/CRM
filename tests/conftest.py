@@ -9,7 +9,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from notetaker import hubexport  # noqa: E402  (needs the path above)
+from notetaker import hubexport, log  # noqa: E402  (needs the path above)
 
 #: Records where the suite's own temp root is, so test_no_temp_leak can check
 #: it. Set below, at import time, before any fixture or test runs.
@@ -71,3 +71,10 @@ def _never_touch_the_real_export(tmp_path, monkeypatch):
     this is enforced here, once, rather than per test.
     """
     monkeypatch.setenv(hubexport.EXPORT_DIR_ENV, str(tmp_path / "exports"))
+    # And the log. The server tests drive a real Session, so they wrote start,
+    # stop and transcribe lines into Amir's own mtg.log — hundreds of them, for
+    # meetings named acme-call and notes-to-self that never happened. On 10
+    # September that pushed the log past its 2 MB rotation point mid-morning,
+    # which discarded the evidence from a real call and sent the diagnosis of a
+    # real bug in the wrong direction for an hour.
+    monkeypatch.setattr(log, "log_dir", lambda: tmp_path / "logs")

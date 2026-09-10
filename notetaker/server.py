@@ -551,13 +551,32 @@ class Session:
             began = time.time()
             try:
                 lt.tick()
+                # An error set on the transcriber, rather than raised, was
+                # assigned here and never logged. On 10 September the live
+                # transcript stopped after two minutes of a 62-minute call and
+                # the log recorded nothing at all: the failure was visible only
+                # as an absence. Say it once, the first time it appears.
+                if lt.error and not self.live_error:
+                    _log.error("live transcription stopped: %s", lt.error)
                 self.live_error = lt.error
             except Exception as exc:
                 self.live_error = str(exc)
                 _log.exception("live tick failed")
             took = time.time() - began
             if not lt.error and lt.backlog() > live.MAX_PASS_SECONDS:
-                _log.info("live transcript %.0fs behind; catching up", lt.backlog())
+                behind = lt.backlog()
+                # A pass that takes longer than the audio it consumed can never
+                # catch up: the backlog grows for the rest of the call. Worth
+                # saying plainly, because the visible symptom is a live panel
+                # that simply stops updating.
+                if took > live.MAX_PASS_SECONDS:
+                    _log.warning(
+                        "live transcript %.0fs behind and losing ground: a pass "
+                        "took %.0fs for at most %.0fs of audio. The panels will "
+                        "lag for the rest of this call; the transcript at Stop "
+                        "is unaffected.", behind, took, live.MAX_PASS_SECONDS)
+                else:
+                    _log.info("live transcript %.0fs behind; catching up", behind)
                 deadline = time.time()                # tick again at once
             elif took > live.INTERVAL / 2:        # back off on a slow machine
                 _log.info("live pass took %.1fs; waiting longer", took)

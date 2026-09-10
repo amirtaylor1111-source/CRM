@@ -17,6 +17,9 @@ capture.
 
 from __future__ import annotations
 
+import contextlib
+import os
+import time
 import difflib
 import json
 import re
@@ -420,6 +423,51 @@ def transcribe_meeting(
 ) -> Path:
     """Transcribe every track in a meeting and write transcript.md/.json."""
     meeting_dir = Path(meeting_dir)
+    with _working(meeting_dir):
+        return _transcribe_meeting(meeting_dir, vocabulary, speaker_names, progress)
+
+
+#: Written while a transcription is running and removed when it ends, so a
+#: second one can tell a meeting being worked on from an abandoned one. Both
+#: the CLI and the widget's worker come through transcribe_meeting, so one
+#: marker here covers both.
+WORKING_FILE = "transcribing.lock"
+
+#: A marker older than this is from a process that died. An hour of audio
+#: takes minutes, so this is generous by an order of magnitude.
+WORKING_STALE_SECONDS = 3600.0
+
+
+def is_being_transcribed(meeting_dir: Path) -> bool:
+    marker = Path(meeting_dir) / WORKING_FILE
+    try:
+        return time.time() - marker.stat().st_mtime < WORKING_STALE_SECONDS
+    except OSError:
+        return False
+
+
+@contextlib.contextmanager
+def _working(meeting_dir: Path):
+    marker = meeting_dir / WORKING_FILE
+    try:
+        marker.write_text(str(os.getpid()), encoding="utf-8")
+    except OSError:
+        pass                       # a marker we cannot write must not stop the work
+    try:
+        yield
+    finally:
+        try:
+            marker.unlink()
+        except OSError:
+            pass
+
+
+def _transcribe_meeting(
+    meeting_dir: Path,
+    vocabulary: list[str] | None = None,
+    speaker_names: dict[str, str] | None = None,
+    progress=print,
+) -> Path:
     tracks = {name: meeting_dir / f"{name}.wav"
               for name in ("mic", "system")
               if (meeting_dir / f"{name}.wav").exists()}

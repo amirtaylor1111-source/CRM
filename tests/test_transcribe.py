@@ -285,3 +285,29 @@ class TestDurationIsTheMeetingNotTheWorkload:
         monkeypatch.setattr(tr, "_duration", lambda p: lengths[Path(p)])
         assert tr.hhmmss(max(lengths.values())) == "00:38:46"
         assert tr.hhmmss(sum(lengths.values())) == "01:17:32"   # the old answer
+
+
+class TestTheWorkingMarker:
+    def test_it_exists_during_and_is_gone_after(self, tmp_path, monkeypatch):
+        from notetaker import transcribe as tr
+        seen = {}
+
+        def fake(meeting_dir, *a, **kw):
+            seen["during"] = tr.is_being_transcribed(meeting_dir)
+            return meeting_dir / "transcript.md"
+
+        monkeypatch.setattr(tr, "_transcribe_meeting", fake)
+        tr.transcribe_meeting(tmp_path)
+        assert seen["during"] is True
+        assert tr.is_being_transcribed(tmp_path) is False
+
+    def test_it_is_removed_even_when_transcription_fails(self, tmp_path, monkeypatch):
+        from notetaker import transcribe as tr
+
+        def boom(meeting_dir, *a, **kw):
+            raise tr.TranscribeError("no engine")
+
+        monkeypatch.setattr(tr, "_transcribe_meeting", boom)
+        with pytest.raises(tr.TranscribeError):
+            tr.transcribe_meeting(tmp_path)
+        assert tr.is_being_transcribed(tmp_path) is False
