@@ -288,3 +288,30 @@ class TestTheRescueDoesNotRaceTheWidget:
         old = time.time() - tr.WORKING_STALE_SECONDS - 10
         os.utime(marker, (old, old))
         assert [p.name for p in store.unfinished(crm)] == [d.name]
+
+
+class TestEmptyRecords:
+    """Four meetings arrived from a Fathom import holding a meeting.json and
+    nothing else. They inflate every count, can never be given a lane because
+    there is nothing to derive one from, and sat unnoticed until someone went
+    looking for why `mtg lane` never emptied."""
+
+    def test_a_record_with_no_audio_and_no_transcript_is_reported(self, crm):
+        d = store.create_meeting("Impromptu Teams Meeting", [], root=crm)
+        assert [p.name for p in store.empty_records(crm)] == [d.name]
+
+    def test_a_transcribed_meeting_is_not(self, crm):
+        d = store.create_meeting("Real", [], root=crm)
+        (d / "transcript.md").write_text("[00:00:01] **Them:** hello", encoding="utf-8")
+        assert store.empty_records(crm) == []
+
+    def test_one_still_holding_audio_is_not(self, crm):
+        d = store.create_meeting("Recorded", [], root=crm)
+        (d / "mic.wav").write_bytes(b"RIFF")
+        assert store.empty_records(crm) == []
+
+    def test_one_written_up_by_hand_is_not(self, crm):
+        """An imported summary with no transcript is still a real record."""
+        d = store.create_meeting("Imported", [], root=crm)
+        (d / "notes.md").write_text("# Notes\n\nFrom Fathom.\n", encoding="utf-8")
+        assert store.empty_records(crm) == []

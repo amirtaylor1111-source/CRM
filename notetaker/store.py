@@ -434,6 +434,31 @@ def _being_transcribed(directory: Path) -> bool:
     return tr.is_being_transcribed(directory)
 
 
+def empty_records(root: Path | None = None) -> list[Path]:
+    """Meetings with no audio and no transcript: a record and nothing else.
+
+    Four arrived from a Fathom import on this repo, all titled "Impromptu
+    Microsoft Teams Meeting", each holding a meeting.json and nothing else.
+    They inflate every count, sit permanently in `mtg lane` because there is
+    nothing to derive a lane from, and make the corpus look larger than it is.
+
+    They are not deleted here. A record that a call happened has some value,
+    and deciding that is the user's. They are reported so the decision can be
+    made rather than never noticed.
+    """
+    out = []
+    for meeting in list_meetings(root):
+        directory = meetings_dir(root) / meeting.id
+        if (directory / "transcript.md").exists():
+            continue
+        if any(directory.glob("*.wav")) or any(directory.glob("*.mp4")):
+            continue
+        if (directory / "notes.md").exists() and (directory / "notes.md").stat().st_size:
+            continue                      # written up from somewhere else
+        out.append(directory)
+    return out
+
+
 def search(query: str, root: Path | None = None) -> list[dict[str, Any]]:
     """Grep transcripts and notes, returning meetings with matching snippets."""
     needle = query.lower()

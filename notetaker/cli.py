@@ -381,6 +381,16 @@ def cmd_doctor(args) -> int:
         for directory in pending:
             print(f"    {directory.name}")
         print("  Rescue them with:  mtg finish")
+
+    empty = store.empty_records()
+    if empty:
+        print()
+        print(f"  {len(empty)} meeting(s) with no audio and no transcript:")
+        for directory in empty:
+            print(f"    {directory.name}")
+        print("  These are records of a call and nothing else. They inflate")
+        print("  every count and can never be given a lane. Delete them by hand")
+        print("  if they are not worth keeping.")
     print()
     if failed:
         print(f"  {failed} check(s) failed.")
