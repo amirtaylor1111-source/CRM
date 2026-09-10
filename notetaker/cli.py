@@ -346,7 +346,9 @@ def cmd_doctor(args) -> int:
 
     checks.append((f"disk space ({hw.free_disk_gb:.0f} GB free)",
                    hw.free_disk_gb > 10,
-                   "under 10 GB free; run `mtg prune` or clear space"))
+                   "under 10 GB free; clear space elsewhere. `mtg prune` "
+                   "deletes the audio of transcribed meetings, which is the "
+                   "only thing an accuracy check can be re-run against"))
 
     # The widget and its brain. None of these stop a recording; they say
     # which parts of the widget will be there.
