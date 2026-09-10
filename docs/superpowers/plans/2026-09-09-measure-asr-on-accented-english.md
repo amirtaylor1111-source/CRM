@@ -46,8 +46,22 @@ load_dataset("intronhealth/afrispeech-200", "isizulu", split="test",
   numbers.
 - **Does not answer:** business vocabulary, Amir's microphone, his room, or
   the remote codec on `system.wav`. The corpus is clinical and general.
-- **Does not answer the phone problem.** The audio is 44.1 kHz. Phone imports
-  are 8 kHz narrowband, and that degradation is untouched by this.
+- **Does not answer the phone problem, and this is the bigger blind spot.**
+  The corpus is 44.1 kHz. Every phone import in this repo is a cellular
+  recording, and `phone.py:126` converts it with `ffmpeg -ar 16000` — the
+  information above 4 kHz was never captured, so resampling gives the engine
+  the shape it wants and restores nothing. Every Samsung import has therefore
+  been transcribed at an unmeasured narrowband penalty and nothing says so.
+
+  This plan is currently the only accuracy measurement on the books, so it
+  will be read as *the* answer unless this says otherwise. It is not. It
+  measures accent on wideband speech and is silent on narrowband.
+
+  The cheap measurement for that one is separate and does not need a dataset:
+  take one of the seven wideband recordings here, downsample it to 8 kHz and
+  back, transcribe both, and compare. Same words, same speakers, one
+  variable. That is the honest test of what the phone path costs, and it also
+  applies to any telephony audio a voice agent might one day produce.
 - The card notes validation transcripts were withheld for a challenge that
   ran February to May 2023. Long over, but confirm the chosen split actually
   carries transcripts before building a harness on it.
