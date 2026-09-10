@@ -1,15 +1,17 @@
 {
-  "generated_at": "2026-09-10T08:39:09Z",
+  "generated_at": "2026-09-10T09:09:09Z",
   "count": 27,
   "meetings": [
     {
       "id": "2026-09-10-meeting",
-      "title": "Meeting",
+      "title": "SMD Prep",
       "started_at": "2026-09-10T08:00:19Z",
       "ended_at": "2026-09-10T08:39:09Z",
-      "participants": [],
+      "participants": [
+        "Paul Cross"
+      ],
       "consent_obtained": true,
-      "transcribed": false,
+      "transcribed": true,
       "path": "meetings/2026-09-10-meeting"
     },
     {
