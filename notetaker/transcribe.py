@@ -108,6 +108,17 @@ class TranscribeError(RuntimeError):
     """Raised when no usable transcription backend is available."""
 
 
+class AlreadyTranscribing(TranscribeError):
+    """Raised when another process is already transcribing this meeting.
+
+    Marking the work and proceeding anyway was not enough. On 10 September two
+    transcriptions of the same meeting ran side by side, each loading its own
+    copy of the model, on a laptop with half a gigabyte free. They did not
+    fail; they simply took several times longer while swapping against each
+    other. Refusing is the only thing that actually prevents it.
+    """
+
+
 @dataclass
 class Segment:
     start: float
@@ -541,6 +552,12 @@ def transcribe_meeting(
 ) -> Path:
     """Transcribe every track in a meeting and write transcript.md/.json."""
     meeting_dir = Path(meeting_dir)
+    if is_being_transcribed(meeting_dir):
+        raise AlreadyTranscribing(
+            f"{meeting_dir.name} is already being transcribed by another "
+            f"process (see {WORKING_FILE}).\n"
+            "  Wait for it, or delete that file if you are sure it is stale."
+        )
     with _working(meeting_dir):
         return _transcribe_meeting(meeting_dir, vocabulary, speaker_names, progress)
 

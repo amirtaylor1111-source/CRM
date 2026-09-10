@@ -2,6 +2,8 @@ import sys
 import types
 from collections import namedtuple
 
+import os
+import time
 from pathlib import Path
 
 import pytest
@@ -392,3 +394,32 @@ class TestChunkedResumableDecoding:
             track, lambda w: [tr.Segment(start=0.0, end=1.0, text="x")],
             lambda *a: None)
         assert [s.text for s in segs] == ["x"]
+
+
+class TestTwoTranscriptionsCannotRunAtOnce:
+    """Marking the work was not enough: on 10 September two transcriptions of
+    the same meeting ran side by side, each with its own copy of the model, on
+    a machine with half a gigabyte free. Neither failed; both crawled."""
+
+    def test_a_second_run_is_refused(self, tmp_path, monkeypatch):
+        from notetaker import transcribe as tr
+        (tmp_path / tr.WORKING_FILE).write_text("999", encoding="utf-8")
+        monkeypatch.setattr(tr, "_transcribe_meeting",
+                            lambda *a, **k: pytest.fail("should not have started"))
+        with pytest.raises(tr.AlreadyTranscribing):
+            tr.transcribe_meeting(tmp_path)
+
+    def test_the_refusal_is_a_transcribe_error_so_callers_report_it(self, tmp_path):
+        from notetaker import transcribe as tr
+        (tmp_path / tr.WORKING_FILE).write_text("999", encoding="utf-8")
+        with pytest.raises(tr.TranscribeError):
+            tr.transcribe_meeting(tmp_path)
+
+    def test_a_stale_marker_does_not_block_forever(self, tmp_path, monkeypatch):
+        from notetaker import transcribe as tr
+        marker = tmp_path / tr.WORKING_FILE
+        marker.write_text("999", encoding="utf-8")
+        old = time.time() - tr.WORKING_STALE_SECONDS - 10
+        os.utime(marker, (old, old))
+        monkeypatch.setattr(tr, "_transcribe_meeting", lambda *a, **k: tmp_path / "t.md")
+        assert tr.transcribe_meeting(tmp_path).name == "t.md"
