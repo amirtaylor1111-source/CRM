@@ -21,6 +21,7 @@
 - [ ] **@Paul** — email Eric next steps and what information is required, framed as "what you'd need if you were hiring someone to do this" (due: unspecified) [00:59:49]–[01:00:04]
 - [ ] **@Eric** — prepare the call scenarios, and share any scripts SMD normally follows (due: before the follow-up) [00:58:45]–[00:59:09]
 - [ ] **@me** — set up the follow-up for Friday next week, same time (due: this week) [01:00:37]–[01:01:10]
+- [ ] **@Paul** — send Eric the MCP server details, so SMD can wire Monday.com and Claude to the assistant (due: unspecified; Eric asked, Paul agreed twice) [00:42:22]–[00:43:22]
 
 ## What Eric actually wants the agent to do
 
@@ -32,11 +33,52 @@ Worth keeping separate from the agenda, because this is the requirement:
 - The underlying goal is data cleanup as much as meetings: *"It's for the agent to help me clean this up"* [00:55:09].
 - Beyond this division there are "a few thousand" further leads SMD has never worked through, which is the phase-two prize [00:55:26]–[00:55:44].
 
+## What Paul demonstrated
+
+Eric's closing reaction is the thing to carry into the follow-up: *"this is
+way more complex than I thought it would be. I know it's not complex, it's in
+a way simple, but... as an initial step to get the AI agent to start calling,
+what would you recommend?"* [00:51:41]–[00:51:58]. He saw the whole surface and
+came away wanting a smaller starting point, which is what shaped the MVP
+discussion that followed.
+
+- **Voice.** South African voices available, speed adjustable between 0.1 and
+  1.2, expressive mode for inflection. Eric's feedback drove two changes live
+  and neither settled it [00:30:21]–[00:37:23].
+- **Transcription.** Several models; Paul recommended Deepgram Flux, which
+  Telnyx hosts [00:32:01]–[00:32:43].
+- **Noise.** Suppression on the caller's side to improve transcription
+  accuracy, plus optional synthetic office background behind the agent so it
+  does not sound unnaturally clean [00:33:08]–[00:34:48].
+- **Interruptions.** Barge-in is on by default and can be turned off for cases
+  like reading out contract terms, plus interruption *prediction* that stops
+  the agent before the interruption fully lands [00:39:20]–[00:40:33].
+- **Integrations.** Native connectors for Outlook, Salesforce, Zoho and
+  Zendesk, and any third-party MCP server beneath that. Monday.com is not
+  native, but SMD can connect Monday's own MCP server, or connect the Telnyx
+  MCP server to Claude and build the workflow there [00:41:01]–[00:43:22].
+  This is the integration Eric cares about.
+- **Analysis after each call.** Recording, full transcript with click-to-play
+  at any point, call metadata, and configurable "insights" — Paul built an NPS
+  insight live — which can be posted to a webhook such as Slack or a CRM
+  [00:43:28]–[00:46:10].
+- **Channels.** Assign numbers for outbound calling and outbound messaging; an
+  embeddable website widget, customisable with logo and colours. A chat-only
+  version is in development with no committed date [00:47:28]–[00:49:08].
+- **Observability and testing.** Langfuse integration for tracing, and Coval
+  for simulation testing, with a free Coval account through Telnyx, so agent
+  accuracy, consistency and latency can be measured without placing calls by
+  hand [00:49:13]–[00:50:17].
+- **Data handling.** Conversation and insight retention can be turned off, and
+  PII redaction covers names, addresses, identity numbers and card numbers
+  [00:50:23]–[00:51:08].
+
 ## Open questions
 
 - **The exact use case and script are not yet defined**, and Paul named that as the blocker on building anything [00:58:01]–[00:58:30].
 - **Timing of the follow-up is subject to the information arriving**, which Amir said explicitly when proposing Friday.
-- The two BDMs were introduced but their names are not reliably captured in the recording. They are the people meetings would be booked with.
+- The two BDMs were introduced but their names are not reliably captured in the recording. They are the people meetings would be booked with. Heard as Lacetti and Lungelo, and one is addressed as Longello at [00:40:39]; confirm the spellings before the follow-up.
+- **No date on the chat-only interface**, which Eric did not ask about but which is the cheaper channel for some of his use case.
 
 ## Risks and concerns
 
