@@ -21,6 +21,7 @@ import json
 import os
 import re
 import tempfile
+import time
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -51,6 +52,25 @@ def contacts_dir(root: Path | None = None) -> Path:
     return (root or repo_root()) / "contacts"
 
 
+#: Windows refuses os.replace onto a file another handle has open, so an
+#: ordinary concurrent read fails the writer. Every reader here holds a file
+#: for microseconds, so a few short retries clear it; a lock that outlives
+#: them is a real problem and still raises.
+_REPLACE_ATTEMPTS = 5
+_REPLACE_BACKOFF = 0.05
+
+
+def _replace_with_retry(tmp: str, path: Path) -> None:
+    for attempt in range(_REPLACE_ATTEMPTS):
+        try:
+            os.replace(tmp, path)
+            return
+        except PermissionError:
+            if attempt == _REPLACE_ATTEMPTS - 1:
+                raise
+            time.sleep(_REPLACE_BACKOFF * (attempt + 1))
+
+
 def _write_atomic(path: Path, text: str) -> None:
     """Write via a temp file in the same directory, then replace.
 
@@ -64,7 +84,7 @@ def _write_atomic(path: Path, text: str) -> None:
     try:
         with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:
             fh.write(text)
-        os.replace(tmp, path)
+        _replace_with_retry(tmp, path)
     except BaseException:
         # Leave no debris if anything went wrong on the way.
         try:
@@ -368,6 +388,75 @@ def vocabulary(root: Path | None = None) -> list[str]:
             if len(part) > 3:
                 expanded.add(part)
     return sorted(t for t in expanded if t.strip())
+
+
+def unfinished(root: Path | None = None) -> list[Path]:
+    """Meetings whose audio is finished but which were never transcribed.
+
+    On 10 September a real 39-minute call landed here: the recorder shut down
+    and wrote its results, but the widget's stop handler never ran, so nothing
+    transcribed it, nothing wrote it up and nothing said so. The transcript on
+    disk was the mid-call partial and still carried `live: True`.
+
+    A recording that survived is worth rescuing, so the tool has to be able to
+    find one rather than wait to be told.
+    """
+    out = []
+    for meeting in list_meetings(root):
+        directory = meetings_dir(root) / meeting.id
+        state = directory / "recording.json"
+        if not state.exists():
+            continue                      # never recorded here, or already tidied
+        try:
+            ended = "ended_at" in _read_json(state)
+        except (OSError, ValueError):
+            continue
+        if not ended:
+            continue                      # still recording; leave it alone
+        if meeting.transcribed:
+            continue
+        if _being_transcribed(directory):
+            continue
+        if any(directory.glob("*.wav")):
+            out.append(directory)
+    return out
+
+
+def _being_transcribed(directory: Path) -> bool:
+    """Is something already working on this meeting?
+
+    Without this, `mtg finish` races the widget. On 10 September both
+    transcribed the same hour of audio at once on the same six cores, because
+    a meeting mid-transcription looks exactly like an abandoned one: audio
+    present, `transcribed` still false.
+    """
+    from . import transcribe as tr
+    return tr.is_being_transcribed(directory)
+
+
+def empty_records(root: Path | None = None) -> list[Path]:
+    """Meetings with no audio and no transcript: a record and nothing else.
+
+    Four arrived from a Fathom import on this repo, all titled "Impromptu
+    Microsoft Teams Meeting", each holding a meeting.json and nothing else.
+    They inflate every count, sit permanently in `mtg lane` because there is
+    nothing to derive a lane from, and make the corpus look larger than it is.
+
+    They are not deleted here. A record that a call happened has some value,
+    and deciding that is the user's. They are reported so the decision can be
+    made rather than never noticed.
+    """
+    out = []
+    for meeting in list_meetings(root):
+        directory = meetings_dir(root) / meeting.id
+        if (directory / "transcript.md").exists():
+            continue
+        if any(directory.glob("*.wav")) or any(directory.glob("*.mp4")):
+            continue
+        if (directory / "notes.md").exists() and (directory / "notes.md").stat().st_size:
+            continue                      # written up from somewhere else
+        out.append(directory)
+    return out
 
 
 def search(query: str, root: Path | None = None) -> list[dict[str, Any]]:

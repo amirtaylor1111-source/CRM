@@ -32,6 +32,9 @@ meetings/<YYYY-MM-DD>-<slug>/
 meetings/index.json   rollup, rebuildable from disk
 contacts/<slug>.md    frontmatter + managed meeting list + human notes
 notetaker/            the Python tool
+
+%LOCALAPPDATA%\mtg\exports\meetings.json   what Hub reads    <- we write
+<hub repo>/data/exports/organisations.json  what Hub writes   <- we read
 ```
 
 ## Who authors what
@@ -76,6 +79,10 @@ terminal). In here:
 - `/live-brief <meeting>` and `/ask <meeting> <question>` — what the widget
   runs headlessly during and after a call; fine to run by hand too
 
+And two on the command line: `mtg export-hub` rebuilds the export Hub reads,
+and `mtg lane <meeting> <business|personal|unknown>` corrects the lane the
+export guessed.
+
 ## The widget runs you headlessly
 
 The always-on-top widget (`notetaker/widget.py`) runs Claude Code itself,
@@ -109,12 +116,49 @@ not reach into `meetings/` and write files yourself — `store.py` handles slug
 collisions, idempotency and the managed contact block, and hand-written files
 will get those wrong.
 
+## Hub reads our meetings, and we do not write into Hub
+
+`notetaker/hubexport.py` writes `meetings.json` for Hub's collector, rebuilt
+whole every time a write-up lands. The contract is
+`docs/superpowers/specs/2026-09-09-meetings-to-hub.md`, agreed with the Hub
+session on 9 September and changed only by agreement. One writer per file: we
+write that one and only read Hub's.
+
+Two rules in it are load-bearing and will look like oversights to anyone who
+did not read the argument:
+
+**The transcript goes as a path, never as text.** Hub indexes what it stores
+and feeds it to prompts. A 92-97% accurate transcript would put words nobody
+said into that index and let Hub read a mis-transcribed figure as fact.
+`notes.md` is where those errors are already repaired, so it is the more
+accurate artifact and it is what travels.
+
+**`lane` is three-valued and never guesses.** `business`, `personal` or
+`unknown`. Filing a personal conversation as business puts Amir's own
+finances into Hub's business surfaces; saying `unknown` costs a search miss.
+Those are not the same size of mistake.
+
 ## Names are the thing worth getting right
 
 `store.vocabulary()` feeds the transcript name corrector, so every contact
 you add improves every future transcript. When a calendar address resolves to
 someone the CRM does not know, say so. When two sources disagree about a
 name, the calendar wins — the person typed their own address into it.
+
+## Decisions live in docs/superpowers/, and only there
+
+`specs/` for agreed interfaces, `plans/` for work designed but not built,
+`spikes/` for questions answered including the ones answered "no". Read all
+three before proposing anything: several of them record capabilities this
+repo already has, and a decision recorded only in a commit message is a
+decision that gets re-proposed.
+
+There is a test pinning this. Until 9 September the spikes were split across
+`docs/spikes/` and `docs/superpowers/spikes/`, and a peer session proposed
+speaker diarization for phone calls that had already been spiked three days
+earlier with a better implementation. It had read `docs/superpowers/` and
+reasonably believed it had seen everything. A convention that is only mostly
+true is worse than none, because it is trusted.
 
 ## Working on the tool itself
 

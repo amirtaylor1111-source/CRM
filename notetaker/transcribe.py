@@ -17,6 +17,9 @@ capture.
 
 from __future__ import annotations
 
+import contextlib
+import os
+import time
 import difflib
 import json
 import re
@@ -105,6 +108,17 @@ class TranscribeError(RuntimeError):
     """Raised when no usable transcription backend is available."""
 
 
+class AlreadyTranscribing(TranscribeError):
+    """Raised when another process is already transcribing this meeting.
+
+    Marking the work and proceeding anyway was not enough. On 10 September two
+    transcriptions of the same meeting ran side by side, each loading its own
+    copy of the model, on a laptop with half a gigabyte free. They did not
+    fail; they simply took several times longer while swapping against each
+    other. Refusing is the only thing that actually prevents it.
+    """
+
+
 @dataclass
 class Segment:
     start: float
@@ -147,7 +161,8 @@ def available_backends() -> list[str]:
     return found
 
 
-def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[Segment]:
+def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0,
+                         progress=print) -> list[Segment]:
     """Parakeet via ONNX Runtime.
 
     Better meeting accuracy than Whisper, and as a transducer it cannot
@@ -177,17 +192,22 @@ def _transcribe_parakeet(path: Path, model_name: str, threads: int = 0) -> list[
     vad = onnx_asr.load_vad("silero")
     pipeline = model.with_vad(vad).with_timestamps()
 
-    results = pipeline.recognize(str(path))
-    if hasattr(results, "text"):
-        results = [results]          # an un-segmented adapter: one result
-    else:
-        results = list(results)      # the VAD adapter's generator, or a list
+    def decode(window: Path) -> list[Segment]:
+        results = pipeline.recognize(str(window))
+        if hasattr(results, "text"):
+            results = [results]      # an un-segmented adapter: one result
+        else:
+            results = list(results)  # the VAD adapter's generator, or a list
+        out: list[Segment] = []
+        for item in results:
+            seg = segment_from_result(item)
+            if seg is not None:
+                out.append(seg)
+        return out
 
-    segments: list[Segment] = []
-    for item in results:
-        seg = segment_from_result(item)
-        if seg is not None:
-            segments.append(seg)
+    # The model is loaded once, above, and reused for every window. Only the
+    # window's audio and its results are in memory at a time.
+    segments = _decode_in_chunks(path, decode, progress)
     return segments
 
 
@@ -266,6 +286,118 @@ def _transcribe_whisper(path: Path, model_name: str, threads: int,
                 or float(getattr(item, "no_speech_prob", 0.0) or 0.0) > 0.6,
             )
         )
+    return segments
+
+
+# --- chunked, resumable decoding -------------------------------------------
+#
+# A 62-minute track used to be decoded in one call, with every segment held in
+# memory and nothing written until the end. On 10 September that killed two
+# transcriptions of a real meeting on a laptop with 1.6 GB free: the process
+# vanished with no exception and no log line, and an hour of work was lost
+# each time because nothing had been written yet.
+#
+# Decoding a window at a time fixes both halves. Peak memory is one window
+# rather than one meeting, and every finished window is on disk, so a process
+# that dies resumes instead of starting over.
+
+CHUNK_SECONDS = 300.0          # five minutes: ~12 windows an hour, per track
+CHECKPOINT_SUFFIX = ".partial.jsonl"
+
+
+def _checkpoint_path(track: Path) -> Path:
+    return track.with_suffix(track.suffix + CHECKPOINT_SUFFIX)
+
+
+def _load_checkpoint(path: Path) -> tuple[list[Segment], float]:
+    """Segments already decoded, and the point to resume from."""
+    segments: list[Segment] = []
+    done_to = 0.0
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return segments, done_to
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            row = json.loads(line)
+        except ValueError:
+            break               # a half-written last line; stop, do not guess
+        if row.get("_chunk_end") is not None:
+            done_to = max(done_to, float(row["_chunk_end"]))
+            continue
+        segments.append(Segment(
+            start=float(row["start"]), end=float(row["end"]), text=row["text"],
+            speaker=row.get("speaker", ""), confidence=float(row.get("confidence") or 0.0),
+            low_confidence=bool(row.get("low_confidence")),
+            corrections=list(row.get("corrections") or [])))
+    return segments, done_to
+
+
+def _append_checkpoint(path: Path, rows: list[dict]) -> None:
+    """Append and flush, so a kill loses at most the window in progress."""
+    try:
+        with path.open("a", encoding="utf-8") as fh:
+            for row in rows:
+                fh.write(json.dumps(row, ensure_ascii=False))
+                fh.write("\n")
+            fh.flush()
+            os.fsync(fh.fileno())
+    except OSError:
+        _log.warning("could not checkpoint %s", path, exc_info=True)
+
+
+def _write_chunk(source: Path, destination: Path, start: float, length: float) -> float:
+    """Copy a window of a wav into its own file. Returns its real length."""
+    with wave.open(str(source), "rb") as src:
+        rate = src.getframerate() or 16000
+        src.setpos(min(int(start * rate), src.getnframes()))
+        frames = src.readframes(int(length * rate))
+        with wave.open(str(destination), "wb") as dst:
+            dst.setnchannels(src.getnchannels())
+            dst.setsampwidth(src.getsampwidth())
+            dst.setframerate(rate)
+            dst.writeframes(frames)
+    return len(frames) / float(rate * max(1, src.getsampwidth()) * max(1, src.getnchannels()))
+
+
+def _decode_in_chunks(path: Path, decode, progress) -> list[Segment]:
+    """Decode a track window by window, resuming from any checkpoint.
+
+    `decode` takes a wav path and returns segments with times relative to it.
+    """
+    checkpoint = _checkpoint_path(path)
+    segments, done_to = _load_checkpoint(checkpoint)
+    total = _duration(path)
+    if segments or done_to:
+        progress(f"    resuming at {hhmmss(done_to)} of {hhmmss(total)}"
+                 f" ({len(segments)} segment(s) already decoded)")
+        _log.info("resuming %s at %.0fs with %d segments", path.name, done_to, len(segments))
+
+    window = path.with_suffix(path.suffix + ".chunk.wav")
+    offset = done_to
+    while offset < total - 0.05:
+        length = min(CHUNK_SECONDS, total - offset)
+        try:
+            _write_chunk(path, window, offset, length)
+            found = decode(window)
+        finally:
+            try:
+                window.unlink()
+            except OSError:
+                pass
+        rows = []
+        for seg in found:
+            seg.start += offset
+            seg.end += offset
+            segments.append(seg)
+            rows.append(seg.to_dict())
+        offset += length
+        rows.append({"_chunk_end": offset})
+        _append_checkpoint(checkpoint, rows)
+        progress(f"    {hhmmss(offset)} / {hhmmss(total)}")
     return segments
 
 
@@ -420,6 +552,57 @@ def transcribe_meeting(
 ) -> Path:
     """Transcribe every track in a meeting and write transcript.md/.json."""
     meeting_dir = Path(meeting_dir)
+    if is_being_transcribed(meeting_dir):
+        raise AlreadyTranscribing(
+            f"{meeting_dir.name} is already being transcribed by another "
+            f"process (see {WORKING_FILE}).\n"
+            "  Wait for it, or delete that file if you are sure it is stale."
+        )
+    with _working(meeting_dir):
+        return _transcribe_meeting(meeting_dir, vocabulary, speaker_names, progress)
+
+
+#: Written while a transcription is running and removed when it ends, so a
+#: second one can tell a meeting being worked on from an abandoned one. Both
+#: the CLI and the widget's worker come through transcribe_meeting, so one
+#: marker here covers both.
+WORKING_FILE = "transcribing.lock"
+
+#: A marker older than this is from a process that died. An hour of audio
+#: takes minutes, so this is generous by an order of magnitude.
+WORKING_STALE_SECONDS = 3600.0
+
+
+def is_being_transcribed(meeting_dir: Path) -> bool:
+    marker = Path(meeting_dir) / WORKING_FILE
+    try:
+        return time.time() - marker.stat().st_mtime < WORKING_STALE_SECONDS
+    except OSError:
+        return False
+
+
+@contextlib.contextmanager
+def _working(meeting_dir: Path):
+    marker = meeting_dir / WORKING_FILE
+    try:
+        marker.write_text(str(os.getpid()), encoding="utf-8")
+    except OSError:
+        pass                       # a marker we cannot write must not stop the work
+    try:
+        yield
+    finally:
+        try:
+            marker.unlink()
+        except OSError:
+            pass
+
+
+def _transcribe_meeting(
+    meeting_dir: Path,
+    vocabulary: list[str] | None = None,
+    speaker_names: dict[str, str] | None = None,
+    progress=print,
+) -> Path:
     tracks = {name: meeting_dir / f"{name}.wav"
               for name in ("mic", "system")
               if (meeting_dir / f"{name}.wav").exists()}
@@ -453,7 +636,8 @@ def transcribe_meeting(
         progress(f"  {name}.wav ...")
         if choice["engine"] == "onnx-asr":
             per_track[name] = _transcribe_parakeet(path, choice["model"],
-                                                     choice.get("cpu_threads", 0))
+                                                   choice.get("cpu_threads", 0),
+                                                   progress=progress)
         else:
             per_track[name] = _transcribe_whisper(
                 path, choice["model"], choice["cpu_threads"], hotwords
@@ -473,7 +657,12 @@ def transcribe_meeting(
         "engine": choice["engine"],
         "model": choice["model"],
         "expected_accuracy": choice.get("wer", "unknown"),
-        "duration": hhmmss(total_audio),
+        # The meeting is as long as its longest track, not as long as its
+        # tracks added together. A 39-minute two-track call reported
+        # 01:17:32 on 10 September, which is the machine's workload and
+        # not a fact about the meeting.
+        "duration": hhmmss(max(_duration(q) for q in tracks.values())
+                           if tracks else 0.0),
         "tracks": ", ".join(sorted(tracks)),
         "speaker_method": speaker_method(segments, tracks),
         "segments": len(segments),
@@ -483,6 +672,16 @@ def transcribe_meeting(
     }
 
     md_path = write_transcript(meeting_dir, segments, meta)
+    # Only now, with the transcript safely written, are the checkpoints
+    # redundant. Removing them earlier would mean a crash between the last
+    # window and the write costs the whole meeting again.
+    for track in tracks.values():
+        for leftover in (_checkpoint_path(track),
+                         track.with_suffix(track.suffix + ".chunk.wav")):
+            try:
+                leftover.unlink()
+            except OSError:
+                pass
     progress(f"Wrote {md_path} ({len(segments)} segments, {flagged} flagged)")
     return md_path
 

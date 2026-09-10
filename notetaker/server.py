@@ -111,6 +111,37 @@ def _process_alive(pid: Any) -> bool:
     return True
 
 
+#: How far a finished live transcript may fall short of the recording before
+#: it is treated as partial and the files are transcribed instead. Generous,
+#: because trailing silence is normal and re-transcribing costs minutes.
+LIVE_SHORTFALL = 120.0
+
+
+def _transcript_reach(meeting_dir: Path) -> float:
+    """The end of the last segment in the transcript, in seconds."""
+    try:
+        data = json.loads((Path(meeting_dir) / "transcript.json")
+                          .read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return 0.0
+    return max((float(s.get("end") or 0.0) for s in data.get("segments") or []),
+               default=0.0)
+
+
+def _refresh_hub_export() -> None:
+    """Hand the finished write-up to Hub.
+
+    Best effort by design: Hub reading a slightly stale export is a smaller
+    problem than the widget failing after a call because an export could not
+    be written.
+    """
+    try:
+        from . import hubexport
+        hubexport.write()
+    except Exception:
+        log.get().warning("could not refresh the Hub export", exc_info=True)
+
+
 class Session:
     """Everything the UI needs to know, owned by the server process."""
 
@@ -418,13 +449,24 @@ class Session:
         Both happen in a worker process: the model must never load in this
         one, where it would freeze the API for the window.
         """
+        recorded = max((capture.audio_duration(Path(t))
+                        for t in tracks if t.endswith(".wav")), default=0.0)
         lt = self.live
         if lt is not None and not self.live_error:
             try:
                 self._set(uistate.TRANSCRIBING, "Finishing the transcript")
                 count = lt.finish()
-                _log.info("live transcript finished: %d segments", count)
-                return
+                covered = _transcript_reach(self.meeting_dir)
+                # A live transcript that stops well short of the audio is a
+                # partial record wearing the frontmatter of a finished one.
+                # On 10 September one covered 23:30 of a 38:46 call.
+                if recorded and covered < recorded - LIVE_SHORTFALL:
+                    _log.warning(
+                        "live transcript reaches %.0fs of %.0fs; transcribing "
+                        "the files instead", covered, recorded)
+                else:
+                    _log.info("live transcript finished: %d segments", count)
+                    return
             except live.LiveError as exc:
                 _log.warning("live transcript unusable, transcribing the files: %s", exc)
         elif lt is not None:
@@ -451,6 +493,7 @@ class Session:
             if result.ok:
                 self.notes = _read_notes(self.meeting_dir)
                 self.notes_state = "done" if self.notes else "error"
+                _refresh_hub_export()
                 self.notes_error = "" if self.notes else "Claude finished but wrote no notes.md"
             else:
                 self.notes_state = "login" if result.error == "login" else "error"
@@ -508,13 +551,32 @@ class Session:
             began = time.time()
             try:
                 lt.tick()
+                # An error set on the transcriber, rather than raised, was
+                # assigned here and never logged. On 10 September the live
+                # transcript stopped after two minutes of a 62-minute call and
+                # the log recorded nothing at all: the failure was visible only
+                # as an absence. Say it once, the first time it appears.
+                if lt.error and not self.live_error:
+                    _log.error("live transcription stopped: %s", lt.error)
                 self.live_error = lt.error
             except Exception as exc:
                 self.live_error = str(exc)
                 _log.exception("live tick failed")
             took = time.time() - began
             if not lt.error and lt.backlog() > live.MAX_PASS_SECONDS:
-                _log.info("live transcript %.0fs behind; catching up", lt.backlog())
+                behind = lt.backlog()
+                # A pass that takes longer than the audio it consumed can never
+                # catch up: the backlog grows for the rest of the call. Worth
+                # saying plainly, because the visible symptom is a live panel
+                # that simply stops updating.
+                if took > live.MAX_PASS_SECONDS:
+                    _log.warning(
+                        "live transcript %.0fs behind and losing ground: a pass "
+                        "took %.0fs for at most %.0fs of audio. The panels will "
+                        "lag for the rest of this call; the transcript at Stop "
+                        "is unaffected.", behind, took, live.MAX_PASS_SECONDS)
+                else:
+                    _log.info("live transcript %.0fs behind; catching up", behind)
                 deadline = time.time()                # tick again at once
             elif took > live.INTERVAL / 2:        # back off on a slow machine
                 _log.info("live pass took %.1fs; waiting longer", took)

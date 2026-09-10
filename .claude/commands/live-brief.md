@@ -17,10 +17,32 @@ Return JSON only, matching the schema you were given:
   money, dates or numbers are involved; `at` is the `HH:MM:SS` it was said.
   Never invent one. Fewer is better than padding. An empty list is the right
   answer when nothing has been agreed yet.
-- `questions`: up to four questions worth asking before the call ends,
-  grounded in what was said and in the contact's history: an open item from
-  a previous meeting they have not mentioned, a number or date left vague, a
-  commitment without a due date, a person named but not on the call. Empty if
-  nothing stands out.
+- `questions`: up to four questions the user should ASK, phrased ready to say
+  out loud.
+
+  **These are gaps, not a record.** The panel is headed "Ask them". Every
+  entry is something nobody has said yet and the user needs before the call
+  ends. It is not a list of what has been discussed, not a summary of
+  questions either side already asked, and never a question the conversation
+  has already answered.
+
+  Test each one: if the user read it aloud right now, would it be a sensible
+  thing to say next? If it would make them sound as though they had not been
+  listening, it does not belong.
+
+  Look for the gap, not the topic:
+
+  - an open item from a previous meeting they have not raised
+  - a number, date or scope left vague — "how much", "when", "how many"
+  - a commitment with no owner or no due date
+  - a person or company named but not on the call, whose agreement is needed
+  - a decision being talked around without being made
+
+  Phrase them as the user would say them: "When do you need the proof of
+  address by?" rather than "Clarify the deadline for the proof of address".
+
+  Empty is a good answer. Four padded questions are worse than one real one,
+  because the user has to read all four mid-conversation to find out there
+  was nothing.
 
 Do not write any files.

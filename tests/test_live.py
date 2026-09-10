@@ -261,7 +261,8 @@ class TestFormat:
         write_seconds(other / "mic.wav", 6, speech={1, 3})
         monkeypatch.setattr(transcribe, "available_backends", lambda: ["parakeet"])
         monkeypatch.setattr(transcribe, "_transcribe_parakeet",
-                            lambda path, model, threads=0: [transcribe.Segment(1.0, 1.8, "w1")])
+                            lambda path, model, threads=0, progress=print:
+                            [transcribe.Segment(1.0, 1.8, "w1")])
         transcribe.transcribe_meeting(other, progress=lambda m: None)
         full_meta = json.loads((other / "transcript.json").read_text(encoding="utf-8"))["meta"]
 

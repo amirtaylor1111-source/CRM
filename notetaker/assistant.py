@@ -296,14 +296,31 @@ def brief(meeting_id: str, previous: dict | None = None, **kw) -> Result:
     The previous brief goes in with the request so the answer builds on it
     rather than starting over, and so the model knows where the new material
     begins.
+
+    Its `questions` are handed over as things ALREADY OFFERED rather than as
+    part of the answer so far. Without that, they read as prior output to be
+    continued, and the panel drifts from "what to ask next" into a restatement
+    of what has already been covered — which is the one thing it must not be.
     """
     kw.setdefault("wait", False)
     arguments = meeting_id
     if previous:
         arguments += ("\n\nThe previous brief, as of " + str(previous.get("as_of") or "the start")
                       + " into the call; everything in the transcript after that is new:\n"
-                      + json.dumps({k: previous.get(k) for k in ("summary", "next_steps", "questions")},
+                      + json.dumps({k: previous.get(k) for k in ("summary", "next_steps")},
                                    ensure_ascii=False))
+        asked = [q if isinstance(q, str) else (q or {}).get("text", "")
+                 for q in (previous.get("questions") or [])]
+        asked = [q for q in asked if q]
+        if asked:
+            arguments += (
+                "\n\nThese questions were already put in front of the user "
+                "earlier in this call:\n"
+                + json.dumps(asked, ensure_ascii=False)
+                + "\n\nDo not repeat any of them. Drop any the conversation "
+                  "has since answered. Only carry one forward if it still "
+                  "matters and still has no answer, and prefer a new gap that "
+                  "has opened since.")
     return run(command_prompt("live-brief", arguments), schema=BRIEF_SCHEMA,
                allowed_tools=READ_ONLY, **kw)
 

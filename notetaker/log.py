@@ -35,16 +35,24 @@ def setup(verbose: bool = False) -> logging.Logger:
         return logger
     logger.setLevel(logging.DEBUG)
 
-    try:
-        log_dir().mkdir(parents=True, exist_ok=True)
-        handler = logging.handlers.RotatingFileHandler(
-            log_path(), maxBytes=2_000_000, backupCount=3, encoding="utf-8")
-        handler.setFormatter(logging.Formatter(
-            "%(asctime)s %(levelname)-7s %(name)s: %(message)s"))
-        handler.setLevel(logging.DEBUG)
-        logger.addHandler(handler)
-    except OSError:
-        pass                                   # a tool that cannot log still works
+    # A second instance can fail to open the shared file on Windows. Falling
+    # back to a per-process file matters more than tidiness: on 10 September a
+    # widget recorded a real 39-minute call and wrote not one line anywhere,
+    # so when its stop handler never ran there was nothing to diagnose it
+    # with. Silence looked identical to "nothing happened".
+    formatter = logging.Formatter("%(asctime)s %(levelname)-7s %(name)s: %(message)s")
+    for path, kwargs in ((log_path(), {"maxBytes": 2_000_000, "backupCount": 3}),
+                         (log_dir() / f"mtg-{os.getpid()}.log", {})):
+        try:
+            log_dir().mkdir(parents=True, exist_ok=True)
+            handler = logging.handlers.RotatingFileHandler(
+                path, encoding="utf-8", **kwargs)
+            handler.setFormatter(formatter)
+            handler.setLevel(logging.DEBUG)
+            logger.addHandler(handler)
+            break
+        except OSError:
+            continue                           # a tool that cannot log still works
 
     if verbose:
         console = logging.StreamHandler(sys.stderr)

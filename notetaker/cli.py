@@ -16,7 +16,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from . import capture, hardware, log, store
+from . import capture, hardware, hubexport, log, store
 from .schema import utcnow
 
 DISCLOSURE = (
@@ -346,7 +346,9 @@ def cmd_doctor(args) -> int:
 
     checks.append((f"disk space ({hw.free_disk_gb:.0f} GB free)",
                    hw.free_disk_gb > 10,
-                   "under 10 GB free; run `mtg prune` or clear space"))
+                   "under 10 GB free; clear space elsewhere. `mtg prune` "
+                   "deletes the audio of transcribed meetings, which is the "
+                   "only thing an accuracy check can be re-run against"))
 
     # The widget and its brain. None of these stop a recording; they say
     # which parts of the widget will be there.
@@ -371,6 +373,24 @@ def cmd_doctor(args) -> int:
 
     print()
     print(f"  Log       {log.log_path()}")
+
+    pending = store.unfinished()
+    if pending:
+        print()
+        print(f"  {len(pending)} recording(s) stopped but never transcribed:")
+        for directory in pending:
+            print(f"    {directory.name}")
+        print("  Rescue them with:  mtg finish")
+
+    empty = store.empty_records()
+    if empty:
+        print()
+        print(f"  {len(empty)} meeting(s) with no audio and no transcript:")
+        for directory in empty:
+            print(f"    {directory.name}")
+        print("  These are records of a call and nothing else. They inflate")
+        print("  every count and can never be given a lane. Delete them by hand")
+        print("  if they are not worth keeping.")
     print()
     if failed:
         print(f"  {failed} check(s) failed.")
@@ -526,6 +546,95 @@ def cmd_import(args) -> int:
     return OK
 
 
+def cmd_finish(args) -> int:
+    """Transcribe any recording that stopped but never got finished.
+
+    The widget's stop handler is not guaranteed to run — on 10 September it
+    did not, and a real 39-minute call sat untranscribed with its mid-call
+    partial on disk looking like the record. This is the rescue, and `doctor`
+    points at it.
+    """
+    pending = store.unfinished()
+    if not pending:
+        print()
+        print("  Nothing waiting. Every recording has been transcribed.")
+        return OK
+    print()
+    print(f"  {len(pending)} recording(s) stopped but never transcribed.")
+    print()
+    failed = 0
+    for directory in pending:
+        print(f"  {directory.name}")
+        if _transcribe(directory) != OK:
+            failed += 1
+    return OK if not failed else ENV_ERROR
+
+
+def cmd_export_hub(args) -> int:
+    """Rebuild the meetings export that Hub reads.
+
+    Full rebuild every time. Absence from the file is not a claim that a
+    meeting was deleted; see docs/superpowers/specs/2026-09-09-meetings-to-hub.md.
+    """
+    path = hubexport.write()
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    lanes: dict[str, int] = {}
+    for meeting in doc["meetings"]:
+        lanes[meeting["lane"]] = lanes.get(meeting["lane"], 0) + 1
+    size = path.stat().st_size
+    print()
+    print(f"  Wrote {len(doc['meetings'])} meeting(s) to {path}"
+          f"  ({size / 1024:.0f} KB)")
+    if lanes:
+        print("  " + ", ".join(f"{n} {lane}" for lane, n in sorted(lanes.items())))
+    if lanes.get("unknown"):
+        print("  Meetings with no participants and no personal marker are"
+              " exported as lane 'unknown' rather than guessed.")
+    return OK
+
+
+def cmd_lane(args) -> int:
+    """Set a meeting's lane by hand, or list the ones with no lane yet.
+
+    Hub declines to file a meeting whose lane is unknown, so an undecided
+    meeting is invisible there rather than merely uncategorised. With no
+    arguments this lists them, because otherwise the only way to find out is
+    to know to ask.
+    """
+    if not args.meeting:
+        undecided = hubexport.undecided()
+        if not undecided:
+            print()
+            print("  Every meeting has a lane.")
+            return OK
+        print()
+        print(f"  {len(undecided)} meeting(s) with no lane. Hub will not file"
+              " these until one is set:")
+        print()
+        for meeting in undecided:
+            print(f"    {meeting['date'][:10]}  {meeting['title'][:44]:46}"
+                  f" {meeting['id']}")
+        print()
+        print("  Set one with:  mtg lane <meeting> business")
+        print()
+        return OK
+
+    directory = store.resolve_meeting(args.meeting)
+    if directory is None:
+        print(f"  No meeting matching {args.meeting!r}.")
+        return USER_ERROR
+    if args.lane not in ("business", "personal", "unknown"):
+        print("  Usage: mtg lane <meeting> <business|personal|unknown>")
+        print("  Lane must be business, personal or unknown.")
+        return USER_ERROR
+    meeting = store.load_meeting(directory)
+    meeting.lane = args.lane
+    store.save_meeting(directory, meeting)
+    print(f"  {directory.name} is now {args.lane}.")
+    hubexport.write()
+    return OK
+
+
 def cmd_prune(args) -> int:
     """Delete raw audio from meetings that are already transcribed."""
     freed = 0
@@ -595,6 +704,20 @@ def build_parser() -> argparse.ArgumentParser:
 
     dr = sub.add_parser("doctor", help="check everything is set up")
     dr.set_defaults(func=cmd_doctor)
+
+    fi = sub.add_parser("finish", help="transcribe recordings that stopped but were never finished")
+    fi.set_defaults(func=cmd_finish)
+
+    eh = sub.add_parser("export-hub", help="rebuild the meetings export Hub reads")
+    eh.set_defaults(func=cmd_export_hub)
+
+    ln = sub.add_parser("lane", help="mark a meeting business or personal")
+    ln.add_argument("meeting", nargs="?", default="",
+                    help="meeting id or a fragment of its title; omit to list"
+                         " meetings with no lane")
+    ln.add_argument("lane", nargs="?", default="",
+                    help="business, personal or unknown")
+    ln.set_defaults(func=cmd_lane)
 
     pr = sub.add_parser("prune", help="delete audio from transcribed meetings")
     pr.add_argument("--dry-run", action="store_true")

@@ -1,0 +1,24 @@
+{
+  "id": "2026-09-10-meeting",
+  "title": "SMD Prep",
+  "started_at": "2026-09-10T08:00:19Z",
+  "ended_at": "2026-09-10T08:39:09Z",
+  "participants": [
+    {
+      "name": "Paul Cross",
+      "email": "",
+      "company": "Telnyx",
+      "role": ""
+    }
+  ],
+  "consent_obtained": true,
+  "consent_note": "participants informed",
+  "tracks": [
+    "C:\\Users\\AmirTaylor\\Downloads\\Projects\\CRM\\meetings\\2026-09-10-meeting\\mic.wav",
+    "C:\\Users\\AmirTaylor\\Downloads\\Projects\\CRM\\meetings\\2026-09-10-meeting\\system.wav"
+  ],
+  "tags": [],
+  "transcribed": true,
+  "transcript_engine": "",
+  "lane": "business"
+}
