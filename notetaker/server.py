@@ -111,6 +111,23 @@ def _process_alive(pid: Any) -> bool:
     return True
 
 
+#: How far a finished live transcript may fall short of the recording before
+#: it is treated as partial and the files are transcribed instead. Generous,
+#: because trailing silence is normal and re-transcribing costs minutes.
+LIVE_SHORTFALL = 120.0
+
+
+def _transcript_reach(meeting_dir: Path) -> float:
+    """The end of the last segment in the transcript, in seconds."""
+    try:
+        data = json.loads((Path(meeting_dir) / "transcript.json")
+                          .read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return 0.0
+    return max((float(s.get("end") or 0.0) for s in data.get("segments") or []),
+               default=0.0)
+
+
 def _refresh_hub_export() -> None:
     """Hand the finished write-up to Hub.
 
@@ -432,13 +449,24 @@ class Session:
         Both happen in a worker process: the model must never load in this
         one, where it would freeze the API for the window.
         """
+        recorded = max((capture.audio_duration(Path(t))
+                        for t in tracks if t.endswith(".wav")), default=0.0)
         lt = self.live
         if lt is not None and not self.live_error:
             try:
                 self._set(uistate.TRANSCRIBING, "Finishing the transcript")
                 count = lt.finish()
-                _log.info("live transcript finished: %d segments", count)
-                return
+                covered = _transcript_reach(self.meeting_dir)
+                # A live transcript that stops well short of the audio is a
+                # partial record wearing the frontmatter of a finished one.
+                # On 10 September one covered 23:30 of a 38:46 call.
+                if recorded and covered < recorded - LIVE_SHORTFALL:
+                    _log.warning(
+                        "live transcript reaches %.0fs of %.0fs; transcribing "
+                        "the files instead", covered, recorded)
+                else:
+                    _log.info("live transcript finished: %d segments", count)
+                    return
             except live.LiveError as exc:
                 _log.warning("live transcript unusable, transcribing the files: %s", exc)
         elif lt is not None:

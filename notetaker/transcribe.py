@@ -473,7 +473,12 @@ def transcribe_meeting(
         "engine": choice["engine"],
         "model": choice["model"],
         "expected_accuracy": choice.get("wer", "unknown"),
-        "duration": hhmmss(total_audio),
+        # The meeting is as long as its longest track, not as long as its
+        # tracks added together. A 39-minute two-track call reported
+        # 01:17:32 on 10 September, which is the machine's workload and
+        # not a fact about the meeting.
+        "duration": hhmmss(max(_duration(q) for q in tracks.values())
+                           if tracks else 0.0),
         "tracks": ", ".join(sorted(tracks)),
         "speaker_method": speaker_method(segments, tracks),
         "segments": len(segments),

@@ -2,6 +2,8 @@ import sys
 import types
 from collections import namedtuple
 
+from pathlib import Path
+
 import pytest
 
 from notetaker.transcribe import (
@@ -270,3 +272,16 @@ class TestParakeetAdapter:
         else:
             names = list(getattr(real, "_fields", ()))
         assert names[: len(self.Result._fields)] == list(self.Result._fields)
+
+
+class TestDurationIsTheMeetingNotTheWorkload:
+    """A 39-minute two-track call reported 01:17:32 on 10 September, which is
+    both tracks added together. That is the machine's workload, not a fact
+    about the meeting, and it is the first line a reader checks."""
+
+    def test_two_equal_tracks_report_one_length(self, tmp_path, monkeypatch):
+        from notetaker import transcribe as tr
+        lengths = {tmp_path / "mic.wav": 2326.0, tmp_path / "system.wav": 2326.0}
+        monkeypatch.setattr(tr, "_duration", lambda p: lengths[Path(p)])
+        assert tr.hhmmss(max(lengths.values())) == "00:38:46"
+        assert tr.hhmmss(sum(lengths.values())) == "01:17:32"   # the old answer

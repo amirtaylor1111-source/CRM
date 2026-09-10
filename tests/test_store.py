@@ -204,3 +204,48 @@ class TestAtomicWriteUnderWindowsSharing:
         with pytest.raises(PermissionError):
             store._write_atomic(target, "new")
         assert not list(target.parent.glob(".tmp-*"))
+
+
+class TestUnfinishedRecordings:
+    """A recording that stopped but was never transcribed must be findable.
+
+    On 10 September a real 39-minute call landed in exactly this state: the
+    recorder shut down and wrote its results, the widget's stop handler never
+    ran, and the mid-call partial sat on disk wearing the frontmatter of a
+    finished transcript. Nothing anywhere said so.
+    """
+
+    def _recorded(self, crm, name="Call", *, ended=True, transcribed=False):
+        d = store.create_meeting(name, [], root=crm)
+        (d / "mic.wav").write_bytes(b"RIFF")
+        state = {"pid": 1, "started_at": 0.0}
+        if ended:
+            state["ended_at"] = 1.0
+        (d / "recording.json").write_text(json.dumps(state), encoding="utf-8")
+        if transcribed:
+            m = store.load_meeting(d)
+            m.transcribed = True
+            store.save_meeting(d, m)
+        return d
+
+    def test_a_stopped_untranscribed_meeting_is_found(self, crm):
+        d = self._recorded(crm)
+        assert [p.name for p in store.unfinished(crm)] == [d.name]
+
+    def test_one_still_recording_is_left_alone(self, crm):
+        self._recorded(crm, ended=False)
+        assert store.unfinished(crm) == []
+
+    def test_a_transcribed_one_is_not_offered(self, crm):
+        self._recorded(crm, transcribed=True)
+        assert store.unfinished(crm) == []
+
+    def test_a_meeting_whose_audio_is_gone_is_not_offered(self, crm):
+        """mtg prune removes the wavs; there is nothing left to rescue."""
+        d = self._recorded(crm)
+        (d / "mic.wav").unlink()
+        assert store.unfinished(crm) == []
+
+    def test_a_meeting_that_never_recorded_here_is_not_offered(self, crm):
+        store.create_meeting("Imported", [], root=crm)
+        assert store.unfinished(crm) == []

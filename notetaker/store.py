@@ -390,6 +390,36 @@ def vocabulary(root: Path | None = None) -> list[str]:
     return sorted(t for t in expanded if t.strip())
 
 
+def unfinished(root: Path | None = None) -> list[Path]:
+    """Meetings whose audio is finished but which were never transcribed.
+
+    On 10 September a real 39-minute call landed here: the recorder shut down
+    and wrote its results, but the widget's stop handler never ran, so nothing
+    transcribed it, nothing wrote it up and nothing said so. The transcript on
+    disk was the mid-call partial and still carried `live: True`.
+
+    A recording that survived is worth rescuing, so the tool has to be able to
+    find one rather than wait to be told.
+    """
+    out = []
+    for meeting in list_meetings(root):
+        directory = meetings_dir(root) / meeting.id
+        state = directory / "recording.json"
+        if not state.exists():
+            continue                      # never recorded here, or already tidied
+        try:
+            ended = "ended_at" in _read_json(state)
+        except (OSError, ValueError):
+            continue
+        if not ended:
+            continue                      # still recording; leave it alone
+        if meeting.transcribed:
+            continue
+        if any(directory.glob("*.wav")):
+            out.append(directory)
+    return out
+
+
 def search(query: str, root: Path | None = None) -> list[dict[str, Any]]:
     """Grep transcripts and notes, returning meetings with matching snippets."""
     needle = query.lower()

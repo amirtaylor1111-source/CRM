@@ -371,6 +371,14 @@ def cmd_doctor(args) -> int:
 
     print()
     print(f"  Log       {log.log_path()}")
+
+    pending = store.unfinished()
+    if pending:
+        print()
+        print(f"  {len(pending)} recording(s) stopped but never transcribed:")
+        for directory in pending:
+            print(f"    {directory.name}")
+        print("  Rescue them with:  mtg finish")
     print()
     if failed:
         print(f"  {failed} check(s) failed.")
@@ -526,6 +534,30 @@ def cmd_import(args) -> int:
     return OK
 
 
+def cmd_finish(args) -> int:
+    """Transcribe any recording that stopped but never got finished.
+
+    The widget's stop handler is not guaranteed to run — on 10 September it
+    did not, and a real 39-minute call sat untranscribed with its mid-call
+    partial on disk looking like the record. This is the rescue, and `doctor`
+    points at it.
+    """
+    pending = store.unfinished()
+    if not pending:
+        print()
+        print("  Nothing waiting. Every recording has been transcribed.")
+        return OK
+    print()
+    print(f"  {len(pending)} recording(s) stopped but never transcribed.")
+    print()
+    failed = 0
+    for directory in pending:
+        print(f"  {directory.name}")
+        if _transcribe(directory) != OK:
+            failed += 1
+    return OK if not failed else ENV_ERROR
+
+
 def cmd_export_hub(args) -> int:
     """Rebuild the meetings export that Hub reads.
 
@@ -660,6 +692,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     dr = sub.add_parser("doctor", help="check everything is set up")
     dr.set_defaults(func=cmd_doctor)
+
+    fi = sub.add_parser("finish", help="transcribe recordings that stopped but were never finished")
+    fi.set_defaults(func=cmd_finish)
 
     eh = sub.add_parser("export-hub", help="rebuild the meetings export Hub reads")
     eh.set_defaults(func=cmd_export_hub)
